@@ -231,8 +231,8 @@ Public Class FrmMain
             TimeSyncEnable = False
             btnTimeSyncOff.Enabled = False
             btnTimeSyncOn.Enabled = True
-            ucmTabControl.Visible = False
-            sgdTabControl.Visible = False
+            ucmTabControl.Visible = True
+            sgdTabControl.Visible = True
             gbErrors.Visible = True
             grpChangeBaud.Visible = True
             gbReqPowerLevel.Visible = True
@@ -298,7 +298,6 @@ Public Class FrmMain
             realDeviceIgnoreMaxPayloadCheckBox.Checked = True
             realDeviceCommandRetrycb.Checked = False
             realUCMTrasmissionIntervalBox.Value = 60
-            realUCMCommStatusBox.SelectedIndex = 0
             internalClockSupportedcb.Checked = False
             realSGDShedResponse.SelectedIndex = 0
             realSGDEndShedResponse.SelectedIndex = 0
@@ -453,8 +452,8 @@ Public Class FrmMain
             CmbPort.Enabled = True
             CmbBaud.Enabled = True
             connectStatus = False           'Set connect status to false
-            ucmTabControl.Visible = False
-            sgdTabControl.Visible = False
+            ucmTabControl.Visible = True
+            sgdTabControl.Visible = True
             realSGDFunctionsGroup.Visible = False
             realUCMFunctionsGroup.Visible = False
             commonCommandsTabControl.Visible = False
@@ -3417,6 +3416,9 @@ Public Class FrmMain
                             UTCseconds = UTCseconds + receiveBuffer(10)
                             SendToLog(dispString, "Received Get UTC Time response. Time = " & UTCseconds)
                             ReceivedText(dispString, "Received Get UTC Time Resonse. Time = " & UTCseconds)
+                            Dim timebase As DateTimeOffset
+                            timebase = New DateTimeOffset(2000, 1, 1, 0, 0, 0, TimeSpan.Zero)
+                            ReceivedUtcTimetb.Text = timebase.AddSeconds(UTCseconds).ToString()
                             SendLinkAck()
                             'Delete Last message from buffer
                             receiveIndex = 0
@@ -7019,22 +7021,16 @@ Public Class FrmMain
     Private Sub AutoCommStatusTimer_Tick(sender As Object, e As EventArgs) Handles autoCommStatusTimer.Tick
 
         Try
-            'If enabled, send a comm status every tick
-            If cbResponseSim.Checked = True Then
-                If realUCMCommStatusBox.SelectedIndex <> 0 Then
-                    SendCommStatus(realUCMCommStatusBox.SelectedIndex - 1)
-                End If
-            Else
-                autoCommStatusTimer.Enabled = False
+            If realUCMCommStatusBox.SelectedIndex <> 0 Then
+                SendCommStatus(realUCMCommStatusBox.SelectedIndex - 1)
             End If
-
         Catch ex As Exception
             MessageBox.Show("Error occured in Sub autoCommStatusTimer_Tick" & ex.Message)
         End Try
 
     End Sub
 
-    Private Sub RealUCMCommStatusBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles realUCMCommStatusBox.SelectedIndexChanged
+    Private Sub RealUCMCommStatusBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles realUCMCommStatusBox.SelectedIndexChanged, ucmComStatusTab.Click
 
         'If manual mode is not selected and simulating a real device
         If cbResponseSim.Checked = True And realUCMCommStatusBox.SelectedIndex <> 0 Then
@@ -8859,5 +8855,30 @@ Public Class FrmMain
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Help Content", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub CommStatusCheck_CheckedChanged(sender As Object, e As EventArgs) Handles CommStatusCheck.CheckedChanged
+        'activates/deactivates timed query for op state
+        autoCommStatusTimer.Interval = CommStatusIntervalVal.Value * 1000
+
+        If CommStatusCheck.Checked = True Then
+            autoCommStatusTimer.Enabled = True
+        Else
+            autoCommStatusTimer.Enabled = False
+        End If
+    End Sub
+
+    Private Sub CommStatusIntervalVal_ValueChanged(sender As Object, e As EventArgs) Handles CommStatusIntervalVal.ValueChanged
+        autoCommStatusTimer.Interval = CommStatusIntervalVal.Value * 1000
+    End Sub
+
+    Private Sub cmbCommStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCommStatus.SelectedIndexChanged
+        If cmbCommStatus.SelectedItem = "Found / Good Connection" Then     'Send Comm Good Message
+            realUCMCommStatusBox.SelectedIndex = 2             'Set Index to appropriate value
+        ElseIf (cmbCommStatus.SelectedItem = "No / Lost Connection") Then 'Send Comm Bad Message
+            realUCMCommStatusBox.SelectedIndex = 1
+        ElseIf (cmbCommStatus.SelectedItem = "Poor / Unreliable Connection") Then 'Send Comm Poor Message
+            realUCMCommStatusBox.SelectedIndex = 3
+        End If
     End Sub
 End Class
