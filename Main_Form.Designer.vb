@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -420,6 +420,8 @@ Partial Class FrmMain
         Me.gbQuery = New System.Windows.Forms.GroupBox()
         Me.pbOpState = New System.Windows.Forms.Button()
         Me.ucmComStatusTab = New System.Windows.Forms.TabPage()
+        Me.CommStatusIntervalVal = New System.Windows.Forms.NumericUpDown()
+        Me.CommStatusCheck = New System.Windows.Forms.CheckBox()
         Me.gbCommStatus = New System.Windows.Forms.GroupBox()
         Me.SendCommStatusBtn = New System.Windows.Forms.Button()
         Me.cmbCommStatus = New System.Windows.Forms.ComboBox()
@@ -429,12 +431,14 @@ Partial Class FrmMain
         Me.btnTimeSyncOn = New System.Windows.Forms.Button()
         Me.ucmIntermediateTab = New System.Windows.Forms.TabPage()
         Me.intermediateTabControl = New System.Windows.Forms.TabControl()
-        Me.ucmSetUTC = New System.Windows.Forms.TabPage()
+        Me.ucmSetGetUTC = New System.Windows.Forms.TabPage()
         Me.nudUTCOffset = New System.Windows.Forms.NumericUpDown()
         Me.nudDSTOffset = New System.Windows.Forms.NumericUpDown()
         Me.Label41 = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.btnSetUTC = New System.Windows.Forms.Button()
+        Me.ReceivedUtcTimegb = New System.Windows.Forms.GroupBox()
+        Me.ReceivedUtcTimetb = New System.Windows.Forms.TextBox()
         Me.ucmAutoCycling = New System.Windows.Forms.TabPage()
         Me.nudDutyCyclePeriod = New System.Windows.Forms.NumericUpDown()
         Me.Label128 = New System.Windows.Forms.Label()
@@ -584,7 +588,6 @@ Partial Class FrmMain
         Me.logFile.SuspendLayout()
         Me.sgdTabControl.SuspendLayout()
         Me.sgdOpStateTab.SuspendLayout()
-        Me.GetUtc.SuspendLayout()
         Me.simulatorDeviceTypeTabControl.SuspendLayout()
         Me.deviceInfoTab.SuspendLayout()
         Me.deviceInfoTabControl.SuspendLayout()
@@ -689,14 +692,17 @@ Partial Class FrmMain
         Me.currentStategb.SuspendLayout()
         Me.gbQuery.SuspendLayout()
         Me.ucmComStatusTab.SuspendLayout()
+        CType(Me.CommStatusIntervalVal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbCommStatus.SuspendLayout()
         Me.ucmTimeSyncTab.SuspendLayout()
         Me.gbTimeSync.SuspendLayout()
         Me.ucmIntermediateTab.SuspendLayout()
         Me.intermediateTabControl.SuspendLayout()
-        Me.ucmSetUTC.SuspendLayout()
+        Me.ucmSetGetUTC.SuspendLayout()
         CType(Me.nudUTCOffset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudDSTOffset, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ReceivedUtcTimegb.SuspendLayout()
+        Me.ReceivedUtcTimetb.SuspendLayout()
         Me.ucmAutoCycling.SuspendLayout()
         CType(Me.nudDutyCyclePeriod, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudCriticality, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -742,60 +748,70 @@ Partial Class FrmMain
         CType(Me.EpriLogoBig, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
+        'ReceivedUtcTimetb
+        '
+        ReceivedUtcTimetb.BackColor = System.Drawing.Color.White
+        ReceivedUtcTimetb.Location = New System.Drawing.Point(9, 31)
+        ReceivedUtcTimetb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        ReceivedUtcTimetb.Name = "ReceivedUtcTimetb"
+        ReceivedUtcTimetb.ReadOnly = True
+        ReceivedUtcTimetb.Size = New System.Drawing.Size(241, 26)
+        ReceivedUtcTimetb.TabIndex = 0
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(16, 48)
+        Me.Label1.Location = New System.Drawing.Point(18, 60)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(81, 17)
+        Me.Label1.Size = New System.Drawing.Size(92, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Comm Port:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(16, 86)
+        Me.Label2.Location = New System.Drawing.Point(18, 108)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(62, 17)
+        Me.Label2.Size = New System.Drawing.Size(71, 20)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Bit Rate:"
         '
         'CmbPort
         '
         Me.CmbPort.FormattingEnabled = True
-        Me.CmbPort.Location = New System.Drawing.Point(124, 44)
-        Me.CmbPort.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CmbPort.Location = New System.Drawing.Point(140, 55)
+        Me.CmbPort.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CmbPort.Name = "CmbPort"
-        Me.CmbPort.Size = New System.Drawing.Size(160, 24)
+        Me.CmbPort.Size = New System.Drawing.Size(180, 28)
         Me.CmbPort.TabIndex = 2
         '
         'CmbBaud
         '
         Me.CmbBaud.FormattingEnabled = True
-        Me.CmbBaud.Location = New System.Drawing.Point(124, 82)
-        Me.CmbBaud.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CmbBaud.Location = New System.Drawing.Point(140, 102)
+        Me.CmbBaud.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CmbBaud.Name = "CmbBaud"
-        Me.CmbBaud.Size = New System.Drawing.Size(160, 24)
+        Me.CmbBaud.Size = New System.Drawing.Size(180, 28)
         Me.CmbBaud.TabIndex = 3
         '
         'btnConnect
         '
-        Me.btnConnect.Location = New System.Drawing.Point(313, 44)
-        Me.btnConnect.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnConnect.Location = New System.Drawing.Point(352, 55)
+        Me.btnConnect.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnConnect.Name = "btnConnect"
-        Me.btnConnect.Size = New System.Drawing.Size(100, 28)
+        Me.btnConnect.Size = New System.Drawing.Size(112, 35)
         Me.btnConnect.TabIndex = 4
         Me.btnConnect.Text = "Connect"
         Me.btnConnect.UseVisualStyleBackColor = True
         '
         'btnDisconnect
         '
-        Me.btnDisconnect.Location = New System.Drawing.Point(313, 80)
-        Me.btnDisconnect.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnDisconnect.Location = New System.Drawing.Point(352, 100)
+        Me.btnDisconnect.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnDisconnect.Name = "btnDisconnect"
-        Me.btnDisconnect.Size = New System.Drawing.Size(100, 28)
+        Me.btnDisconnect.Size = New System.Drawing.Size(112, 35)
         Me.btnDisconnect.TabIndex = 5
         Me.btnDisconnect.Text = "Disconnect"
         Me.btnDisconnect.UseVisualStyleBackColor = True
@@ -804,21 +820,21 @@ Partial Class FrmMain
         '
         Me.SerialDataGpBox.Controls.Add(Me.btnClearDebug)
         Me.SerialDataGpBox.Controls.Add(Me.rtbReceived)
-        Me.SerialDataGpBox.Location = New System.Drawing.Point(19, 309)
-        Me.SerialDataGpBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SerialDataGpBox.Location = New System.Drawing.Point(21, 386)
+        Me.SerialDataGpBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.SerialDataGpBox.Name = "SerialDataGpBox"
-        Me.SerialDataGpBox.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.SerialDataGpBox.Size = New System.Drawing.Size(590, 391)
+        Me.SerialDataGpBox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.SerialDataGpBox.Size = New System.Drawing.Size(664, 489)
         Me.SerialDataGpBox.TabIndex = 7
         Me.SerialDataGpBox.TabStop = False
         Me.SerialDataGpBox.Text = "Serial Data"
         '
         'btnClearDebug
         '
-        Me.btnClearDebug.Location = New System.Drawing.Point(562, 25)
-        Me.btnClearDebug.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnClearDebug.Location = New System.Drawing.Point(632, 31)
+        Me.btnClearDebug.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnClearDebug.Name = "btnClearDebug"
-        Me.btnClearDebug.Size = New System.Drawing.Size(25, 28)
+        Me.btnClearDebug.Size = New System.Drawing.Size(28, 35)
         Me.btnClearDebug.TabIndex = 1
         Me.btnClearDebug.Text = "X"
         Me.btnClearDebug.UseVisualStyleBackColor = True
@@ -826,11 +842,11 @@ Partial Class FrmMain
         'rtbReceived
         '
         Me.rtbReceived.BackColor = System.Drawing.Color.White
-        Me.rtbReceived.Location = New System.Drawing.Point(28, 26)
-        Me.rtbReceived.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rtbReceived.Location = New System.Drawing.Point(32, 32)
+        Me.rtbReceived.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rtbReceived.Name = "rtbReceived"
         Me.rtbReceived.ReadOnly = True
-        Me.rtbReceived.Size = New System.Drawing.Size(530, 346)
+        Me.rtbReceived.Size = New System.Drawing.Size(596, 432)
         Me.rtbReceived.TabIndex = 0
         Me.rtbReceived.Text = ""
         '
@@ -838,11 +854,11 @@ Partial Class FrmMain
         '
         Me.grpChangeBaud.Controls.Add(Me.cmbChangeBaud)
         Me.grpChangeBaud.Controls.Add(Me.btnAcceptChangeBaud)
-        Me.grpChangeBaud.Location = New System.Drawing.Point(8, 7)
-        Me.grpChangeBaud.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpChangeBaud.Location = New System.Drawing.Point(9, 9)
+        Me.grpChangeBaud.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grpChangeBaud.Name = "grpChangeBaud"
-        Me.grpChangeBaud.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grpChangeBaud.Size = New System.Drawing.Size(288, 112)
+        Me.grpChangeBaud.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grpChangeBaud.Size = New System.Drawing.Size(324, 140)
         Me.grpChangeBaud.TabIndex = 27
         Me.grpChangeBaud.TabStop = False
         Me.grpChangeBaud.Text = "Change Bit Rate"
@@ -853,18 +869,18 @@ Partial Class FrmMain
         Me.cmbChangeBaud.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbChangeBaud.FormattingEnabled = True
         Me.cmbChangeBaud.Items.AddRange(New Object() {"19200", "38400", "57600", "115200", "256000", "460800", "921600", "1843200", "3686400"})
-        Me.cmbChangeBaud.Location = New System.Drawing.Point(19, 34)
-        Me.cmbChangeBaud.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbChangeBaud.Location = New System.Drawing.Point(21, 42)
+        Me.cmbChangeBaud.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmbChangeBaud.Name = "cmbChangeBaud"
-        Me.cmbChangeBaud.Size = New System.Drawing.Size(249, 24)
+        Me.cmbChangeBaud.Size = New System.Drawing.Size(280, 28)
         Me.cmbChangeBaud.TabIndex = 15
         '
         'btnAcceptChangeBaud
         '
-        Me.btnAcceptChangeBaud.Location = New System.Drawing.Point(141, 76)
-        Me.btnAcceptChangeBaud.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAcceptChangeBaud.Location = New System.Drawing.Point(159, 95)
+        Me.btnAcceptChangeBaud.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnAcceptChangeBaud.Name = "btnAcceptChangeBaud"
-        Me.btnAcceptChangeBaud.Size = New System.Drawing.Size(128, 28)
+        Me.btnAcceptChangeBaud.Size = New System.Drawing.Size(144, 35)
         Me.btnAcceptChangeBaud.TabIndex = 13
         Me.btnAcceptChangeBaud.Text = "Change Bit Rate"
         Me.btnAcceptChangeBaud.UseVisualStyleBackColor = True
@@ -876,10 +892,10 @@ Partial Class FrmMain
         '
         Me.rbMode1.AutoSize = True
         Me.rbMode1.Checked = True
-        Me.rbMode1.Location = New System.Drawing.Point(439, 46)
-        Me.rbMode1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMode1.Location = New System.Drawing.Point(494, 58)
+        Me.rbMode1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMode1.Name = "rbMode1"
-        Me.rbMode1.Size = New System.Drawing.Size(168, 21)
+        Me.rbMode1.Size = New System.Drawing.Size(191, 24)
         Me.rbMode1.TabIndex = 8
         Me.rbMode1.TabStop = True
         Me.rbMode1.Text = "UCM (Control Module)"
@@ -888,10 +904,10 @@ Partial Class FrmMain
         'rbMode2
         '
         Me.rbMode2.AutoSize = True
-        Me.rbMode2.Location = New System.Drawing.Point(439, 84)
-        Me.rbMode2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMode2.Location = New System.Drawing.Point(494, 105)
+        Me.rbMode2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMode2.Name = "rbMode2"
-        Me.rbMode2.Size = New System.Drawing.Size(145, 21)
+        Me.rbMode2.Size = New System.Drawing.Size(165, 24)
         Me.rbMode2.TabIndex = 9
         Me.rbMode2.Text = "SGD (End Device)"
         Me.rbMode2.UseVisualStyleBackColor = True
@@ -907,11 +923,11 @@ Partial Class FrmMain
         Me.gbErrors.Controls.Add(Me.chkShortMsg)
         Me.gbErrors.Controls.Add(Me.chkLongMsg)
         Me.gbErrors.Controls.Add(Me.chkBadCheckSum)
-        Me.gbErrors.Location = New System.Drawing.Point(8, 174)
-        Me.gbErrors.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbErrors.Location = New System.Drawing.Point(9, 218)
+        Me.gbErrors.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbErrors.Name = "gbErrors"
-        Me.gbErrors.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gbErrors.Size = New System.Drawing.Size(814, 153)
+        Me.gbErrors.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbErrors.Size = New System.Drawing.Size(916, 191)
         Me.gbErrors.TabIndex = 18
         Me.gbErrors.TabStop = False
         Me.gbErrors.Text = "Other Errors"
@@ -920,28 +936,28 @@ Partial Class FrmMain
         'Label55
         '
         Me.Label55.AutoSize = True
-        Me.Label55.Location = New System.Drawing.Point(291, 110)
+        Me.Label55.Location = New System.Drawing.Point(327, 138)
         Me.Label55.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(112, 17)
+        Me.Label55.Size = New System.Drawing.Size(127, 20)
         Me.Label55.TabIndex = 12
         Me.Label55.Text = "App NAK Return"
         '
         'nudAppNakRtn
         '
-        Me.nudAppNakRtn.Location = New System.Drawing.Point(229, 108)
-        Me.nudAppNakRtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudAppNakRtn.Location = New System.Drawing.Point(258, 135)
+        Me.nudAppNakRtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudAppNakRtn.Name = "nudAppNakRtn"
-        Me.nudAppNakRtn.Size = New System.Drawing.Size(59, 22)
+        Me.nudAppNakRtn.Size = New System.Drawing.Size(66, 26)
         Me.nudAppNakRtn.TabIndex = 11
         '
         'cbAppNakMsg
         '
         Me.cbAppNakMsg.AutoSize = True
-        Me.cbAppNakMsg.Location = New System.Drawing.Point(228, 75)
-        Me.cbAppNakMsg.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbAppNakMsg.Location = New System.Drawing.Point(256, 94)
+        Me.cbAppNakMsg.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbAppNakMsg.Name = "cbAppNakMsg"
-        Me.cbAppNakMsg.Size = New System.Drawing.Size(148, 21)
+        Me.cbAppNakMsg.Size = New System.Drawing.Size(169, 24)
         Me.cbAppNakMsg.TabIndex = 10
         Me.cbAppNakMsg.Text = "App NAK Message"
         Me.cbAppNakMsg.UseVisualStyleBackColor = True
@@ -949,29 +965,29 @@ Partial Class FrmMain
         'Label54
         '
         Me.Label54.AutoSize = True
-        Me.Label54.Location = New System.Drawing.Point(76, 114)
+        Me.Label54.Location = New System.Drawing.Point(86, 142)
         Me.Label54.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(83, 17)
+        Me.Label54.Size = New System.Drawing.Size(94, 20)
         Me.Label54.TabIndex = 9
         Me.Label54.Text = "NAK Return"
         '
         'nudNakRtn
         '
-        Me.nudNakRtn.Location = New System.Drawing.Point(18, 112)
-        Me.nudNakRtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudNakRtn.Location = New System.Drawing.Point(20, 140)
+        Me.nudNakRtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudNakRtn.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.nudNakRtn.Name = "nudNakRtn"
-        Me.nudNakRtn.Size = New System.Drawing.Size(56, 22)
+        Me.nudNakRtn.Size = New System.Drawing.Size(63, 26)
         Me.nudNakRtn.TabIndex = 8
         '
         'cbNakMsg
         '
         Me.cbNakMsg.AutoSize = True
-        Me.cbNakMsg.Location = New System.Drawing.Point(19, 75)
-        Me.cbNakMsg.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbNakMsg.Location = New System.Drawing.Point(21, 94)
+        Me.cbNakMsg.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbNakMsg.Name = "cbNakMsg"
-        Me.cbNakMsg.Size = New System.Drawing.Size(149, 21)
+        Me.cbNakMsg.Size = New System.Drawing.Size(169, 24)
         Me.cbNakMsg.TabIndex = 7
         Me.cbNakMsg.Text = "Link NAK Message"
         Me.cbNakMsg.UseVisualStyleBackColor = True
@@ -979,10 +995,10 @@ Partial Class FrmMain
         'chkShortMsg
         '
         Me.chkShortMsg.AutoSize = True
-        Me.chkShortMsg.Location = New System.Drawing.Point(445, 36)
-        Me.chkShortMsg.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.chkShortMsg.Location = New System.Drawing.Point(501, 45)
+        Me.chkShortMsg.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkShortMsg.Name = "chkShortMsg"
-        Me.chkShortMsg.Size = New System.Drawing.Size(154, 21)
+        Me.chkShortMsg.Size = New System.Drawing.Size(174, 24)
         Me.chkShortMsg.TabIndex = 6
         Me.chkShortMsg.Text = "Message Too Short"
         Me.chkShortMsg.UseVisualStyleBackColor = True
@@ -990,10 +1006,10 @@ Partial Class FrmMain
         'chkLongMsg
         '
         Me.chkLongMsg.AutoSize = True
-        Me.chkLongMsg.Location = New System.Drawing.Point(227, 36)
-        Me.chkLongMsg.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.chkLongMsg.Location = New System.Drawing.Point(255, 45)
+        Me.chkLongMsg.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkLongMsg.Name = "chkLongMsg"
-        Me.chkLongMsg.Size = New System.Drawing.Size(152, 21)
+        Me.chkLongMsg.Size = New System.Drawing.Size(171, 24)
         Me.chkLongMsg.TabIndex = 5
         Me.chkLongMsg.Text = "Message Too Long"
         Me.chkLongMsg.UseVisualStyleBackColor = True
@@ -1001,10 +1017,10 @@ Partial Class FrmMain
         'chkBadCheckSum
         '
         Me.chkBadCheckSum.AutoSize = True
-        Me.chkBadCheckSum.Location = New System.Drawing.Point(19, 36)
-        Me.chkBadCheckSum.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.chkBadCheckSum.Location = New System.Drawing.Point(21, 45)
+        Me.chkBadCheckSum.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkBadCheckSum.Name = "chkBadCheckSum"
-        Me.chkBadCheckSum.Size = New System.Drawing.Size(124, 21)
+        Me.chkBadCheckSum.Size = New System.Drawing.Size(143, 24)
         Me.chkBadCheckSum.TabIndex = 3
         Me.chkBadCheckSum.Text = "Bad Checksum"
         Me.chkBadCheckSum.UseVisualStyleBackColor = True
@@ -1013,11 +1029,11 @@ Partial Class FrmMain
         '
         Me.grpOpState.Controls.Add(Me.SendOpStateBtn)
         Me.grpOpState.Controls.Add(Me.OpStateBox)
-        Me.grpOpState.Location = New System.Drawing.Point(32, 23)
-        Me.grpOpState.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpOpState.Location = New System.Drawing.Point(36, 29)
+        Me.grpOpState.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grpOpState.Name = "grpOpState"
-        Me.grpOpState.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grpOpState.Size = New System.Drawing.Size(299, 110)
+        Me.grpOpState.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grpOpState.Size = New System.Drawing.Size(336, 138)
         Me.grpOpState.TabIndex = 0
         Me.grpOpState.TabStop = False
         Me.grpOpState.Text = "Current Operating State"
@@ -1025,10 +1041,10 @@ Partial Class FrmMain
         '
         'SendOpStateBtn
         '
-        Me.SendOpStateBtn.Location = New System.Drawing.Point(16, 62)
-        Me.SendOpStateBtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SendOpStateBtn.Location = New System.Drawing.Point(18, 78)
+        Me.SendOpStateBtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.SendOpStateBtn.Name = "SendOpStateBtn"
-        Me.SendOpStateBtn.Size = New System.Drawing.Size(171, 28)
+        Me.SendOpStateBtn.Size = New System.Drawing.Size(192, 35)
         Me.SendOpStateBtn.TabIndex = 24
         Me.SendOpStateBtn.Text = "Send Operating State"
         Me.SendOpStateBtn.UseVisualStyleBackColor = True
@@ -1038,10 +1054,10 @@ Partial Class FrmMain
         Me.OpStateBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.OpStateBox.FormattingEnabled = True
         Me.OpStateBox.Items.AddRange(New Object() {"Idle Normal", "Running Normal", "Running Curtailed Grid", "Running Heightened Grid", "Idle Grid", "SGD Error Condition", "Idle Heightened", "Cycling On", "Cycling Off", "Variable Following", "Variable Not Following", "Idle Opted Out", "Running Opted Out"})
-        Me.OpStateBox.Location = New System.Drawing.Point(16, 23)
-        Me.OpStateBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OpStateBox.Location = New System.Drawing.Point(18, 29)
+        Me.OpStateBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.OpStateBox.Name = "OpStateBox"
-        Me.OpStateBox.Size = New System.Drawing.Size(273, 24)
+        Me.OpStateBox.Size = New System.Drawing.Size(307, 28)
         Me.OpStateBox.TabIndex = 24
         '
         'tmrTimeSync
@@ -1053,18 +1069,18 @@ Partial Class FrmMain
         '
         'tbLogFile
         '
-        Me.tbLogFile.Location = New System.Drawing.Point(62, 28)
-        Me.tbLogFile.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbLogFile.Location = New System.Drawing.Point(70, 35)
+        Me.tbLogFile.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbLogFile.Name = "tbLogFile"
-        Me.tbLogFile.Size = New System.Drawing.Size(404, 22)
+        Me.tbLogFile.Size = New System.Drawing.Size(454, 26)
         Me.tbLogFile.TabIndex = 28
         '
         'Browse
         '
-        Me.Browse.Location = New System.Drawing.Point(473, 23)
-        Me.Browse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Browse.Location = New System.Drawing.Point(532, 29)
+        Me.Browse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Browse.Name = "Browse"
-        Me.Browse.Size = New System.Drawing.Size(101, 30)
+        Me.Browse.Size = New System.Drawing.Size(114, 38)
         Me.Browse.TabIndex = 30
         Me.Browse.Text = "Browse"
         Me.Browse.UseVisualStyleBackColor = True
@@ -1072,10 +1088,10 @@ Partial Class FrmMain
         'disableLogFile
         '
         Me.disableLogFile.AutoSize = True
-        Me.disableLogFile.Location = New System.Drawing.Point(277, 119)
-        Me.disableLogFile.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.disableLogFile.Location = New System.Drawing.Point(312, 149)
+        Me.disableLogFile.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.disableLogFile.Name = "disableLogFile"
-        Me.disableLogFile.Size = New System.Drawing.Size(131, 21)
+        Me.disableLogFile.Size = New System.Drawing.Size(148, 24)
         Me.disableLogFile.TabIndex = 34
         Me.disableLogFile.Text = "Disable Log File"
         Me.disableLogFile.UseVisualStyleBackColor = True
@@ -1090,11 +1106,11 @@ Partial Class FrmMain
         Me.logFile.Controls.Add(Me.tbLogFile)
         Me.logFile.Controls.Add(Me.disableLogFile)
         Me.logFile.Controls.Add(Me.Browse)
-        Me.logFile.Location = New System.Drawing.Point(19, 154)
-        Me.logFile.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.logFile.Location = New System.Drawing.Point(21, 192)
+        Me.logFile.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.logFile.Name = "logFile"
-        Me.logFile.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.logFile.Size = New System.Drawing.Size(590, 146)
+        Me.logFile.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.logFile.Size = New System.Drawing.Size(664, 182)
         Me.logFile.TabIndex = 35
         Me.logFile.TabStop = False
         Me.logFile.Text = "Log File"
@@ -1102,10 +1118,10 @@ Partial Class FrmMain
         'cbAutoStartup
         '
         Me.cbAutoStartup.AutoSize = True
-        Me.cbAutoStartup.Location = New System.Drawing.Point(66, 118)
+        Me.cbAutoStartup.Location = New System.Drawing.Point(74, 148)
         Me.cbAutoStartup.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cbAutoStartup.Name = "cbAutoStartup"
-        Me.cbAutoStartup.Size = New System.Drawing.Size(144, 21)
+        Me.cbAutoStartup.Size = New System.Drawing.Size(165, 24)
         Me.cbAutoStartup.TabIndex = 48
         Me.cbAutoStartup.Text = "Startup Sequence"
         Me.cbAutoStartup.UseVisualStyleBackColor = True
@@ -1114,10 +1130,10 @@ Partial Class FrmMain
         '
         Me.GenReportBtn.AutoSize = True
         Me.GenReportBtn.Enabled = False
-        Me.GenReportBtn.Location = New System.Drawing.Point(398, 66)
-        Me.GenReportBtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GenReportBtn.Location = New System.Drawing.Point(448, 82)
+        Me.GenReportBtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GenReportBtn.Name = "GenReportBtn"
-        Me.GenReportBtn.Size = New System.Drawing.Size(176, 37)
+        Me.GenReportBtn.Size = New System.Drawing.Size(198, 46)
         Me.GenReportBtn.TabIndex = 37
         Me.GenReportBtn.Text = "Explore Log File"
         Me.GenReportBtn.UseVisualStyleBackColor = True
@@ -1125,10 +1141,10 @@ Partial Class FrmMain
         'cbVerboseLog
         '
         Me.cbVerboseLog.AutoSize = True
-        Me.cbVerboseLog.Location = New System.Drawing.Point(489, 119)
-        Me.cbVerboseLog.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbVerboseLog.Location = New System.Drawing.Point(550, 149)
+        Me.cbVerboseLog.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbVerboseLog.Name = "cbVerboseLog"
-        Me.cbVerboseLog.Size = New System.Drawing.Size(83, 21)
+        Me.cbVerboseLog.Size = New System.Drawing.Size(95, 24)
         Me.cbVerboseLog.TabIndex = 36
         Me.cbVerboseLog.Text = "Verbose"
         Me.cbVerboseLog.UseVisualStyleBackColor = True
@@ -1137,10 +1153,10 @@ Partial Class FrmMain
         '
         Me.AddHeaderBtn.AutoSize = True
         Me.AddHeaderBtn.Enabled = False
-        Me.AddHeaderBtn.Location = New System.Drawing.Point(62, 66)
-        Me.AddHeaderBtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.AddHeaderBtn.Location = New System.Drawing.Point(70, 82)
+        Me.AddHeaderBtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.AddHeaderBtn.Name = "AddHeaderBtn"
-        Me.AddHeaderBtn.Size = New System.Drawing.Size(187, 37)
+        Me.AddHeaderBtn.Size = New System.Drawing.Size(210, 46)
         Me.AddHeaderBtn.TabIndex = 37
         Me.AddHeaderBtn.Text = "Add Test Header"
         Me.AddHeaderBtn.UseVisualStyleBackColor = True
@@ -1148,10 +1164,10 @@ Partial Class FrmMain
         'logFilePathLabel
         '
         Me.logFilePathLabel.AutoSize = True
-        Me.logFilePathLabel.Location = New System.Drawing.Point(14, 28)
+        Me.logFilePathLabel.Location = New System.Drawing.Point(16, 35)
         Me.logFilePathLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.logFilePathLabel.Name = "logFilePathLabel"
-        Me.logFilePathLabel.Size = New System.Drawing.Size(41, 17)
+        Me.logFilePathLabel.Size = New System.Drawing.Size(46, 20)
         Me.logFilePathLabel.TabIndex = 35
         Me.logFilePathLabel.Text = "Path:"
         '
@@ -1159,44 +1175,43 @@ Partial Class FrmMain
         '
         Me.sgdTabControl.Controls.Add(Me.sgdOpStateTab)
         Me.sgdTabControl.Controls.Add(Me.GetUtc)
-        Me.sgdTabControl.Location = New System.Drawing.Point(8, 7)
-        Me.sgdTabControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sgdTabControl.Location = New System.Drawing.Point(9, 9)
+        Me.sgdTabControl.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sgdTabControl.Multiline = True
         Me.sgdTabControl.Name = "sgdTabControl"
         Me.sgdTabControl.SelectedIndex = 0
-        Me.sgdTabControl.Size = New System.Drawing.Size(841, 418)
+        Me.sgdTabControl.Size = New System.Drawing.Size(946, 522)
         Me.sgdTabControl.TabIndex = 37
         '
         'sgdOpStateTab
         '
         Me.sgdOpStateTab.Controls.Add(Me.grpOpState)
-        Me.sgdOpStateTab.Location = New System.Drawing.Point(4, 25)
-        Me.sgdOpStateTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sgdOpStateTab.Location = New System.Drawing.Point(4, 29)
+        Me.sgdOpStateTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sgdOpStateTab.Name = "sgdOpStateTab"
-        Me.sgdOpStateTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.sgdOpStateTab.Size = New System.Drawing.Size(833, 389)
+        Me.sgdOpStateTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.sgdOpStateTab.Size = New System.Drawing.Size(938, 489)
         Me.sgdOpStateTab.TabIndex = 0
         Me.sgdOpStateTab.Text = "Operating State"
         Me.sgdOpStateTab.UseVisualStyleBackColor = True
         '
         'GetUtc
         '
-        Me.GetUtc.Controls.Add(Me.btnGetUTC)
-        Me.GetUtc.Location = New System.Drawing.Point(4, 25)
-        Me.GetUtc.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GetUtc.Location = New System.Drawing.Point(4, 29)
+        Me.GetUtc.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GetUtc.Name = "GetUtc"
-        Me.GetUtc.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GetUtc.Size = New System.Drawing.Size(833, 389)
+        Me.GetUtc.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GetUtc.Size = New System.Drawing.Size(938, 489)
         Me.GetUtc.TabIndex = 1
         Me.GetUtc.Text = "Get UTC Time"
         Me.GetUtc.UseVisualStyleBackColor = True
         '
         'btnGetUTC
         '
-        Me.btnGetUTC.Location = New System.Drawing.Point(13, 11)
-        Me.btnGetUTC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnGetUTC.Location = New System.Drawing.Point(15, 156)
+        Me.btnGetUTC.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnGetUTC.Name = "btnGetUTC"
-        Me.btnGetUTC.Size = New System.Drawing.Size(115, 36)
+        Me.btnGetUTC.Size = New System.Drawing.Size(129, 45)
         Me.btnGetUTC.TabIndex = 0
         Me.btnGetUTC.Text = "Get UTC Time"
         Me.btnGetUTC.UseVisualStyleBackColor = True
@@ -1209,21 +1224,21 @@ Partial Class FrmMain
         Me.simulatorDeviceTypeTabControl.Controls.Add(Me.sgdTab)
         Me.simulatorDeviceTypeTabControl.Controls.Add(Me.TestScripts)
         Me.simulatorDeviceTypeTabControl.Controls.Add(Me.realDeviceTab)
-        Me.simulatorDeviceTypeTabControl.Location = New System.Drawing.Point(637, 142)
-        Me.simulatorDeviceTypeTabControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.simulatorDeviceTypeTabControl.Location = New System.Drawing.Point(717, 178)
+        Me.simulatorDeviceTypeTabControl.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.simulatorDeviceTypeTabControl.Name = "simulatorDeviceTypeTabControl"
         Me.simulatorDeviceTypeTabControl.SelectedIndex = 0
-        Me.simulatorDeviceTypeTabControl.Size = New System.Drawing.Size(868, 558)
+        Me.simulatorDeviceTypeTabControl.Size = New System.Drawing.Size(976, 698)
         Me.simulatorDeviceTypeTabControl.TabIndex = 39
         '
         'deviceInfoTab
         '
         Me.deviceInfoTab.Controls.Add(Me.deviceInfoTabControl)
-        Me.deviceInfoTab.Location = New System.Drawing.Point(4, 25)
-        Me.deviceInfoTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.deviceInfoTab.Location = New System.Drawing.Point(4, 29)
+        Me.deviceInfoTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.deviceInfoTab.Name = "deviceInfoTab"
-        Me.deviceInfoTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.deviceInfoTab.Size = New System.Drawing.Size(860, 529)
+        Me.deviceInfoTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.deviceInfoTab.Size = New System.Drawing.Size(968, 665)
         Me.deviceInfoTab.TabIndex = 3
         Me.deviceInfoTab.Text = "Device Information"
         Me.deviceInfoTab.UseVisualStyleBackColor = True
@@ -1237,11 +1252,11 @@ Partial Class FrmMain
         Me.deviceInfoTabControl.Controls.Add(Me.tempF)
         Me.deviceInfoTabControl.Controls.Add(Me.commodity)
         Me.deviceInfoTabControl.Controls.Add(Me.getSet)
-        Me.deviceInfoTabControl.Location = New System.Drawing.Point(8, 7)
-        Me.deviceInfoTabControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.deviceInfoTabControl.Location = New System.Drawing.Point(9, 9)
+        Me.deviceInfoTabControl.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.deviceInfoTabControl.Name = "deviceInfoTabControl"
         Me.deviceInfoTabControl.SelectedIndex = 0
-        Me.deviceInfoTabControl.Size = New System.Drawing.Size(841, 418)
+        Me.deviceInfoTabControl.Size = New System.Drawing.Size(946, 522)
         Me.deviceInfoTabControl.TabIndex = 0
         '
         'generalInfoTab
@@ -1288,156 +1303,156 @@ Partial Class FrmMain
         Me.generalInfoTab.Controls.Add(Me.firmwareYearLabel)
         Me.generalInfoTab.Controls.Add(Me.serialNumberLabel)
         Me.generalInfoTab.Controls.Add(Me.modelNumberLabel)
-        Me.generalInfoTab.Location = New System.Drawing.Point(4, 25)
-        Me.generalInfoTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.generalInfoTab.Location = New System.Drawing.Point(4, 29)
+        Me.generalInfoTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.generalInfoTab.Name = "generalInfoTab"
-        Me.generalInfoTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.generalInfoTab.Size = New System.Drawing.Size(833, 389)
+        Me.generalInfoTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.generalInfoTab.Size = New System.Drawing.Size(938, 489)
         Me.generalInfoTab.TabIndex = 0
         Me.generalInfoTab.Text = "Device Info"
         Me.generalInfoTab.UseVisualStyleBackColor = True
         '
         'tbCEA2045Version
         '
-        Me.tbCEA2045Version.Location = New System.Drawing.Point(215, 90)
-        Me.tbCEA2045Version.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbCEA2045Version.Location = New System.Drawing.Point(242, 112)
+        Me.tbCEA2045Version.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbCEA2045Version.MaxLength = 1
         Me.tbCEA2045Version.Name = "tbCEA2045Version"
-        Me.tbCEA2045Version.Size = New System.Drawing.Size(54, 22)
+        Me.tbCEA2045Version.Size = New System.Drawing.Size(60, 26)
         Me.tbCEA2045Version.TabIndex = 72
         Me.tbCEA2045Version.Text = "0"
         '
         'Label49
         '
         Me.Label49.AutoSize = True
-        Me.Label49.Location = New System.Drawing.Point(578, 171)
+        Me.Label49.Location = New System.Drawing.Point(650, 214)
         Me.Label49.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label49.Name = "Label49"
-        Me.Label49.Size = New System.Drawing.Size(34, 17)
+        Me.Label49.Size = New System.Drawing.Size(40, 20)
         Me.Label49.TabIndex = 71
         Me.Label49.Text = "LSB"
         '
         'nudCapBitMap3
         '
         Me.nudCapBitMap3.Hexadecimal = True
-        Me.nudCapBitMap3.Location = New System.Drawing.Point(496, 169)
-        Me.nudCapBitMap3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCapBitMap3.Location = New System.Drawing.Point(558, 211)
+        Me.nudCapBitMap3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCapBitMap3.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudCapBitMap3.Name = "nudCapBitMap3"
-        Me.nudCapBitMap3.Size = New System.Drawing.Size(75, 22)
+        Me.nudCapBitMap3.Size = New System.Drawing.Size(84, 26)
         Me.nudCapBitMap3.TabIndex = 66
         '
         'nudCapBitMap2
         '
         Me.nudCapBitMap2.Hexadecimal = True
-        Me.nudCapBitMap2.Location = New System.Drawing.Point(414, 169)
-        Me.nudCapBitMap2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCapBitMap2.Location = New System.Drawing.Point(466, 211)
+        Me.nudCapBitMap2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCapBitMap2.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudCapBitMap2.Name = "nudCapBitMap2"
-        Me.nudCapBitMap2.Size = New System.Drawing.Size(75, 22)
+        Me.nudCapBitMap2.Size = New System.Drawing.Size(84, 26)
         Me.nudCapBitMap2.TabIndex = 65
         '
         'nudCapBitMap1
         '
         Me.nudCapBitMap1.Hexadecimal = True
-        Me.nudCapBitMap1.Location = New System.Drawing.Point(333, 167)
-        Me.nudCapBitMap1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCapBitMap1.Location = New System.Drawing.Point(375, 209)
+        Me.nudCapBitMap1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCapBitMap1.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudCapBitMap1.Name = "nudCapBitMap1"
-        Me.nudCapBitMap1.Size = New System.Drawing.Size(75, 22)
+        Me.nudCapBitMap1.Size = New System.Drawing.Size(84, 26)
         Me.nudCapBitMap1.TabIndex = 64
         '
         'nudCapBitMap0
         '
         Me.nudCapBitMap0.Hexadecimal = True
-        Me.nudCapBitMap0.Location = New System.Drawing.Point(252, 167)
-        Me.nudCapBitMap0.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCapBitMap0.Location = New System.Drawing.Point(284, 209)
+        Me.nudCapBitMap0.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCapBitMap0.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudCapBitMap0.Name = "nudCapBitMap0"
-        Me.nudCapBitMap0.Size = New System.Drawing.Size(75, 22)
+        Me.nudCapBitMap0.Size = New System.Drawing.Size(84, 26)
         Me.nudCapBitMap0.TabIndex = 63
         '
         'nudDevRevLSB
         '
-        Me.nudDevRevLSB.Location = New System.Drawing.Point(395, 50)
-        Me.nudDevRevLSB.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudDevRevLSB.Location = New System.Drawing.Point(444, 62)
+        Me.nudDevRevLSB.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudDevRevLSB.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudDevRevLSB.Name = "nudDevRevLSB"
-        Me.nudDevRevLSB.Size = New System.Drawing.Size(75, 22)
+        Me.nudDevRevLSB.Size = New System.Drawing.Size(84, 26)
         Me.nudDevRevLSB.TabIndex = 62
         '
         'nudDevRevMSB
         '
-        Me.nudDevRevMSB.Location = New System.Drawing.Point(253, 52)
-        Me.nudDevRevMSB.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudDevRevMSB.Location = New System.Drawing.Point(285, 65)
+        Me.nudDevRevMSB.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudDevRevMSB.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudDevRevMSB.Name = "nudDevRevMSB"
-        Me.nudDevRevMSB.Size = New System.Drawing.Size(75, 22)
+        Me.nudDevRevMSB.Size = New System.Drawing.Size(84, 26)
         Me.nudDevRevMSB.TabIndex = 61
         '
         'nudVendorIDLSB
         '
-        Me.nudVendorIDLSB.Location = New System.Drawing.Point(393, 16)
-        Me.nudVendorIDLSB.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudVendorIDLSB.Location = New System.Drawing.Point(442, 20)
+        Me.nudVendorIDLSB.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudVendorIDLSB.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudVendorIDLSB.Name = "nudVendorIDLSB"
-        Me.nudVendorIDLSB.Size = New System.Drawing.Size(75, 22)
+        Me.nudVendorIDLSB.Size = New System.Drawing.Size(84, 26)
         Me.nudVendorIDLSB.TabIndex = 60
         '
         'nudVendorIDMSB
         '
-        Me.nudVendorIDMSB.Location = New System.Drawing.Point(252, 18)
-        Me.nudVendorIDMSB.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudVendorIDMSB.Location = New System.Drawing.Point(284, 22)
+        Me.nudVendorIDMSB.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudVendorIDMSB.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudVendorIDMSB.Name = "nudVendorIDMSB"
-        Me.nudVendorIDMSB.Size = New System.Drawing.Size(75, 22)
+        Me.nudVendorIDMSB.Size = New System.Drawing.Size(84, 26)
         Me.nudVendorIDMSB.TabIndex = 59
         '
         'nudFirmwareMinor
         '
-        Me.nudFirmwareMinor.Location = New System.Drawing.Point(372, 326)
-        Me.nudFirmwareMinor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudFirmwareMinor.Location = New System.Drawing.Point(418, 408)
+        Me.nudFirmwareMinor.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudFirmwareMinor.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudFirmwareMinor.Name = "nudFirmwareMinor"
-        Me.nudFirmwareMinor.Size = New System.Drawing.Size(68, 22)
+        Me.nudFirmwareMinor.Size = New System.Drawing.Size(76, 26)
         Me.nudFirmwareMinor.TabIndex = 58
         '
         'nudFirmwareMajor
         '
-        Me.nudFirmwareMajor.Location = New System.Drawing.Point(140, 326)
-        Me.nudFirmwareMajor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudFirmwareMajor.Location = New System.Drawing.Point(158, 408)
+        Me.nudFirmwareMajor.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudFirmwareMajor.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudFirmwareMajor.Name = "nudFirmwareMajor"
-        Me.nudFirmwareMajor.Size = New System.Drawing.Size(68, 22)
+        Me.nudFirmwareMajor.Size = New System.Drawing.Size(76, 26)
         Me.nudFirmwareMajor.TabIndex = 57
         '
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(477, 130)
+        Me.Label26.Location = New System.Drawing.Point(537, 162)
         Me.Label26.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(22, 17)
+        Me.Label26.Size = New System.Drawing.Size(25, 20)
         Me.Label26.TabIndex = 54
         Me.Label26.Text = "0x"
         '
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(569, 130)
+        Me.Label21.Location = New System.Drawing.Point(640, 162)
         Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(22, 17)
+        Me.Label21.Size = New System.Drawing.Size(25, 20)
         Me.Label21.TabIndex = 53
         Me.Label21.Text = "0x"
         '
         'firmwareMajorMinorSupportedCheckbox
         '
         Me.firmwareMajorMinorSupportedCheckbox.AutoSize = True
-        Me.firmwareMajorMinorSupportedCheckbox.Location = New System.Drawing.Point(457, 330)
-        Me.firmwareMajorMinorSupportedCheckbox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.firmwareMajorMinorSupportedCheckbox.Location = New System.Drawing.Point(514, 412)
+        Me.firmwareMajorMinorSupportedCheckbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.firmwareMajorMinorSupportedCheckbox.Name = "firmwareMajorMinorSupportedCheckbox"
-        Me.firmwareMajorMinorSupportedCheckbox.Size = New System.Drawing.Size(96, 21)
+        Me.firmwareMajorMinorSupportedCheckbox.Size = New System.Drawing.Size(110, 24)
         Me.firmwareMajorMinorSupportedCheckbox.TabIndex = 52
         Me.firmwareMajorMinorSupportedCheckbox.Text = "Supported"
         Me.firmwareMajorMinorSupportedCheckbox.UseVisualStyleBackColor = True
@@ -1445,10 +1460,10 @@ Partial Class FrmMain
         'serialNumberSupportedCheckbox
         '
         Me.serialNumberSupportedCheckbox.AutoSize = True
-        Me.serialNumberSupportedCheckbox.Location = New System.Drawing.Point(606, 246)
-        Me.serialNumberSupportedCheckbox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.serialNumberSupportedCheckbox.Location = New System.Drawing.Point(682, 308)
+        Me.serialNumberSupportedCheckbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.serialNumberSupportedCheckbox.Name = "serialNumberSupportedCheckbox"
-        Me.serialNumberSupportedCheckbox.Size = New System.Drawing.Size(96, 21)
+        Me.serialNumberSupportedCheckbox.Size = New System.Drawing.Size(110, 24)
         Me.serialNumberSupportedCheckbox.TabIndex = 50
         Me.serialNumberSupportedCheckbox.Text = "Supported"
         Me.serialNumberSupportedCheckbox.UseVisualStyleBackColor = True
@@ -1456,21 +1471,21 @@ Partial Class FrmMain
         'modelNumberSupportedCheckbox
         '
         Me.modelNumberSupportedCheckbox.AutoSize = True
-        Me.modelNumberSupportedCheckbox.Location = New System.Drawing.Point(606, 206)
-        Me.modelNumberSupportedCheckbox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.modelNumberSupportedCheckbox.Location = New System.Drawing.Point(682, 258)
+        Me.modelNumberSupportedCheckbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.modelNumberSupportedCheckbox.Name = "modelNumberSupportedCheckbox"
-        Me.modelNumberSupportedCheckbox.Size = New System.Drawing.Size(96, 21)
+        Me.modelNumberSupportedCheckbox.Size = New System.Drawing.Size(110, 24)
         Me.modelNumberSupportedCheckbox.TabIndex = 49
         Me.modelNumberSupportedCheckbox.Text = "Supported"
         Me.modelNumberSupportedCheckbox.UseVisualStyleBackColor = True
         '
         'deviceTypeLSBTextBox
         '
-        Me.deviceTypeLSBTextBox.Location = New System.Drawing.Point(595, 126)
-        Me.deviceTypeLSBTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.deviceTypeLSBTextBox.Location = New System.Drawing.Point(669, 158)
+        Me.deviceTypeLSBTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.deviceTypeLSBTextBox.MaxLength = 2
         Me.deviceTypeLSBTextBox.Name = "deviceTypeLSBTextBox"
-        Me.deviceTypeLSBTextBox.Size = New System.Drawing.Size(57, 22)
+        Me.deviceTypeLSBTextBox.Size = New System.Drawing.Size(64, 26)
         Me.deviceTypeLSBTextBox.TabIndex = 42
         Me.deviceTypeLSBTextBox.Text = "10"
         '
@@ -1480,10 +1495,10 @@ Partial Class FrmMain
         Me.firmwareDayComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.firmwareDayComboBox.FormattingEnabled = True
         Me.firmwareDayComboBox.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"})
-        Me.firmwareDayComboBox.Location = New System.Drawing.Point(584, 284)
-        Me.firmwareDayComboBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.firmwareDayComboBox.Location = New System.Drawing.Point(657, 355)
+        Me.firmwareDayComboBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.firmwareDayComboBox.Name = "firmwareDayComboBox"
-        Me.firmwareDayComboBox.Size = New System.Drawing.Size(96, 24)
+        Me.firmwareDayComboBox.Size = New System.Drawing.Size(108, 28)
         Me.firmwareDayComboBox.TabIndex = 39
         '
         'firmwareMonthComboBox
@@ -1492,10 +1507,10 @@ Partial Class FrmMain
         Me.firmwareMonthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.firmwareMonthComboBox.FormattingEnabled = True
         Me.firmwareMonthComboBox.Items.AddRange(New Object() {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
-        Me.firmwareMonthComboBox.Location = New System.Drawing.Point(372, 284)
-        Me.firmwareMonthComboBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.firmwareMonthComboBox.Location = New System.Drawing.Point(418, 355)
+        Me.firmwareMonthComboBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.firmwareMonthComboBox.Name = "firmwareMonthComboBox"
-        Me.firmwareMonthComboBox.Size = New System.Drawing.Size(96, 24)
+        Me.firmwareMonthComboBox.Size = New System.Drawing.Size(108, 28)
         Me.firmwareMonthComboBox.TabIndex = 38
         '
         'firmwareYearComboBox
@@ -1504,76 +1519,76 @@ Partial Class FrmMain
         Me.firmwareYearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.firmwareYearComboBox.FormattingEnabled = True
         Me.firmwareYearComboBox.Items.AddRange(New Object() {"2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"})
-        Me.firmwareYearComboBox.Location = New System.Drawing.Point(135, 284)
-        Me.firmwareYearComboBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.firmwareYearComboBox.Location = New System.Drawing.Point(152, 355)
+        Me.firmwareYearComboBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.firmwareYearComboBox.Name = "firmwareYearComboBox"
-        Me.firmwareYearComboBox.Size = New System.Drawing.Size(96, 24)
+        Me.firmwareYearComboBox.Size = New System.Drawing.Size(108, 28)
         Me.firmwareYearComboBox.TabIndex = 37
         '
         'serialNumberTextBox
         '
-        Me.serialNumberTextBox.Location = New System.Drawing.Point(212, 244)
-        Me.serialNumberTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.serialNumberTextBox.Location = New System.Drawing.Point(238, 305)
+        Me.serialNumberTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.serialNumberTextBox.MaxLength = 16
         Me.serialNumberTextBox.Name = "serialNumberTextBox"
-        Me.serialNumberTextBox.Size = New System.Drawing.Size(380, 22)
+        Me.serialNumberTextBox.Size = New System.Drawing.Size(427, 26)
         Me.serialNumberTextBox.TabIndex = 35
         '
         'modelNumberTextBox
         '
-        Me.modelNumberTextBox.Location = New System.Drawing.Point(212, 204)
-        Me.modelNumberTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.modelNumberTextBox.Location = New System.Drawing.Point(238, 255)
+        Me.modelNumberTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.modelNumberTextBox.MaxLength = 16
         Me.modelNumberTextBox.Name = "modelNumberTextBox"
-        Me.modelNumberTextBox.Size = New System.Drawing.Size(380, 22)
+        Me.modelNumberTextBox.Size = New System.Drawing.Size(427, 26)
         Me.modelNumberTextBox.TabIndex = 34
         '
         'deviceTypeMSBTextBox
         '
-        Me.deviceTypeMSBTextBox.Location = New System.Drawing.Point(503, 126)
-        Me.deviceTypeMSBTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.deviceTypeMSBTextBox.Location = New System.Drawing.Point(566, 158)
+        Me.deviceTypeMSBTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.deviceTypeMSBTextBox.MaxLength = 2
         Me.deviceTypeMSBTextBox.Name = "deviceTypeMSBTextBox"
-        Me.deviceTypeMSBTextBox.Size = New System.Drawing.Size(55, 22)
+        Me.deviceTypeMSBTextBox.Size = New System.Drawing.Size(61, 26)
         Me.deviceTypeMSBTextBox.TabIndex = 36
         '
         'deviceTypeLabel
         '
         Me.deviceTypeLabel.AutoSize = True
-        Me.deviceTypeLabel.Location = New System.Drawing.Point(24, 130)
+        Me.deviceTypeLabel.Location = New System.Drawing.Point(27, 162)
         Me.deviceTypeLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.deviceTypeLabel.Name = "deviceTypeLabel"
-        Me.deviceTypeLabel.Size = New System.Drawing.Size(91, 17)
+        Me.deviceTypeLabel.Size = New System.Drawing.Size(99, 20)
         Me.deviceTypeLabel.TabIndex = 1
         Me.deviceTypeLabel.Text = "Device Type:"
         '
         'capabilityBitmapLabel
         '
         Me.capabilityBitmapLabel.AutoSize = True
-        Me.capabilityBitmapLabel.Location = New System.Drawing.Point(24, 170)
+        Me.capabilityBitmapLabel.Location = New System.Drawing.Point(27, 212)
         Me.capabilityBitmapLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.capabilityBitmapLabel.Name = "capabilityBitmapLabel"
-        Me.capabilityBitmapLabel.Size = New System.Drawing.Size(120, 17)
+        Me.capabilityBitmapLabel.Size = New System.Drawing.Size(135, 20)
         Me.capabilityBitmapLabel.TabIndex = 4
         Me.capabilityBitmapLabel.Text = "Capability Bitmap:"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(349, 55)
+        Me.Label11.Location = New System.Drawing.Point(393, 69)
         Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(38, 17)
+        Me.Label11.Size = New System.Drawing.Size(44, 20)
         Me.Label11.TabIndex = 25
         Me.Label11.Text = "LSB:"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(208, 55)
+        Me.Label12.Location = New System.Drawing.Point(234, 69)
         Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(41, 17)
+        Me.Label12.Size = New System.Drawing.Size(48, 20)
         Me.Label12.TabIndex = 24
         Me.Label12.Text = "MSB:"
         '
@@ -1582,139 +1597,139 @@ Partial Class FrmMain
         Me.deviceTypeComboBox.BackColor = System.Drawing.Color.White
         Me.deviceTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.deviceTypeComboBox.FormattingEnabled = True
-        Me.deviceTypeComboBox.Location = New System.Drawing.Point(212, 126)
-        Me.deviceTypeComboBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.deviceTypeComboBox.Location = New System.Drawing.Point(238, 158)
+        Me.deviceTypeComboBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.deviceTypeComboBox.Name = "deviceTypeComboBox"
-        Me.deviceTypeComboBox.Size = New System.Drawing.Size(249, 24)
+        Me.deviceTypeComboBox.Size = New System.Drawing.Size(280, 28)
         Me.deviceTypeComboBox.TabIndex = 16
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(208, 170)
+        Me.Label14.Location = New System.Drawing.Point(234, 212)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(41, 17)
+        Me.Label14.Size = New System.Drawing.Size(48, 20)
         Me.Label14.TabIndex = 28
         Me.Label14.Text = "MSB:"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(350, 20)
+        Me.Label8.Location = New System.Drawing.Point(394, 25)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(38, 17)
+        Me.Label8.Size = New System.Drawing.Size(44, 20)
         Me.Label8.TabIndex = 13
         Me.Label8.Text = "LSB:"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(208, 20)
+        Me.Label3.Location = New System.Drawing.Point(234, 25)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(41, 17)
+        Me.Label3.Size = New System.Drawing.Size(48, 20)
         Me.Label3.TabIndex = 12
         Me.Label3.Text = "MSB:"
         '
         'firmwareMinorLabel
         '
         Me.firmwareMinorLabel.AutoSize = True
-        Me.firmwareMinorLabel.Location = New System.Drawing.Point(256, 331)
+        Me.firmwareMinorLabel.Location = New System.Drawing.Point(288, 414)
         Me.firmwareMinorLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.firmwareMinorLabel.Name = "firmwareMinorLabel"
-        Me.firmwareMinorLabel.Size = New System.Drawing.Size(108, 17)
+        Me.firmwareMinorLabel.Size = New System.Drawing.Size(121, 20)
         Me.firmwareMinorLabel.TabIndex = 11
         Me.firmwareMinorLabel.Text = "Firmware Minor:"
         '
         'vendorIDLabel
         '
         Me.vendorIDLabel.AutoSize = True
-        Me.vendorIDLabel.Location = New System.Drawing.Point(24, 20)
+        Me.vendorIDLabel.Location = New System.Drawing.Point(27, 25)
         Me.vendorIDLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.vendorIDLabel.Name = "vendorIDLabel"
-        Me.vendorIDLabel.Size = New System.Drawing.Size(75, 17)
+        Me.vendorIDLabel.Size = New System.Drawing.Size(86, 20)
         Me.vendorIDLabel.TabIndex = 0
         Me.vendorIDLabel.Text = "Vendor ID:"
         '
         'firmwareMajorLabel
         '
         Me.firmwareMajorLabel.AutoSize = True
-        Me.firmwareMajorLabel.Location = New System.Drawing.Point(24, 331)
+        Me.firmwareMajorLabel.Location = New System.Drawing.Point(27, 414)
         Me.firmwareMajorLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.firmwareMajorLabel.Name = "firmwareMajorLabel"
-        Me.firmwareMajorLabel.Size = New System.Drawing.Size(108, 17)
+        Me.firmwareMajorLabel.Size = New System.Drawing.Size(121, 20)
         Me.firmwareMajorLabel.TabIndex = 10
         Me.firmwareMajorLabel.Text = "Firmware Major:"
         '
         'firmwareMonthLabel
         '
         Me.firmwareMonthLabel.AutoSize = True
-        Me.firmwareMonthLabel.Location = New System.Drawing.Point(256, 288)
+        Me.firmwareMonthLabel.Location = New System.Drawing.Point(288, 360)
         Me.firmwareMonthLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.firmwareMonthLabel.Name = "firmwareMonthLabel"
-        Me.firmwareMonthLabel.Size = New System.Drawing.Size(112, 17)
+        Me.firmwareMonthLabel.Size = New System.Drawing.Size(127, 20)
         Me.firmwareMonthLabel.TabIndex = 9
         Me.firmwareMonthLabel.Text = "Firmware Month:"
         '
         'cta2045VersionLabel
         '
         Me.cta2045VersionLabel.AutoSize = True
-        Me.cta2045VersionLabel.Location = New System.Drawing.Point(24, 94)
+        Me.cta2045VersionLabel.Location = New System.Drawing.Point(27, 118)
         Me.cta2045VersionLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.cta2045VersionLabel.Name = "cta2045VersionLabel"
-        Me.cta2045VersionLabel.Size = New System.Drawing.Size(128, 17)
+        Me.cta2045VersionLabel.Size = New System.Drawing.Size(143, 20)
         Me.cta2045VersionLabel.TabIndex = 2
         Me.cta2045VersionLabel.Text = "CTA-2045 Version:"
         '
         'firmwareDayLabel
         '
         Me.firmwareDayLabel.AutoSize = True
-        Me.firmwareDayLabel.Location = New System.Drawing.Point(477, 288)
+        Me.firmwareDayLabel.Location = New System.Drawing.Point(537, 360)
         Me.firmwareDayLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.firmwareDayLabel.Name = "firmwareDayLabel"
-        Me.firmwareDayLabel.Size = New System.Drawing.Size(98, 17)
+        Me.firmwareDayLabel.Size = New System.Drawing.Size(110, 20)
         Me.firmwareDayLabel.TabIndex = 8
         Me.firmwareDayLabel.Text = "Firmware Day:"
         '
         'deviceRevisionLabel
         '
         Me.deviceRevisionLabel.AutoSize = True
-        Me.deviceRevisionLabel.Location = New System.Drawing.Point(24, 55)
+        Me.deviceRevisionLabel.Location = New System.Drawing.Point(27, 69)
         Me.deviceRevisionLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.deviceRevisionLabel.Name = "deviceRevisionLabel"
-        Me.deviceRevisionLabel.Size = New System.Drawing.Size(113, 17)
+        Me.deviceRevisionLabel.Size = New System.Drawing.Size(125, 20)
         Me.deviceRevisionLabel.TabIndex = 3
         Me.deviceRevisionLabel.Text = "Device Revision:"
         '
         'firmwareYearLabel
         '
         Me.firmwareYearLabel.AutoSize = True
-        Me.firmwareYearLabel.Location = New System.Drawing.Point(24, 288)
+        Me.firmwareYearLabel.Location = New System.Drawing.Point(27, 360)
         Me.firmwareYearLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.firmwareYearLabel.Name = "firmwareYearLabel"
-        Me.firmwareYearLabel.Size = New System.Drawing.Size(103, 17)
+        Me.firmwareYearLabel.Size = New System.Drawing.Size(116, 20)
         Me.firmwareYearLabel.TabIndex = 7
         Me.firmwareYearLabel.Text = "Firmware Year:"
         '
         'serialNumberLabel
         '
         Me.serialNumberLabel.AutoSize = True
-        Me.serialNumberLabel.Location = New System.Drawing.Point(24, 247)
+        Me.serialNumberLabel.Location = New System.Drawing.Point(27, 309)
         Me.serialNumberLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.serialNumberLabel.Name = "serialNumberLabel"
-        Me.serialNumberLabel.Size = New System.Drawing.Size(102, 17)
+        Me.serialNumberLabel.Size = New System.Drawing.Size(113, 20)
         Me.serialNumberLabel.TabIndex = 6
         Me.serialNumberLabel.Text = "Serial Number:"
         '
         'modelNumberLabel
         '
         Me.modelNumberLabel.AutoSize = True
-        Me.modelNumberLabel.Location = New System.Drawing.Point(24, 208)
+        Me.modelNumberLabel.Location = New System.Drawing.Point(27, 260)
         Me.modelNumberLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.modelNumberLabel.Name = "modelNumberLabel"
-        Me.modelNumberLabel.Size = New System.Drawing.Size(104, 17)
+        Me.modelNumberLabel.Size = New System.Drawing.Size(116, 20)
         Me.modelNumberLabel.TabIndex = 5
         Me.modelNumberLabel.Text = "Model Number:"
         '
@@ -1743,232 +1758,232 @@ Partial Class FrmMain
         Me.getDeviceInfo.Controls.Add(Me.Label24)
         Me.getDeviceInfo.Controls.Add(Me.Label25)
         Me.getDeviceInfo.Controls.Add(Me.queryDeviceInfoButton)
-        Me.getDeviceInfo.Location = New System.Drawing.Point(4, 25)
-        Me.getDeviceInfo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.getDeviceInfo.Location = New System.Drawing.Point(4, 29)
+        Me.getDeviceInfo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.getDeviceInfo.Name = "getDeviceInfo"
-        Me.getDeviceInfo.Size = New System.Drawing.Size(833, 389)
+        Me.getDeviceInfo.Size = New System.Drawing.Size(938, 489)
         Me.getDeviceInfo.TabIndex = 6
         Me.getDeviceInfo.Text = "Get Device Info"
         Me.getDeviceInfo.UseVisualStyleBackColor = True
         '
         'LogDevInfoBtn
         '
-        Me.LogDevInfoBtn.Location = New System.Drawing.Point(61, 318)
-        Me.LogDevInfoBtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LogDevInfoBtn.Location = New System.Drawing.Point(69, 398)
+        Me.LogDevInfoBtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.LogDevInfoBtn.Name = "LogDevInfoBtn"
-        Me.LogDevInfoBtn.Size = New System.Drawing.Size(164, 28)
+        Me.LogDevInfoBtn.Size = New System.Drawing.Size(184, 35)
         Me.LogDevInfoBtn.TabIndex = 57
         Me.LogDevInfoBtn.Text = "Log Device Info"
         Me.LogDevInfoBtn.UseVisualStyleBackColor = True
         '
         'otherDeviceFirmwareMinor
         '
-        Me.otherDeviceFirmwareMinor.Location = New System.Drawing.Point(558, 268)
-        Me.otherDeviceFirmwareMinor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceFirmwareMinor.Location = New System.Drawing.Point(628, 335)
+        Me.otherDeviceFirmwareMinor.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceFirmwareMinor.Name = "otherDeviceFirmwareMinor"
         Me.otherDeviceFirmwareMinor.ReadOnly = True
-        Me.otherDeviceFirmwareMinor.Size = New System.Drawing.Size(214, 22)
+        Me.otherDeviceFirmwareMinor.Size = New System.Drawing.Size(240, 26)
         Me.otherDeviceFirmwareMinor.TabIndex = 56
         '
         'otherDeviceFirmwareMajor
         '
-        Me.otherDeviceFirmwareMajor.Location = New System.Drawing.Point(558, 234)
-        Me.otherDeviceFirmwareMajor.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceFirmwareMajor.Location = New System.Drawing.Point(628, 292)
+        Me.otherDeviceFirmwareMajor.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceFirmwareMajor.Name = "otherDeviceFirmwareMajor"
         Me.otherDeviceFirmwareMajor.ReadOnly = True
-        Me.otherDeviceFirmwareMajor.Size = New System.Drawing.Size(214, 22)
+        Me.otherDeviceFirmwareMajor.Size = New System.Drawing.Size(240, 26)
         Me.otherDeviceFirmwareMajor.TabIndex = 55
         '
         'otherDeviceFirmwareDate
         '
-        Me.otherDeviceFirmwareDate.Location = New System.Drawing.Point(558, 197)
-        Me.otherDeviceFirmwareDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceFirmwareDate.Location = New System.Drawing.Point(628, 246)
+        Me.otherDeviceFirmwareDate.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceFirmwareDate.Name = "otherDeviceFirmwareDate"
         Me.otherDeviceFirmwareDate.ReadOnly = True
-        Me.otherDeviceFirmwareDate.Size = New System.Drawing.Size(214, 22)
+        Me.otherDeviceFirmwareDate.Size = New System.Drawing.Size(240, 26)
         Me.otherDeviceFirmwareDate.TabIndex = 54
         '
         'otherDeviceModelNumber
         '
-        Me.otherDeviceModelNumber.Location = New System.Drawing.Point(558, 121)
-        Me.otherDeviceModelNumber.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceModelNumber.Location = New System.Drawing.Point(628, 151)
+        Me.otherDeviceModelNumber.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceModelNumber.Name = "otherDeviceModelNumber"
         Me.otherDeviceModelNumber.ReadOnly = True
-        Me.otherDeviceModelNumber.Size = New System.Drawing.Size(214, 22)
+        Me.otherDeviceModelNumber.Size = New System.Drawing.Size(240, 26)
         Me.otherDeviceModelNumber.TabIndex = 53
         '
         'otherDeviceCTA2045Version
         '
-        Me.otherDeviceCTA2045Version.Location = New System.Drawing.Point(185, 121)
-        Me.otherDeviceCTA2045Version.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceCTA2045Version.Location = New System.Drawing.Point(208, 151)
+        Me.otherDeviceCTA2045Version.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceCTA2045Version.MaxLength = 10
         Me.otherDeviceCTA2045Version.Name = "otherDeviceCTA2045Version"
         Me.otherDeviceCTA2045Version.ReadOnly = True
-        Me.otherDeviceCTA2045Version.Size = New System.Drawing.Size(216, 22)
+        Me.otherDeviceCTA2045Version.Size = New System.Drawing.Size(242, 26)
         Me.otherDeviceCTA2045Version.TabIndex = 52
         '
         'otherDeviceVendorID
         '
-        Me.otherDeviceVendorID.Location = New System.Drawing.Point(185, 158)
-        Me.otherDeviceVendorID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceVendorID.Location = New System.Drawing.Point(208, 198)
+        Me.otherDeviceVendorID.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceVendorID.Name = "otherDeviceVendorID"
         Me.otherDeviceVendorID.ReadOnly = True
-        Me.otherDeviceVendorID.Size = New System.Drawing.Size(216, 22)
+        Me.otherDeviceVendorID.Size = New System.Drawing.Size(242, 26)
         Me.otherDeviceVendorID.TabIndex = 51
         '
         'otherDeviceDeviceType
         '
-        Me.otherDeviceDeviceType.Location = New System.Drawing.Point(185, 197)
-        Me.otherDeviceDeviceType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceDeviceType.Location = New System.Drawing.Point(208, 246)
+        Me.otherDeviceDeviceType.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceDeviceType.Name = "otherDeviceDeviceType"
         Me.otherDeviceDeviceType.ReadOnly = True
-        Me.otherDeviceDeviceType.Size = New System.Drawing.Size(216, 22)
+        Me.otherDeviceDeviceType.Size = New System.Drawing.Size(242, 26)
         Me.otherDeviceDeviceType.TabIndex = 50
         '
         'otherDeviceSerialNumber
         '
-        Me.otherDeviceSerialNumber.Location = New System.Drawing.Point(558, 158)
-        Me.otherDeviceSerialNumber.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceSerialNumber.Location = New System.Drawing.Point(628, 198)
+        Me.otherDeviceSerialNumber.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceSerialNumber.Name = "otherDeviceSerialNumber"
         Me.otherDeviceSerialNumber.ReadOnly = True
-        Me.otherDeviceSerialNumber.Size = New System.Drawing.Size(214, 22)
+        Me.otherDeviceSerialNumber.Size = New System.Drawing.Size(240, 26)
         Me.otherDeviceSerialNumber.TabIndex = 49
         '
         'otherDeviceDeviceRevision
         '
-        Me.otherDeviceDeviceRevision.Location = New System.Drawing.Point(185, 234)
-        Me.otherDeviceDeviceRevision.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceDeviceRevision.Location = New System.Drawing.Point(208, 292)
+        Me.otherDeviceDeviceRevision.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceDeviceRevision.Name = "otherDeviceDeviceRevision"
         Me.otherDeviceDeviceRevision.ReadOnly = True
-        Me.otherDeviceDeviceRevision.Size = New System.Drawing.Size(216, 22)
+        Me.otherDeviceDeviceRevision.Size = New System.Drawing.Size(242, 26)
         Me.otherDeviceDeviceRevision.TabIndex = 48
         '
         'Label19
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(57, 82)
+        Me.Label19.Location = New System.Drawing.Point(64, 102)
         Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(160, 24)
+        Me.Label19.Size = New System.Drawing.Size(204, 29)
         Me.Label19.TabIndex = 47
         Me.Label19.Text = "Other Device Info:"
         '
         'otherDeviceCapabilityBitmap
         '
-        Me.otherDeviceCapabilityBitmap.Location = New System.Drawing.Point(185, 268)
-        Me.otherDeviceCapabilityBitmap.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.otherDeviceCapabilityBitmap.Location = New System.Drawing.Point(208, 335)
+        Me.otherDeviceCapabilityBitmap.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.otherDeviceCapabilityBitmap.Name = "otherDeviceCapabilityBitmap"
         Me.otherDeviceCapabilityBitmap.ReadOnly = True
-        Me.otherDeviceCapabilityBitmap.Size = New System.Drawing.Size(216, 22)
+        Me.otherDeviceCapabilityBitmap.Size = New System.Drawing.Size(242, 26)
         Me.otherDeviceCapabilityBitmap.TabIndex = 46
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(57, 201)
+        Me.Label13.Location = New System.Drawing.Point(64, 251)
         Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(91, 17)
+        Me.Label13.Size = New System.Drawing.Size(99, 20)
         Me.Label13.TabIndex = 37
         Me.Label13.Text = "Device Type:"
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(57, 272)
+        Me.Label15.Location = New System.Drawing.Point(64, 340)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(120, 17)
+        Me.Label15.Size = New System.Drawing.Size(135, 20)
         Me.Label15.TabIndex = 40
         Me.Label15.Text = "Capability Bitmap:"
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(445, 272)
+        Me.Label16.Location = New System.Drawing.Point(501, 340)
         Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(108, 17)
+        Me.Label16.Size = New System.Drawing.Size(121, 20)
         Me.Label16.TabIndex = 45
         Me.Label16.Text = "Firmware Minor:"
         '
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(57, 162)
+        Me.Label17.Location = New System.Drawing.Point(64, 202)
         Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(75, 17)
+        Me.Label17.Size = New System.Drawing.Size(86, 20)
         Me.Label17.TabIndex = 36
         Me.Label17.Text = "Vendor ID:"
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(445, 238)
+        Me.Label18.Location = New System.Drawing.Point(501, 298)
         Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(108, 17)
+        Me.Label18.Size = New System.Drawing.Size(121, 20)
         Me.Label18.TabIndex = 44
         Me.Label18.Text = "Firmware Major:"
         '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(57, 124)
+        Me.Label20.Location = New System.Drawing.Point(64, 155)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(128, 17)
+        Me.Label20.Size = New System.Drawing.Size(143, 20)
         Me.Label20.TabIndex = 38
         Me.Label20.Text = "CTA-2045 Version:"
         '
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(57, 238)
+        Me.Label22.Location = New System.Drawing.Point(64, 298)
         Me.Label22.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(113, 17)
+        Me.Label22.Size = New System.Drawing.Size(125, 20)
         Me.Label22.TabIndex = 39
         Me.Label22.Text = "Device Revision:"
         '
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(445, 199)
+        Me.Label23.Location = New System.Drawing.Point(501, 249)
         Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(103, 17)
+        Me.Label23.Size = New System.Drawing.Size(117, 20)
         Me.Label23.TabIndex = 43
         Me.Label23.Text = "Firmware Date:"
         '
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(445, 162)
+        Me.Label24.Location = New System.Drawing.Point(501, 202)
         Me.Label24.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(102, 17)
+        Me.Label24.Size = New System.Drawing.Size(113, 20)
         Me.Label24.TabIndex = 42
         Me.Label24.Text = "Serial Number:"
         '
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(445, 124)
+        Me.Label25.Location = New System.Drawing.Point(501, 155)
         Me.Label25.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(104, 17)
+        Me.Label25.Size = New System.Drawing.Size(116, 20)
         Me.Label25.TabIndex = 41
         Me.Label25.Text = "Model Number:"
         '
         'queryDeviceInfoButton
         '
-        Me.queryDeviceInfoButton.Location = New System.Drawing.Point(61, 39)
-        Me.queryDeviceInfoButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.queryDeviceInfoButton.Location = New System.Drawing.Point(69, 49)
+        Me.queryDeviceInfoButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.queryDeviceInfoButton.Name = "queryDeviceInfoButton"
-        Me.queryDeviceInfoButton.Size = New System.Drawing.Size(164, 28)
+        Me.queryDeviceInfoButton.Size = New System.Drawing.Size(184, 35)
         Me.queryDeviceInfoButton.TabIndex = 35
         Me.queryDeviceInfoButton.Text = "Query Other Device"
         Me.queryDeviceInfoButton.UseVisualStyleBackColor = True
@@ -1978,11 +1993,11 @@ Partial Class FrmMain
         Me.msgTypeSupportedTab.Controls.Add(Me.gbPowerLimit)
         Me.msgTypeSupportedTab.Controls.Add(Me.msgSupportQuery)
         Me.msgTypeSupportedTab.Controls.Add(Me.msgSupportedBox)
-        Me.msgTypeSupportedTab.Location = New System.Drawing.Point(4, 25)
-        Me.msgTypeSupportedTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.msgTypeSupportedTab.Location = New System.Drawing.Point(4, 29)
+        Me.msgTypeSupportedTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.msgTypeSupportedTab.Name = "msgTypeSupportedTab"
-        Me.msgTypeSupportedTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.msgTypeSupportedTab.Size = New System.Drawing.Size(833, 389)
+        Me.msgTypeSupportedTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.msgTypeSupportedTab.Size = New System.Drawing.Size(938, 489)
         Me.msgTypeSupportedTab.TabIndex = 1
         Me.msgTypeSupportedTab.Text = "Msg Types / Power Limit"
         Me.msgTypeSupportedTab.UseVisualStyleBackColor = True
@@ -1992,21 +2007,21 @@ Partial Class FrmMain
         Me.gbPowerLimit.Controls.Add(Me.pbPowerLimit)
         Me.gbPowerLimit.Controls.Add(Me.cbPowerLimit)
         Me.gbPowerLimit.Controls.Add(Me.nudPowerLimit)
-        Me.gbPowerLimit.Location = New System.Drawing.Point(677, 14)
-        Me.gbPowerLimit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbPowerLimit.Location = New System.Drawing.Point(762, 18)
+        Me.gbPowerLimit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbPowerLimit.Name = "gbPowerLimit"
-        Me.gbPowerLimit.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gbPowerLimit.Size = New System.Drawing.Size(133, 142)
+        Me.gbPowerLimit.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbPowerLimit.Size = New System.Drawing.Size(150, 178)
         Me.gbPowerLimit.TabIndex = 61
         Me.gbPowerLimit.TabStop = False
         Me.gbPowerLimit.Text = "Power Limit"
         '
         'pbPowerLimit
         '
-        Me.pbPowerLimit.Location = New System.Drawing.Point(12, 23)
-        Me.pbPowerLimit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbPowerLimit.Location = New System.Drawing.Point(14, 29)
+        Me.pbPowerLimit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbPowerLimit.Name = "pbPowerLimit"
-        Me.pbPowerLimit.Size = New System.Drawing.Size(105, 30)
+        Me.pbPowerLimit.Size = New System.Drawing.Size(118, 38)
         Me.pbPowerLimit.TabIndex = 59
         Me.pbPowerLimit.Text = "Power Limit"
         Me.pbPowerLimit.UseVisualStyleBackColor = True
@@ -2016,21 +2031,21 @@ Partial Class FrmMain
         Me.cbPowerLimit.AutoSize = True
         Me.cbPowerLimit.Checked = True
         Me.cbPowerLimit.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbPowerLimit.Location = New System.Drawing.Point(32, 101)
-        Me.cbPowerLimit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbPowerLimit.Location = New System.Drawing.Point(36, 126)
+        Me.cbPowerLimit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbPowerLimit.Name = "cbPowerLimit"
-        Me.cbPowerLimit.Size = New System.Drawing.Size(73, 21)
+        Me.cbPowerLimit.Size = New System.Drawing.Size(85, 24)
         Me.cbPowerLimit.TabIndex = 60
         Me.cbPowerLimit.Text = "Accept"
         Me.cbPowerLimit.UseVisualStyleBackColor = True
         '
         'nudPowerLimit
         '
-        Me.nudPowerLimit.Location = New System.Drawing.Point(32, 62)
-        Me.nudPowerLimit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudPowerLimit.Location = New System.Drawing.Point(36, 78)
+        Me.nudPowerLimit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudPowerLimit.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.nudPowerLimit.Name = "nudPowerLimit"
-        Me.nudPowerLimit.Size = New System.Drawing.Size(68, 22)
+        Me.nudPowerLimit.Size = New System.Drawing.Size(76, 26)
         Me.nudPowerLimit.TabIndex = 58
         '
         'msgSupportQuery
@@ -2044,11 +2059,11 @@ Partial Class FrmMain
         Me.msgSupportQuery.Controls.Add(Me.Label5)
         Me.msgSupportQuery.Controls.Add(Me.Label4)
         Me.msgSupportQuery.Controls.Add(Me.msgTypeQuery)
-        Me.msgSupportQuery.Location = New System.Drawing.Point(9, 155)
-        Me.msgSupportQuery.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.msgSupportQuery.Location = New System.Drawing.Point(10, 194)
+        Me.msgSupportQuery.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.msgSupportQuery.Name = "msgSupportQuery"
-        Me.msgSupportQuery.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.msgSupportQuery.Size = New System.Drawing.Size(548, 162)
+        Me.msgSupportQuery.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.msgSupportQuery.Size = New System.Drawing.Size(616, 202)
         Me.msgSupportQuery.TabIndex = 33
         Me.msgSupportQuery.TabStop = False
         Me.msgSupportQuery.Text = "Supported Message Query"
@@ -2056,19 +2071,19 @@ Partial Class FrmMain
         'Label56
         '
         Me.Label56.AutoSize = True
-        Me.Label56.Location = New System.Drawing.Point(325, 12)
+        Me.Label56.Location = New System.Drawing.Point(366, 15)
         Me.Label56.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label56.Name = "Label56"
-        Me.Label56.Size = New System.Drawing.Size(91, 17)
+        Me.Label56.Size = New System.Drawing.Size(101, 20)
         Me.Label56.TabIndex = 16
         Me.Label56.Text = "Other Device"
         '
         'ODRefresh
         '
-        Me.ODRefresh.Location = New System.Drawing.Point(181, 58)
-        Me.ODRefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ODRefresh.Location = New System.Drawing.Point(204, 72)
+        Me.ODRefresh.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ODRefresh.Name = "ODRefresh"
-        Me.ODRefresh.Size = New System.Drawing.Size(116, 28)
+        Me.ODRefresh.Size = New System.Drawing.Size(130, 35)
         Me.ODRefresh.TabIndex = 15
         Me.ODRefresh.Text = "Refresh"
         Me.ODRefresh.UseVisualStyleBackColor = True
@@ -2076,39 +2091,39 @@ Partial Class FrmMain
         'ODMsgTypeSup
         '
         Me.ODMsgTypeSup.FormattingEnabled = True
-        Me.ODMsgTypeSup.ItemHeight = 16
-        Me.ODMsgTypeSup.Location = New System.Drawing.Point(329, 36)
-        Me.ODMsgTypeSup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ODMsgTypeSup.ItemHeight = 20
+        Me.ODMsgTypeSup.Location = New System.Drawing.Point(370, 45)
+        Me.ODMsgTypeSup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ODMsgTypeSup.Name = "ODMsgTypeSup"
-        Me.ODMsgTypeSup.Size = New System.Drawing.Size(196, 116)
+        Me.ODMsgTypeSup.Size = New System.Drawing.Size(220, 144)
         Me.ODMsgTypeSup.TabIndex = 14
         '
         'nudSupMsgQueryLSB
         '
         Me.nudSupMsgQueryLSB.Hexadecimal = True
-        Me.nudSupMsgQueryLSB.Location = New System.Drawing.Point(139, 123)
-        Me.nudSupMsgQueryLSB.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudSupMsgQueryLSB.Location = New System.Drawing.Point(156, 154)
+        Me.nudSupMsgQueryLSB.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudSupMsgQueryLSB.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudSupMsgQueryLSB.Name = "nudSupMsgQueryLSB"
-        Me.nudSupMsgQueryLSB.Size = New System.Drawing.Size(100, 22)
+        Me.nudSupMsgQueryLSB.Size = New System.Drawing.Size(112, 26)
         Me.nudSupMsgQueryLSB.TabIndex = 13
         '
         'nudSupMsgQueryMSB
         '
         Me.nudSupMsgQueryMSB.Hexadecimal = True
-        Me.nudSupMsgQueryMSB.Location = New System.Drawing.Point(20, 123)
-        Me.nudSupMsgQueryMSB.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudSupMsgQueryMSB.Location = New System.Drawing.Point(22, 154)
+        Me.nudSupMsgQueryMSB.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudSupMsgQueryMSB.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudSupMsgQueryMSB.Name = "nudSupMsgQueryMSB"
-        Me.nudSupMsgQueryMSB.Size = New System.Drawing.Size(100, 22)
+        Me.nudSupMsgQueryMSB.Size = New System.Drawing.Size(112, 26)
         Me.nudSupMsgQueryMSB.TabIndex = 12
         '
         'typeSupportedQueryCodeLookup
         '
-        Me.typeSupportedQueryCodeLookup.Location = New System.Drawing.Point(23, 57)
-        Me.typeSupportedQueryCodeLookup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.typeSupportedQueryCodeLookup.Location = New System.Drawing.Point(26, 71)
+        Me.typeSupportedQueryCodeLookup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.typeSupportedQueryCodeLookup.Name = "typeSupportedQueryCodeLookup"
-        Me.typeSupportedQueryCodeLookup.Size = New System.Drawing.Size(116, 28)
+        Me.typeSupportedQueryCodeLookup.Size = New System.Drawing.Size(130, 35)
         Me.typeSupportedQueryCodeLookup.TabIndex = 5
         Me.typeSupportedQueryCodeLookup.Text = "Code Lookup"
         Me.typeSupportedQueryCodeLookup.UseVisualStyleBackColor = True
@@ -2116,29 +2131,29 @@ Partial Class FrmMain
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(142, 100)
+        Me.Label5.Location = New System.Drawing.Point(160, 125)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(77, 17)
+        Me.Label5.Size = New System.Drawing.Size(88, 20)
         Me.Label5.TabIndex = 4
         Me.Label5.Text = "LSB in Hex"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(24, 100)
+        Me.Label4.Location = New System.Drawing.Point(27, 125)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(80, 17)
+        Me.Label4.Size = New System.Drawing.Size(92, 20)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "MSB in Hex"
         '
         'msgTypeQuery
         '
-        Me.msgTypeQuery.Location = New System.Drawing.Point(23, 23)
-        Me.msgTypeQuery.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.msgTypeQuery.Location = New System.Drawing.Point(26, 29)
+        Me.msgTypeQuery.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.msgTypeQuery.Name = "msgTypeQuery"
-        Me.msgTypeQuery.Size = New System.Drawing.Size(116, 30)
+        Me.msgTypeQuery.Size = New System.Drawing.Size(130, 38)
         Me.msgTypeQuery.TabIndex = 0
         Me.msgTypeQuery.Text = "Send Query"
         Me.msgTypeQuery.UseVisualStyleBackColor = True
@@ -2152,11 +2167,11 @@ Partial Class FrmMain
         Me.msgSupportedBox.Controls.Add(Me.supportedMsgTypeList)
         Me.msgSupportedBox.Controls.Add(Me.removeSupportedType)
         Me.msgSupportedBox.Controls.Add(Me.addSupportedType)
-        Me.msgSupportedBox.Location = New System.Drawing.Point(8, 10)
-        Me.msgSupportedBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.msgSupportedBox.Location = New System.Drawing.Point(9, 12)
+        Me.msgSupportedBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.msgSupportedBox.Name = "msgSupportedBox"
-        Me.msgSupportedBox.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.msgSupportedBox.Size = New System.Drawing.Size(548, 142)
+        Me.msgSupportedBox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.msgSupportedBox.Size = New System.Drawing.Size(616, 178)
         Me.msgSupportedBox.TabIndex = 31
         Me.msgSupportedBox.TabStop = False
         Me.msgSupportedBox.Text = "Messages Supported by This Device"
@@ -2164,69 +2179,69 @@ Partial Class FrmMain
         'nudMsgSuppLSB
         '
         Me.nudMsgSuppLSB.Hexadecimal = True
-        Me.nudMsgSuppLSB.Location = New System.Drawing.Point(141, 48)
-        Me.nudMsgSuppLSB.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudMsgSuppLSB.Location = New System.Drawing.Point(159, 60)
+        Me.nudMsgSuppLSB.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudMsgSuppLSB.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudMsgSuppLSB.Name = "nudMsgSuppLSB"
-        Me.nudMsgSuppLSB.Size = New System.Drawing.Size(100, 22)
+        Me.nudMsgSuppLSB.Size = New System.Drawing.Size(112, 26)
         Me.nudMsgSuppLSB.TabIndex = 15
         '
         'nudMsgSuppMSB
         '
         Me.nudMsgSuppMSB.Hexadecimal = True
-        Me.nudMsgSuppMSB.Location = New System.Drawing.Point(23, 46)
-        Me.nudMsgSuppMSB.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudMsgSuppMSB.Location = New System.Drawing.Point(26, 58)
+        Me.nudMsgSuppMSB.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudMsgSuppMSB.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudMsgSuppMSB.Name = "nudMsgSuppMSB"
-        Me.nudMsgSuppMSB.Size = New System.Drawing.Size(100, 22)
+        Me.nudMsgSuppMSB.Size = New System.Drawing.Size(112, 26)
         Me.nudMsgSuppMSB.TabIndex = 14
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(146, 26)
+        Me.Label7.Location = New System.Drawing.Point(164, 32)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(77, 17)
+        Me.Label7.Size = New System.Drawing.Size(88, 20)
         Me.Label7.TabIndex = 7
         Me.Label7.Text = "LSB in Hex"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(27, 26)
+        Me.Label6.Location = New System.Drawing.Point(30, 32)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(80, 17)
+        Me.Label6.Size = New System.Drawing.Size(92, 20)
         Me.Label6.TabIndex = 6
         Me.Label6.Text = "MSB in Hex"
         '
         'supportedMsgTypeList
         '
         Me.supportedMsgTypeList.FormattingEnabled = True
-        Me.supportedMsgTypeList.ItemHeight = 16
-        Me.supportedMsgTypeList.Location = New System.Drawing.Point(389, 27)
-        Me.supportedMsgTypeList.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.supportedMsgTypeList.ItemHeight = 20
+        Me.supportedMsgTypeList.Location = New System.Drawing.Point(438, 34)
+        Me.supportedMsgTypeList.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.supportedMsgTypeList.Name = "supportedMsgTypeList"
-        Me.supportedMsgTypeList.Size = New System.Drawing.Size(146, 100)
+        Me.supportedMsgTypeList.Size = New System.Drawing.Size(164, 124)
         Me.supportedMsgTypeList.TabIndex = 3
         '
         'removeSupportedType
         '
-        Me.removeSupportedType.Location = New System.Drawing.Point(275, 82)
-        Me.removeSupportedType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.removeSupportedType.Location = New System.Drawing.Point(309, 102)
+        Me.removeSupportedType.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.removeSupportedType.Name = "removeSupportedType"
-        Me.removeSupportedType.Size = New System.Drawing.Size(100, 28)
+        Me.removeSupportedType.Size = New System.Drawing.Size(112, 35)
         Me.removeSupportedType.TabIndex = 2
         Me.removeSupportedType.Text = "Remove Selected"
         Me.removeSupportedType.UseVisualStyleBackColor = True
         '
         'addSupportedType
         '
-        Me.addSupportedType.Location = New System.Drawing.Point(275, 32)
-        Me.addSupportedType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.addSupportedType.Location = New System.Drawing.Point(309, 40)
+        Me.addSupportedType.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.addSupportedType.Name = "addSupportedType"
-        Me.addSupportedType.Size = New System.Drawing.Size(100, 28)
+        Me.addSupportedType.Size = New System.Drawing.Size(112, 35)
         Me.addSupportedType.TabIndex = 1
         Me.addSupportedType.Text = "Add"
         Me.addSupportedType.UseVisualStyleBackColor = True
@@ -2235,10 +2250,10 @@ Partial Class FrmMain
         '
         Me.setMaxPayloadTab.Controls.Add(Me.GroupBox3)
         Me.setMaxPayloadTab.Controls.Add(Me.GroupBox1)
-        Me.setMaxPayloadTab.Location = New System.Drawing.Point(4, 25)
-        Me.setMaxPayloadTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.setMaxPayloadTab.Location = New System.Drawing.Point(4, 29)
+        Me.setMaxPayloadTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.setMaxPayloadTab.Name = "setMaxPayloadTab"
-        Me.setMaxPayloadTab.Size = New System.Drawing.Size(833, 389)
+        Me.setMaxPayloadTab.Size = New System.Drawing.Size(938, 489)
         Me.setMaxPayloadTab.TabIndex = 2
         Me.setMaxPayloadTab.Text = "Max Payload"
         Me.setMaxPayloadTab.UseVisualStyleBackColor = True
@@ -2249,11 +2264,11 @@ Partial Class FrmMain
         Me.GroupBox3.Controls.Add(Me.Label57)
         Me.GroupBox3.Controls.Add(Me.btnMaxPayload)
         Me.GroupBox3.Controls.Add(Me.cdMaxPayloadSize)
-        Me.GroupBox3.Location = New System.Drawing.Point(18, 258)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Location = New System.Drawing.Point(20, 322)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox3.Size = New System.Drawing.Size(299, 98)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox3.Size = New System.Drawing.Size(336, 122)
         Me.GroupBox3.TabIndex = 20
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Connected Device"
@@ -2261,29 +2276,29 @@ Partial Class FrmMain
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(89, 30)
+        Me.Label27.Location = New System.Drawing.Point(100, 38)
         Me.Label27.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(206, 17)
+        Me.Label27.Size = New System.Drawing.Size(232, 20)
         Me.Label27.TabIndex = 17
         Me.Label27.Text = "Request maximum payload size"
         '
         'Label57
         '
         Me.Label57.AutoSize = True
-        Me.Label57.Location = New System.Drawing.Point(89, 66)
+        Me.Label57.Location = New System.Drawing.Point(100, 82)
         Me.Label57.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(119, 17)
+        Me.Label57.Size = New System.Drawing.Size(133, 20)
         Me.Label57.TabIndex = 19
         Me.Label57.Text = "Max Payload Size"
         '
         'btnMaxPayload
         '
-        Me.btnMaxPayload.Location = New System.Drawing.Point(9, 26)
-        Me.btnMaxPayload.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnMaxPayload.Location = New System.Drawing.Point(10, 32)
+        Me.btnMaxPayload.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnMaxPayload.Name = "btnMaxPayload"
-        Me.btnMaxPayload.Size = New System.Drawing.Size(72, 28)
+        Me.btnMaxPayload.Size = New System.Drawing.Size(81, 35)
         Me.btnMaxPayload.TabIndex = 16
         Me.btnMaxPayload.Text = "Query"
         Me.btnMaxPayload.UseVisualStyleBackColor = True
@@ -2291,10 +2306,10 @@ Partial Class FrmMain
         'cdMaxPayloadSize
         '
         Me.cdMaxPayloadSize.Enabled = False
-        Me.cdMaxPayloadSize.Location = New System.Drawing.Point(9, 62)
-        Me.cdMaxPayloadSize.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cdMaxPayloadSize.Location = New System.Drawing.Point(10, 78)
+        Me.cdMaxPayloadSize.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cdMaxPayloadSize.Name = "cdMaxPayloadSize"
-        Me.cdMaxPayloadSize.Size = New System.Drawing.Size(71, 22)
+        Me.cdMaxPayloadSize.Size = New System.Drawing.Size(79, 26)
         Me.cdMaxPayloadSize.TabIndex = 18
         '
         'GroupBox1
@@ -2313,11 +2328,11 @@ Partial Class FrmMain
         Me.GroupBox1.Controls.Add(Me.rbMaxPayload9)
         Me.GroupBox1.Controls.Add(Me.rbMaxPayload7)
         Me.GroupBox1.Controls.Add(Me.rbMaxPayload8)
-        Me.GroupBox1.Location = New System.Drawing.Point(18, 14)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(20, 18)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(299, 233)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox1.Size = New System.Drawing.Size(336, 291)
         Me.GroupBox1.TabIndex = 15
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Select Device Maximum Payload Size"
@@ -2325,10 +2340,10 @@ Partial Class FrmMain
         'rbMaxPayload1
         '
         Me.rbMaxPayload1.AutoSize = True
-        Me.rbMaxPayload1.Location = New System.Drawing.Point(27, 23)
-        Me.rbMaxPayload1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload1.Location = New System.Drawing.Point(30, 29)
+        Me.rbMaxPayload1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload1.Name = "rbMaxPayload1"
-        Me.rbMaxPayload1.Size = New System.Drawing.Size(132, 21)
+        Me.rbMaxPayload1.Size = New System.Drawing.Size(148, 24)
         Me.rbMaxPayload1.TabIndex = 1
         Me.rbMaxPayload1.TabStop = True
         Me.rbMaxPayload1.Text = "2 bytes (default)"
@@ -2337,10 +2352,10 @@ Partial Class FrmMain
         'rbMaxPayload14
         '
         Me.rbMaxPayload14.AutoSize = True
-        Me.rbMaxPayload14.Location = New System.Drawing.Point(173, 196)
-        Me.rbMaxPayload14.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload14.Location = New System.Drawing.Point(195, 245)
+        Me.rbMaxPayload14.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload14.Name = "rbMaxPayload14"
-        Me.rbMaxPayload14.Size = New System.Drawing.Size(99, 21)
+        Me.rbMaxPayload14.Size = New System.Drawing.Size(112, 24)
         Me.rbMaxPayload14.TabIndex = 14
         Me.rbMaxPayload14.TabStop = True
         Me.rbMaxPayload14.Text = "4096 bytes"
@@ -2349,10 +2364,10 @@ Partial Class FrmMain
         'rbMaxPayload2
         '
         Me.rbMaxPayload2.AutoSize = True
-        Me.rbMaxPayload2.Location = New System.Drawing.Point(27, 53)
-        Me.rbMaxPayload2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload2.Location = New System.Drawing.Point(30, 66)
+        Me.rbMaxPayload2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload2.Name = "rbMaxPayload2"
-        Me.rbMaxPayload2.Size = New System.Drawing.Size(75, 21)
+        Me.rbMaxPayload2.Size = New System.Drawing.Size(85, 24)
         Me.rbMaxPayload2.TabIndex = 2
         Me.rbMaxPayload2.TabStop = True
         Me.rbMaxPayload2.Text = "4 bytes"
@@ -2361,10 +2376,10 @@ Partial Class FrmMain
         'rbMaxPayload13
         '
         Me.rbMaxPayload13.AutoSize = True
-        Me.rbMaxPayload13.Location = New System.Drawing.Point(173, 167)
-        Me.rbMaxPayload13.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload13.Location = New System.Drawing.Point(195, 209)
+        Me.rbMaxPayload13.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload13.Name = "rbMaxPayload13"
-        Me.rbMaxPayload13.Size = New System.Drawing.Size(99, 21)
+        Me.rbMaxPayload13.Size = New System.Drawing.Size(112, 24)
         Me.rbMaxPayload13.TabIndex = 13
         Me.rbMaxPayload13.TabStop = True
         Me.rbMaxPayload13.Text = "2048 bytes"
@@ -2373,10 +2388,10 @@ Partial Class FrmMain
         'rbMaxPayload3
         '
         Me.rbMaxPayload3.AutoSize = True
-        Me.rbMaxPayload3.Location = New System.Drawing.Point(27, 82)
-        Me.rbMaxPayload3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload3.Location = New System.Drawing.Point(30, 102)
+        Me.rbMaxPayload3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload3.Name = "rbMaxPayload3"
-        Me.rbMaxPayload3.Size = New System.Drawing.Size(75, 21)
+        Me.rbMaxPayload3.Size = New System.Drawing.Size(85, 24)
         Me.rbMaxPayload3.TabIndex = 3
         Me.rbMaxPayload3.TabStop = True
         Me.rbMaxPayload3.Text = "8 bytes"
@@ -2385,10 +2400,10 @@ Partial Class FrmMain
         'rbMaxPayload12
         '
         Me.rbMaxPayload12.AutoSize = True
-        Me.rbMaxPayload12.Location = New System.Drawing.Point(173, 139)
-        Me.rbMaxPayload12.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload12.Location = New System.Drawing.Point(195, 174)
+        Me.rbMaxPayload12.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload12.Name = "rbMaxPayload12"
-        Me.rbMaxPayload12.Size = New System.Drawing.Size(99, 21)
+        Me.rbMaxPayload12.Size = New System.Drawing.Size(112, 24)
         Me.rbMaxPayload12.TabIndex = 12
         Me.rbMaxPayload12.TabStop = True
         Me.rbMaxPayload12.Text = "1500 bytes"
@@ -2397,10 +2412,10 @@ Partial Class FrmMain
         'rbMaxPayload4
         '
         Me.rbMaxPayload4.AutoSize = True
-        Me.rbMaxPayload4.Location = New System.Drawing.Point(27, 110)
-        Me.rbMaxPayload4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload4.Location = New System.Drawing.Point(30, 138)
+        Me.rbMaxPayload4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload4.Name = "rbMaxPayload4"
-        Me.rbMaxPayload4.Size = New System.Drawing.Size(83, 21)
+        Me.rbMaxPayload4.Size = New System.Drawing.Size(94, 24)
         Me.rbMaxPayload4.TabIndex = 4
         Me.rbMaxPayload4.TabStop = True
         Me.rbMaxPayload4.Text = "16 bytes"
@@ -2409,10 +2424,10 @@ Partial Class FrmMain
         'rbMaxPayload11
         '
         Me.rbMaxPayload11.AutoSize = True
-        Me.rbMaxPayload11.Location = New System.Drawing.Point(173, 110)
-        Me.rbMaxPayload11.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload11.Location = New System.Drawing.Point(195, 138)
+        Me.rbMaxPayload11.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload11.Name = "rbMaxPayload11"
-        Me.rbMaxPayload11.Size = New System.Drawing.Size(99, 21)
+        Me.rbMaxPayload11.Size = New System.Drawing.Size(112, 24)
         Me.rbMaxPayload11.TabIndex = 11
         Me.rbMaxPayload11.TabStop = True
         Me.rbMaxPayload11.Text = "1280 bytes"
@@ -2421,10 +2436,10 @@ Partial Class FrmMain
         'rbMaxPayload5
         '
         Me.rbMaxPayload5.AutoSize = True
-        Me.rbMaxPayload5.Location = New System.Drawing.Point(27, 139)
-        Me.rbMaxPayload5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload5.Location = New System.Drawing.Point(30, 174)
+        Me.rbMaxPayload5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload5.Name = "rbMaxPayload5"
-        Me.rbMaxPayload5.Size = New System.Drawing.Size(83, 21)
+        Me.rbMaxPayload5.Size = New System.Drawing.Size(94, 24)
         Me.rbMaxPayload5.TabIndex = 5
         Me.rbMaxPayload5.TabStop = True
         Me.rbMaxPayload5.Text = "32 bytes"
@@ -2433,10 +2448,10 @@ Partial Class FrmMain
         'rbMaxPayload10
         '
         Me.rbMaxPayload10.AutoSize = True
-        Me.rbMaxPayload10.Location = New System.Drawing.Point(173, 82)
-        Me.rbMaxPayload10.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload10.Location = New System.Drawing.Point(195, 102)
+        Me.rbMaxPayload10.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload10.Name = "rbMaxPayload10"
-        Me.rbMaxPayload10.Size = New System.Drawing.Size(99, 21)
+        Me.rbMaxPayload10.Size = New System.Drawing.Size(112, 24)
         Me.rbMaxPayload10.TabIndex = 10
         Me.rbMaxPayload10.TabStop = True
         Me.rbMaxPayload10.Text = "1024 bytes"
@@ -2445,10 +2460,10 @@ Partial Class FrmMain
         'rbMaxPayload6
         '
         Me.rbMaxPayload6.AutoSize = True
-        Me.rbMaxPayload6.Location = New System.Drawing.Point(27, 167)
-        Me.rbMaxPayload6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload6.Location = New System.Drawing.Point(30, 209)
+        Me.rbMaxPayload6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload6.Name = "rbMaxPayload6"
-        Me.rbMaxPayload6.Size = New System.Drawing.Size(83, 21)
+        Me.rbMaxPayload6.Size = New System.Drawing.Size(94, 24)
         Me.rbMaxPayload6.TabIndex = 6
         Me.rbMaxPayload6.TabStop = True
         Me.rbMaxPayload6.Text = "64 bytes"
@@ -2457,10 +2472,10 @@ Partial Class FrmMain
         'rbMaxPayload9
         '
         Me.rbMaxPayload9.AutoSize = True
-        Me.rbMaxPayload9.Location = New System.Drawing.Point(173, 53)
-        Me.rbMaxPayload9.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload9.Location = New System.Drawing.Point(195, 66)
+        Me.rbMaxPayload9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload9.Name = "rbMaxPayload9"
-        Me.rbMaxPayload9.Size = New System.Drawing.Size(91, 21)
+        Me.rbMaxPayload9.Size = New System.Drawing.Size(103, 24)
         Me.rbMaxPayload9.TabIndex = 9
         Me.rbMaxPayload9.TabStop = True
         Me.rbMaxPayload9.Text = "512 bytes"
@@ -2469,10 +2484,10 @@ Partial Class FrmMain
         'rbMaxPayload7
         '
         Me.rbMaxPayload7.AutoSize = True
-        Me.rbMaxPayload7.Location = New System.Drawing.Point(27, 196)
-        Me.rbMaxPayload7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload7.Location = New System.Drawing.Point(30, 245)
+        Me.rbMaxPayload7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload7.Name = "rbMaxPayload7"
-        Me.rbMaxPayload7.Size = New System.Drawing.Size(91, 21)
+        Me.rbMaxPayload7.Size = New System.Drawing.Size(103, 24)
         Me.rbMaxPayload7.TabIndex = 7
         Me.rbMaxPayload7.TabStop = True
         Me.rbMaxPayload7.Text = "128 bytes"
@@ -2481,10 +2496,10 @@ Partial Class FrmMain
         'rbMaxPayload8
         '
         Me.rbMaxPayload8.AutoSize = True
-        Me.rbMaxPayload8.Location = New System.Drawing.Point(173, 23)
-        Me.rbMaxPayload8.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbMaxPayload8.Location = New System.Drawing.Point(195, 29)
+        Me.rbMaxPayload8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbMaxPayload8.Name = "rbMaxPayload8"
-        Me.rbMaxPayload8.Size = New System.Drawing.Size(91, 21)
+        Me.rbMaxPayload8.Size = New System.Drawing.Size(103, 24)
         Me.rbMaxPayload8.TabIndex = 8
         Me.rbMaxPayload8.TabStop = True
         Me.rbMaxPayload8.Text = "256 bytes"
@@ -2496,11 +2511,11 @@ Partial Class FrmMain
         Me.tempF.Controls.Add(Me.GroupBox7)
         Me.tempF.Controls.Add(Me.GroupBox6)
         Me.tempF.Controls.Add(Me.GroupBox5)
-        Me.tempF.Location = New System.Drawing.Point(4, 25)
-        Me.tempF.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tempF.Location = New System.Drawing.Point(4, 29)
+        Me.tempF.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tempF.Name = "tempF"
-        Me.tempF.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.tempF.Size = New System.Drawing.Size(833, 389)
+        Me.tempF.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tempF.Size = New System.Drawing.Size(938, 489)
         Me.tempF.TabIndex = 3
         Me.tempF.Text = "Temp Get/Set"
         Me.tempF.UseVisualStyleBackColor = True
@@ -2515,11 +2530,11 @@ Partial Class FrmMain
         Me.GroupBox4.Controls.Add(Me.nudPresentTemp)
         Me.GroupBox4.Controls.Add(Me.tbResponseCode2)
         Me.GroupBox4.Controls.Add(Me.tbPresentTemp)
-        Me.GroupBox4.Location = New System.Drawing.Point(548, 7)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Location = New System.Drawing.Point(616, 9)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox4.Size = New System.Drawing.Size(275, 182)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox4.Size = New System.Drawing.Size(309, 228)
         Me.GroupBox4.TabIndex = 45
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Get Present Temp"
@@ -2527,39 +2542,39 @@ Partial Class FrmMain
         'Label104
         '
         Me.Label104.AutoSize = True
-        Me.Label104.Location = New System.Drawing.Point(78, 90)
+        Me.Label104.Location = New System.Drawing.Point(88, 112)
         Me.Label104.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label104.Name = "Label104"
-        Me.Label104.Size = New System.Drawing.Size(44, 17)
+        Me.Label104.Size = New System.Drawing.Size(49, 20)
         Me.Label104.TabIndex = 46
         Me.Label104.Text = "Temp"
         '
         'Label103
         '
         Me.Label103.AutoSize = True
-        Me.Label103.Location = New System.Drawing.Point(130, 59)
+        Me.Label103.Location = New System.Drawing.Point(146, 74)
         Me.Label103.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label103.Name = "Label103"
-        Me.Label103.Size = New System.Drawing.Size(123, 17)
+        Me.Label103.Size = New System.Drawing.Size(139, 20)
         Me.Label103.TabIndex = 45
         Me.Label103.Text = "Connected Device"
         '
         'Label102
         '
         Me.Label102.AutoSize = True
-        Me.Label102.Location = New System.Drawing.Point(5, 59)
+        Me.Label102.Location = New System.Drawing.Point(6, 74)
         Me.Label102.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label102.Name = "Label102"
-        Me.Label102.Size = New System.Drawing.Size(82, 17)
+        Me.Label102.Size = New System.Drawing.Size(90, 20)
         Me.Label102.TabIndex = 44
         Me.Label102.Text = "This Device"
         '
         'pbGetPresentTemp
         '
-        Me.pbGetPresentTemp.Location = New System.Drawing.Point(105, 26)
-        Me.pbGetPresentTemp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbGetPresentTemp.Location = New System.Drawing.Point(118, 32)
+        Me.pbGetPresentTemp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbGetPresentTemp.Name = "pbGetPresentTemp"
-        Me.pbGetPresentTemp.Size = New System.Drawing.Size(157, 30)
+        Me.pbGetPresentTemp.Size = New System.Drawing.Size(177, 38)
         Me.pbGetPresentTemp.TabIndex = 5
         Me.pbGetPresentTemp.Text = "Get Present Temp"
         Me.pbGetPresentTemp.UseVisualStyleBackColor = True
@@ -2567,39 +2582,39 @@ Partial Class FrmMain
         'Label101
         '
         Me.Label101.AutoSize = True
-        Me.Label101.Location = New System.Drawing.Point(132, 130)
+        Me.Label101.Location = New System.Drawing.Point(148, 162)
         Me.Label101.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label101.Name = "Label101"
-        Me.Label101.Size = New System.Drawing.Size(109, 17)
+        Me.Label101.Size = New System.Drawing.Size(124, 20)
         Me.Label101.TabIndex = 42
         Me.Label101.Text = "Response Code"
         '
         'nudPresentTemp
         '
-        Me.nudPresentTemp.Location = New System.Drawing.Point(9, 86)
-        Me.nudPresentTemp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudPresentTemp.Location = New System.Drawing.Point(10, 108)
+        Me.nudPresentTemp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudPresentTemp.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.nudPresentTemp.Name = "nudPresentTemp"
-        Me.nudPresentTemp.Size = New System.Drawing.Size(66, 22)
+        Me.nudPresentTemp.Size = New System.Drawing.Size(74, 26)
         Me.nudPresentTemp.TabIndex = 6
         Me.nudPresentTemp.Value = New Decimal(New Integer() {70, 0, 0, 0})
         '
         'tbResponseCode2
         '
-        Me.tbResponseCode2.Location = New System.Drawing.Point(125, 150)
-        Me.tbResponseCode2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbResponseCode2.Location = New System.Drawing.Point(141, 188)
+        Me.tbResponseCode2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbResponseCode2.Name = "tbResponseCode2"
         Me.tbResponseCode2.ReadOnly = True
-        Me.tbResponseCode2.Size = New System.Drawing.Size(137, 22)
+        Me.tbResponseCode2.Size = New System.Drawing.Size(154, 26)
         Me.tbResponseCode2.TabIndex = 43
         '
         'tbPresentTemp
         '
-        Me.tbPresentTemp.Location = New System.Drawing.Point(125, 86)
-        Me.tbPresentTemp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbPresentTemp.Location = New System.Drawing.Point(141, 108)
+        Me.tbPresentTemp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbPresentTemp.Name = "tbPresentTemp"
         Me.tbPresentTemp.ReadOnly = True
-        Me.tbPresentTemp.Size = New System.Drawing.Size(139, 22)
+        Me.tbPresentTemp.Size = New System.Drawing.Size(156, 26)
         Me.tbPresentTemp.TabIndex = 41
         '
         'GroupBox7
@@ -2613,11 +2628,11 @@ Partial Class FrmMain
         Me.GroupBox7.Controls.Add(Me.Label40)
         Me.GroupBox7.Controls.Add(Me.nudSetpointDeviceType)
         Me.GroupBox7.Controls.Add(Me.Label93)
-        Me.GroupBox7.Location = New System.Drawing.Point(8, 252)
-        Me.GroupBox7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox7.Location = New System.Drawing.Point(9, 315)
+        Me.GroupBox7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox7.Size = New System.Drawing.Size(814, 130)
+        Me.GroupBox7.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox7.Size = New System.Drawing.Size(916, 162)
         Me.GroupBox7.TabIndex = 36
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Common"
@@ -2625,20 +2640,20 @@ Partial Class FrmMain
         'Label94
         '
         Me.Label94.AutoSize = True
-        Me.Label94.Location = New System.Drawing.Point(249, 21)
+        Me.Label94.Location = New System.Drawing.Point(280, 26)
         Me.Label94.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label94.Name = "Label94"
-        Me.Label94.Size = New System.Drawing.Size(123, 17)
+        Me.Label94.Size = New System.Drawing.Size(139, 20)
         Me.Label94.TabIndex = 33
         Me.Label94.Text = "Connected Device"
         '
         'Label33
         '
         Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(8, 21)
+        Me.Label33.Location = New System.Drawing.Point(9, 26)
         Me.Label33.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(82, 17)
+        Me.Label33.Size = New System.Drawing.Size(90, 20)
         Me.Label33.TabIndex = 2
         Me.Label33.Text = "This Device"
         '
@@ -2646,10 +2661,10 @@ Partial Class FrmMain
         '
         Me.tmpUnitF.AutoSize = True
         Me.tmpUnitF.Checked = True
-        Me.tmpUnitF.Location = New System.Drawing.Point(12, 41)
-        Me.tmpUnitF.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tmpUnitF.Location = New System.Drawing.Point(14, 51)
+        Me.tmpUnitF.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tmpUnitF.Name = "tmpUnitF"
-        Me.tmpUnitF.Size = New System.Drawing.Size(97, 21)
+        Me.tmpUnitF.Size = New System.Drawing.Size(111, 24)
         Me.tmpUnitF.TabIndex = 0
         Me.tmpUnitF.TabStop = True
         Me.tmpUnitF.Text = "Fahrenheit"
@@ -2658,59 +2673,59 @@ Partial Class FrmMain
         'tempUnitC
         '
         Me.tempUnitC.AutoSize = True
-        Me.tempUnitC.Location = New System.Drawing.Point(12, 69)
-        Me.tempUnitC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tempUnitC.Location = New System.Drawing.Point(14, 86)
+        Me.tempUnitC.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tempUnitC.Name = "tempUnitC"
-        Me.tempUnitC.Size = New System.Drawing.Size(74, 21)
+        Me.tempUnitC.Size = New System.Drawing.Size(85, 24)
         Me.tempUnitC.TabIndex = 1
         Me.tempUnitC.Text = "Celsius"
         Me.tempUnitC.UseVisualStyleBackColor = True
         '
         'tbSgdDeviceType
         '
-        Me.tbSgdDeviceType.Location = New System.Drawing.Point(253, 98)
-        Me.tbSgdDeviceType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbSgdDeviceType.Location = New System.Drawing.Point(285, 122)
+        Me.tbSgdDeviceType.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbSgdDeviceType.Name = "tbSgdDeviceType"
         Me.tbSgdDeviceType.ReadOnly = True
-        Me.tbSgdDeviceType.Size = New System.Drawing.Size(104, 22)
+        Me.tbSgdDeviceType.Size = New System.Drawing.Size(116, 26)
         Me.tbSgdDeviceType.TabIndex = 32
         '
         'sgdTempUnits
         '
-        Me.sgdTempUnits.Location = New System.Drawing.Point(253, 57)
-        Me.sgdTempUnits.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sgdTempUnits.Location = New System.Drawing.Point(285, 71)
+        Me.sgdTempUnits.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sgdTempUnits.Name = "sgdTempUnits"
         Me.sgdTempUnits.ReadOnly = True
-        Me.sgdTempUnits.Size = New System.Drawing.Size(104, 22)
+        Me.sgdTempUnits.Size = New System.Drawing.Size(116, 26)
         Me.sgdTempUnits.TabIndex = 17
         '
         'Label40
         '
         Me.Label40.AutoSize = True
-        Me.Label40.Location = New System.Drawing.Point(151, 62)
+        Me.Label40.Location = New System.Drawing.Point(170, 78)
         Me.Label40.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(40, 17)
+        Me.Label40.Size = New System.Drawing.Size(46, 20)
         Me.Label40.TabIndex = 15
         Me.Label40.Text = "Units"
         '
         'nudSetpointDeviceType
         '
         Me.nudSetpointDeviceType.Hexadecimal = True
-        Me.nudSetpointDeviceType.Location = New System.Drawing.Point(11, 98)
-        Me.nudSetpointDeviceType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudSetpointDeviceType.Location = New System.Drawing.Point(12, 122)
+        Me.nudSetpointDeviceType.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudSetpointDeviceType.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
         Me.nudSetpointDeviceType.Name = "nudSetpointDeviceType"
-        Me.nudSetpointDeviceType.Size = New System.Drawing.Size(101, 22)
+        Me.nudSetpointDeviceType.Size = New System.Drawing.Size(114, 26)
         Me.nudSetpointDeviceType.TabIndex = 31
         '
         'Label93
         '
         Me.Label93.AutoSize = True
-        Me.Label93.Location = New System.Drawing.Point(119, 102)
+        Me.Label93.Location = New System.Drawing.Point(134, 128)
         Me.Label93.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label93.Name = "Label93"
-        Me.Label93.Size = New System.Drawing.Size(125, 17)
+        Me.Label93.Size = New System.Drawing.Size(137, 20)
         Me.Label93.TabIndex = 28
         Me.Label93.Text = "Device Type (Hex)"
         '
@@ -2723,21 +2738,21 @@ Partial Class FrmMain
         Me.GroupBox6.Controls.Add(Me.sgdTempRespCode)
         Me.GroupBox6.Controls.Add(Me.pbRequestTempOffset)
         Me.GroupBox6.Controls.Add(Me.sgdCurrentTempOffset)
-        Me.GroupBox6.Location = New System.Drawing.Point(8, 7)
-        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox6.Location = New System.Drawing.Point(9, 9)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox6.Size = New System.Drawing.Size(263, 182)
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox6.Size = New System.Drawing.Size(296, 228)
         Me.GroupBox6.TabIndex = 35
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Offset"
         '
         'pbSetTempOffset
         '
-        Me.pbSetTempOffset.Location = New System.Drawing.Point(8, 23)
-        Me.pbSetTempOffset.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbSetTempOffset.Location = New System.Drawing.Point(9, 29)
+        Me.pbSetTempOffset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbSetTempOffset.Name = "pbSetTempOffset"
-        Me.pbSetTempOffset.Size = New System.Drawing.Size(100, 30)
+        Me.pbSetTempOffset.Size = New System.Drawing.Size(112, 38)
         Me.pbSetTempOffset.TabIndex = 13
         Me.pbSetTempOffset.Text = "Set Offset"
         Me.pbSetTempOffset.UseVisualStyleBackColor = True
@@ -2745,58 +2760,58 @@ Partial Class FrmMain
         'Label36
         '
         Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(82, 66)
+        Me.Label36.Location = New System.Drawing.Point(92, 82)
         Me.Label36.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(97, 17)
+        Me.Label36.Size = New System.Drawing.Size(110, 20)
         Me.Label36.TabIndex = 3
         Me.Label36.Text = "Current Offset"
         '
         'Label90
         '
         Me.Label90.AutoSize = True
-        Me.Label90.Location = New System.Drawing.Point(137, 126)
+        Me.Label90.Location = New System.Drawing.Point(154, 158)
         Me.Label90.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label90.Name = "Label90"
-        Me.Label90.Size = New System.Drawing.Size(109, 17)
+        Me.Label90.Size = New System.Drawing.Size(124, 20)
         Me.Label90.TabIndex = 19
         Me.Label90.Text = "Response Code"
         '
         'nudTempOffset
         '
-        Me.nudTempOffset.Location = New System.Drawing.Point(8, 91)
-        Me.nudTempOffset.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudTempOffset.Location = New System.Drawing.Point(9, 114)
+        Me.nudTempOffset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudTempOffset.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudTempOffset.Name = "nudTempOffset"
-        Me.nudTempOffset.Size = New System.Drawing.Size(100, 22)
+        Me.nudTempOffset.Size = New System.Drawing.Size(112, 26)
         Me.nudTempOffset.TabIndex = 11
         '
         'sgdTempRespCode
         '
-        Me.sgdTempRespCode.Location = New System.Drawing.Point(146, 146)
-        Me.sgdTempRespCode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sgdTempRespCode.Location = New System.Drawing.Point(164, 182)
+        Me.sgdTempRespCode.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sgdTempRespCode.Name = "sgdTempRespCode"
         Me.sgdTempRespCode.ReadOnly = True
-        Me.sgdTempRespCode.Size = New System.Drawing.Size(98, 22)
+        Me.sgdTempRespCode.Size = New System.Drawing.Size(110, 26)
         Me.sgdTempRespCode.TabIndex = 18
         '
         'pbRequestTempOffset
         '
-        Me.pbRequestTempOffset.Location = New System.Drawing.Point(146, 23)
-        Me.pbRequestTempOffset.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbRequestTempOffset.Location = New System.Drawing.Point(164, 29)
+        Me.pbRequestTempOffset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbRequestTempOffset.Name = "pbRequestTempOffset"
-        Me.pbRequestTempOffset.Size = New System.Drawing.Size(100, 30)
+        Me.pbRequestTempOffset.Size = New System.Drawing.Size(112, 38)
         Me.pbRequestTempOffset.TabIndex = 12
         Me.pbRequestTempOffset.Text = "Get Offset"
         Me.pbRequestTempOffset.UseVisualStyleBackColor = True
         '
         'sgdCurrentTempOffset
         '
-        Me.sgdCurrentTempOffset.Location = New System.Drawing.Point(146, 89)
-        Me.sgdCurrentTempOffset.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sgdCurrentTempOffset.Location = New System.Drawing.Point(164, 111)
+        Me.sgdCurrentTempOffset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sgdCurrentTempOffset.Name = "sgdCurrentTempOffset"
         Me.sgdCurrentTempOffset.ReadOnly = True
-        Me.sgdCurrentTempOffset.Size = New System.Drawing.Size(98, 22)
+        Me.sgdCurrentTempOffset.Size = New System.Drawing.Size(110, 26)
         Me.sgdCurrentTempOffset.TabIndex = 16
         '
         'GroupBox5
@@ -2812,120 +2827,120 @@ Partial Class FrmMain
         Me.GroupBox5.Controls.Add(Me.Label92)
         Me.GroupBox5.Controls.Add(Me.sgdSetPoint2)
         Me.GroupBox5.Controls.Add(Me.Label91)
-        Me.GroupBox5.Location = New System.Drawing.Point(283, 7)
-        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox5.Location = New System.Drawing.Point(318, 9)
+        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox5.Size = New System.Drawing.Size(252, 244)
+        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox5.Size = New System.Drawing.Size(284, 305)
         Me.GroupBox5.TabIndex = 34
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Setpoint"
         '
         'pbSetSetPoint
         '
-        Me.pbSetSetPoint.Location = New System.Drawing.Point(11, 30)
-        Me.pbSetSetPoint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbSetSetPoint.Location = New System.Drawing.Point(12, 38)
+        Me.pbSetSetPoint.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbSetSetPoint.Name = "pbSetSetPoint"
-        Me.pbSetSetPoint.Size = New System.Drawing.Size(101, 30)
+        Me.pbSetSetPoint.Size = New System.Drawing.Size(114, 38)
         Me.pbSetSetPoint.TabIndex = 20
         Me.pbSetSetPoint.Text = "Set Setpoint"
         Me.pbSetSetPoint.UseVisualStyleBackColor = True
         '
         'tbSetpointResponseCode
         '
-        Me.tbSetpointResponseCode.Location = New System.Drawing.Point(135, 213)
-        Me.tbSetpointResponseCode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbSetpointResponseCode.Location = New System.Drawing.Point(152, 266)
+        Me.tbSetpointResponseCode.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbSetpointResponseCode.Name = "tbSetpointResponseCode"
         Me.tbSetpointResponseCode.ReadOnly = True
-        Me.tbSetpointResponseCode.Size = New System.Drawing.Size(104, 22)
+        Me.tbSetpointResponseCode.Size = New System.Drawing.Size(116, 26)
         Me.tbSetpointResponseCode.TabIndex = 33
         '
         'Label39
         '
         Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(132, 194)
+        Me.Label39.Location = New System.Drawing.Point(148, 242)
         Me.Label39.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(109, 17)
+        Me.Label39.Size = New System.Drawing.Size(124, 20)
         Me.Label39.TabIndex = 14
         Me.Label39.Text = "Response Code"
         '
         'pbRequestSetpoint
         '
-        Me.pbRequestSetpoint.Location = New System.Drawing.Point(136, 30)
-        Me.pbRequestSetpoint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbRequestSetpoint.Location = New System.Drawing.Point(153, 38)
+        Me.pbRequestSetpoint.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbRequestSetpoint.Name = "pbRequestSetpoint"
-        Me.pbRequestSetpoint.Size = New System.Drawing.Size(104, 30)
+        Me.pbRequestSetpoint.Size = New System.Drawing.Size(117, 38)
         Me.pbRequestSetpoint.TabIndex = 21
         Me.pbRequestSetpoint.Text = "Get Setpoint"
         Me.pbRequestSetpoint.UseVisualStyleBackColor = True
         '
         'nudSetPoint1
         '
-        Me.nudSetPoint1.Location = New System.Drawing.Point(11, 87)
-        Me.nudSetPoint1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudSetPoint1.Location = New System.Drawing.Point(12, 109)
+        Me.nudSetPoint1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudSetPoint1.Maximum = New Decimal(New Integer() {127, 0, 0, 0})
         Me.nudSetPoint1.Minimum = New Decimal(New Integer() {128, 0, 0, -2147483648})
         Me.nudSetPoint1.Name = "nudSetPoint1"
-        Me.nudSetPoint1.Size = New System.Drawing.Size(101, 22)
+        Me.nudSetPoint1.Size = New System.Drawing.Size(114, 26)
         Me.nudSetPoint1.TabIndex = 22
         '
         'cbSetpoint2Support
         '
         Me.cbSetpoint2Support.AutoSize = True
-        Me.cbSetpoint2Support.Location = New System.Drawing.Point(12, 126)
-        Me.cbSetpoint2Support.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbSetpoint2Support.Location = New System.Drawing.Point(14, 158)
+        Me.cbSetpoint2Support.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbSetpoint2Support.Name = "cbSetpoint2Support"
-        Me.cbSetpoint2Support.Size = New System.Drawing.Size(96, 21)
+        Me.cbSetpoint2Support.Size = New System.Drawing.Size(110, 24)
         Me.cbSetpoint2Support.TabIndex = 30
         Me.cbSetpoint2Support.Text = "Supported"
         Me.cbSetpoint2Support.UseVisualStyleBackColor = True
         '
         'nudSetPoint2
         '
-        Me.nudSetPoint2.Location = New System.Drawing.Point(11, 150)
-        Me.nudSetPoint2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudSetPoint2.Location = New System.Drawing.Point(12, 188)
+        Me.nudSetPoint2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudSetPoint2.Maximum = New Decimal(New Integer() {127, 0, 0, 0})
         Me.nudSetPoint2.Minimum = New Decimal(New Integer() {128, 0, 0, -2147483648})
         Me.nudSetPoint2.Name = "nudSetPoint2"
-        Me.nudSetPoint2.Size = New System.Drawing.Size(101, 22)
+        Me.nudSetPoint2.Size = New System.Drawing.Size(114, 26)
         Me.nudSetPoint2.TabIndex = 23
         '
         'sgdSetPoint1
         '
-        Me.sgdSetPoint1.Location = New System.Drawing.Point(136, 87)
-        Me.sgdSetPoint1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sgdSetPoint1.Location = New System.Drawing.Point(153, 109)
+        Me.sgdSetPoint1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sgdSetPoint1.Name = "sgdSetPoint1"
         Me.sgdSetPoint1.ReadOnly = True
-        Me.sgdSetPoint1.Size = New System.Drawing.Size(102, 22)
+        Me.sgdSetPoint1.Size = New System.Drawing.Size(114, 26)
         Me.sgdSetPoint1.TabIndex = 24
         '
         'Label92
         '
         Me.Label92.AutoSize = True
-        Me.Label92.Location = New System.Drawing.Point(120, 126)
+        Me.Label92.Location = New System.Drawing.Point(135, 158)
         Me.Label92.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label92.Name = "Label92"
-        Me.Label92.Size = New System.Drawing.Size(68, 17)
+        Me.Label92.Size = New System.Drawing.Size(78, 20)
         Me.Label92.TabIndex = 27
         Me.Label92.Text = "Setpoint2"
         '
         'sgdSetPoint2
         '
-        Me.sgdSetPoint2.Location = New System.Drawing.Point(133, 149)
-        Me.sgdSetPoint2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sgdSetPoint2.Location = New System.Drawing.Point(150, 186)
+        Me.sgdSetPoint2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sgdSetPoint2.Name = "sgdSetPoint2"
         Me.sgdSetPoint2.ReadOnly = True
-        Me.sgdSetPoint2.Size = New System.Drawing.Size(104, 22)
+        Me.sgdSetPoint2.Size = New System.Drawing.Size(116, 26)
         Me.sgdSetPoint2.TabIndex = 25
         '
         'Label91
         '
         Me.Label91.AutoSize = True
-        Me.Label91.Location = New System.Drawing.Point(92, 68)
+        Me.Label91.Location = New System.Drawing.Point(104, 85)
         Me.Label91.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label91.Name = "Label91"
-        Me.Label91.Size = New System.Drawing.Size(68, 17)
+        Me.Label91.Size = New System.Drawing.Size(78, 20)
         Me.Label91.TabIndex = 26
         Me.Label91.Text = "Setpoint1"
         '
@@ -2933,10 +2948,10 @@ Partial Class FrmMain
         '
         Me.commodity.Controls.Add(Me.cdCommodityGb)
         Me.commodity.Controls.Add(Me.tdCommodityCodes)
-        Me.commodity.Location = New System.Drawing.Point(4, 25)
-        Me.commodity.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.commodity.Location = New System.Drawing.Point(4, 29)
+        Me.commodity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.commodity.Name = "commodity"
-        Me.commodity.Size = New System.Drawing.Size(833, 389)
+        Me.commodity.Size = New System.Drawing.Size(938, 489)
         Me.commodity.TabIndex = 4
         Me.commodity.Text = "Commodity"
         Me.commodity.UseVisualStyleBackColor = True
@@ -2974,11 +2989,11 @@ Partial Class FrmMain
         Me.cdCommodityGb.Controls.Add(Me.Label50)
         Me.cdCommodityGb.Controls.Add(Me.cbCommoditySupported1)
         Me.cdCommodityGb.Controls.Add(Me.Label37)
-        Me.cdCommodityGb.Location = New System.Drawing.Point(304, 14)
-        Me.cdCommodityGb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cdCommodityGb.Location = New System.Drawing.Point(342, 18)
+        Me.cdCommodityGb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cdCommodityGb.Name = "cdCommodityGb"
-        Me.cdCommodityGb.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.cdCommodityGb.Size = New System.Drawing.Size(505, 358)
+        Me.cdCommodityGb.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.cdCommodityGb.Size = New System.Drawing.Size(568, 448)
         Me.cdCommodityGb.TabIndex = 32
         Me.cdCommodityGb.TabStop = False
         Me.cdCommodityGb.Text = "Connected Device"
@@ -2986,138 +3001,138 @@ Partial Class FrmMain
         'Label118
         '
         Me.Label118.AutoSize = True
-        Me.Label118.Location = New System.Drawing.Point(135, 11)
+        Me.Label118.Location = New System.Drawing.Point(152, 14)
         Me.Label118.Name = "Label118"
-        Me.Label118.Size = New System.Drawing.Size(89, 34)
+        Me.Label118.Size = New System.Drawing.Size(101, 40)
         Me.Label118.TabIndex = 47
         Me.Label118.Text = "Commodity #" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "     10=All"
         '
         'nudCommodityNum
         '
-        Me.nudCommodityNum.Location = New System.Drawing.Point(151, 46)
+        Me.nudCommodityNum.Location = New System.Drawing.Point(170, 58)
         Me.nudCommodityNum.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.nudCommodityNum.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.nudCommodityNum.Name = "nudCommodityNum"
-        Me.nudCommodityNum.Size = New System.Drawing.Size(50, 22)
+        Me.nudCommodityNum.Size = New System.Drawing.Size(56, 26)
         Me.nudCommodityNum.TabIndex = 46
         Me.nudCommodityNum.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'CommodityChk9
         '
-        Me.CommodityChk9.Location = New System.Drawing.Point(200, 258)
-        Me.CommodityChk9.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk9.Location = New System.Drawing.Point(225, 322)
+        Me.CommodityChk9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk9.Name = "CommodityChk9"
-        Me.CommodityChk9.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk9.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk9.TabIndex = 45
         Me.CommodityChk9.Text = "9"
         Me.CommodityChk9.UseVisualStyleBackColor = True
         '
         'CommodityChk8
         '
-        Me.CommodityChk8.Location = New System.Drawing.Point(152, 258)
-        Me.CommodityChk8.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk8.Location = New System.Drawing.Point(171, 322)
+        Me.CommodityChk8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk8.Name = "CommodityChk8"
-        Me.CommodityChk8.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk8.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk8.TabIndex = 44
         Me.CommodityChk8.Text = "8"
         Me.CommodityChk8.UseVisualStyleBackColor = True
         '
         'ChkAllCommodity
         '
-        Me.ChkAllCommodity.Location = New System.Drawing.Point(139, 197)
-        Me.ChkAllCommodity.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ChkAllCommodity.Location = New System.Drawing.Point(156, 246)
+        Me.ChkAllCommodity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ChkAllCommodity.Name = "ChkAllCommodity"
-        Me.ChkAllCommodity.Size = New System.Drawing.Size(91, 25)
+        Me.ChkAllCommodity.Size = New System.Drawing.Size(102, 31)
         Me.ChkAllCommodity.TabIndex = 43
         Me.ChkAllCommodity.Text = "Check All"
         Me.ChkAllCommodity.UseVisualStyleBackColor = True
         '
         'GrphCommodityBtn
         '
-        Me.GrphCommodityBtn.Location = New System.Drawing.Point(8, 286)
-        Me.GrphCommodityBtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GrphCommodityBtn.Location = New System.Drawing.Point(9, 358)
+        Me.GrphCommodityBtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GrphCommodityBtn.Name = "GrphCommodityBtn"
-        Me.GrphCommodityBtn.Size = New System.Drawing.Size(133, 30)
+        Me.GrphCommodityBtn.Size = New System.Drawing.Size(150, 38)
         Me.GrphCommodityBtn.TabIndex = 42
         Me.GrphCommodityBtn.Text = "Graph Commodity"
         Me.GrphCommodityBtn.UseVisualStyleBackColor = True
         '
         'CommodityChk1
         '
-        Me.CommodityChk1.Location = New System.Drawing.Point(56, 230)
-        Me.CommodityChk1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk1.Location = New System.Drawing.Point(63, 288)
+        Me.CommodityChk1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk1.Name = "CommodityChk1"
-        Me.CommodityChk1.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk1.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk1.TabIndex = 41
         Me.CommodityChk1.Text = "1"
         Me.CommodityChk1.UseVisualStyleBackColor = True
         '
         'CommodityChk2
         '
-        Me.CommodityChk2.Location = New System.Drawing.Point(104, 230)
-        Me.CommodityChk2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk2.Location = New System.Drawing.Point(117, 288)
+        Me.CommodityChk2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk2.Name = "CommodityChk2"
-        Me.CommodityChk2.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk2.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk2.TabIndex = 40
         Me.CommodityChk2.Text = "2"
         Me.CommodityChk2.UseVisualStyleBackColor = True
         '
         'CommodityChk3
         '
-        Me.CommodityChk3.Location = New System.Drawing.Point(152, 230)
-        Me.CommodityChk3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk3.Location = New System.Drawing.Point(171, 288)
+        Me.CommodityChk3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk3.Name = "CommodityChk3"
-        Me.CommodityChk3.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk3.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk3.TabIndex = 39
         Me.CommodityChk3.Text = "3"
         Me.CommodityChk3.UseVisualStyleBackColor = True
         '
         'CommodityChk4
         '
-        Me.CommodityChk4.Location = New System.Drawing.Point(200, 230)
-        Me.CommodityChk4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk4.Location = New System.Drawing.Point(225, 288)
+        Me.CommodityChk4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk4.Name = "CommodityChk4"
-        Me.CommodityChk4.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk4.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk4.TabIndex = 38
         Me.CommodityChk4.Text = "4"
         Me.CommodityChk4.UseVisualStyleBackColor = True
         '
         'CommodityChk5
         '
-        Me.CommodityChk5.Location = New System.Drawing.Point(9, 258)
-        Me.CommodityChk5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk5.Location = New System.Drawing.Point(10, 322)
+        Me.CommodityChk5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk5.Name = "CommodityChk5"
-        Me.CommodityChk5.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk5.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk5.TabIndex = 37
         Me.CommodityChk5.Text = "5"
         Me.CommodityChk5.UseVisualStyleBackColor = True
         '
         'CommodityChk6
         '
-        Me.CommodityChk6.Location = New System.Drawing.Point(57, 258)
-        Me.CommodityChk6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk6.Location = New System.Drawing.Point(64, 322)
+        Me.CommodityChk6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk6.Name = "CommodityChk6"
-        Me.CommodityChk6.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk6.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk6.TabIndex = 36
         Me.CommodityChk6.Text = "6"
         Me.CommodityChk6.UseVisualStyleBackColor = True
         '
         'CommodityChk7
         '
-        Me.CommodityChk7.Location = New System.Drawing.Point(105, 258)
-        Me.CommodityChk7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk7.Location = New System.Drawing.Point(118, 322)
+        Me.CommodityChk7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk7.Name = "CommodityChk7"
-        Me.CommodityChk7.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk7.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk7.TabIndex = 35
         Me.CommodityChk7.Text = "7"
         Me.CommodityChk7.UseVisualStyleBackColor = True
         '
         'CommodityChk0
         '
-        Me.CommodityChk0.Location = New System.Drawing.Point(8, 230)
-        Me.CommodityChk0.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityChk0.Location = New System.Drawing.Point(9, 288)
+        Me.CommodityChk0.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityChk0.Name = "CommodityChk0"
-        Me.CommodityChk0.Size = New System.Drawing.Size(40, 21)
+        Me.CommodityChk0.Size = New System.Drawing.Size(45, 26)
         Me.CommodityChk0.TabIndex = 34
         Me.CommodityChk0.Text = "0"
         Me.CommodityChk0.UseVisualStyleBackColor = True
@@ -3125,22 +3140,22 @@ Partial Class FrmMain
         'CommodityIntervalVal
         '
         Me.CommodityIntervalVal.Increment = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.CommodityIntervalVal.Location = New System.Drawing.Point(251, 322)
-        Me.CommodityIntervalVal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityIntervalVal.Location = New System.Drawing.Point(282, 402)
+        Me.CommodityIntervalVal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityIntervalVal.Maximum = New Decimal(New Integer() {3600, 0, 0, 0})
         Me.CommodityIntervalVal.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.CommodityIntervalVal.Name = "CommodityIntervalVal"
-        Me.CommodityIntervalVal.Size = New System.Drawing.Size(240, 22)
+        Me.CommodityIntervalVal.Size = New System.Drawing.Size(270, 26)
         Me.CommodityIntervalVal.TabIndex = 33
         Me.CommodityIntervalVal.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'CommodityIntervalChkBox
         '
         Me.CommodityIntervalChkBox.AutoSize = True
-        Me.CommodityIntervalChkBox.Location = New System.Drawing.Point(8, 325)
-        Me.CommodityIntervalChkBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityIntervalChkBox.Location = New System.Drawing.Point(9, 406)
+        Me.CommodityIntervalChkBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityIntervalChkBox.Name = "CommodityIntervalChkBox"
-        Me.CommodityIntervalChkBox.Size = New System.Drawing.Size(228, 21)
+        Me.CommodityIntervalChkBox.Size = New System.Drawing.Size(255, 24)
         Me.CommodityIntervalChkBox.TabIndex = 32
         Me.CommodityIntervalChkBox.Text = "Commodity Interval Query (sec)"
         Me.CommodityIntervalChkBox.UseVisualStyleBackColor = True
@@ -3148,20 +3163,20 @@ Partial Class FrmMain
         'CommodityLogChkBox
         '
         Me.CommodityLogChkBox.AutoSize = True
-        Me.CommodityLogChkBox.Location = New System.Drawing.Point(8, 202)
-        Me.CommodityLogChkBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CommodityLogChkBox.Location = New System.Drawing.Point(9, 252)
+        Me.CommodityLogChkBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CommodityLogChkBox.Name = "CommodityLogChkBox"
-        Me.CommodityLogChkBox.Size = New System.Drawing.Size(127, 21)
+        Me.CommodityLogChkBox.Size = New System.Drawing.Size(145, 24)
         Me.CommodityLogChkBox.TabIndex = 31
         Me.CommodityLogChkBox.Text = "Log Commodity"
         Me.CommodityLogChkBox.UseVisualStyleBackColor = True
         '
         'pbGetCommodity
         '
-        Me.pbGetCommodity.Location = New System.Drawing.Point(8, 23)
-        Me.pbGetCommodity.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbGetCommodity.Location = New System.Drawing.Point(9, 29)
+        Me.pbGetCommodity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbGetCommodity.Name = "pbGetCommodity"
-        Me.pbGetCommodity.Size = New System.Drawing.Size(117, 28)
+        Me.pbGetCommodity.Size = New System.Drawing.Size(132, 35)
         Me.pbGetCommodity.TabIndex = 0
         Me.pbGetCommodity.Text = "Get Commodity"
         Me.pbGetCommodity.UseVisualStyleBackColor = True
@@ -3169,18 +3184,18 @@ Partial Class FrmMain
         'tbCommodityFreq
         '
         Me.tbCommodityFreq.Enabled = False
-        Me.tbCommodityFreq.Location = New System.Drawing.Point(251, 203)
-        Me.tbCommodityFreq.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbCommodityFreq.Location = New System.Drawing.Point(282, 254)
+        Me.tbCommodityFreq.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbCommodityFreq.Name = "tbCommodityFreq"
-        Me.tbCommodityFreq.Size = New System.Drawing.Size(132, 22)
+        Me.tbCommodityFreq.Size = New System.Drawing.Size(148, 26)
         Me.tbCommodityFreq.TabIndex = 30
         '
         'pbSetCommodity
         '
-        Me.pbSetCommodity.Location = New System.Drawing.Point(8, 66)
-        Me.pbSetCommodity.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbSetCommodity.Location = New System.Drawing.Point(9, 82)
+        Me.pbSetCommodity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbSetCommodity.Name = "pbSetCommodity"
-        Me.pbSetCommodity.Size = New System.Drawing.Size(117, 28)
+        Me.pbSetCommodity.Size = New System.Drawing.Size(132, 35)
         Me.pbSetCommodity.TabIndex = 1
         Me.pbSetCommodity.Text = "Set Commodity"
         Me.pbSetCommodity.UseVisualStyleBackColor = True
@@ -3188,18 +3203,18 @@ Partial Class FrmMain
         'tbCommodityAmount
         '
         Me.tbCommodityAmount.Enabled = False
-        Me.tbCommodityAmount.Location = New System.Drawing.Point(251, 149)
-        Me.tbCommodityAmount.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbCommodityAmount.Location = New System.Drawing.Point(282, 186)
+        Me.tbCommodityAmount.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbCommodityAmount.Name = "tbCommodityAmount"
-        Me.tbCommodityAmount.Size = New System.Drawing.Size(132, 22)
+        Me.tbCommodityAmount.Size = New System.Drawing.Size(148, 26)
         Me.tbCommodityAmount.TabIndex = 29
         '
         'pbGetCommodSub
         '
-        Me.pbGetCommodSub.Location = New System.Drawing.Point(8, 112)
-        Me.pbGetCommodSub.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbGetCommodSub.Location = New System.Drawing.Point(9, 140)
+        Me.pbGetCommodSub.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbGetCommodSub.Name = "pbGetCommodSub"
-        Me.pbGetCommodSub.Size = New System.Drawing.Size(199, 28)
+        Me.pbGetCommodSub.Size = New System.Drawing.Size(224, 35)
         Me.pbGetCommodSub.TabIndex = 2
         Me.pbGetCommodSub.Text = "Get Commodity Subscription"
         Me.pbGetCommodSub.UseVisualStyleBackColor = True
@@ -3207,18 +3222,18 @@ Partial Class FrmMain
         'tbCommodityRate
         '
         Me.tbCommodityRate.Enabled = False
-        Me.tbCommodityRate.Location = New System.Drawing.Point(251, 91)
-        Me.tbCommodityRate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbCommodityRate.Location = New System.Drawing.Point(282, 114)
+        Me.tbCommodityRate.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbCommodityRate.Name = "tbCommodityRate"
-        Me.tbCommodityRate.Size = New System.Drawing.Size(132, 22)
+        Me.tbCommodityRate.Size = New System.Drawing.Size(148, 26)
         Me.tbCommodityRate.TabIndex = 28
         '
         'pbSetCommodSub
         '
-        Me.pbSetCommodSub.Location = New System.Drawing.Point(8, 156)
-        Me.pbSetCommodSub.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbSetCommodSub.Location = New System.Drawing.Point(9, 195)
+        Me.pbSetCommodSub.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbSetCommodSub.Name = "pbSetCommodSub"
-        Me.pbSetCommodSub.Size = New System.Drawing.Size(199, 28)
+        Me.pbSetCommodSub.Size = New System.Drawing.Size(224, 35)
         Me.pbSetCommodSub.TabIndex = 3
         Me.pbSetCommodSub.Text = "Set Commodity Subscription"
         Me.pbSetCommodSub.UseVisualStyleBackColor = True
@@ -3226,10 +3241,10 @@ Partial Class FrmMain
         'Label35
         '
         Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(248, 183)
+        Me.Label35.Location = New System.Drawing.Point(279, 229)
         Me.Label35.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(194, 17)
+        Me.Label35.Size = New System.Drawing.Size(218, 20)
         Me.Label35.TabIndex = 26
         Me.Label35.Text = "Update Frequency (Seconds)"
         '
@@ -3238,20 +3253,20 @@ Partial Class FrmMain
         Me.lbCommodityCode1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.lbCommodityCode1.FormattingEnabled = True
         Me.lbCommodityCode1.Items.AddRange(New Object() {"0 Electricity consumed", "1 Electricity produced", "2 Natural gas - cubic ft/hr", "3 Water - gal/hr", "4 Natural gas - cubic meters/hr", "5 Water - liters/hr", "6 Total Energy Storage/Take Capacity", "7 Present Energy Storage/Take Capacity", "8 Rated Max Consumption Level Elect.", "9 Rated Max Production Level Elect."})
-        Me.lbCommodityCode1.Location = New System.Drawing.Point(251, 37)
-        Me.lbCommodityCode1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lbCommodityCode1.Location = New System.Drawing.Point(282, 46)
+        Me.lbCommodityCode1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.lbCommodityCode1.Name = "lbCommodityCode1"
-        Me.lbCommodityCode1.Size = New System.Drawing.Size(240, 24)
+        Me.lbCommodityCode1.Size = New System.Drawing.Size(270, 28)
         Me.lbCommodityCode1.TabIndex = 24
         '
         'cbEstimated1
         '
         Me.cbEstimated1.AutoSize = True
         Me.cbEstimated1.Enabled = False
-        Me.cbEstimated1.Location = New System.Drawing.Point(251, 247)
-        Me.cbEstimated1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbEstimated1.Location = New System.Drawing.Point(282, 309)
+        Me.cbEstimated1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbEstimated1.Name = "cbEstimated1"
-        Me.cbEstimated1.Size = New System.Drawing.Size(92, 21)
+        Me.cbEstimated1.Size = New System.Drawing.Size(107, 24)
         Me.cbEstimated1.TabIndex = 25
         Me.cbEstimated1.Text = "Estimated"
         Me.cbEstimated1.UseVisualStyleBackColor = True
@@ -3259,20 +3274,20 @@ Partial Class FrmMain
         'Label51
         '
         Me.Label51.AutoSize = True
-        Me.Label51.Location = New System.Drawing.Point(248, 18)
+        Me.Label51.Location = New System.Drawing.Point(279, 22)
         Me.Label51.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label51.Name = "Label51"
-        Me.Label51.Size = New System.Drawing.Size(114, 17)
+        Me.Label51.Size = New System.Drawing.Size(130, 20)
         Me.Label51.TabIndex = 18
         Me.Label51.Text = "Commodity Code"
         '
         'Label50
         '
         Me.Label50.AutoSize = True
-        Me.Label50.Location = New System.Drawing.Point(249, 71)
+        Me.Label50.Location = New System.Drawing.Point(280, 89)
         Me.Label50.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label50.Name = "Label50"
-        Me.Label50.Size = New System.Drawing.Size(158, 17)
+        Me.Label50.Size = New System.Drawing.Size(180, 20)
         Me.Label50.TabIndex = 19
         Me.Label50.Text = "Instantaneous Rate (W)"
         '
@@ -3280,10 +3295,10 @@ Partial Class FrmMain
         '
         Me.cbCommoditySupported1.AutoSize = True
         Me.cbCommoditySupported1.Enabled = False
-        Me.cbCommoditySupported1.Location = New System.Drawing.Point(251, 282)
-        Me.cbCommoditySupported1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbCommoditySupported1.Location = New System.Drawing.Point(282, 352)
+        Me.cbCommoditySupported1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbCommoditySupported1.Name = "cbCommoditySupported1"
-        Me.cbCommoditySupported1.Size = New System.Drawing.Size(96, 21)
+        Me.cbCommoditySupported1.Size = New System.Drawing.Size(110, 24)
         Me.cbCommoditySupported1.TabIndex = 23
         Me.cbCommoditySupported1.Text = "Supported"
         Me.cbCommoditySupported1.UseVisualStyleBackColor = True
@@ -3291,10 +3306,10 @@ Partial Class FrmMain
         'Label37
         '
         Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(249, 130)
+        Me.Label37.Location = New System.Drawing.Point(280, 162)
         Me.Label37.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(174, 17)
+        Me.Label37.Size = New System.Drawing.Size(195, 20)
         Me.Label37.TabIndex = 21
         Me.Label37.Text = "Cumulative Amount (W-hr)"
         '
@@ -3311,11 +3326,11 @@ Partial Class FrmMain
         Me.tdCommodityCodes.Controls.Add(Me.cbCommoditySupported)
         Me.tdCommodityCodes.Controls.Add(Me.nudCommodityAmount)
         Me.tdCommodityCodes.Controls.Add(Me.pbCommoditySave)
-        Me.tdCommodityCodes.Location = New System.Drawing.Point(14, 14)
-        Me.tdCommodityCodes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tdCommodityCodes.Location = New System.Drawing.Point(16, 18)
+        Me.tdCommodityCodes.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tdCommodityCodes.Name = "tdCommodityCodes"
-        Me.tdCommodityCodes.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.tdCommodityCodes.Size = New System.Drawing.Size(261, 358)
+        Me.tdCommodityCodes.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.tdCommodityCodes.Size = New System.Drawing.Size(294, 448)
         Me.tdCommodityCodes.TabIndex = 18
         Me.tdCommodityCodes.TabStop = False
         Me.tdCommodityCodes.Text = "This Device"
@@ -3325,108 +3340,108 @@ Partial Class FrmMain
         Me.lbCommodityCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.lbCommodityCode.FormattingEnabled = True
         Me.lbCommodityCode.Items.AddRange(New Object() {"0 Electricity consumed", "1 Electricity produced", "2 Natural gas - cubic ft/hr", "3 Water - gal/hr", "4 Natural gas - cubic meters/hr", "5 Water - liters/hr", "6 Total Energy Storage/Take Capacity", "7 Present Energy Storage/Take Capacity", "8 Rated Max Consumption Level Elect.", "9 Rated Max Production Level Elect."})
-        Me.lbCommodityCode.Location = New System.Drawing.Point(8, 43)
-        Me.lbCommodityCode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lbCommodityCode.Location = New System.Drawing.Point(9, 54)
+        Me.lbCommodityCode.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.lbCommodityCode.Name = "lbCommodityCode"
-        Me.lbCommodityCode.Size = New System.Drawing.Size(240, 24)
+        Me.lbCommodityCode.Size = New System.Drawing.Size(270, 28)
         Me.lbCommodityCode.TabIndex = 11
         '
         'nudCommodityFreq
         '
-        Me.nudCommodityFreq.Location = New System.Drawing.Point(8, 210)
-        Me.nudCommodityFreq.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCommodityFreq.Location = New System.Drawing.Point(9, 262)
+        Me.nudCommodityFreq.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCommodityFreq.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
         Me.nudCommodityFreq.Name = "nudCommodityFreq"
-        Me.nudCommodityFreq.Size = New System.Drawing.Size(160, 22)
+        Me.nudCommodityFreq.Size = New System.Drawing.Size(180, 26)
         Me.nudCommodityFreq.TabIndex = 17
         Me.nudCommodityFreq.Value = New Decimal(New Integer() {300, 0, 0, 0})
         '
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(7, 23)
+        Me.Label31.Location = New System.Drawing.Point(8, 29)
         Me.Label31.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(114, 17)
+        Me.Label31.Size = New System.Drawing.Size(130, 20)
         Me.Label31.TabIndex = 2
         Me.Label31.Text = "Commodity Code"
         '
         'Label59
         '
         Me.Label59.AutoSize = True
-        Me.Label59.Location = New System.Drawing.Point(7, 190)
+        Me.Label59.Location = New System.Drawing.Point(8, 238)
         Me.Label59.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label59.Name = "Label59"
-        Me.Label59.Size = New System.Drawing.Size(194, 17)
+        Me.Label59.Size = New System.Drawing.Size(218, 20)
         Me.Label59.TabIndex = 16
         Me.Label59.Text = "Update Frequency (Seconds)"
         '
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(7, 78)
+        Me.Label32.Location = New System.Drawing.Point(8, 98)
         Me.Label32.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(158, 17)
+        Me.Label32.Size = New System.Drawing.Size(180, 20)
         Me.Label32.TabIndex = 4
         Me.Label32.Text = "Instantaneous Rate (W)"
         '
         'cbEstimated
         '
         Me.cbEstimated.AutoSize = True
-        Me.cbEstimated.Location = New System.Drawing.Point(8, 254)
-        Me.cbEstimated.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbEstimated.Location = New System.Drawing.Point(9, 318)
+        Me.cbEstimated.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbEstimated.Name = "cbEstimated"
-        Me.cbEstimated.Size = New System.Drawing.Size(92, 21)
+        Me.cbEstimated.Size = New System.Drawing.Size(107, 24)
         Me.cbEstimated.TabIndex = 13
         Me.cbEstimated.Text = "Estimated"
         Me.cbEstimated.UseVisualStyleBackColor = True
         '
         'nudCommodityRate
         '
-        Me.nudCommodityRate.Location = New System.Drawing.Point(8, 98)
-        Me.nudCommodityRate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCommodityRate.Location = New System.Drawing.Point(9, 122)
+        Me.nudCommodityRate.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCommodityRate.Maximum = New Decimal(New Integer() {-1, 65535, 0, 0})
         Me.nudCommodityRate.Name = "nudCommodityRate"
-        Me.nudCommodityRate.Size = New System.Drawing.Size(160, 22)
+        Me.nudCommodityRate.Size = New System.Drawing.Size(180, 26)
         Me.nudCommodityRate.TabIndex = 5
         '
         'Label34
         '
         Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(7, 133)
+        Me.Label34.Location = New System.Drawing.Point(8, 166)
         Me.Label34.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(174, 17)
+        Me.Label34.Size = New System.Drawing.Size(195, 20)
         Me.Label34.TabIndex = 6
         Me.Label34.Text = "Cumulative Amount (W-hr)"
         '
         'cbCommoditySupported
         '
         Me.cbCommoditySupported.AutoSize = True
-        Me.cbCommoditySupported.Location = New System.Drawing.Point(8, 290)
-        Me.cbCommoditySupported.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbCommoditySupported.Location = New System.Drawing.Point(9, 362)
+        Me.cbCommoditySupported.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbCommoditySupported.Name = "cbCommoditySupported"
-        Me.cbCommoditySupported.Size = New System.Drawing.Size(96, 21)
+        Me.cbCommoditySupported.Size = New System.Drawing.Size(110, 24)
         Me.cbCommoditySupported.TabIndex = 10
         Me.cbCommoditySupported.Text = "Supported"
         Me.cbCommoditySupported.UseVisualStyleBackColor = True
         '
         'nudCommodityAmount
         '
-        Me.nudCommodityAmount.Location = New System.Drawing.Point(8, 154)
-        Me.nudCommodityAmount.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCommodityAmount.Location = New System.Drawing.Point(9, 192)
+        Me.nudCommodityAmount.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCommodityAmount.Maximum = New Decimal(New Integer() {-1, 65535, 0, 0})
         Me.nudCommodityAmount.Name = "nudCommodityAmount"
-        Me.nudCommodityAmount.Size = New System.Drawing.Size(160, 22)
+        Me.nudCommodityAmount.Size = New System.Drawing.Size(180, 26)
         Me.nudCommodityAmount.TabIndex = 7
         '
         'pbCommoditySave
         '
-        Me.pbCommoditySave.Location = New System.Drawing.Point(130, 293)
-        Me.pbCommoditySave.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbCommoditySave.Location = New System.Drawing.Point(146, 366)
+        Me.pbCommoditySave.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbCommoditySave.Name = "pbCommoditySave"
-        Me.pbCommoditySave.Size = New System.Drawing.Size(100, 28)
+        Me.pbCommoditySave.Size = New System.Drawing.Size(112, 35)
         Me.pbCommoditySave.TabIndex = 8
         Me.pbCommoditySave.Text = "Save"
         Me.pbCommoditySave.UseVisualStyleBackColor = True
@@ -3438,10 +3453,10 @@ Partial Class FrmMain
         Me.getSet.Controls.Add(Me.gbPrefLevel)
         Me.getSet.Controls.Add(Me.gbActivation)
         Me.getSet.Controls.Add(Me.gbEnergyPrice)
-        Me.getSet.Location = New System.Drawing.Point(4, 25)
-        Me.getSet.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.getSet.Location = New System.Drawing.Point(4, 29)
+        Me.getSet.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.getSet.Name = "getSet"
-        Me.getSet.Size = New System.Drawing.Size(833, 389)
+        Me.getSet.Size = New System.Drawing.Size(938, 489)
         Me.getSet.TabIndex = 5
         Me.getSet.Text = "Get/Set"
         Me.getSet.UseVisualStyleBackColor = True
@@ -3450,31 +3465,31 @@ Partial Class FrmMain
         '
         Me.gbTierGetSet.Controls.Add(Me.pfGetTier)
         Me.gbTierGetSet.Controls.Add(Me.pbSetTier)
-        Me.gbTierGetSet.Location = New System.Drawing.Point(464, 91)
+        Me.gbTierGetSet.Location = New System.Drawing.Point(522, 114)
         Me.gbTierGetSet.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.gbTierGetSet.Name = "gbTierGetSet"
         Me.gbTierGetSet.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.gbTierGetSet.Size = New System.Drawing.Size(357, 101)
+        Me.gbTierGetSet.Size = New System.Drawing.Size(402, 126)
         Me.gbTierGetSet.TabIndex = 29
         Me.gbTierGetSet.TabStop = False
         Me.gbTierGetSet.Text = "Tier"
         '
         'pfGetTier
         '
-        Me.pfGetTier.Location = New System.Drawing.Point(18, 25)
-        Me.pfGetTier.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pfGetTier.Location = New System.Drawing.Point(20, 31)
+        Me.pfGetTier.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pfGetTier.Name = "pfGetTier"
-        Me.pfGetTier.Size = New System.Drawing.Size(136, 28)
+        Me.pfGetTier.Size = New System.Drawing.Size(153, 35)
         Me.pfGetTier.TabIndex = 2
         Me.pfGetTier.Text = "Get Tier"
         Me.pfGetTier.UseVisualStyleBackColor = True
         '
         'pbSetTier
         '
-        Me.pbSetTier.Location = New System.Drawing.Point(18, 60)
-        Me.pbSetTier.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbSetTier.Location = New System.Drawing.Point(20, 75)
+        Me.pbSetTier.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbSetTier.Name = "pbSetTier"
-        Me.pbSetTier.Size = New System.Drawing.Size(136, 28)
+        Me.pbSetTier.Size = New System.Drawing.Size(153, 35)
         Me.pbSetTier.TabIndex = 3
         Me.pbSetTier.Text = "Set Tier"
         Me.pbSetTier.UseVisualStyleBackColor = True
@@ -3485,11 +3500,11 @@ Partial Class FrmMain
         Me.gbPendingEvent.Controls.Add(Me.tbPendEventTime)
         Me.gbPendingEvent.Controls.Add(Me.tbPendEventType)
         Me.gbPendingEvent.Controls.Add(Me.Label120)
-        Me.gbPendingEvent.Location = New System.Drawing.Point(464, 5)
+        Me.gbPendingEvent.Location = New System.Drawing.Point(522, 6)
         Me.gbPendingEvent.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.gbPendingEvent.Name = "gbPendingEvent"
         Me.gbPendingEvent.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.gbPendingEvent.Size = New System.Drawing.Size(357, 80)
+        Me.gbPendingEvent.Size = New System.Drawing.Size(402, 100)
         Me.gbPendingEvent.TabIndex = 28
         Me.gbPendingEvent.TabStop = False
         Me.gbPendingEvent.Text = "Pending Event"
@@ -3497,40 +3512,40 @@ Partial Class FrmMain
         'Label121
         '
         Me.Label121.AutoSize = True
-        Me.Label121.Location = New System.Drawing.Point(18, 25)
+        Me.Label121.Location = New System.Drawing.Point(20, 31)
         Me.Label121.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label121.Name = "Label121"
-        Me.Label121.Size = New System.Drawing.Size(136, 17)
+        Me.Label121.Size = New System.Drawing.Size(150, 20)
         Me.Label121.TabIndex = 8
         Me.Label121.Text = "Pending Event Type"
         '
         'tbPendEventTime
         '
-        Me.tbPendEventTime.Location = New System.Drawing.Point(190, 48)
-        Me.tbPendEventTime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbPendEventTime.Location = New System.Drawing.Point(214, 60)
+        Me.tbPendEventTime.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbPendEventTime.Name = "tbPendEventTime"
         Me.tbPendEventTime.ReadOnly = True
-        Me.tbPendEventTime.Size = New System.Drawing.Size(132, 22)
+        Me.tbPendEventTime.Size = New System.Drawing.Size(148, 26)
         Me.tbPendEventTime.TabIndex = 5
         Me.tbPendEventTime.TabStop = False
         '
         'tbPendEventType
         '
-        Me.tbPendEventType.Location = New System.Drawing.Point(14, 48)
-        Me.tbPendEventType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbPendEventType.Location = New System.Drawing.Point(16, 60)
+        Me.tbPendEventType.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbPendEventType.Name = "tbPendEventType"
         Me.tbPendEventType.ReadOnly = True
-        Me.tbPendEventType.Size = New System.Drawing.Size(162, 22)
+        Me.tbPendEventType.Size = New System.Drawing.Size(182, 26)
         Me.tbPendEventType.TabIndex = 6
         Me.tbPendEventType.TabStop = False
         '
         'Label120
         '
         Me.Label120.AutoSize = True
-        Me.Label120.Location = New System.Drawing.Point(190, 25)
+        Me.Label120.Location = New System.Drawing.Point(214, 31)
         Me.Label120.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label120.Name = "Label120"
-        Me.Label120.Size = New System.Drawing.Size(131, 17)
+        Me.Label120.Size = New System.Drawing.Size(146, 20)
         Me.Label120.TabIndex = 7
         Me.Label120.Text = "Pending EventTime"
         '
@@ -3542,11 +3557,11 @@ Partial Class FrmMain
         Me.gbPrefLevel.Controls.Add(Me.nudPrefType)
         Me.gbPrefLevel.Controls.Add(Me.pbSetPrefLevel)
         Me.gbPrefLevel.Controls.Add(Me.pbGetPrefLevel)
-        Me.gbPrefLevel.Location = New System.Drawing.Point(464, 198)
-        Me.gbPrefLevel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbPrefLevel.Location = New System.Drawing.Point(522, 248)
+        Me.gbPrefLevel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbPrefLevel.Name = "gbPrefLevel"
-        Me.gbPrefLevel.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gbPrefLevel.Size = New System.Drawing.Size(357, 91)
+        Me.gbPrefLevel.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbPrefLevel.Size = New System.Drawing.Size(402, 114)
         Me.gbPrefLevel.TabIndex = 27
         Me.gbPrefLevel.TabStop = False
         Me.gbPrefLevel.Text = "Preference Level"
@@ -3554,57 +3569,57 @@ Partial Class FrmMain
         'Label134
         '
         Me.Label134.AutoSize = True
-        Me.Label134.Location = New System.Drawing.Point(27, 96)
+        Me.Label134.Location = New System.Drawing.Point(30, 120)
         Me.Label134.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label134.Name = "Label134"
-        Me.Label134.Size = New System.Drawing.Size(116, 17)
+        Me.Label134.Size = New System.Drawing.Size(128, 20)
         Me.Label134.TabIndex = 5
         Me.Label134.Text = "Preference Level"
         '
         'Label133
         '
         Me.Label133.AutoSize = True
-        Me.Label133.Location = New System.Drawing.Point(28, 62)
+        Me.Label133.Location = New System.Drawing.Point(32, 78)
         Me.Label133.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label133.Name = "Label133"
-        Me.Label133.Size = New System.Drawing.Size(114, 17)
+        Me.Label133.Size = New System.Drawing.Size(125, 20)
         Me.Label133.TabIndex = 4
         Me.Label133.Text = "Preference Type"
         '
         'nudPrefLevel
         '
-        Me.nudPrefLevel.Location = New System.Drawing.Point(149, 92)
-        Me.nudPrefLevel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudPrefLevel.Location = New System.Drawing.Point(168, 115)
+        Me.nudPrefLevel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudPrefLevel.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudPrefLevel.Name = "nudPrefLevel"
-        Me.nudPrefLevel.Size = New System.Drawing.Size(73, 22)
+        Me.nudPrefLevel.Size = New System.Drawing.Size(82, 26)
         Me.nudPrefLevel.TabIndex = 3
         '
         'nudPrefType
         '
-        Me.nudPrefType.Location = New System.Drawing.Point(149, 59)
-        Me.nudPrefType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudPrefType.Location = New System.Drawing.Point(168, 74)
+        Me.nudPrefType.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudPrefType.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudPrefType.Name = "nudPrefType"
-        Me.nudPrefType.Size = New System.Drawing.Size(73, 22)
+        Me.nudPrefType.Size = New System.Drawing.Size(82, 26)
         Me.nudPrefType.TabIndex = 2
         '
         'pbSetPrefLevel
         '
-        Me.pbSetPrefLevel.Location = New System.Drawing.Point(144, 23)
-        Me.pbSetPrefLevel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbSetPrefLevel.Location = New System.Drawing.Point(162, 29)
+        Me.pbSetPrefLevel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbSetPrefLevel.Name = "pbSetPrefLevel"
-        Me.pbSetPrefLevel.Size = New System.Drawing.Size(120, 28)
+        Me.pbSetPrefLevel.Size = New System.Drawing.Size(135, 35)
         Me.pbSetPrefLevel.TabIndex = 1
         Me.pbSetPrefLevel.Text = "Set Pref Level"
         Me.pbSetPrefLevel.UseVisualStyleBackColor = True
         '
         'pbGetPrefLevel
         '
-        Me.pbGetPrefLevel.Location = New System.Drawing.Point(13, 23)
-        Me.pbGetPrefLevel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbGetPrefLevel.Location = New System.Drawing.Point(15, 29)
+        Me.pbGetPrefLevel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbGetPrefLevel.Name = "pbGetPrefLevel"
-        Me.pbGetPrefLevel.Size = New System.Drawing.Size(120, 28)
+        Me.pbGetPrefLevel.Size = New System.Drawing.Size(135, 35)
         Me.pbGetPrefLevel.TabIndex = 0
         Me.pbGetPrefLevel.Text = "Get Pref Level"
         Me.pbGetPrefLevel.UseVisualStyleBackColor = True
@@ -3621,11 +3636,11 @@ Partial Class FrmMain
         Me.gbActivation.Controls.Add(Me.pbSetActStatus)
         Me.gbActivation.Controls.Add(Me.pbGetActStatus)
         Me.gbActivation.Controls.Add(Me.cbActResponse)
-        Me.gbActivation.Location = New System.Drawing.Point(12, 194)
-        Me.gbActivation.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbActivation.Location = New System.Drawing.Point(14, 242)
+        Me.gbActivation.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbActivation.Name = "gbActivation"
-        Me.gbActivation.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gbActivation.Size = New System.Drawing.Size(436, 187)
+        Me.gbActivation.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbActivation.Size = New System.Drawing.Size(490, 234)
         Me.gbActivation.TabIndex = 26
         Me.gbActivation.TabStop = False
         Me.gbActivation.Text = "Activation"
@@ -3633,40 +3648,40 @@ Partial Class FrmMain
         'Label132
         '
         Me.Label132.AutoSize = True
-        Me.Label132.Location = New System.Drawing.Point(16, 100)
+        Me.Label132.Location = New System.Drawing.Point(18, 125)
         Me.Label132.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label132.Name = "Label132"
-        Me.Label132.Size = New System.Drawing.Size(137, 17)
+        Me.Label132.Size = New System.Drawing.Size(155, 20)
         Me.Label132.TabIndex = 35
         Me.Label132.Text = "Activation Response"
         '
         'Label129
         '
         Me.Label129.AutoSize = True
-        Me.Label129.Location = New System.Drawing.Point(231, 91)
+        Me.Label129.Location = New System.Drawing.Point(260, 114)
         Me.Label129.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label129.Name = "Label129"
-        Me.Label129.Size = New System.Drawing.Size(113, 17)
+        Me.Label129.Size = New System.Drawing.Size(129, 20)
         Me.Label129.TabIndex = 34
         Me.Label129.Text = "Activation Status"
         '
         'Label131
         '
         Me.Label131.AutoSize = True
-        Me.Label131.Location = New System.Drawing.Point(46, 156)
+        Me.Label131.Location = New System.Drawing.Point(52, 195)
         Me.Label131.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label131.Name = "Label131"
-        Me.Label131.Size = New System.Drawing.Size(97, 17)
+        Me.Label131.Size = New System.Drawing.Size(108, 20)
         Me.Label131.TabIndex = 33
         Me.Label131.Text = "Activation Key"
         '
         'tbActivateKey
         '
-        Me.tbActivateKey.Location = New System.Drawing.Point(152, 153)
-        Me.tbActivateKey.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbActivateKey.Location = New System.Drawing.Point(171, 191)
+        Me.tbActivateKey.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbActivateKey.MaxLength = 32
         Me.tbActivateKey.Name = "tbActivateKey"
-        Me.tbActivateKey.Size = New System.Drawing.Size(271, 22)
+        Me.tbActivateKey.Size = New System.Drawing.Size(304, 26)
         Me.tbActivateKey.TabIndex = 32
         Me.tbActivateKey.Text = "000000000&000000000&000000000&00"
         Me.tbActivateKey.WordWrap = False
@@ -3674,47 +3689,47 @@ Partial Class FrmMain
         'Label130
         '
         Me.Label130.AutoSize = True
-        Me.Label130.Location = New System.Drawing.Point(231, 59)
+        Me.Label130.Location = New System.Drawing.Point(260, 74)
         Me.Label130.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label130.Name = "Label130"
-        Me.Label130.Size = New System.Drawing.Size(106, 17)
+        Me.Label130.Size = New System.Drawing.Size(121, 20)
         Me.Label130.TabIndex = 31
         Me.Label130.Text = "Activation Index"
         '
         'nudActIndex
         '
-        Me.nudActIndex.Location = New System.Drawing.Point(357, 55)
-        Me.nudActIndex.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudActIndex.Location = New System.Drawing.Point(402, 69)
+        Me.nudActIndex.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudActIndex.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudActIndex.Name = "nudActIndex"
-        Me.nudActIndex.Size = New System.Drawing.Size(66, 22)
+        Me.nudActIndex.Size = New System.Drawing.Size(74, 26)
         Me.nudActIndex.TabIndex = 30
         '
         'nudActStatus
         '
-        Me.nudActStatus.Location = New System.Drawing.Point(357, 87)
-        Me.nudActStatus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudActStatus.Location = New System.Drawing.Point(402, 109)
+        Me.nudActStatus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudActStatus.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudActStatus.Name = "nudActStatus"
-        Me.nudActStatus.Size = New System.Drawing.Size(66, 22)
+        Me.nudActStatus.Size = New System.Drawing.Size(74, 26)
         Me.nudActStatus.TabIndex = 29
         '
         'pbSetActStatus
         '
-        Me.pbSetActStatus.Location = New System.Drawing.Point(112, 16)
-        Me.pbSetActStatus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbSetActStatus.Location = New System.Drawing.Point(126, 20)
+        Me.pbSetActStatus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbSetActStatus.Name = "pbSetActStatus"
-        Me.pbSetActStatus.Size = New System.Drawing.Size(153, 27)
+        Me.pbSetActStatus.Size = New System.Drawing.Size(172, 34)
         Me.pbSetActStatus.TabIndex = 28
         Me.pbSetActStatus.Text = "Set Activation Status"
         Me.pbSetActStatus.UseVisualStyleBackColor = True
         '
         'pbGetActStatus
         '
-        Me.pbGetActStatus.Location = New System.Drawing.Point(270, 16)
-        Me.pbGetActStatus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbGetActStatus.Location = New System.Drawing.Point(304, 20)
+        Me.pbGetActStatus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbGetActStatus.Name = "pbGetActStatus"
-        Me.pbGetActStatus.Size = New System.Drawing.Size(153, 27)
+        Me.pbGetActStatus.Size = New System.Drawing.Size(172, 34)
         Me.pbGetActStatus.TabIndex = 27
         Me.pbGetActStatus.Text = "Get Activation Status"
         Me.pbGetActStatus.UseVisualStyleBackColor = True
@@ -3728,10 +3743,10 @@ Partial Class FrmMain
                 " ", "Activate request rejected, Activation Key incorrect for the specified index", "Activate request rejected, temporary lockout - too many unsuccessful attempts ", "Deactivate request accepted, the specified ""Activation Index"" is now deactivated", "Deactivate request rejected, the specified ""Activation Index"" cannot be deactivat" &
                 "ed", "Deactivate request rejected, the specified ""Activation Index"" was already deactiv" &
                 "ated", "Deactivate request rejected, Activation Key incorrect for the specified index", "Reserved"})
-        Me.cbActResponse.Location = New System.Drawing.Point(13, 119)
-        Me.cbActResponse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbActResponse.Location = New System.Drawing.Point(15, 149)
+        Me.cbActResponse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbActResponse.Name = "cbActResponse"
-        Me.cbActResponse.Size = New System.Drawing.Size(408, 24)
+        Me.cbActResponse.Size = New System.Drawing.Size(458, 28)
         Me.cbActResponse.TabIndex = 26
         '
         'gbEnergyPrice
@@ -3748,11 +3763,11 @@ Partial Class FrmMain
         Me.gbEnergyPrice.Controls.Add(Me.pbGetEnergyPrice)
         Me.gbEnergyPrice.Controls.Add(Me.nudCurrentPrice)
         Me.gbEnergyPrice.Controls.Add(Me.pbSetEnergyPrice)
-        Me.gbEnergyPrice.Location = New System.Drawing.Point(12, 5)
-        Me.gbEnergyPrice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbEnergyPrice.Location = New System.Drawing.Point(14, 6)
+        Me.gbEnergyPrice.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbEnergyPrice.Name = "gbEnergyPrice"
-        Me.gbEnergyPrice.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gbEnergyPrice.Size = New System.Drawing.Size(436, 186)
+        Me.gbEnergyPrice.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbEnergyPrice.Size = New System.Drawing.Size(490, 232)
         Me.gbEnergyPrice.TabIndex = 10
         Me.gbEnergyPrice.TabStop = False
         Me.gbEnergyPrice.Text = "Energy Price"
@@ -3761,116 +3776,116 @@ Partial Class FrmMain
         '
         Me.dtpExpTime.CustomFormat = "yyyy-MM-dd HH:mm:ss"
         Me.dtpExpTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpExpTime.Location = New System.Drawing.Point(252, 117)
-        Me.dtpExpTime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpExpTime.Location = New System.Drawing.Point(284, 146)
+        Me.dtpExpTime.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dtpExpTime.Name = "dtpExpTime"
         Me.dtpExpTime.ShowUpDown = True
-        Me.dtpExpTime.Size = New System.Drawing.Size(175, 22)
+        Me.dtpExpTime.Size = New System.Drawing.Size(196, 26)
         Me.dtpExpTime.TabIndex = 56
         Me.dtpExpTime.Value = New Date(2018, 8, 30, 19, 56, 7, 0)
         '
         'Label126
         '
         Me.Label126.AutoSize = True
-        Me.Label126.Location = New System.Drawing.Point(169, 155)
+        Me.Label126.Location = New System.Drawing.Point(190, 194)
         Me.Label126.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label126.Name = "Label126"
-        Me.Label126.Size = New System.Drawing.Size(72, 17)
+        Me.Label126.Size = New System.Drawing.Size(80, 20)
         Me.Label126.TabIndex = 18
         Me.Label126.Text = "Next Price"
         '
         'nudNextPrice
         '
-        Me.nudNextPrice.Location = New System.Drawing.Point(267, 151)
-        Me.nudNextPrice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudNextPrice.Location = New System.Drawing.Point(300, 189)
+        Me.nudNextPrice.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudNextPrice.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
         Me.nudNextPrice.Name = "nudNextPrice"
-        Me.nudNextPrice.Size = New System.Drawing.Size(160, 22)
+        Me.nudNextPrice.Size = New System.Drawing.Size(180, 26)
         Me.nudNextPrice.TabIndex = 17
         '
         'Label125
         '
         Me.Label125.AutoSize = True
-        Me.Label125.Location = New System.Drawing.Point(169, 121)
+        Me.Label125.Location = New System.Drawing.Point(190, 151)
         Me.Label125.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label125.Name = "Label125"
-        Me.Label125.Size = New System.Drawing.Size(66, 17)
+        Me.Label125.Size = New System.Drawing.Size(74, 20)
         Me.Label125.TabIndex = 16
         Me.Label125.Text = "Exp Time"
         '
         'Label124
         '
         Me.Label124.AutoSize = True
-        Me.Label124.Location = New System.Drawing.Point(169, 86)
+        Me.Label124.Location = New System.Drawing.Point(190, 108)
         Me.Label124.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label124.Name = "Label124"
-        Me.Label124.Size = New System.Drawing.Size(130, 17)
+        Me.Label124.Size = New System.Drawing.Size(147, 20)
         Me.Label124.TabIndex = 14
         Me.Label124.Text = "Digits after Decimal"
         '
         'nudDigitsAfterDecimal
         '
-        Me.nudDigitsAfterDecimal.Location = New System.Drawing.Point(308, 82)
-        Me.nudDigitsAfterDecimal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudDigitsAfterDecimal.Location = New System.Drawing.Point(346, 102)
+        Me.nudDigitsAfterDecimal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudDigitsAfterDecimal.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.nudDigitsAfterDecimal.Name = "nudDigitsAfterDecimal"
-        Me.nudDigitsAfterDecimal.Size = New System.Drawing.Size(119, 22)
+        Me.nudDigitsAfterDecimal.Size = New System.Drawing.Size(134, 26)
         Me.nudDigitsAfterDecimal.TabIndex = 13
         '
         'Label123
         '
         Me.Label123.AutoSize = True
-        Me.Label123.Location = New System.Drawing.Point(169, 52)
+        Me.Label123.Location = New System.Drawing.Point(190, 65)
         Me.Label123.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label123.Name = "Label123"
-        Me.Label123.Size = New System.Drawing.Size(102, 17)
+        Me.Label123.Size = New System.Drawing.Size(114, 20)
         Me.Label123.TabIndex = 12
         Me.Label123.Text = "Currency Code"
         '
         'nudCurrencyCode
         '
-        Me.nudCurrencyCode.Location = New System.Drawing.Point(280, 48)
-        Me.nudCurrencyCode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCurrencyCode.Location = New System.Drawing.Point(315, 60)
+        Me.nudCurrencyCode.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCurrencyCode.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
         Me.nudCurrencyCode.Name = "nudCurrencyCode"
-        Me.nudCurrencyCode.Size = New System.Drawing.Size(147, 22)
+        Me.nudCurrencyCode.Size = New System.Drawing.Size(165, 26)
         Me.nudCurrencyCode.TabIndex = 11
         '
         'Label122
         '
         Me.Label122.AutoSize = True
-        Me.Label122.Location = New System.Drawing.Point(169, 18)
+        Me.Label122.Location = New System.Drawing.Point(190, 22)
         Me.Label122.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label122.Name = "Label122"
-        Me.Label122.Size = New System.Drawing.Size(91, 17)
+        Me.Label122.Size = New System.Drawing.Size(101, 20)
         Me.Label122.TabIndex = 10
         Me.Label122.Text = "Current Price"
         '
         'pbGetEnergyPrice
         '
-        Me.pbGetEnergyPrice.Location = New System.Drawing.Point(8, 23)
-        Me.pbGetEnergyPrice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbGetEnergyPrice.Location = New System.Drawing.Point(9, 29)
+        Me.pbGetEnergyPrice.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbGetEnergyPrice.Name = "pbGetEnergyPrice"
-        Me.pbGetEnergyPrice.Size = New System.Drawing.Size(136, 28)
+        Me.pbGetEnergyPrice.Size = New System.Drawing.Size(153, 35)
         Me.pbGetEnergyPrice.TabIndex = 4
         Me.pbGetEnergyPrice.Text = "Get Energy Price"
         Me.pbGetEnergyPrice.UseVisualStyleBackColor = True
         '
         'nudCurrentPrice
         '
-        Me.nudCurrentPrice.Location = New System.Drawing.Point(267, 14)
-        Me.nudCurrentPrice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCurrentPrice.Location = New System.Drawing.Point(300, 18)
+        Me.nudCurrentPrice.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCurrentPrice.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
         Me.nudCurrentPrice.Name = "nudCurrentPrice"
-        Me.nudCurrentPrice.Size = New System.Drawing.Size(160, 22)
+        Me.nudCurrentPrice.Size = New System.Drawing.Size(180, 26)
         Me.nudCurrentPrice.TabIndex = 9
         '
         'pbSetEnergyPrice
         '
-        Me.pbSetEnergyPrice.Location = New System.Drawing.Point(8, 58)
-        Me.pbSetEnergyPrice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbSetEnergyPrice.Location = New System.Drawing.Point(9, 72)
+        Me.pbSetEnergyPrice.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbSetEnergyPrice.Name = "pbSetEnergyPrice"
-        Me.pbSetEnergyPrice.Size = New System.Drawing.Size(136, 28)
+        Me.pbSetEnergyPrice.Size = New System.Drawing.Size(153, 35)
         Me.pbSetEnergyPrice.TabIndex = 1
         Me.pbSetEnergyPrice.Text = "Set Energy Price"
         Me.pbSetEnergyPrice.UseVisualStyleBackColor = True
@@ -3878,11 +3893,11 @@ Partial Class FrmMain
         'commonCommandsTab
         '
         Me.commonCommandsTab.Controls.Add(Me.commonCommandsTabControl)
-        Me.commonCommandsTab.Location = New System.Drawing.Point(4, 25)
-        Me.commonCommandsTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.commonCommandsTab.Location = New System.Drawing.Point(4, 29)
+        Me.commonCommandsTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.commonCommandsTab.Name = "commonCommandsTab"
-        Me.commonCommandsTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.commonCommandsTab.Size = New System.Drawing.Size(860, 529)
+        Me.commonCommandsTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.commonCommandsTab.Size = New System.Drawing.Size(968, 665)
         Me.commonCommandsTab.TabIndex = 2
         Me.commonCommandsTab.Text = "Common Commands"
         Me.commonCommandsTab.UseVisualStyleBackColor = True
@@ -3893,12 +3908,12 @@ Partial Class FrmMain
         Me.commonCommandsTabControl.Controls.Add(Me.simulateErrorsTab)
         Me.commonCommandsTabControl.Controls.Add(Me.TimingTab)
         Me.commonCommandsTabControl.Controls.Add(Me.PassThrough)
-        Me.commonCommandsTabControl.Location = New System.Drawing.Point(8, 7)
-        Me.commonCommandsTabControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.commonCommandsTabControl.Location = New System.Drawing.Point(9, 9)
+        Me.commonCommandsTabControl.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.commonCommandsTabControl.Multiline = True
         Me.commonCommandsTabControl.Name = "commonCommandsTabControl"
         Me.commonCommandsTabControl.SelectedIndex = 0
-        Me.commonCommandsTabControl.Size = New System.Drawing.Size(841, 418)
+        Me.commonCommandsTabControl.Size = New System.Drawing.Size(946, 522)
         Me.commonCommandsTabControl.TabIndex = 0
         '
         'changeBaudTab
@@ -3911,11 +3926,11 @@ Partial Class FrmMain
         Me.changeBaudTab.Controls.Add(Me.cbRebootType)
         Me.changeBaudTab.Controls.Add(Me.bReboot)
         Me.changeBaudTab.Controls.Add(Me.grpChangeBaud)
-        Me.changeBaudTab.Location = New System.Drawing.Point(4, 25)
-        Me.changeBaudTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.changeBaudTab.Location = New System.Drawing.Point(4, 29)
+        Me.changeBaudTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.changeBaudTab.Name = "changeBaudTab"
-        Me.changeBaudTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.changeBaudTab.Size = New System.Drawing.Size(833, 389)
+        Me.changeBaudTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.changeBaudTab.Size = New System.Drawing.Size(938, 489)
         Me.changeBaudTab.TabIndex = 0
         Me.changeBaudTab.Text = "Configuration"
         Me.changeBaudTab.UseVisualStyleBackColor = True
@@ -3923,10 +3938,10 @@ Partial Class FrmMain
         'Label136
         '
         Me.Label136.AutoSize = True
-        Me.Label136.Location = New System.Drawing.Point(357, 228)
+        Me.Label136.Location = New System.Drawing.Point(402, 285)
         Me.Label136.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label136.Name = "Label136"
-        Me.Label136.Size = New System.Drawing.Size(254, 17)
+        Me.Label136.Size = New System.Drawing.Size(288, 20)
         Me.Label136.TabIndex = 34
         Me.Label136.Text = "Intermediate Response Code Received"
         '
@@ -3935,19 +3950,19 @@ Partial Class FrmMain
         Me.cbInterRespCodeRecv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbInterRespCodeRecv.FormattingEnabled = True
         Me.cbInterRespCodeRecv.Items.AddRange(New Object() {"Success", "Command not implemented", "Bad Value – one or more values in the message are invalid", "Command Length  Error – command is too long", "Response Length Error – response is too long", "Busy", "Other Error", "Customer Override is in effect", "Invalid"})
-        Me.cbInterRespCodeRecv.Location = New System.Drawing.Point(361, 247)
-        Me.cbInterRespCodeRecv.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbInterRespCodeRecv.Location = New System.Drawing.Point(406, 309)
+        Me.cbInterRespCodeRecv.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbInterRespCodeRecv.Name = "cbInterRespCodeRecv"
-        Me.cbInterRespCodeRecv.Size = New System.Drawing.Size(249, 24)
+        Me.cbInterRespCodeRecv.Size = New System.Drawing.Size(280, 28)
         Me.cbInterRespCodeRecv.TabIndex = 33
         '
         'Label135
         '
         Me.Label135.AutoSize = True
-        Me.Label135.Location = New System.Drawing.Point(357, 162)
+        Me.Label135.Location = New System.Drawing.Point(402, 202)
         Me.Label135.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label135.Name = "Label135"
-        Me.Label135.Size = New System.Drawing.Size(224, 17)
+        Me.Label135.Size = New System.Drawing.Size(256, 20)
         Me.Label135.TabIndex = 32
         Me.Label135.Text = "Intermediate Response Code Sent"
         '
@@ -3956,21 +3971,21 @@ Partial Class FrmMain
         Me.cbInterRespCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbInterRespCode.FormattingEnabled = True
         Me.cbInterRespCode.Items.AddRange(New Object() {"Success", "Command not implemented", "Bad Value – one or more values in the message are invalid", "Command Length  Error – command is too long", "Response Length Error – response is too long", "Busy", "Other Error", "Customer Override is in effect"})
-        Me.cbInterRespCode.Location = New System.Drawing.Point(361, 188)
-        Me.cbInterRespCode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbInterRespCode.Location = New System.Drawing.Point(406, 235)
+        Me.cbInterRespCode.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbInterRespCode.Name = "cbInterRespCode"
-        Me.cbInterRespCode.Size = New System.Drawing.Size(249, 24)
+        Me.cbInterRespCode.Size = New System.Drawing.Size(280, 28)
         Me.cbInterRespCode.TabIndex = 31
         '
         'grpSGDConfig
         '
         Me.grpSGDConfig.Controls.Add(Me.chkSendNakOverride)
         Me.grpSGDConfig.Controls.Add(Me.chkCustOverride)
-        Me.grpSGDConfig.Location = New System.Drawing.Point(8, 126)
-        Me.grpSGDConfig.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpSGDConfig.Location = New System.Drawing.Point(9, 158)
+        Me.grpSGDConfig.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grpSGDConfig.Name = "grpSGDConfig"
-        Me.grpSGDConfig.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grpSGDConfig.Size = New System.Drawing.Size(288, 94)
+        Me.grpSGDConfig.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grpSGDConfig.Size = New System.Drawing.Size(324, 118)
         Me.grpSGDConfig.TabIndex = 30
         Me.grpSGDConfig.TabStop = False
         Me.grpSGDConfig.Text = "SGD Configuration"
@@ -3979,10 +3994,10 @@ Partial Class FrmMain
         'chkSendNakOverride
         '
         Me.chkSendNakOverride.AutoSize = True
-        Me.chkSendNakOverride.Location = New System.Drawing.Point(23, 66)
-        Me.chkSendNakOverride.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.chkSendNakOverride.Location = New System.Drawing.Point(26, 82)
+        Me.chkSendNakOverride.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkSendNakOverride.Name = "chkSendNakOverride"
-        Me.chkSendNakOverride.Size = New System.Drawing.Size(229, 21)
+        Me.chkSendNakOverride.Size = New System.Drawing.Size(256, 24)
         Me.chkSendNakOverride.TabIndex = 2
         Me.chkSendNakOverride.Text = "Send NAK when override active"
         Me.chkSendNakOverride.UseVisualStyleBackColor = True
@@ -3990,10 +4005,10 @@ Partial Class FrmMain
         'chkCustOverride
         '
         Me.chkCustOverride.AutoSize = True
-        Me.chkCustOverride.Location = New System.Drawing.Point(23, 34)
-        Me.chkCustOverride.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.chkCustOverride.Location = New System.Drawing.Point(26, 42)
+        Me.chkCustOverride.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkCustOverride.Name = "chkCustOverride"
-        Me.chkCustOverride.Size = New System.Drawing.Size(149, 21)
+        Me.chkCustOverride.Size = New System.Drawing.Size(167, 24)
         Me.chkCustOverride.TabIndex = 1
         Me.chkCustOverride.Text = "Customer Override"
         Me.chkCustOverride.UseVisualStyleBackColor = True
@@ -4003,19 +4018,19 @@ Partial Class FrmMain
         Me.cbRebootType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbRebootType.FormattingEnabled = True
         Me.cbRebootType.Items.AddRange(New Object() {"Soft Reboot", "Factory Defaults"})
-        Me.cbRebootType.Location = New System.Drawing.Point(361, 58)
-        Me.cbRebootType.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbRebootType.Location = New System.Drawing.Point(406, 72)
+        Me.cbRebootType.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbRebootType.MaxDropDownItems = 2
         Me.cbRebootType.Name = "cbRebootType"
-        Me.cbRebootType.Size = New System.Drawing.Size(249, 24)
+        Me.cbRebootType.Size = New System.Drawing.Size(280, 28)
         Me.cbRebootType.TabIndex = 29
         '
         'bReboot
         '
-        Me.bReboot.Location = New System.Drawing.Point(361, 22)
-        Me.bReboot.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.bReboot.Location = New System.Drawing.Point(406, 28)
+        Me.bReboot.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.bReboot.Name = "bReboot"
-        Me.bReboot.Size = New System.Drawing.Size(100, 28)
+        Me.bReboot.Size = New System.Drawing.Size(112, 35)
         Me.bReboot.TabIndex = 28
         Me.bReboot.Text = "Reboot"
         Me.bReboot.UseVisualStyleBackColor = True
@@ -4024,11 +4039,11 @@ Partial Class FrmMain
         '
         Me.simulateErrorsTab.Controls.Add(Me.opcodeErrorsGroup)
         Me.simulateErrorsTab.Controls.Add(Me.gbErrors)
-        Me.simulateErrorsTab.Location = New System.Drawing.Point(4, 25)
-        Me.simulateErrorsTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.simulateErrorsTab.Location = New System.Drawing.Point(4, 29)
+        Me.simulateErrorsTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.simulateErrorsTab.Name = "simulateErrorsTab"
-        Me.simulateErrorsTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.simulateErrorsTab.Size = New System.Drawing.Size(833, 389)
+        Me.simulateErrorsTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.simulateErrorsTab.Size = New System.Drawing.Size(938, 489)
         Me.simulateErrorsTab.TabIndex = 1
         Me.simulateErrorsTab.Text = "Simulate Errors"
         Me.simulateErrorsTab.UseVisualStyleBackColor = True
@@ -4053,11 +4068,11 @@ Partial Class FrmMain
         Me.opcodeErrorsGroup.Controls.Add(Me.badOpcode1valbox)
         Me.opcodeErrorsGroup.Controls.Add(Me.badOpcode2cb)
         Me.opcodeErrorsGroup.Controls.Add(Me.badOpcode1cb)
-        Me.opcodeErrorsGroup.Location = New System.Drawing.Point(8, 22)
-        Me.opcodeErrorsGroup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.opcodeErrorsGroup.Location = New System.Drawing.Point(9, 28)
+        Me.opcodeErrorsGroup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.opcodeErrorsGroup.Name = "opcodeErrorsGroup"
-        Me.opcodeErrorsGroup.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.opcodeErrorsGroup.Size = New System.Drawing.Size(814, 146)
+        Me.opcodeErrorsGroup.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.opcodeErrorsGroup.Size = New System.Drawing.Size(916, 182)
         Me.opcodeErrorsGroup.TabIndex = 19
         Me.opcodeErrorsGroup.TabStop = False
         Me.opcodeErrorsGroup.Text = "Custom Bytes"
@@ -4065,174 +4080,174 @@ Partial Class FrmMain
         'Label88
         '
         Me.Label88.AutoSize = True
-        Me.Label88.Location = New System.Drawing.Point(397, 39)
+        Me.Label88.Location = New System.Drawing.Point(447, 49)
         Me.Label88.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label88.Name = "Label88"
-        Me.Label88.Size = New System.Drawing.Size(64, 17)
+        Me.Label88.Size = New System.Drawing.Size(72, 20)
         Me.Label88.TabIndex = 22
         Me.Label88.Text = "Length 2"
         '
         'Label89
         '
         Me.Label89.AutoSize = True
-        Me.Label89.Location = New System.Drawing.Point(272, 39)
+        Me.Label89.Location = New System.Drawing.Point(306, 49)
         Me.Label89.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label89.Name = "Label89"
-        Me.Label89.Size = New System.Drawing.Size(64, 17)
+        Me.Label89.Size = New System.Drawing.Size(72, 20)
         Me.Label89.TabIndex = 21
         Me.Label89.Text = "Length 1"
         '
         'customLength2ValBox
         '
-        Me.customLength2ValBox.Location = New System.Drawing.Point(402, 59)
-        Me.customLength2ValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.customLength2ValBox.Location = New System.Drawing.Point(452, 74)
+        Me.customLength2ValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.customLength2ValBox.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.customLength2ValBox.Name = "customLength2ValBox"
-        Me.customLength2ValBox.Size = New System.Drawing.Size(71, 22)
+        Me.customLength2ValBox.Size = New System.Drawing.Size(80, 26)
         Me.customLength2ValBox.TabIndex = 20
         '
         'customLength1ValBox
         '
-        Me.customLength1ValBox.Location = New System.Drawing.Point(276, 59)
-        Me.customLength1ValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.customLength1ValBox.Location = New System.Drawing.Point(310, 74)
+        Me.customLength1ValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.customLength1ValBox.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.customLength1ValBox.Name = "customLength1ValBox"
-        Me.customLength1ValBox.Size = New System.Drawing.Size(71, 22)
+        Me.customLength1ValBox.Size = New System.Drawing.Size(80, 26)
         Me.customLength1ValBox.TabIndex = 19
         '
         'customLength2cb
         '
         Me.customLength2cb.AutoSize = True
-        Me.customLength2cb.Location = New System.Drawing.Point(427, 91)
-        Me.customLength2cb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.customLength2cb.Location = New System.Drawing.Point(480, 114)
+        Me.customLength2cb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.customLength2cb.Name = "customLength2cb"
-        Me.customLength2cb.Size = New System.Drawing.Size(18, 17)
+        Me.customLength2cb.Size = New System.Drawing.Size(22, 21)
         Me.customLength2cb.TabIndex = 18
         Me.customLength2cb.UseVisualStyleBackColor = True
         '
         'customLength1cb
         '
         Me.customLength1cb.AutoSize = True
-        Me.customLength1cb.Location = New System.Drawing.Point(300, 91)
-        Me.customLength1cb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.customLength1cb.Location = New System.Drawing.Point(338, 114)
+        Me.customLength1cb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.customLength1cb.Name = "customLength1cb"
-        Me.customLength1cb.Size = New System.Drawing.Size(18, 17)
+        Me.customLength1cb.Size = New System.Drawing.Size(22, 21)
         Me.customLength1cb.TabIndex = 17
         Me.customLength1cb.UseVisualStyleBackColor = True
         '
         'Label86
         '
         Me.Label86.AutoSize = True
-        Me.Label86.Location = New System.Drawing.Point(140, 39)
+        Me.Label86.Location = New System.Drawing.Point(158, 49)
         Me.Label86.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label86.Name = "Label86"
-        Me.Label86.Size = New System.Drawing.Size(82, 17)
+        Me.Label86.Size = New System.Drawing.Size(90, 20)
         Me.Label86.TabIndex = 16
         Me.Label86.Text = "Msg Type 2"
         '
         'Label87
         '
         Me.Label87.AutoSize = True
-        Me.Label87.Location = New System.Drawing.Point(14, 39)
+        Me.Label87.Location = New System.Drawing.Point(16, 49)
         Me.Label87.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label87.Name = "Label87"
-        Me.Label87.Size = New System.Drawing.Size(82, 17)
+        Me.Label87.Size = New System.Drawing.Size(90, 20)
         Me.Label87.TabIndex = 15
         Me.Label87.Text = "Msg Type 1"
         '
         'customMsgType2ValBox
         '
-        Me.customMsgType2ValBox.Location = New System.Drawing.Point(144, 59)
-        Me.customMsgType2ValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.customMsgType2ValBox.Location = New System.Drawing.Point(162, 74)
+        Me.customMsgType2ValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.customMsgType2ValBox.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.customMsgType2ValBox.Name = "customMsgType2ValBox"
-        Me.customMsgType2ValBox.Size = New System.Drawing.Size(71, 22)
+        Me.customMsgType2ValBox.Size = New System.Drawing.Size(80, 26)
         Me.customMsgType2ValBox.TabIndex = 14
         '
         'customMsgType1ValBox
         '
-        Me.customMsgType1ValBox.Location = New System.Drawing.Point(19, 59)
-        Me.customMsgType1ValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.customMsgType1ValBox.Location = New System.Drawing.Point(21, 74)
+        Me.customMsgType1ValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.customMsgType1ValBox.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.customMsgType1ValBox.Name = "customMsgType1ValBox"
-        Me.customMsgType1ValBox.Size = New System.Drawing.Size(71, 22)
+        Me.customMsgType1ValBox.Size = New System.Drawing.Size(80, 26)
         Me.customMsgType1ValBox.TabIndex = 13
         '
         'customMsgType2cb
         '
         Me.customMsgType2cb.AutoSize = True
-        Me.customMsgType2cb.Location = New System.Drawing.Point(169, 91)
-        Me.customMsgType2cb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.customMsgType2cb.Location = New System.Drawing.Point(190, 114)
+        Me.customMsgType2cb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.customMsgType2cb.Name = "customMsgType2cb"
-        Me.customMsgType2cb.Size = New System.Drawing.Size(18, 17)
+        Me.customMsgType2cb.Size = New System.Drawing.Size(22, 21)
         Me.customMsgType2cb.TabIndex = 12
         Me.customMsgType2cb.UseVisualStyleBackColor = True
         '
         'customMsgType1cb
         '
         Me.customMsgType1cb.AutoSize = True
-        Me.customMsgType1cb.Location = New System.Drawing.Point(43, 91)
-        Me.customMsgType1cb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.customMsgType1cb.Location = New System.Drawing.Point(48, 114)
+        Me.customMsgType1cb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.customMsgType1cb.Name = "customMsgType1cb"
-        Me.customMsgType1cb.Size = New System.Drawing.Size(18, 17)
+        Me.customMsgType1cb.Size = New System.Drawing.Size(22, 21)
         Me.customMsgType1cb.TabIndex = 11
         Me.customMsgType1cb.UseVisualStyleBackColor = True
         '
         'Label71
         '
         Me.Label71.AutoSize = True
-        Me.Label71.Location = New System.Drawing.Point(652, 39)
+        Me.Label71.Location = New System.Drawing.Point(734, 49)
         Me.Label71.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label71.Name = "Label71"
-        Me.Label71.Size = New System.Drawing.Size(72, 17)
+        Me.Label71.Size = New System.Drawing.Size(81, 20)
         Me.Label71.TabIndex = 10
         Me.Label71.Text = "OpCode 2"
         '
         'Label70
         '
         Me.Label70.AutoSize = True
-        Me.Label70.Location = New System.Drawing.Point(526, 39)
+        Me.Label70.Location = New System.Drawing.Point(592, 49)
         Me.Label70.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label70.Name = "Label70"
-        Me.Label70.Size = New System.Drawing.Size(72, 17)
+        Me.Label70.Size = New System.Drawing.Size(81, 20)
         Me.Label70.TabIndex = 9
         Me.Label70.Text = "OpCode 1"
         '
         'badOpcode2valbox
         '
-        Me.badOpcode2valbox.Location = New System.Drawing.Point(656, 59)
-        Me.badOpcode2valbox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.badOpcode2valbox.Location = New System.Drawing.Point(738, 74)
+        Me.badOpcode2valbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.badOpcode2valbox.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.badOpcode2valbox.Name = "badOpcode2valbox"
-        Me.badOpcode2valbox.Size = New System.Drawing.Size(71, 22)
+        Me.badOpcode2valbox.Size = New System.Drawing.Size(80, 26)
         Me.badOpcode2valbox.TabIndex = 8
         '
         'badOpcode1valbox
         '
-        Me.badOpcode1valbox.Location = New System.Drawing.Point(531, 59)
-        Me.badOpcode1valbox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.badOpcode1valbox.Location = New System.Drawing.Point(597, 74)
+        Me.badOpcode1valbox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.badOpcode1valbox.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.badOpcode1valbox.Name = "badOpcode1valbox"
-        Me.badOpcode1valbox.Size = New System.Drawing.Size(71, 22)
+        Me.badOpcode1valbox.Size = New System.Drawing.Size(80, 26)
         Me.badOpcode1valbox.TabIndex = 7
         '
         'badOpcode2cb
         '
         Me.badOpcode2cb.AutoSize = True
-        Me.badOpcode2cb.Location = New System.Drawing.Point(681, 91)
-        Me.badOpcode2cb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.badOpcode2cb.Location = New System.Drawing.Point(766, 114)
+        Me.badOpcode2cb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.badOpcode2cb.Name = "badOpcode2cb"
-        Me.badOpcode2cb.Size = New System.Drawing.Size(18, 17)
+        Me.badOpcode2cb.Size = New System.Drawing.Size(22, 21)
         Me.badOpcode2cb.TabIndex = 6
         Me.badOpcode2cb.UseVisualStyleBackColor = True
         '
         'badOpcode1cb
         '
         Me.badOpcode1cb.AutoSize = True
-        Me.badOpcode1cb.Location = New System.Drawing.Point(555, 91)
-        Me.badOpcode1cb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.badOpcode1cb.Location = New System.Drawing.Point(624, 114)
+        Me.badOpcode1cb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.badOpcode1cb.Name = "badOpcode1cb"
-        Me.badOpcode1cb.Size = New System.Drawing.Size(18, 17)
+        Me.badOpcode1cb.Size = New System.Drawing.Size(22, 21)
         Me.badOpcode1cb.TabIndex = 5
         Me.badOpcode1cb.UseVisualStyleBackColor = True
         '
@@ -4258,11 +4273,11 @@ Partial Class FrmMain
         Me.TimingTab.Controls.Add(Me.Label30)
         Me.TimingTab.Controls.Add(Me.tARValBox)
         Me.TimingTab.Controls.Add(Me.tMAValBox)
-        Me.TimingTab.Location = New System.Drawing.Point(4, 25)
-        Me.TimingTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TimingTab.Location = New System.Drawing.Point(4, 29)
+        Me.TimingTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TimingTab.Name = "TimingTab"
-        Me.TimingTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.TimingTab.Size = New System.Drawing.Size(833, 389)
+        Me.TimingTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.TimingTab.Size = New System.Drawing.Size(938, 489)
         Me.TimingTab.TabIndex = 7
         Me.TimingTab.Text = "Timing Variables"
         Me.TimingTab.UseVisualStyleBackColor = True
@@ -4271,20 +4286,20 @@ Partial Class FrmMain
         '
         Me.Label62.AutoSize = True
         Me.Label62.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label62.Location = New System.Drawing.Point(435, 71)
+        Me.Label62.Location = New System.Drawing.Point(489, 89)
         Me.Label62.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label62.Name = "Label62"
-        Me.Label62.Size = New System.Drawing.Size(100, 15)
+        Me.Label62.Size = New System.Drawing.Size(115, 17)
         Me.Label62.TabIndex = 20
         Me.Label62.Text = "(In Spec: 500ms)"
         '
         'Label69
         '
         Me.Label69.AutoSize = True
-        Me.Label69.Location = New System.Drawing.Point(539, 46)
+        Me.Label69.Location = New System.Drawing.Point(606, 58)
         Me.Label69.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label69.Name = "Label69"
-        Me.Label69.Size = New System.Drawing.Size(36, 17)
+        Me.Label69.Size = New System.Drawing.Size(40, 20)
         Me.Label69.TabIndex = 19
         Me.Label69.Text = "(ms)"
         '
@@ -4292,30 +4307,30 @@ Partial Class FrmMain
         '
         Me.label3i4lskjfdlj.AutoSize = True
         Me.label3i4lskjfdlj.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label3i4lskjfdlj.Location = New System.Drawing.Point(368, 43)
+        Me.label3i4lskjfdlj.Location = New System.Drawing.Point(414, 54)
         Me.label3i4lskjfdlj.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label3i4lskjfdlj.Name = "label3i4lskjfdlj"
-        Me.label3i4lskjfdlj.Size = New System.Drawing.Size(37, 18)
+        Me.label3i4lskjfdlj.Size = New System.Drawing.Size(44, 22)
         Me.label3i4lskjfdlj.TabIndex = 18
         Me.label3i4lskjfdlj.Text = "tML:"
         '
         'tMLValBox
         '
-        Me.tMLValBox.Location = New System.Drawing.Point(439, 43)
-        Me.tMLValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tMLValBox.Location = New System.Drawing.Point(494, 54)
+        Me.tMLValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tMLValBox.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.tMLValBox.Name = "tMLValBox"
-        Me.tMLValBox.Size = New System.Drawing.Size(92, 22)
+        Me.tMLValBox.Size = New System.Drawing.Size(104, 26)
         Me.tMLValBox.TabIndex = 17
         '
         'labelwhatever
         '
         Me.labelwhatever.AutoSize = True
         Me.labelwhatever.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelwhatever.Location = New System.Drawing.Point(147, 293)
+        Me.labelwhatever.Location = New System.Drawing.Point(165, 366)
         Me.labelwhatever.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.labelwhatever.Name = "labelwhatever"
-        Me.labelwhatever.Size = New System.Drawing.Size(156, 15)
+        Me.labelwhatever.Size = New System.Drawing.Size(174, 17)
         Me.labelwhatever.TabIndex = 16
         Me.labelwhatever.Text = "(In Spec: 100ms minimum)"
         '
@@ -4323,30 +4338,30 @@ Partial Class FrmMain
         '
         Me.Label64.AutoSize = True
         Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label64.Location = New System.Drawing.Point(147, 144)
+        Me.Label64.Location = New System.Drawing.Point(165, 180)
         Me.Label64.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label64.Name = "Label64"
-        Me.Label64.Size = New System.Drawing.Size(156, 15)
+        Me.Label64.Size = New System.Drawing.Size(174, 17)
         Me.Label64.TabIndex = 15
         Me.Label64.Text = "(In Spec: 100ms minimum)"
         '
         'Label65
         '
         Me.Label65.AutoSize = True
-        Me.Label65.Location = New System.Drawing.Point(251, 267)
+        Me.Label65.Location = New System.Drawing.Point(282, 334)
         Me.Label65.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label65.Name = "Label65"
-        Me.Label65.Size = New System.Drawing.Size(36, 17)
+        Me.Label65.Size = New System.Drawing.Size(40, 20)
         Me.Label65.TabIndex = 14
         Me.Label65.Text = "(ms)"
         '
         'Label66
         '
         Me.Label66.AutoSize = True
-        Me.Label66.Location = New System.Drawing.Point(251, 194)
+        Me.Label66.Location = New System.Drawing.Point(282, 242)
         Me.Label66.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label66.Name = "Label66"
-        Me.Label66.Size = New System.Drawing.Size(36, 17)
+        Me.Label66.Size = New System.Drawing.Size(40, 20)
         Me.Label66.TabIndex = 13
         Me.Label66.Text = "(ms)"
         '
@@ -4354,10 +4369,10 @@ Partial Class FrmMain
         '
         Me.Label67.AutoSize = True
         Me.Label67.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label67.Location = New System.Drawing.Point(80, 265)
+        Me.Label67.Location = New System.Drawing.Point(90, 331)
         Me.Label67.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label67.Name = "Label67"
-        Me.Label67.Size = New System.Drawing.Size(32, 18)
+        Me.Label67.Size = New System.Drawing.Size(38, 22)
         Me.Label67.TabIndex = 12
         Me.Label67.Text = "tIM:"
         '
@@ -4365,39 +4380,39 @@ Partial Class FrmMain
         '
         Me.Label68.AutoSize = True
         Me.Label68.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label68.Location = New System.Drawing.Point(80, 192)
+        Me.Label68.Location = New System.Drawing.Point(90, 240)
         Me.Label68.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label68.Name = "Label68"
-        Me.Label68.Size = New System.Drawing.Size(36, 18)
+        Me.Label68.Size = New System.Drawing.Size(45, 22)
         Me.Label68.TabIndex = 11
         Me.Label68.Text = "tRA:"
         '
         'tIMValBox
         '
-        Me.tIMValBox.Location = New System.Drawing.Point(151, 265)
-        Me.tIMValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tIMValBox.Location = New System.Drawing.Point(170, 331)
+        Me.tIMValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tIMValBox.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.tIMValBox.Name = "tIMValBox"
-        Me.tIMValBox.Size = New System.Drawing.Size(92, 22)
+        Me.tIMValBox.Size = New System.Drawing.Size(104, 26)
         Me.tIMValBox.TabIndex = 10
         '
         'tRAValBox
         '
-        Me.tRAValBox.Location = New System.Drawing.Point(151, 192)
-        Me.tRAValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tRAValBox.Location = New System.Drawing.Point(170, 240)
+        Me.tRAValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tRAValBox.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.tRAValBox.Name = "tRAValBox"
-        Me.tRAValBox.Size = New System.Drawing.Size(92, 22)
+        Me.tRAValBox.Size = New System.Drawing.Size(104, 26)
         Me.tRAValBox.TabIndex = 9
         '
         'Label63
         '
         Me.Label63.AutoSize = True
         Me.Label63.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label63.Location = New System.Drawing.Point(147, 220)
+        Me.Label63.Location = New System.Drawing.Point(165, 275)
         Me.Label63.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label63.Name = "Label63"
-        Me.Label63.Size = New System.Drawing.Size(141, 15)
+        Me.Label63.Size = New System.Drawing.Size(162, 17)
         Me.Label63.TabIndex = 8
         Me.Label63.Text = "(In Spec: 40ms - 200ms)"
         '
@@ -4405,30 +4420,30 @@ Partial Class FrmMain
         '
         Me.label61.AutoSize = True
         Me.label61.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label61.Location = New System.Drawing.Point(147, 71)
+        Me.label61.Location = New System.Drawing.Point(165, 89)
         Me.label61.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label61.Name = "label61"
-        Me.label61.Size = New System.Drawing.Size(141, 15)
+        Me.label61.Size = New System.Drawing.Size(162, 17)
         Me.label61.TabIndex = 6
         Me.label61.Text = "(In Spec: 40ms - 200ms)"
         '
         'Label60
         '
         Me.Label60.AutoSize = True
-        Me.Label60.Location = New System.Drawing.Point(251, 118)
+        Me.Label60.Location = New System.Drawing.Point(282, 148)
         Me.Label60.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label60.Name = "Label60"
-        Me.Label60.Size = New System.Drawing.Size(36, 17)
+        Me.Label60.Size = New System.Drawing.Size(40, 20)
         Me.Label60.TabIndex = 5
         Me.Label60.Text = "(ms)"
         '
         'Label58
         '
         Me.Label58.AutoSize = True
-        Me.Label58.Location = New System.Drawing.Point(251, 46)
+        Me.Label58.Location = New System.Drawing.Point(282, 58)
         Me.Label58.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label58.Name = "Label58"
-        Me.Label58.Size = New System.Drawing.Size(36, 17)
+        Me.Label58.Size = New System.Drawing.Size(40, 20)
         Me.Label58.TabIndex = 4
         Me.Label58.Text = "(ms)"
         '
@@ -4436,10 +4451,10 @@ Partial Class FrmMain
         '
         Me.Label38.AutoSize = True
         Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label38.Location = New System.Drawing.Point(80, 116)
+        Me.Label38.Location = New System.Drawing.Point(90, 145)
         Me.Label38.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(36, 18)
+        Me.Label38.Size = New System.Drawing.Size(45, 22)
         Me.Label38.TabIndex = 3
         Me.Label38.Text = "tAR:"
         '
@@ -4447,29 +4462,29 @@ Partial Class FrmMain
         '
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.Location = New System.Drawing.Point(80, 43)
+        Me.Label30.Location = New System.Drawing.Point(90, 54)
         Me.Label30.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(38, 18)
+        Me.Label30.Size = New System.Drawing.Size(46, 22)
         Me.Label30.TabIndex = 2
         Me.Label30.Text = "tMA:"
         '
         'tARValBox
         '
-        Me.tARValBox.Location = New System.Drawing.Point(151, 116)
-        Me.tARValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tARValBox.Location = New System.Drawing.Point(170, 145)
+        Me.tARValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tARValBox.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.tARValBox.Name = "tARValBox"
-        Me.tARValBox.Size = New System.Drawing.Size(92, 22)
+        Me.tARValBox.Size = New System.Drawing.Size(104, 26)
         Me.tARValBox.TabIndex = 1
         '
         'tMAValBox
         '
-        Me.tMAValBox.Location = New System.Drawing.Point(151, 43)
-        Me.tMAValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tMAValBox.Location = New System.Drawing.Point(170, 54)
+        Me.tMAValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tMAValBox.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.tMAValBox.Name = "tMAValBox"
-        Me.tMAValBox.Size = New System.Drawing.Size(92, 22)
+        Me.tMAValBox.Size = New System.Drawing.Size(104, 26)
         Me.tMAValBox.TabIndex = 0
         '
         'PassThrough
@@ -4481,10 +4496,10 @@ Partial Class FrmMain
         Me.PassThrough.Controls.Add(Me.pbBrowsePT)
         Me.PassThrough.Controls.Add(Me.tbFilePathPT)
         Me.PassThrough.Controls.Add(Me.cbAddWrapper)
-        Me.PassThrough.Location = New System.Drawing.Point(4, 25)
-        Me.PassThrough.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PassThrough.Location = New System.Drawing.Point(4, 29)
+        Me.PassThrough.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.PassThrough.Name = "PassThrough"
-        Me.PassThrough.Size = New System.Drawing.Size(833, 389)
+        Me.PassThrough.Size = New System.Drawing.Size(938, 489)
         Me.PassThrough.TabIndex = 8
         Me.PassThrough.Text = "Pass Through"
         Me.PassThrough.UseVisualStyleBackColor = True
@@ -4492,19 +4507,19 @@ Partial Class FrmMain
         'Label53
         '
         Me.Label53.AutoSize = True
-        Me.Label53.Location = New System.Drawing.Point(309, 50)
+        Me.Label53.Location = New System.Drawing.Point(348, 62)
         Me.Label53.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(200, 17)
+        Me.Label53.Size = New System.Drawing.Size(223, 20)
         Me.Label53.TabIndex = 6
         Me.Label53.Text = "Enter file name or click browse"
         '
         'pbSendPT
         '
-        Me.pbSendPT.Location = New System.Drawing.Point(19, 172)
-        Me.pbSendPT.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbSendPT.Location = New System.Drawing.Point(21, 215)
+        Me.pbSendPT.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbSendPT.Name = "pbSendPT"
-        Me.pbSendPT.Size = New System.Drawing.Size(100, 28)
+        Me.pbSendPT.Size = New System.Drawing.Size(112, 35)
         Me.pbSendPT.TabIndex = 5
         Me.pbSendPT.Text = "Send File"
         Me.pbSendPT.UseVisualStyleBackColor = True
@@ -4512,10 +4527,10 @@ Partial Class FrmMain
         'Label52
         '
         Me.Label52.AutoSize = True
-        Me.Label52.Location = New System.Drawing.Point(201, 138)
+        Me.Label52.Location = New System.Drawing.Point(226, 172)
         Me.Label52.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(60, 17)
+        Me.Label52.Size = New System.Drawing.Size(67, 20)
         Me.Label52.TabIndex = 4
         Me.Label52.Text = "Protocol"
         '
@@ -4523,28 +4538,28 @@ Partial Class FrmMain
         '
         Me.cbProtocolPT.FormattingEnabled = True
         Me.cbProtocolPT.Items.AddRange(New Object() {"0 Undefined", "1 USNAP1.0", "2 ClimateTalk", "3 Undefined", "4 Undefined", "5 SEP1.0", "6 Undefined", "7 General Internet", "8 ECHONET Lite", "9 KNX", "10 LonTalk", "11 SunSpec", "12 BACnet"})
-        Me.cbProtocolPT.Location = New System.Drawing.Point(19, 128)
-        Me.cbProtocolPT.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbProtocolPT.Location = New System.Drawing.Point(21, 160)
+        Me.cbProtocolPT.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbProtocolPT.Name = "cbProtocolPT"
-        Me.cbProtocolPT.Size = New System.Drawing.Size(160, 24)
+        Me.cbProtocolPT.Size = New System.Drawing.Size(180, 28)
         Me.cbProtocolPT.TabIndex = 3
         '
         'pbBrowsePT
         '
-        Me.pbBrowsePT.Location = New System.Drawing.Point(19, 82)
-        Me.pbBrowsePT.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbBrowsePT.Location = New System.Drawing.Point(21, 102)
+        Me.pbBrowsePT.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbBrowsePT.Name = "pbBrowsePT"
-        Me.pbBrowsePT.Size = New System.Drawing.Size(100, 28)
+        Me.pbBrowsePT.Size = New System.Drawing.Size(112, 35)
         Me.pbBrowsePT.TabIndex = 2
         Me.pbBrowsePT.Text = "Browse"
         Me.pbBrowsePT.UseVisualStyleBackColor = True
         '
         'tbFilePathPT
         '
-        Me.tbFilePathPT.Location = New System.Drawing.Point(19, 46)
-        Me.tbFilePathPT.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbFilePathPT.Location = New System.Drawing.Point(21, 58)
+        Me.tbFilePathPT.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbFilePathPT.Name = "tbFilePathPT"
-        Me.tbFilePathPT.Size = New System.Drawing.Size(269, 22)
+        Me.tbFilePathPT.Size = New System.Drawing.Size(302, 26)
         Me.tbFilePathPT.TabIndex = 1
         '
         'cbAddWrapper
@@ -4552,10 +4567,10 @@ Partial Class FrmMain
         Me.cbAddWrapper.AutoSize = True
         Me.cbAddWrapper.Checked = True
         Me.cbAddWrapper.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbAddWrapper.Location = New System.Drawing.Point(19, 18)
-        Me.cbAddWrapper.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbAddWrapper.Location = New System.Drawing.Point(21, 22)
+        Me.cbAddWrapper.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbAddWrapper.Name = "cbAddWrapper"
-        Me.cbAddWrapper.Size = New System.Drawing.Size(110, 21)
+        Me.cbAddWrapper.Size = New System.Drawing.Size(125, 24)
         Me.cbAddWrapper.TabIndex = 0
         Me.cbAddWrapper.Text = "Add wrapper"
         Me.cbAddWrapper.UseVisualStyleBackColor = True
@@ -4563,11 +4578,11 @@ Partial Class FrmMain
         'ucmTab
         '
         Me.ucmTab.Controls.Add(Me.ucmTabControl)
-        Me.ucmTab.Location = New System.Drawing.Point(4, 25)
-        Me.ucmTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ucmTab.Location = New System.Drawing.Point(4, 29)
+        Me.ucmTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ucmTab.Name = "ucmTab"
-        Me.ucmTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.ucmTab.Size = New System.Drawing.Size(860, 529)
+        Me.ucmTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ucmTab.Size = New System.Drawing.Size(968, 665)
         Me.ucmTab.TabIndex = 0
         Me.ucmTab.Text = "UCM Commands"
         Me.ucmTab.UseVisualStyleBackColor = True
@@ -4579,22 +4594,22 @@ Partial Class FrmMain
         Me.ucmTabControl.Controls.Add(Me.ucmComStatusTab)
         Me.ucmTabControl.Controls.Add(Me.ucmTimeSyncTab)
         Me.ucmTabControl.Controls.Add(Me.ucmIntermediateTab)
-        Me.ucmTabControl.Location = New System.Drawing.Point(8, 7)
-        Me.ucmTabControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ucmTabControl.Location = New System.Drawing.Point(9, 9)
+        Me.ucmTabControl.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ucmTabControl.Multiline = True
         Me.ucmTabControl.Name = "ucmTabControl"
         Me.ucmTabControl.SelectedIndex = 0
-        Me.ucmTabControl.Size = New System.Drawing.Size(841, 418)
+        Me.ucmTabControl.Size = New System.Drawing.Size(946, 522)
         Me.ucmTabControl.TabIndex = 36
         '
         'ucmManageDeviceTab
         '
         Me.ucmManageDeviceTab.Controls.Add(Me.BasicCmdsTab)
-        Me.ucmManageDeviceTab.Location = New System.Drawing.Point(4, 25)
-        Me.ucmManageDeviceTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ucmManageDeviceTab.Location = New System.Drawing.Point(4, 29)
+        Me.ucmManageDeviceTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ucmManageDeviceTab.Name = "ucmManageDeviceTab"
-        Me.ucmManageDeviceTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.ucmManageDeviceTab.Size = New System.Drawing.Size(833, 389)
+        Me.ucmManageDeviceTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ucmManageDeviceTab.Size = New System.Drawing.Size(938, 489)
         Me.ucmManageDeviceTab.TabIndex = 0
         Me.ucmManageDeviceTab.Text = "Basic Commands"
         Me.ucmManageDeviceTab.UseVisualStyleBackColor = True
@@ -4606,12 +4621,12 @@ Partial Class FrmMain
         Me.BasicCmdsTab.Controls.Add(Me.relativePriceTab)
         Me.BasicCmdsTab.Controls.Add(Me.requestPowerLevelTab)
         Me.BasicCmdsTab.Controls.Add(Me.timeRemainingTab)
-        Me.BasicCmdsTab.Location = New System.Drawing.Point(8, 7)
-        Me.BasicCmdsTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BasicCmdsTab.Location = New System.Drawing.Point(9, 9)
+        Me.BasicCmdsTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.BasicCmdsTab.Multiline = True
         Me.BasicCmdsTab.Name = "BasicCmdsTab"
         Me.BasicCmdsTab.SelectedIndex = 0
-        Me.BasicCmdsTab.Size = New System.Drawing.Size(814, 370)
+        Me.BasicCmdsTab.Size = New System.Drawing.Size(916, 462)
         Me.BasicCmdsTab.TabIndex = 0
         '
         'shedLoadTab
@@ -4624,41 +4639,41 @@ Partial Class FrmMain
         Me.shedLoadTab.Controls.Add(Me.btnShedSend)
         Me.shedLoadTab.Controls.Add(Me.txtShedDur)
         Me.shedLoadTab.Controls.Add(Me.trkShedDur)
-        Me.shedLoadTab.Location = New System.Drawing.Point(4, 25)
-        Me.shedLoadTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.shedLoadTab.Location = New System.Drawing.Point(4, 29)
+        Me.shedLoadTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.shedLoadTab.Name = "shedLoadTab"
-        Me.shedLoadTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.shedLoadTab.Size = New System.Drawing.Size(806, 341)
+        Me.shedLoadTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.shedLoadTab.Size = New System.Drawing.Size(908, 429)
         Me.shedLoadTab.TabIndex = 0
         Me.shedLoadTab.Text = "Curtailments"
         Me.shedLoadTab.UseVisualStyleBackColor = True
         '
         'criticalPeakButton
         '
-        Me.criticalPeakButton.Location = New System.Drawing.Point(16, 204)
-        Me.criticalPeakButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.criticalPeakButton.Location = New System.Drawing.Point(18, 255)
+        Me.criticalPeakButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.criticalPeakButton.Name = "criticalPeakButton"
-        Me.criticalPeakButton.Size = New System.Drawing.Size(183, 28)
+        Me.criticalPeakButton.Size = New System.Drawing.Size(206, 35)
         Me.criticalPeakButton.TabIndex = 10
         Me.criticalPeakButton.Text = "Initiate CPP Event"
         Me.criticalPeakButton.UseVisualStyleBackColor = True
         '
         'btnEndShed
         '
-        Me.btnEndShed.Location = New System.Drawing.Point(227, 133)
-        Me.btnEndShed.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnEndShed.Location = New System.Drawing.Point(255, 166)
+        Me.btnEndShed.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnEndShed.Name = "btnEndShed"
-        Me.btnEndShed.Size = New System.Drawing.Size(204, 28)
+        Me.btnEndShed.Size = New System.Drawing.Size(230, 35)
         Me.btnEndShed.TabIndex = 2
         Me.btnEndShed.Text = "Run Normal / End Event"
         Me.btnEndShed.UseVisualStyleBackColor = True
         '
         'gridEmergencyButton
         '
-        Me.gridEmergencyButton.Location = New System.Drawing.Point(16, 169)
-        Me.gridEmergencyButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gridEmergencyButton.Location = New System.Drawing.Point(18, 211)
+        Me.gridEmergencyButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gridEmergencyButton.Name = "gridEmergencyButton"
-        Me.gridEmergencyButton.Size = New System.Drawing.Size(183, 28)
+        Me.gridEmergencyButton.Size = New System.Drawing.Size(206, 35)
         Me.gridEmergencyButton.TabIndex = 10
         Me.gridEmergencyButton.Text = "Initiate Grid Emergency"
         Me.gridEmergencyButton.UseVisualStyleBackColor = True
@@ -4666,41 +4681,41 @@ Partial Class FrmMain
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(140, 18)
+        Me.Label9.Location = New System.Drawing.Point(158, 22)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(62, 17)
+        Me.Label9.Size = New System.Drawing.Size(70, 20)
         Me.Label9.TabIndex = 21
         Me.Label9.Text = "Duration"
         '
         'pbLoadUp
         '
-        Me.pbLoadUp.Location = New System.Drawing.Point(16, 240)
-        Me.pbLoadUp.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbLoadUp.Location = New System.Drawing.Point(18, 300)
+        Me.pbLoadUp.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbLoadUp.Name = "pbLoadUp"
-        Me.pbLoadUp.Size = New System.Drawing.Size(183, 28)
+        Me.pbLoadUp.Size = New System.Drawing.Size(206, 35)
         Me.pbLoadUp.TabIndex = 11
         Me.pbLoadUp.Text = "Load Up"
         Me.pbLoadUp.UseVisualStyleBackColor = True
         '
         'btnShedSend
         '
-        Me.btnShedSend.Location = New System.Drawing.Point(16, 133)
-        Me.btnShedSend.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnShedSend.Location = New System.Drawing.Point(18, 166)
+        Me.btnShedSend.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnShedSend.Name = "btnShedSend"
-        Me.btnShedSend.Size = New System.Drawing.Size(183, 28)
+        Me.btnShedSend.Size = New System.Drawing.Size(206, 35)
         Me.btnShedSend.TabIndex = 10
         Me.btnShedSend.Text = "Shed Load"
         Me.btnShedSend.UseVisualStyleBackColor = True
         '
         'txtShedDur
         '
-        Me.txtShedDur.Location = New System.Drawing.Point(37, 14)
-        Me.txtShedDur.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtShedDur.Location = New System.Drawing.Point(42, 18)
+        Me.txtShedDur.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtShedDur.MaxLength = 4
         Me.txtShedDur.Name = "txtShedDur"
         Me.txtShedDur.ReadOnly = True
-        Me.txtShedDur.Size = New System.Drawing.Size(93, 22)
+        Me.txtShedDur.Size = New System.Drawing.Size(104, 26)
         Me.txtShedDur.TabIndex = 9
         Me.txtShedDur.Text = "0"
         Me.txtShedDur.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -4708,22 +4723,22 @@ Partial Class FrmMain
         '
         'trkShedDur
         '
-        Me.trkShedDur.Location = New System.Drawing.Point(16, 52)
-        Me.trkShedDur.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.trkShedDur.Location = New System.Drawing.Point(18, 65)
+        Me.trkShedDur.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.trkShedDur.Maximum = 255
         Me.trkShedDur.Name = "trkShedDur"
-        Me.trkShedDur.Size = New System.Drawing.Size(414, 56)
+        Me.trkShedDur.Size = New System.Drawing.Size(466, 69)
         Me.trkShedDur.TabIndex = 8
         '
         'gridGuidenceTab
         '
         Me.gridGuidenceTab.Controls.Add(Me.pendingEventGb)
         Me.gridGuidenceTab.Controls.Add(Me.grpGridGuide)
-        Me.gridGuidenceTab.Location = New System.Drawing.Point(4, 25)
-        Me.gridGuidenceTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gridGuidenceTab.Location = New System.Drawing.Point(4, 29)
+        Me.gridGuidenceTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gridGuidenceTab.Name = "gridGuidenceTab"
-        Me.gridGuidenceTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gridGuidenceTab.Size = New System.Drawing.Size(806, 341)
+        Me.gridGuidenceTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gridGuidenceTab.Size = New System.Drawing.Size(908, 429)
         Me.gridGuidenceTab.TabIndex = 5
         Me.gridGuidenceTab.Text = "Guidance"
         Me.gridGuidenceTab.UseVisualStyleBackColor = True
@@ -4736,21 +4751,21 @@ Partial Class FrmMain
         Me.pendingEventGb.Controls.Add(Me.Label119)
         Me.pendingEventGb.Controls.Add(Me.txtPendDuration)
         Me.pendingEventGb.Controls.Add(Me.trkPendEventDuration)
-        Me.pendingEventGb.Location = New System.Drawing.Point(8, 142)
-        Me.pendingEventGb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pendingEventGb.Location = New System.Drawing.Point(9, 178)
+        Me.pendingEventGb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pendingEventGb.Name = "pendingEventGb"
-        Me.pendingEventGb.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.pendingEventGb.Size = New System.Drawing.Size(526, 183)
+        Me.pendingEventGb.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.pendingEventGb.Size = New System.Drawing.Size(592, 229)
         Me.pendingEventGb.TabIndex = 22
         Me.pendingEventGb.TabStop = False
         Me.pendingEventGb.Text = "Pending Event"
         '
         'sendPendEventTypePb
         '
-        Me.sendPendEventTypePb.Location = New System.Drawing.Point(320, 135)
-        Me.sendPendEventTypePb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sendPendEventTypePb.Location = New System.Drawing.Point(360, 169)
+        Me.sendPendEventTypePb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sendPendEventTypePb.Name = "sendPendEventTypePb"
-        Me.sendPendEventTypePb.Size = New System.Drawing.Size(196, 28)
+        Me.sendPendEventTypePb.Size = New System.Drawing.Size(220, 35)
         Me.sendPendEventTypePb.TabIndex = 27
         Me.sendPendEventTypePb.Text = "Send Pending Event Type"
         Me.sendPendEventTypePb.UseVisualStyleBackColor = True
@@ -4761,18 +4776,18 @@ Partial Class FrmMain
         Me.pendEventTypeCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.pendEventTypeCb.FormattingEnabled = True
         Me.pendEventTypeCb.Items.AddRange(New Object() {"Shed", "End Shed/Run Normal", "Critical Peak", "Grid Emergency", "Load Up"})
-        Me.pendEventTypeCb.Location = New System.Drawing.Point(14, 138)
-        Me.pendEventTypeCb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pendEventTypeCb.Location = New System.Drawing.Point(16, 172)
+        Me.pendEventTypeCb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pendEventTypeCb.Name = "pendEventTypeCb"
-        Me.pendEventTypeCb.Size = New System.Drawing.Size(284, 24)
+        Me.pendEventTypeCb.Size = New System.Drawing.Size(319, 28)
         Me.pendEventTypeCb.TabIndex = 26
         '
         'sendPendEventTimePb
         '
-        Me.sendPendEventTimePb.Location = New System.Drawing.Point(233, 22)
-        Me.sendPendEventTimePb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sendPendEventTimePb.Location = New System.Drawing.Point(262, 28)
+        Me.sendPendEventTimePb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sendPendEventTimePb.Name = "sendPendEventTimePb"
-        Me.sendPendEventTimePb.Size = New System.Drawing.Size(196, 28)
+        Me.sendPendEventTimePb.Size = New System.Drawing.Size(220, 35)
         Me.sendPendEventTimePb.TabIndex = 25
         Me.sendPendEventTimePb.Text = "Send Pending Event Time"
         Me.sendPendEventTimePb.UseVisualStyleBackColor = True
@@ -4780,21 +4795,21 @@ Partial Class FrmMain
         'Label119
         '
         Me.Label119.AutoSize = True
-        Me.Label119.Location = New System.Drawing.Point(139, 28)
+        Me.Label119.Location = New System.Drawing.Point(156, 35)
         Me.Label119.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label119.Name = "Label119"
-        Me.Label119.Size = New System.Drawing.Size(39, 17)
+        Me.Label119.Size = New System.Drawing.Size(43, 20)
         Me.Label119.TabIndex = 24
         Me.Label119.Text = "Time"
         '
         'txtPendDuration
         '
-        Me.txtPendDuration.Location = New System.Drawing.Point(36, 25)
-        Me.txtPendDuration.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtPendDuration.Location = New System.Drawing.Point(40, 31)
+        Me.txtPendDuration.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtPendDuration.MaxLength = 4
         Me.txtPendDuration.Name = "txtPendDuration"
         Me.txtPendDuration.ReadOnly = True
-        Me.txtPendDuration.Size = New System.Drawing.Size(93, 22)
+        Me.txtPendDuration.Size = New System.Drawing.Size(104, 26)
         Me.txtPendDuration.TabIndex = 23
         Me.txtPendDuration.Text = "0"
         Me.txtPendDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -4802,22 +4817,22 @@ Partial Class FrmMain
         '
         'trkPendEventDuration
         '
-        Me.trkPendEventDuration.Location = New System.Drawing.Point(14, 62)
-        Me.trkPendEventDuration.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.trkPendEventDuration.Location = New System.Drawing.Point(16, 78)
+        Me.trkPendEventDuration.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.trkPendEventDuration.Maximum = 255
         Me.trkPendEventDuration.Name = "trkPendEventDuration"
-        Me.trkPendEventDuration.Size = New System.Drawing.Size(414, 56)
+        Me.trkPendEventDuration.Size = New System.Drawing.Size(466, 69)
         Me.trkPendEventDuration.TabIndex = 22
         '
         'grpGridGuide
         '
         Me.grpGridGuide.Controls.Add(Me.sendGuidenceButton)
         Me.grpGridGuide.Controls.Add(Me.cmbGridGuide)
-        Me.grpGridGuide.Location = New System.Drawing.Point(8, 23)
-        Me.grpGridGuide.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpGridGuide.Location = New System.Drawing.Point(9, 29)
+        Me.grpGridGuide.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.grpGridGuide.Name = "grpGridGuide"
-        Me.grpGridGuide.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.grpGridGuide.Size = New System.Drawing.Size(323, 101)
+        Me.grpGridGuide.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.grpGridGuide.Size = New System.Drawing.Size(363, 126)
         Me.grpGridGuide.TabIndex = 21
         Me.grpGridGuide.TabStop = False
         Me.grpGridGuide.Text = "Grid Guidance"
@@ -4825,10 +4840,10 @@ Partial Class FrmMain
         '
         'sendGuidenceButton
         '
-        Me.sendGuidenceButton.Location = New System.Drawing.Point(16, 59)
-        Me.sendGuidenceButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sendGuidenceButton.Location = New System.Drawing.Point(18, 74)
+        Me.sendGuidenceButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sendGuidenceButton.Name = "sendGuidenceButton"
-        Me.sendGuidenceButton.Size = New System.Drawing.Size(146, 28)
+        Me.sendGuidenceButton.Size = New System.Drawing.Size(164, 35)
         Me.sendGuidenceButton.TabIndex = 4
         Me.sendGuidenceButton.Text = "Send Guidance"
         Me.sendGuidenceButton.UseVisualStyleBackColor = True
@@ -4838,21 +4853,21 @@ Partial Class FrmMain
         Me.cmbGridGuide.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbGridGuide.FormattingEnabled = True
         Me.cmbGridGuide.Items.AddRange(New Object() {"Bad Time to Use Energy", "Neutral", "Good Time to Use Energy"})
-        Me.cmbGridGuide.Location = New System.Drawing.Point(8, 20)
-        Me.cmbGridGuide.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbGridGuide.Location = New System.Drawing.Point(9, 25)
+        Me.cmbGridGuide.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmbGridGuide.Name = "cmbGridGuide"
-        Me.cmbGridGuide.Size = New System.Drawing.Size(284, 24)
+        Me.cmbGridGuide.Size = New System.Drawing.Size(319, 28)
         Me.cmbGridGuide.TabIndex = 3
         '
         'relativePriceTab
         '
         Me.relativePriceTab.Controls.Add(Me.presentPriceGroup)
         Me.relativePriceTab.Controls.Add(Me.nextPeriodPriceGroup)
-        Me.relativePriceTab.Location = New System.Drawing.Point(4, 25)
-        Me.relativePriceTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.relativePriceTab.Location = New System.Drawing.Point(4, 29)
+        Me.relativePriceTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.relativePriceTab.Name = "relativePriceTab"
-        Me.relativePriceTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.relativePriceTab.Size = New System.Drawing.Size(806, 341)
+        Me.relativePriceTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.relativePriceTab.Size = New System.Drawing.Size(908, 429)
         Me.relativePriceTab.TabIndex = 3
         Me.relativePriceTab.Text = "Relative Price"
         Me.relativePriceTab.UseVisualStyleBackColor = True
@@ -4862,11 +4877,11 @@ Partial Class FrmMain
         Me.presentPriceGroup.Controls.Add(Me.presentPriceButton)
         Me.presentPriceGroup.Controls.Add(Me.presentPriceTextBox)
         Me.presentPriceGroup.Controls.Add(Me.presentPriceTrackBar)
-        Me.presentPriceGroup.Location = New System.Drawing.Point(11, 20)
-        Me.presentPriceGroup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.presentPriceGroup.Location = New System.Drawing.Point(12, 25)
+        Me.presentPriceGroup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.presentPriceGroup.Name = "presentPriceGroup"
-        Me.presentPriceGroup.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.presentPriceGroup.Size = New System.Drawing.Size(439, 138)
+        Me.presentPriceGroup.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.presentPriceGroup.Size = New System.Drawing.Size(494, 172)
         Me.presentPriceGroup.TabIndex = 23
         Me.presentPriceGroup.TabStop = False
         Me.presentPriceGroup.Text = "Present Relative Price"
@@ -4874,22 +4889,22 @@ Partial Class FrmMain
         '
         'presentPriceButton
         '
-        Me.presentPriceButton.Location = New System.Drawing.Point(199, 25)
-        Me.presentPriceButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.presentPriceButton.Location = New System.Drawing.Point(224, 31)
+        Me.presentPriceButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.presentPriceButton.Name = "presentPriceButton"
-        Me.presentPriceButton.Size = New System.Drawing.Size(131, 28)
+        Me.presentPriceButton.Size = New System.Drawing.Size(147, 35)
         Me.presentPriceButton.TabIndex = 10
         Me.presentPriceButton.Text = "Set Price"
         Me.presentPriceButton.UseVisualStyleBackColor = True
         '
         'presentPriceTextBox
         '
-        Me.presentPriceTextBox.Location = New System.Drawing.Point(20, 27)
-        Me.presentPriceTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.presentPriceTextBox.Location = New System.Drawing.Point(22, 34)
+        Me.presentPriceTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.presentPriceTextBox.MaxLength = 4
         Me.presentPriceTextBox.Name = "presentPriceTextBox"
         Me.presentPriceTextBox.ReadOnly = True
-        Me.presentPriceTextBox.Size = New System.Drawing.Size(93, 22)
+        Me.presentPriceTextBox.Size = New System.Drawing.Size(104, 26)
         Me.presentPriceTextBox.TabIndex = 9
         Me.presentPriceTextBox.Text = "0"
         Me.presentPriceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -4897,11 +4912,11 @@ Partial Class FrmMain
         '
         'presentPriceTrackBar
         '
-        Me.presentPriceTrackBar.Location = New System.Drawing.Point(16, 66)
-        Me.presentPriceTrackBar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.presentPriceTrackBar.Location = New System.Drawing.Point(18, 82)
+        Me.presentPriceTrackBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.presentPriceTrackBar.Maximum = 255
         Me.presentPriceTrackBar.Name = "presentPriceTrackBar"
-        Me.presentPriceTrackBar.Size = New System.Drawing.Size(414, 56)
+        Me.presentPriceTrackBar.Size = New System.Drawing.Size(466, 69)
         Me.presentPriceTrackBar.TabIndex = 8
         '
         'nextPeriodPriceGroup
@@ -4909,11 +4924,11 @@ Partial Class FrmMain
         Me.nextPeriodPriceGroup.Controls.Add(Me.nextPeriodPriceButton)
         Me.nextPeriodPriceGroup.Controls.Add(Me.nextPeriodPriceTextBox)
         Me.nextPeriodPriceGroup.Controls.Add(Me.nextPeriodTrackBar)
-        Me.nextPeriodPriceGroup.Location = New System.Drawing.Point(8, 176)
-        Me.nextPeriodPriceGroup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nextPeriodPriceGroup.Location = New System.Drawing.Point(9, 220)
+        Me.nextPeriodPriceGroup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nextPeriodPriceGroup.Name = "nextPeriodPriceGroup"
-        Me.nextPeriodPriceGroup.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.nextPeriodPriceGroup.Size = New System.Drawing.Size(439, 139)
+        Me.nextPeriodPriceGroup.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.nextPeriodPriceGroup.Size = New System.Drawing.Size(494, 174)
         Me.nextPeriodPriceGroup.TabIndex = 22
         Me.nextPeriodPriceGroup.TabStop = False
         Me.nextPeriodPriceGroup.Text = "Next Period Relative Price"
@@ -4921,22 +4936,22 @@ Partial Class FrmMain
         '
         'nextPeriodPriceButton
         '
-        Me.nextPeriodPriceButton.Location = New System.Drawing.Point(164, 25)
-        Me.nextPeriodPriceButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nextPeriodPriceButton.Location = New System.Drawing.Point(184, 31)
+        Me.nextPeriodPriceButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nextPeriodPriceButton.Name = "nextPeriodPriceButton"
-        Me.nextPeriodPriceButton.Size = New System.Drawing.Size(100, 28)
+        Me.nextPeriodPriceButton.Size = New System.Drawing.Size(112, 35)
         Me.nextPeriodPriceButton.TabIndex = 10
         Me.nextPeriodPriceButton.Text = "Set Price"
         Me.nextPeriodPriceButton.UseVisualStyleBackColor = True
         '
         'nextPeriodPriceTextBox
         '
-        Me.nextPeriodPriceTextBox.Location = New System.Drawing.Point(20, 27)
-        Me.nextPeriodPriceTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nextPeriodPriceTextBox.Location = New System.Drawing.Point(22, 34)
+        Me.nextPeriodPriceTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nextPeriodPriceTextBox.MaxLength = 4
         Me.nextPeriodPriceTextBox.Name = "nextPeriodPriceTextBox"
         Me.nextPeriodPriceTextBox.ReadOnly = True
-        Me.nextPeriodPriceTextBox.Size = New System.Drawing.Size(93, 22)
+        Me.nextPeriodPriceTextBox.Size = New System.Drawing.Size(104, 26)
         Me.nextPeriodPriceTextBox.TabIndex = 9
         Me.nextPeriodPriceTextBox.Text = "0"
         Me.nextPeriodPriceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -4944,21 +4959,21 @@ Partial Class FrmMain
         '
         'nextPeriodTrackBar
         '
-        Me.nextPeriodTrackBar.Location = New System.Drawing.Point(16, 66)
-        Me.nextPeriodTrackBar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nextPeriodTrackBar.Location = New System.Drawing.Point(18, 82)
+        Me.nextPeriodTrackBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nextPeriodTrackBar.Maximum = 255
         Me.nextPeriodTrackBar.Name = "nextPeriodTrackBar"
-        Me.nextPeriodTrackBar.Size = New System.Drawing.Size(414, 56)
+        Me.nextPeriodTrackBar.Size = New System.Drawing.Size(466, 69)
         Me.nextPeriodTrackBar.TabIndex = 8
         '
         'requestPowerLevelTab
         '
         Me.requestPowerLevelTab.Controls.Add(Me.gbReqPowerLevel)
-        Me.requestPowerLevelTab.Location = New System.Drawing.Point(4, 25)
-        Me.requestPowerLevelTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.requestPowerLevelTab.Location = New System.Drawing.Point(4, 29)
+        Me.requestPowerLevelTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.requestPowerLevelTab.Name = "requestPowerLevelTab"
-        Me.requestPowerLevelTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.requestPowerLevelTab.Size = New System.Drawing.Size(806, 341)
+        Me.requestPowerLevelTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.requestPowerLevelTab.Size = New System.Drawing.Size(908, 429)
         Me.requestPowerLevelTab.TabIndex = 3
         Me.requestPowerLevelTab.Text = "Power Level"
         Me.requestPowerLevelTab.UseVisualStyleBackColor = True
@@ -4970,11 +4985,11 @@ Partial Class FrmMain
         Me.gbReqPowerLevel.Controls.Add(Me.btnRPLAccept)
         Me.gbReqPowerLevel.Controls.Add(Me.tbPowerAP)
         Me.gbReqPowerLevel.Controls.Add(Me.tbarPower)
-        Me.gbReqPowerLevel.Location = New System.Drawing.Point(8, 28)
-        Me.gbReqPowerLevel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbReqPowerLevel.Location = New System.Drawing.Point(9, 35)
+        Me.gbReqPowerLevel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbReqPowerLevel.Name = "gbReqPowerLevel"
-        Me.gbReqPowerLevel.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gbReqPowerLevel.Size = New System.Drawing.Size(347, 170)
+        Me.gbReqPowerLevel.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbReqPowerLevel.Size = New System.Drawing.Size(390, 212)
         Me.gbReqPowerLevel.TabIndex = 13
         Me.gbReqPowerLevel.TabStop = False
         Me.gbReqPowerLevel.Text = "Request for Power Level"
@@ -4983,10 +4998,10 @@ Partial Class FrmMain
         'rbAbsorbed
         '
         Me.rbAbsorbed.AutoSize = True
-        Me.rbAbsorbed.Location = New System.Drawing.Point(224, 42)
-        Me.rbAbsorbed.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbAbsorbed.Location = New System.Drawing.Point(252, 52)
+        Me.rbAbsorbed.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbAbsorbed.Name = "rbAbsorbed"
-        Me.rbAbsorbed.Size = New System.Drawing.Size(90, 21)
+        Me.rbAbsorbed.Size = New System.Drawing.Size(103, 24)
         Me.rbAbsorbed.TabIndex = 9
         Me.rbAbsorbed.Text = "Absorbed"
         Me.rbAbsorbed.UseVisualStyleBackColor = True
@@ -4995,10 +5010,10 @@ Partial Class FrmMain
         '
         Me.rbProduced.AutoSize = True
         Me.rbProduced.Checked = True
-        Me.rbProduced.Location = New System.Drawing.Point(224, 20)
-        Me.rbProduced.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.rbProduced.Location = New System.Drawing.Point(252, 25)
+        Me.rbProduced.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.rbProduced.Name = "rbProduced"
-        Me.rbProduced.Size = New System.Drawing.Size(90, 21)
+        Me.rbProduced.Size = New System.Drawing.Size(102, 24)
         Me.rbProduced.TabIndex = 8
         Me.rbProduced.TabStop = True
         Me.rbProduced.Text = "Produced"
@@ -5006,22 +5021,22 @@ Partial Class FrmMain
         '
         'btnRPLAccept
         '
-        Me.btnRPLAccept.Location = New System.Drawing.Point(40, 128)
-        Me.btnRPLAccept.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnRPLAccept.Location = New System.Drawing.Point(45, 160)
+        Me.btnRPLAccept.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnRPLAccept.Name = "btnRPLAccept"
-        Me.btnRPLAccept.Size = New System.Drawing.Size(100, 28)
+        Me.btnRPLAccept.Size = New System.Drawing.Size(112, 35)
         Me.btnRPLAccept.TabIndex = 6
         Me.btnRPLAccept.Text = "Request Power Level"
         Me.btnRPLAccept.UseVisualStyleBackColor = True
         '
         'tbPowerAP
         '
-        Me.tbPowerAP.Location = New System.Drawing.Point(29, 27)
-        Me.tbPowerAP.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbPowerAP.Location = New System.Drawing.Point(33, 34)
+        Me.tbPowerAP.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbPowerAP.MaxLength = 4
         Me.tbPowerAP.Name = "tbPowerAP"
         Me.tbPowerAP.ReadOnly = True
-        Me.tbPowerAP.Size = New System.Drawing.Size(63, 22)
+        Me.tbPowerAP.Size = New System.Drawing.Size(70, 26)
         Me.tbPowerAP.TabIndex = 5
         Me.tbPowerAP.Text = "0"
         Me.tbPowerAP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -5029,21 +5044,21 @@ Partial Class FrmMain
         '
         'tbarPower
         '
-        Me.tbarPower.Location = New System.Drawing.Point(25, 66)
-        Me.tbarPower.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbarPower.Location = New System.Drawing.Point(28, 82)
+        Me.tbarPower.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbarPower.Maximum = 127
         Me.tbarPower.Name = "tbarPower"
-        Me.tbarPower.Size = New System.Drawing.Size(312, 56)
+        Me.tbarPower.Size = New System.Drawing.Size(351, 69)
         Me.tbarPower.TabIndex = 2
         '
         'timeRemainingTab
         '
         Me.timeRemainingTab.Controls.Add(Me.timeRemainingGroup)
-        Me.timeRemainingTab.Location = New System.Drawing.Point(4, 25)
-        Me.timeRemainingTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.timeRemainingTab.Location = New System.Drawing.Point(4, 29)
+        Me.timeRemainingTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.timeRemainingTab.Name = "timeRemainingTab"
-        Me.timeRemainingTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.timeRemainingTab.Size = New System.Drawing.Size(806, 341)
+        Me.timeRemainingTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.timeRemainingTab.Size = New System.Drawing.Size(908, 429)
         Me.timeRemainingTab.TabIndex = 4
         Me.timeRemainingTab.Text = "Time Remaining"
         Me.timeRemainingTab.UseVisualStyleBackColor = True
@@ -5053,11 +5068,11 @@ Partial Class FrmMain
         Me.timeRemainingGroup.Controls.Add(Me.timeRemainingButton)
         Me.timeRemainingGroup.Controls.Add(Me.timeRemainingTextBox)
         Me.timeRemainingGroup.Controls.Add(Me.timeRemainingTrackBar)
-        Me.timeRemainingGroup.Location = New System.Drawing.Point(8, 23)
-        Me.timeRemainingGroup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.timeRemainingGroup.Location = New System.Drawing.Point(9, 29)
+        Me.timeRemainingGroup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.timeRemainingGroup.Name = "timeRemainingGroup"
-        Me.timeRemainingGroup.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.timeRemainingGroup.Size = New System.Drawing.Size(439, 170)
+        Me.timeRemainingGroup.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.timeRemainingGroup.Size = New System.Drawing.Size(494, 212)
         Me.timeRemainingGroup.TabIndex = 39
         Me.timeRemainingGroup.TabStop = False
         Me.timeRemainingGroup.Text = "Duration"
@@ -5065,22 +5080,22 @@ Partial Class FrmMain
         '
         'timeRemainingButton
         '
-        Me.timeRemainingButton.Location = New System.Drawing.Point(29, 128)
-        Me.timeRemainingButton.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.timeRemainingButton.Location = New System.Drawing.Point(33, 160)
+        Me.timeRemainingButton.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.timeRemainingButton.Name = "timeRemainingButton"
-        Me.timeRemainingButton.Size = New System.Drawing.Size(155, 28)
+        Me.timeRemainingButton.Size = New System.Drawing.Size(174, 35)
         Me.timeRemainingButton.TabIndex = 10
         Me.timeRemainingButton.Text = "Set Time Remaining"
         Me.timeRemainingButton.UseVisualStyleBackColor = True
         '
         'timeRemainingTextBox
         '
-        Me.timeRemainingTextBox.Location = New System.Drawing.Point(20, 27)
-        Me.timeRemainingTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.timeRemainingTextBox.Location = New System.Drawing.Point(22, 34)
+        Me.timeRemainingTextBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.timeRemainingTextBox.MaxLength = 4
         Me.timeRemainingTextBox.Name = "timeRemainingTextBox"
         Me.timeRemainingTextBox.ReadOnly = True
-        Me.timeRemainingTextBox.Size = New System.Drawing.Size(93, 22)
+        Me.timeRemainingTextBox.Size = New System.Drawing.Size(104, 26)
         Me.timeRemainingTextBox.TabIndex = 9
         Me.timeRemainingTextBox.Text = "0"
         Me.timeRemainingTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -5088,11 +5103,11 @@ Partial Class FrmMain
         '
         'timeRemainingTrackBar
         '
-        Me.timeRemainingTrackBar.Location = New System.Drawing.Point(16, 66)
-        Me.timeRemainingTrackBar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.timeRemainingTrackBar.Location = New System.Drawing.Point(18, 82)
+        Me.timeRemainingTrackBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.timeRemainingTrackBar.Maximum = 255
         Me.timeRemainingTrackBar.Name = "timeRemainingTrackBar"
-        Me.timeRemainingTrackBar.Size = New System.Drawing.Size(414, 56)
+        Me.timeRemainingTrackBar.Size = New System.Drawing.Size(466, 69)
         Me.timeRemainingTrackBar.TabIndex = 8
         '
         'ucmQueryTab
@@ -5101,11 +5116,11 @@ Partial Class FrmMain
         Me.ucmQueryTab.Controls.Add(Me.OpStateQueryCheck)
         Me.ucmQueryTab.Controls.Add(Me.currentStategb)
         Me.ucmQueryTab.Controls.Add(Me.gbQuery)
-        Me.ucmQueryTab.Location = New System.Drawing.Point(4, 25)
-        Me.ucmQueryTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ucmQueryTab.Location = New System.Drawing.Point(4, 29)
+        Me.ucmQueryTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ucmQueryTab.Name = "ucmQueryTab"
-        Me.ucmQueryTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.ucmQueryTab.Size = New System.Drawing.Size(833, 389)
+        Me.ucmQueryTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ucmQueryTab.Size = New System.Drawing.Size(938, 489)
         Me.ucmQueryTab.TabIndex = 1
         Me.ucmQueryTab.Text = "Query Operating State"
         Me.ucmQueryTab.UseVisualStyleBackColor = True
@@ -5113,22 +5128,22 @@ Partial Class FrmMain
         'OpStateIntervalVal
         '
         Me.OpStateIntervalVal.Increment = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.OpStateIntervalVal.Location = New System.Drawing.Point(521, 42)
-        Me.OpStateIntervalVal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OpStateIntervalVal.Location = New System.Drawing.Point(586, 52)
+        Me.OpStateIntervalVal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.OpStateIntervalVal.Maximum = New Decimal(New Integer() {3600, 0, 0, 0})
         Me.OpStateIntervalVal.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.OpStateIntervalVal.Name = "OpStateIntervalVal"
-        Me.OpStateIntervalVal.Size = New System.Drawing.Size(240, 22)
+        Me.OpStateIntervalVal.Size = New System.Drawing.Size(153, 26)
         Me.OpStateIntervalVal.TabIndex = 35
         Me.OpStateIntervalVal.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'OpStateQueryCheck
         '
         Me.OpStateQueryCheck.AutoSize = True
-        Me.OpStateQueryCheck.Location = New System.Drawing.Point(279, 44)
-        Me.OpStateQueryCheck.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OpStateQueryCheck.Location = New System.Drawing.Point(314, 55)
+        Me.OpStateQueryCheck.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.OpStateQueryCheck.Name = "OpStateQueryCheck"
-        Me.OpStateQueryCheck.Size = New System.Drawing.Size(203, 21)
+        Me.OpStateQueryCheck.Size = New System.Drawing.Size(226, 24)
         Me.OpStateQueryCheck.TabIndex = 34
         Me.OpStateQueryCheck.Text = "Enable Interval Query (sec)"
         Me.OpStateQueryCheck.UseVisualStyleBackColor = True
@@ -5136,11 +5151,11 @@ Partial Class FrmMain
         'currentStategb
         '
         Me.currentStategb.Controls.Add(Me.currentStatetb)
-        Me.currentStategb.Location = New System.Drawing.Point(18, 108)
-        Me.currentStategb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.currentStategb.Location = New System.Drawing.Point(20, 135)
+        Me.currentStategb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.currentStategb.Name = "currentStategb"
-        Me.currentStategb.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.currentStategb.Size = New System.Drawing.Size(232, 66)
+        Me.currentStategb.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.currentStategb.Size = New System.Drawing.Size(261, 82)
         Me.currentStategb.TabIndex = 15
         Me.currentStategb.TabStop = False
         Me.currentStategb.Text = "SGD Curent State:"
@@ -5149,21 +5164,21 @@ Partial Class FrmMain
         'currentStatetb
         '
         Me.currentStatetb.BackColor = System.Drawing.Color.White
-        Me.currentStatetb.Location = New System.Drawing.Point(8, 25)
-        Me.currentStatetb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.currentStatetb.Location = New System.Drawing.Point(9, 31)
+        Me.currentStatetb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.currentStatetb.Name = "currentStatetb"
         Me.currentStatetb.ReadOnly = True
-        Me.currentStatetb.Size = New System.Drawing.Size(215, 22)
+        Me.currentStatetb.Size = New System.Drawing.Size(241, 26)
         Me.currentStatetb.TabIndex = 0
         '
         'gbQuery
         '
         Me.gbQuery.Controls.Add(Me.pbOpState)
-        Me.gbQuery.Location = New System.Drawing.Point(18, 18)
-        Me.gbQuery.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbQuery.Location = New System.Drawing.Point(20, 22)
+        Me.gbQuery.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbQuery.Name = "gbQuery"
-        Me.gbQuery.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gbQuery.Size = New System.Drawing.Size(232, 66)
+        Me.gbQuery.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbQuery.Size = New System.Drawing.Size(261, 82)
         Me.gbQuery.TabIndex = 14
         Me.gbQuery.TabStop = False
         Me.gbQuery.Text = "Query"
@@ -5171,35 +5186,59 @@ Partial Class FrmMain
         '
         'pbOpState
         '
-        Me.pbOpState.Location = New System.Drawing.Point(8, 23)
-        Me.pbOpState.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbOpState.Location = New System.Drawing.Point(9, 29)
+        Me.pbOpState.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbOpState.Name = "pbOpState"
-        Me.pbOpState.Size = New System.Drawing.Size(132, 28)
+        Me.pbOpState.Size = New System.Drawing.Size(148, 35)
         Me.pbOpState.TabIndex = 0
         Me.pbOpState.Text = "Operating State"
         Me.pbOpState.UseVisualStyleBackColor = True
         '
         'ucmComStatusTab
         '
+        Me.ucmComStatusTab.Controls.Add(Me.CommStatusIntervalVal)
+        Me.ucmComStatusTab.Controls.Add(Me.CommStatusCheck)
         Me.ucmComStatusTab.Controls.Add(Me.gbCommStatus)
-        Me.ucmComStatusTab.Location = New System.Drawing.Point(4, 25)
-        Me.ucmComStatusTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ucmComStatusTab.Location = New System.Drawing.Point(4, 29)
+        Me.ucmComStatusTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ucmComStatusTab.Name = "ucmComStatusTab"
-        Me.ucmComStatusTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.ucmComStatusTab.Size = New System.Drawing.Size(833, 389)
+        Me.ucmComStatusTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ucmComStatusTab.Size = New System.Drawing.Size(938, 489)
         Me.ucmComStatusTab.TabIndex = 2
         Me.ucmComStatusTab.Text = "Comm Status"
         Me.ucmComStatusTab.UseVisualStyleBackColor = True
+        '
+        'CommStatusIntervalVal
+        '
+        Me.CommStatusIntervalVal.Location = New System.Drawing.Point(301, 154)
+        Me.CommStatusIntervalVal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.CommStatusIntervalVal.Maximum = New Decimal(New Integer() {3600, 0, 0, 0})
+        Me.CommStatusIntervalVal.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.CommStatusIntervalVal.Name = "CommStatusIntervalVal"
+        Me.CommStatusIntervalVal.Size = New System.Drawing.Size(127, 26)
+        Me.CommStatusIntervalVal.TabIndex = 37
+        Me.CommStatusIntervalVal.Value = New Decimal(New Integer() {10, 0, 0, 0})
+        '
+        'CommStatusCheck
+        '
+        Me.CommStatusCheck.AutoSize = True
+        Me.CommStatusCheck.Location = New System.Drawing.Point(43, 154)
+        Me.CommStatusCheck.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.CommStatusCheck.Name = "CommStatusCheck"
+        Me.CommStatusCheck.Size = New System.Drawing.Size(226, 24)
+        Me.CommStatusCheck.TabIndex = 36
+        Me.CommStatusCheck.Text = "Enable Interval Query (sec)"
+        Me.CommStatusCheck.UseVisualStyleBackColor = True
         '
         'gbCommStatus
         '
         Me.gbCommStatus.Controls.Add(Me.SendCommStatusBtn)
         Me.gbCommStatus.Controls.Add(Me.cmbCommStatus)
-        Me.gbCommStatus.Location = New System.Drawing.Point(30, 25)
-        Me.gbCommStatus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbCommStatus.Location = New System.Drawing.Point(34, 31)
+        Me.gbCommStatus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbCommStatus.Name = "gbCommStatus"
-        Me.gbCommStatus.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gbCommStatus.Size = New System.Drawing.Size(539, 66)
+        Me.gbCommStatus.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbCommStatus.Size = New System.Drawing.Size(606, 82)
         Me.gbCommStatus.TabIndex = 15
         Me.gbCommStatus.TabStop = False
         Me.gbCommStatus.Text = "Comm Status"
@@ -5207,10 +5246,10 @@ Partial Class FrmMain
         '
         'SendCommStatusBtn
         '
-        Me.SendCommStatusBtn.Location = New System.Drawing.Point(313, 20)
-        Me.SendCommStatusBtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SendCommStatusBtn.Location = New System.Drawing.Point(352, 25)
+        Me.SendCommStatusBtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.SendCommStatusBtn.Name = "SendCommStatusBtn"
-        Me.SendCommStatusBtn.Size = New System.Drawing.Size(187, 28)
+        Me.SendCommStatusBtn.Size = New System.Drawing.Size(210, 35)
         Me.SendCommStatusBtn.TabIndex = 4
         Me.SendCommStatusBtn.Text = "Send Comm Status"
         Me.SendCommStatusBtn.UseVisualStyleBackColor = True
@@ -5220,20 +5259,20 @@ Partial Class FrmMain
         Me.cmbCommStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbCommStatus.FormattingEnabled = True
         Me.cmbCommStatus.Items.AddRange(New Object() {"No / Lost Connection", "Found / Good Connection", "Poor / Unreliable Connection"})
-        Me.cmbCommStatus.Location = New System.Drawing.Point(8, 20)
-        Me.cmbCommStatus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmbCommStatus.Location = New System.Drawing.Point(9, 25)
+        Me.cmbCommStatus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cmbCommStatus.Name = "cmbCommStatus"
-        Me.cmbCommStatus.Size = New System.Drawing.Size(284, 24)
+        Me.cmbCommStatus.Size = New System.Drawing.Size(319, 28)
         Me.cmbCommStatus.TabIndex = 3
         '
         'ucmTimeSyncTab
         '
         Me.ucmTimeSyncTab.Controls.Add(Me.gbTimeSync)
-        Me.ucmTimeSyncTab.Location = New System.Drawing.Point(4, 25)
-        Me.ucmTimeSyncTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ucmTimeSyncTab.Location = New System.Drawing.Point(4, 29)
+        Me.ucmTimeSyncTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ucmTimeSyncTab.Name = "ucmTimeSyncTab"
-        Me.ucmTimeSyncTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.ucmTimeSyncTab.Size = New System.Drawing.Size(833, 389)
+        Me.ucmTimeSyncTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ucmTimeSyncTab.Size = New System.Drawing.Size(938, 489)
         Me.ucmTimeSyncTab.TabIndex = 4
         Me.ucmTimeSyncTab.Text = "Time Sync"
         Me.ucmTimeSyncTab.UseVisualStyleBackColor = True
@@ -5242,11 +5281,11 @@ Partial Class FrmMain
         '
         Me.gbTimeSync.Controls.Add(Me.btnTimeSyncOff)
         Me.gbTimeSync.Controls.Add(Me.btnTimeSyncOn)
-        Me.gbTimeSync.Location = New System.Drawing.Point(23, 22)
-        Me.gbTimeSync.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.gbTimeSync.Location = New System.Drawing.Point(26, 28)
+        Me.gbTimeSync.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbTimeSync.Name = "gbTimeSync"
-        Me.gbTimeSync.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.gbTimeSync.Size = New System.Drawing.Size(370, 123)
+        Me.gbTimeSync.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbTimeSync.Size = New System.Drawing.Size(416, 154)
         Me.gbTimeSync.TabIndex = 16
         Me.gbTimeSync.TabStop = False
         Me.gbTimeSync.Text = "Simple Time Sync"
@@ -5254,20 +5293,20 @@ Partial Class FrmMain
         '
         'btnTimeSyncOff
         '
-        Me.btnTimeSyncOff.Location = New System.Drawing.Point(158, 38)
-        Me.btnTimeSyncOff.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnTimeSyncOff.Location = New System.Drawing.Point(178, 48)
+        Me.btnTimeSyncOff.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnTimeSyncOff.Name = "btnTimeSyncOff"
-        Me.btnTimeSyncOff.Size = New System.Drawing.Size(131, 28)
+        Me.btnTimeSyncOff.Size = New System.Drawing.Size(147, 35)
         Me.btnTimeSyncOff.TabIndex = 1
         Me.btnTimeSyncOff.Text = "Disable"
         Me.btnTimeSyncOff.UseVisualStyleBackColor = True
         '
         'btnTimeSyncOn
         '
-        Me.btnTimeSyncOn.Location = New System.Drawing.Point(8, 38)
-        Me.btnTimeSyncOn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnTimeSyncOn.Location = New System.Drawing.Point(9, 48)
+        Me.btnTimeSyncOn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnTimeSyncOn.Name = "btnTimeSyncOn"
-        Me.btnTimeSyncOn.Size = New System.Drawing.Size(131, 28)
+        Me.btnTimeSyncOn.Size = New System.Drawing.Size(147, 35)
         Me.btnTimeSyncOn.TabIndex = 0
         Me.btnTimeSyncOn.Text = "Enable"
         Me.btnTimeSyncOn.UseVisualStyleBackColor = True
@@ -5275,90 +5314,105 @@ Partial Class FrmMain
         'ucmIntermediateTab
         '
         Me.ucmIntermediateTab.Controls.Add(Me.intermediateTabControl)
-        Me.ucmIntermediateTab.Location = New System.Drawing.Point(4, 25)
-        Me.ucmIntermediateTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ucmIntermediateTab.Location = New System.Drawing.Point(4, 29)
+        Me.ucmIntermediateTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ucmIntermediateTab.Name = "ucmIntermediateTab"
-        Me.ucmIntermediateTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.ucmIntermediateTab.Size = New System.Drawing.Size(833, 389)
+        Me.ucmIntermediateTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ucmIntermediateTab.Size = New System.Drawing.Size(938, 489)
         Me.ucmIntermediateTab.TabIndex = 8
         Me.ucmIntermediateTab.Text = "Intermediate"
         Me.ucmIntermediateTab.UseVisualStyleBackColor = True
         '
         'intermediateTabControl
         '
-        Me.intermediateTabControl.Controls.Add(Me.ucmSetUTC)
+        Me.intermediateTabControl.Controls.Add(Me.ucmSetGetUTC)
         Me.intermediateTabControl.Controls.Add(Me.ucmAutoCycling)
-        Me.intermediateTabControl.Location = New System.Drawing.Point(4, 4)
-        Me.intermediateTabControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.intermediateTabControl.Location = New System.Drawing.Point(4, 5)
+        Me.intermediateTabControl.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.intermediateTabControl.Name = "intermediateTabControl"
         Me.intermediateTabControl.SelectedIndex = 0
-        Me.intermediateTabControl.Size = New System.Drawing.Size(819, 374)
+        Me.intermediateTabControl.Size = New System.Drawing.Size(921, 468)
         Me.intermediateTabControl.TabIndex = 0
         '
-        'ucmSetUTC
+        'ucmSetGetUTC
         '
-        Me.ucmSetUTC.Controls.Add(Me.nudUTCOffset)
-        Me.ucmSetUTC.Controls.Add(Me.nudDSTOffset)
-        Me.ucmSetUTC.Controls.Add(Me.Label41)
-        Me.ucmSetUTC.Controls.Add(Me.Label42)
-        Me.ucmSetUTC.Controls.Add(Me.btnSetUTC)
-        Me.ucmSetUTC.Location = New System.Drawing.Point(4, 25)
-        Me.ucmSetUTC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.ucmSetUTC.Name = "ucmSetUTC"
-        Me.ucmSetUTC.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.ucmSetUTC.Size = New System.Drawing.Size(811, 345)
-        Me.ucmSetUTC.TabIndex = 0
-        Me.ucmSetUTC.Text = "Set UTC"
-        Me.ucmSetUTC.UseVisualStyleBackColor = True
+        Me.ucmSetGetUTC.Controls.Add(Me.nudUTCOffset)
+        Me.ucmSetGetUTC.Controls.Add(Me.nudDSTOffset)
+        Me.ucmSetGetUTC.Controls.Add(Me.Label41)
+        Me.ucmSetGetUTC.Controls.Add(Me.Label42)
+        Me.ucmSetGetUTC.Controls.Add(Me.btnSetUTC)
+        Me.ucmSetGetUTC.Controls.Add(Me.btnGetUTC)
+        Me.ucmSetGetUTC.Controls.Add(Me.ReceivedUtcTimegb)
+        Me.ucmSetGetUTC.Controls.Add(Me.ReceivedUtcTimetb)
+        Me.ucmSetGetUTC.Location = New System.Drawing.Point(4, 29)
+        Me.ucmSetGetUTC.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ucmSetGetUTC.Name = "ucmSetGetUTC"
+        Me.ucmSetGetUTC.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ucmSetGetUTC.Size = New System.Drawing.Size(913, 435)
+        Me.ucmSetGetUTC.TabIndex = 0
+        Me.ucmSetGetUTC.Text = "Set/Get UTC"
+        Me.ucmSetGetUTC.UseVisualStyleBackColor = True
         '
         'nudUTCOffset
         '
-        Me.nudUTCOffset.Location = New System.Drawing.Point(167, 60)
-        Me.nudUTCOffset.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudUTCOffset.Location = New System.Drawing.Point(188, 75)
+        Me.nudUTCOffset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudUTCOffset.Maximum = New Decimal(New Integer() {48, 0, 0, 0})
         Me.nudUTCOffset.Minimum = New Decimal(New Integer() {48, 0, 0, -2147483648})
         Me.nudUTCOffset.Name = "nudUTCOffset"
-        Me.nudUTCOffset.Size = New System.Drawing.Size(105, 22)
+        Me.nudUTCOffset.Size = New System.Drawing.Size(118, 26)
         Me.nudUTCOffset.TabIndex = 10
         '
         'nudDSTOffset
         '
-        Me.nudDSTOffset.Location = New System.Drawing.Point(167, 10)
-        Me.nudDSTOffset.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudDSTOffset.Location = New System.Drawing.Point(188, 12)
+        Me.nudDSTOffset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudDSTOffset.Maximum = New Decimal(New Integer() {4, 0, 0, 0})
         Me.nudDSTOffset.Name = "nudDSTOffset"
-        Me.nudDSTOffset.Size = New System.Drawing.Size(105, 22)
+        Me.nudDSTOffset.Size = New System.Drawing.Size(118, 26)
         Me.nudDSTOffset.TabIndex = 1
         '
         'Label41
         '
         Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(286, 62)
+        Me.Label41.Location = New System.Drawing.Point(322, 78)
         Me.Label41.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(184, 17)
+        Me.Label41.Size = New System.Drawing.Size(206, 20)
         Me.Label41.TabIndex = 9
         Me.Label41.Text = "UTC offset in 15 min. blocks"
         '
         'Label42
         '
         Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(286, 12)
+        Me.Label42.Location = New System.Drawing.Point(322, 15)
         Me.Label42.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(184, 17)
+        Me.Label42.Size = New System.Drawing.Size(206, 20)
         Me.Label42.TabIndex = 7
         Me.Label42.Text = "DST offset in 15 min. blocks"
         '
         'btnSetUTC
         '
-        Me.btnSetUTC.Location = New System.Drawing.Point(20, 14)
-        Me.btnSetUTC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSetUTC.Location = New System.Drawing.Point(15, 31)
+        Me.btnSetUTC.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnSetUTC.Name = "btnSetUTC"
-        Me.btnSetUTC.Size = New System.Drawing.Size(121, 34)
+        Me.btnSetUTC.Size = New System.Drawing.Size(136, 42)
         Me.btnSetUTC.TabIndex = 5
         Me.btnSetUTC.Text = "Set UTC Time"
         Me.btnSetUTC.UseVisualStyleBackColor = True
+        '
+        'ReceivedUtcTimegb
+        '
+        Me.ReceivedUtcTimegb.Controls.Add(Me.ReceivedUtcTimetb)
+        Me.ReceivedUtcTimegb.Location = New System.Drawing.Point(188, 139)
+        Me.ReceivedUtcTimegb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ReceivedUtcTimegb.Name = "ReceivedUtcTimegb"
+        Me.ReceivedUtcTimegb.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ReceivedUtcTimegb.Size = New System.Drawing.Size(261, 82)
+        Me.ReceivedUtcTimegb.TabIndex = 16
+        Me.ReceivedUtcTimegb.TabStop = False
+        Me.ReceivedUtcTimegb.Text = "UTC Time"
         '
         'ucmAutoCycling
         '
@@ -5384,92 +5438,92 @@ Partial Class FrmMain
         Me.ucmAutoCycling.Controls.Add(Me.Label46)
         Me.ucmAutoCycling.Controls.Add(Me.Label47)
         Me.ucmAutoCycling.Controls.Add(Me.Label48)
-        Me.ucmAutoCycling.Location = New System.Drawing.Point(4, 25)
-        Me.ucmAutoCycling.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ucmAutoCycling.Location = New System.Drawing.Point(4, 29)
+        Me.ucmAutoCycling.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ucmAutoCycling.Name = "ucmAutoCycling"
-        Me.ucmAutoCycling.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.ucmAutoCycling.Size = New System.Drawing.Size(811, 345)
+        Me.ucmAutoCycling.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ucmAutoCycling.Size = New System.Drawing.Size(913, 435)
         Me.ucmAutoCycling.TabIndex = 1
         Me.ucmAutoCycling.Text = "Autonomous Cycling"
         Me.ucmAutoCycling.UseVisualStyleBackColor = True
         '
         'nudDutyCyclePeriod
         '
-        Me.nudDutyCyclePeriod.Location = New System.Drawing.Point(11, 309)
-        Me.nudDutyCyclePeriod.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudDutyCyclePeriod.Location = New System.Drawing.Point(12, 386)
+        Me.nudDutyCyclePeriod.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudDutyCyclePeriod.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
         Me.nudDutyCyclePeriod.Name = "nudDutyCyclePeriod"
-        Me.nudDutyCyclePeriod.Size = New System.Drawing.Size(100, 22)
+        Me.nudDutyCyclePeriod.Size = New System.Drawing.Size(112, 26)
         Me.nudDutyCyclePeriod.TabIndex = 66
         '
         'Label128
         '
         Me.Label128.AutoSize = True
-        Me.Label128.Location = New System.Drawing.Point(141, 314)
+        Me.Label128.Location = New System.Drawing.Point(159, 392)
         Me.Label128.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label128.Name = "Label128"
-        Me.Label128.Size = New System.Drawing.Size(165, 17)
+        Me.Label128.Size = New System.Drawing.Size(182, 20)
         Me.Label128.TabIndex = 65
         Me.Label128.Text = "Duty Cycle Period in Min."
         '
         'nudCriticality
         '
-        Me.nudCriticality.Location = New System.Drawing.Point(11, 272)
-        Me.nudCriticality.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCriticality.Location = New System.Drawing.Point(12, 340)
+        Me.nudCriticality.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCriticality.Name = "nudCriticality"
-        Me.nudCriticality.Size = New System.Drawing.Size(100, 22)
+        Me.nudCriticality.Size = New System.Drawing.Size(112, 26)
         Me.nudCriticality.TabIndex = 64
         '
         'Label127
         '
         Me.Label127.AutoSize = True
-        Me.Label127.Location = New System.Drawing.Point(141, 277)
+        Me.Label127.Location = New System.Drawing.Point(159, 346)
         Me.Label127.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label127.Name = "Label127"
-        Me.Label127.Size = New System.Drawing.Size(64, 17)
+        Me.Label127.Size = New System.Drawing.Size(71, 20)
         Me.Label127.TabIndex = 63
         Me.Label127.Text = "Criticality"
         '
         'nudStopEndRand
         '
-        Me.nudStopEndRand.Location = New System.Drawing.Point(455, 87)
-        Me.nudStopEndRand.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudStopEndRand.Location = New System.Drawing.Point(512, 109)
+        Me.nudStopEndRand.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudStopEndRand.Name = "nudStopEndRand"
-        Me.nudStopEndRand.Size = New System.Drawing.Size(160, 22)
+        Me.nudStopEndRand.Size = New System.Drawing.Size(180, 26)
         Me.nudStopEndRand.TabIndex = 62
         '
         'nudStopEventID
         '
-        Me.nudStopEventID.Location = New System.Drawing.Point(455, 50)
-        Me.nudStopEventID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudStopEventID.Location = New System.Drawing.Point(512, 62)
+        Me.nudStopEventID.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudStopEventID.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
         Me.nudStopEventID.Name = "nudStopEventID"
-        Me.nudStopEventID.Size = New System.Drawing.Size(160, 22)
+        Me.nudStopEventID.Size = New System.Drawing.Size(180, 26)
         Me.nudStopEventID.TabIndex = 61
         '
         'nudEndRandomization
         '
-        Me.nudEndRandomization.Location = New System.Drawing.Point(11, 235)
-        Me.nudEndRandomization.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudEndRandomization.Location = New System.Drawing.Point(12, 294)
+        Me.nudEndRandomization.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudEndRandomization.Name = "nudEndRandomization"
-        Me.nudEndRandomization.Size = New System.Drawing.Size(100, 22)
+        Me.nudEndRandomization.Size = New System.Drawing.Size(112, 26)
         Me.nudEndRandomization.TabIndex = 60
         '
         'nudStartRandomization
         '
-        Me.nudStartRandomization.Location = New System.Drawing.Point(11, 198)
-        Me.nudStartRandomization.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudStartRandomization.Location = New System.Drawing.Point(12, 248)
+        Me.nudStartRandomization.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudStartRandomization.Name = "nudStartRandomization"
-        Me.nudStartRandomization.Size = New System.Drawing.Size(100, 22)
+        Me.nudStartRandomization.Size = New System.Drawing.Size(112, 26)
         Me.nudStartRandomization.TabIndex = 59
         '
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(197, 92)
+        Me.Label28.Location = New System.Drawing.Point(222, 115)
         Me.Label28.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(73, 17)
+        Me.Label28.Size = New System.Drawing.Size(82, 20)
         Me.Label28.TabIndex = 56
         Me.Label28.Text = "Start Time"
         '
@@ -5477,55 +5531,55 @@ Partial Class FrmMain
         '
         Me.dtpStartTime.CustomFormat = "yyyy-MM-dd HH:mm:ss"
         Me.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpStartTime.Location = New System.Drawing.Point(11, 87)
-        Me.dtpStartTime.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpStartTime.Location = New System.Drawing.Point(12, 109)
+        Me.dtpStartTime.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dtpStartTime.Name = "dtpStartTime"
         Me.dtpStartTime.ShowUpDown = True
-        Me.dtpStartTime.Size = New System.Drawing.Size(175, 22)
+        Me.dtpStartTime.Size = New System.Drawing.Size(196, 26)
         Me.dtpStartTime.TabIndex = 55
         '
         'nudDuration
         '
-        Me.nudDuration.Location = New System.Drawing.Point(11, 124)
-        Me.nudDuration.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudDuration.Location = New System.Drawing.Point(12, 155)
+        Me.nudDuration.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudDuration.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
         Me.nudDuration.Name = "nudDuration"
-        Me.nudDuration.Size = New System.Drawing.Size(116, 22)
+        Me.nudDuration.Size = New System.Drawing.Size(130, 26)
         Me.nudDuration.TabIndex = 52
         '
         'nudDutyCycle
         '
-        Me.nudDutyCycle.Location = New System.Drawing.Point(11, 162)
-        Me.nudDutyCycle.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudDutyCycle.Location = New System.Drawing.Point(12, 202)
+        Me.nudDutyCycle.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudDutyCycle.Name = "nudDutyCycle"
-        Me.nudDutyCycle.Size = New System.Drawing.Size(100, 22)
+        Me.nudDutyCycle.Size = New System.Drawing.Size(112, 26)
         Me.nudDutyCycle.TabIndex = 51
         '
         'nudEventID
         '
-        Me.nudEventID.Location = New System.Drawing.Point(11, 50)
-        Me.nudEventID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudEventID.Location = New System.Drawing.Point(12, 62)
+        Me.nudEventID.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudEventID.Maximum = New Decimal(New Integer() {-1, 0, 0, 0})
         Me.nudEventID.Name = "nudEventID"
-        Me.nudEventID.Size = New System.Drawing.Size(141, 22)
+        Me.nudEventID.Size = New System.Drawing.Size(159, 26)
         Me.nudEventID.TabIndex = 50
         '
         'btnStopCycling
         '
-        Me.btnStopCycling.Location = New System.Drawing.Point(564, 6)
-        Me.btnStopCycling.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnStopCycling.Location = New System.Drawing.Point(634, 8)
+        Me.btnStopCycling.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnStopCycling.Name = "btnStopCycling"
-        Me.btnStopCycling.Size = New System.Drawing.Size(105, 34)
+        Me.btnStopCycling.Size = New System.Drawing.Size(118, 42)
         Me.btnStopCycling.TabIndex = 49
         Me.btnStopCycling.Text = "Stop Cycling"
         Me.btnStopCycling.UseVisualStyleBackColor = True
         '
         'btnStartCycling
         '
-        Me.btnStartCycling.Location = New System.Drawing.Point(84, 6)
-        Me.btnStartCycling.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnStartCycling.Location = New System.Drawing.Point(94, 8)
+        Me.btnStartCycling.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnStartCycling.Name = "btnStartCycling"
-        Me.btnStartCycling.Size = New System.Drawing.Size(107, 34)
+        Me.btnStartCycling.Size = New System.Drawing.Size(120, 42)
         Me.btnStartCycling.TabIndex = 41
         Me.btnStartCycling.Text = "Start Cycling"
         Me.btnStartCycling.UseVisualStyleBackColor = True
@@ -5533,81 +5587,81 @@ Partial Class FrmMain
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(622, 91)
+        Me.Label29.Location = New System.Drawing.Point(700, 114)
         Me.Label29.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(174, 17)
+        Me.Label29.Size = New System.Drawing.Size(196, 20)
         Me.Label29.TabIndex = 48
         Me.Label29.Text = "End Randomization (mins)"
         '
         'Label43
         '
         Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(165, 55)
+        Me.Label43.Location = New System.Drawing.Point(186, 69)
         Me.Label43.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(61, 17)
+        Me.Label43.Size = New System.Drawing.Size(71, 20)
         Me.Label43.TabIndex = 42
         Me.Label43.Text = "Event ID"
         '
         'Label44
         '
         Me.Label44.AutoSize = True
-        Me.Label44.Location = New System.Drawing.Point(139, 130)
+        Me.Label44.Location = New System.Drawing.Point(156, 162)
         Me.Label44.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(105, 17)
+        Me.Label44.Size = New System.Drawing.Size(117, 20)
         Me.Label44.TabIndex = 43
         Me.Label44.Text = "Duration (mins)"
         '
         'Label45
         '
         Me.Label45.AutoSize = True
-        Me.Label45.Location = New System.Drawing.Point(628, 54)
+        Me.Label45.Location = New System.Drawing.Point(706, 68)
         Me.Label45.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(61, 17)
+        Me.Label45.Size = New System.Drawing.Size(71, 20)
         Me.Label45.TabIndex = 47
         Me.Label45.Text = "Event ID"
         '
         'Label46
         '
         Me.Label46.AutoSize = True
-        Me.Label46.Location = New System.Drawing.Point(141, 166)
+        Me.Label46.Location = New System.Drawing.Point(159, 208)
         Me.Label46.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(101, 17)
+        Me.Label46.Size = New System.Drawing.Size(112, 20)
         Me.Label46.TabIndex = 44
         Me.Label46.Text = "Duty Cycle (%)"
         '
         'Label47
         '
         Me.Label47.AutoSize = True
-        Me.Label47.Location = New System.Drawing.Point(141, 203)
+        Me.Label47.Location = New System.Drawing.Point(159, 254)
         Me.Label47.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(273, 17)
+        Me.Label47.Size = New System.Drawing.Size(305, 20)
         Me.Label47.TabIndex = 45
         Me.Label47.Text = "Start Randomization (mins) - 0 = Not used"
         '
         'Label48
         '
         Me.Label48.AutoSize = True
-        Me.Label48.Location = New System.Drawing.Point(141, 240)
+        Me.Label48.Location = New System.Drawing.Point(159, 300)
         Me.Label48.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(268, 17)
+        Me.Label48.Size = New System.Drawing.Size(299, 20)
         Me.Label48.TabIndex = 46
         Me.Label48.Text = "End Randomization (mins) - 0 = Not used"
         '
         'sgdTab
         '
         Me.sgdTab.Controls.Add(Me.sgdTabControl)
-        Me.sgdTab.Location = New System.Drawing.Point(4, 25)
-        Me.sgdTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.sgdTab.Location = New System.Drawing.Point(4, 29)
+        Me.sgdTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.sgdTab.Name = "sgdTab"
-        Me.sgdTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.sgdTab.Size = New System.Drawing.Size(860, 529)
+        Me.sgdTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.sgdTab.Size = New System.Drawing.Size(968, 665)
         Me.sgdTab.TabIndex = 1
         Me.sgdTab.Text = "SGD Commands"
         Me.sgdTab.UseVisualStyleBackColor = True
@@ -5624,10 +5678,10 @@ Partial Class FrmMain
         Me.TestScripts.Controls.Add(Me.pbExecuteScript)
         Me.TestScripts.Controls.Add(Me.pbOpenScript)
         Me.TestScripts.Controls.Add(Me.tbScriptFile)
-        Me.TestScripts.Location = New System.Drawing.Point(4, 25)
-        Me.TestScripts.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TestScripts.Location = New System.Drawing.Point(4, 29)
+        Me.TestScripts.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TestScripts.Name = "TestScripts"
-        Me.TestScripts.Size = New System.Drawing.Size(860, 529)
+        Me.TestScripts.Size = New System.Drawing.Size(968, 665)
         Me.TestScripts.TabIndex = 4
         Me.TestScripts.Text = "Test Scripts"
         Me.TestScripts.UseVisualStyleBackColor = True
@@ -5635,10 +5689,10 @@ Partial Class FrmMain
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(167, 194)
+        Me.Label10.Location = New System.Drawing.Point(188, 242)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(80, 17)
+        Me.Label10.Size = New System.Drawing.Size(91, 20)
         Me.Label10.TabIndex = 12
         Me.Label10.Text = "Script Feed"
         '
@@ -5646,51 +5700,51 @@ Partial Class FrmMain
         '
         Me.scriptFeedBox.BackColor = System.Drawing.Color.White
         Me.scriptFeedBox.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.scriptFeedBox.Location = New System.Drawing.Point(194, 213)
-        Me.scriptFeedBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.scriptFeedBox.Location = New System.Drawing.Point(218, 266)
+        Me.scriptFeedBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.scriptFeedBox.Name = "scriptFeedBox"
         Me.scriptFeedBox.ReadOnly = True
-        Me.scriptFeedBox.Size = New System.Drawing.Size(445, 166)
+        Me.scriptFeedBox.Size = New System.Drawing.Size(500, 206)
         Me.scriptFeedBox.TabIndex = 11
         Me.scriptFeedBox.Text = ""
         '
         'testScriptbtn
         '
         Me.testScriptbtn.Enabled = False
-        Me.testScriptbtn.Location = New System.Drawing.Point(669, 133)
-        Me.testScriptbtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.testScriptbtn.Location = New System.Drawing.Point(753, 166)
+        Me.testScriptbtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.testScriptbtn.Name = "testScriptbtn"
-        Me.testScriptbtn.Size = New System.Drawing.Size(123, 30)
+        Me.testScriptbtn.Size = New System.Drawing.Size(138, 38)
         Me.testScriptbtn.TabIndex = 10
         Me.testScriptbtn.Text = "Test Script"
         Me.testScriptbtn.UseVisualStyleBackColor = True
         '
         'pbManualFail
         '
-        Me.pbManualFail.Location = New System.Drawing.Point(669, 270)
-        Me.pbManualFail.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbManualFail.Location = New System.Drawing.Point(753, 338)
+        Me.pbManualFail.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbManualFail.Name = "pbManualFail"
-        Me.pbManualFail.Size = New System.Drawing.Size(123, 50)
+        Me.pbManualFail.Size = New System.Drawing.Size(138, 62)
         Me.pbManualFail.TabIndex = 8
         Me.pbManualFail.Text = "Manual Fail"
         Me.pbManualFail.UseVisualStyleBackColor = True
         '
         'pbManualPass
         '
-        Me.pbManualPass.Location = New System.Drawing.Point(669, 213)
-        Me.pbManualPass.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbManualPass.Location = New System.Drawing.Point(753, 266)
+        Me.pbManualPass.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbManualPass.Name = "pbManualPass"
-        Me.pbManualPass.Size = New System.Drawing.Size(123, 50)
+        Me.pbManualPass.Size = New System.Drawing.Size(138, 62)
         Me.pbManualPass.TabIndex = 7
         Me.pbManualPass.Text = "Manual Pass"
         Me.pbManualPass.UseVisualStyleBackColor = True
         '
         'pbManCont
         '
-        Me.pbManCont.Location = New System.Drawing.Point(669, 329)
-        Me.pbManCont.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbManCont.Location = New System.Drawing.Point(753, 411)
+        Me.pbManCont.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbManCont.Name = "pbManCont"
-        Me.pbManCont.Size = New System.Drawing.Size(123, 50)
+        Me.pbManCont.Size = New System.Drawing.Size(138, 62)
         Me.pbManCont.TabIndex = 6
         Me.pbManCont.Text = "Manual Continue"
         Me.pbManCont.UseVisualStyleBackColor = True
@@ -5698,10 +5752,10 @@ Partial Class FrmMain
         'pbKillScript
         '
         Me.pbKillScript.Enabled = False
-        Me.pbKillScript.Location = New System.Drawing.Point(669, 96)
-        Me.pbKillScript.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbKillScript.Location = New System.Drawing.Point(753, 120)
+        Me.pbKillScript.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbKillScript.Name = "pbKillScript"
-        Me.pbKillScript.Size = New System.Drawing.Size(123, 30)
+        Me.pbKillScript.Size = New System.Drawing.Size(138, 38)
         Me.pbKillScript.TabIndex = 5
         Me.pbKillScript.Text = "Kill Script"
         Me.pbKillScript.UseVisualStyleBackColor = True
@@ -5709,20 +5763,20 @@ Partial Class FrmMain
         'pbExecuteScript
         '
         Me.pbExecuteScript.Enabled = False
-        Me.pbExecuteScript.Location = New System.Drawing.Point(669, 59)
-        Me.pbExecuteScript.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbExecuteScript.Location = New System.Drawing.Point(753, 74)
+        Me.pbExecuteScript.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbExecuteScript.Name = "pbExecuteScript"
-        Me.pbExecuteScript.Size = New System.Drawing.Size(123, 30)
+        Me.pbExecuteScript.Size = New System.Drawing.Size(138, 38)
         Me.pbExecuteScript.TabIndex = 2
         Me.pbExecuteScript.Text = "Execute Script"
         Me.pbExecuteScript.UseVisualStyleBackColor = True
         '
         'pbOpenScript
         '
-        Me.pbOpenScript.Location = New System.Drawing.Point(669, 22)
-        Me.pbOpenScript.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbOpenScript.Location = New System.Drawing.Point(753, 28)
+        Me.pbOpenScript.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbOpenScript.Name = "pbOpenScript"
-        Me.pbOpenScript.Size = New System.Drawing.Size(123, 28)
+        Me.pbOpenScript.Size = New System.Drawing.Size(138, 35)
         Me.pbOpenScript.TabIndex = 1
         Me.pbOpenScript.Text = "Open Script"
         Me.pbOpenScript.UseVisualStyleBackColor = True
@@ -5730,20 +5784,20 @@ Partial Class FrmMain
         'tbScriptFile
         '
         Me.tbScriptFile.Enabled = False
-        Me.tbScriptFile.Location = New System.Drawing.Point(194, 25)
-        Me.tbScriptFile.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbScriptFile.Location = New System.Drawing.Point(218, 31)
+        Me.tbScriptFile.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbScriptFile.Name = "tbScriptFile"
-        Me.tbScriptFile.Size = New System.Drawing.Size(445, 22)
+        Me.tbScriptFile.Size = New System.Drawing.Size(500, 26)
         Me.tbScriptFile.TabIndex = 0
         '
         'realDeviceTab
         '
         Me.realDeviceTab.Controls.Add(Me.realDeviceTabControl)
-        Me.realDeviceTab.Location = New System.Drawing.Point(4, 25)
-        Me.realDeviceTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realDeviceTab.Location = New System.Drawing.Point(4, 29)
+        Me.realDeviceTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realDeviceTab.Name = "realDeviceTab"
-        Me.realDeviceTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.realDeviceTab.Size = New System.Drawing.Size(860, 529)
+        Me.realDeviceTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.realDeviceTab.Size = New System.Drawing.Size(968, 665)
         Me.realDeviceTab.TabIndex = 5
         Me.realDeviceTab.Text = "Real Device Options"
         Me.realDeviceTab.UseVisualStyleBackColor = True
@@ -5754,21 +5808,21 @@ Partial Class FrmMain
         Me.realDeviceTabControl.Controls.Add(Me.realUCMFunctionsTab)
         Me.realDeviceTabControl.Controls.Add(Me.realSGDFunctionsTab)
         Me.realDeviceTabControl.Controls.Add(Me.DeviceSim)
-        Me.realDeviceTabControl.Location = New System.Drawing.Point(8, 7)
-        Me.realDeviceTabControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realDeviceTabControl.Location = New System.Drawing.Point(9, 9)
+        Me.realDeviceTabControl.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realDeviceTabControl.Name = "realDeviceTabControl"
         Me.realDeviceTabControl.SelectedIndex = 0
-        Me.realDeviceTabControl.Size = New System.Drawing.Size(841, 418)
+        Me.realDeviceTabControl.Size = New System.Drawing.Size(946, 522)
         Me.realDeviceTabControl.TabIndex = 0
         '
         'commonRealFunctionsTab
         '
         Me.commonRealFunctionsTab.Controls.Add(Me.realCommonFunctionsGroup)
-        Me.commonRealFunctionsTab.Location = New System.Drawing.Point(4, 25)
-        Me.commonRealFunctionsTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.commonRealFunctionsTab.Location = New System.Drawing.Point(4, 29)
+        Me.commonRealFunctionsTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.commonRealFunctionsTab.Name = "commonRealFunctionsTab"
-        Me.commonRealFunctionsTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.commonRealFunctionsTab.Size = New System.Drawing.Size(833, 389)
+        Me.commonRealFunctionsTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.commonRealFunctionsTab.Size = New System.Drawing.Size(938, 489)
         Me.commonRealFunctionsTab.TabIndex = 0
         Me.commonRealFunctionsTab.Text = "Common Functions"
         Me.commonRealFunctionsTab.UseVisualStyleBackColor = True
@@ -5779,62 +5833,62 @@ Partial Class FrmMain
         Me.realCommonFunctionsGroup.Controls.Add(Me.Label84)
         Me.realCommonFunctionsGroup.Controls.Add(Me.Label83)
         Me.realCommonFunctionsGroup.Controls.Add(Me.realDeviceIgnoreMaxPayloadCheckBox)
-        Me.realCommonFunctionsGroup.Location = New System.Drawing.Point(8, 7)
-        Me.realCommonFunctionsGroup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realCommonFunctionsGroup.Location = New System.Drawing.Point(9, 9)
+        Me.realCommonFunctionsGroup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realCommonFunctionsGroup.Name = "realCommonFunctionsGroup"
-        Me.realCommonFunctionsGroup.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.realCommonFunctionsGroup.Size = New System.Drawing.Size(814, 370)
+        Me.realCommonFunctionsGroup.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.realCommonFunctionsGroup.Size = New System.Drawing.Size(916, 462)
         Me.realCommonFunctionsGroup.TabIndex = 0
         Me.realCommonFunctionsGroup.TabStop = False
         '
         'realDeviceCommandRetrycb
         '
         Me.realDeviceCommandRetrycb.AutoSize = True
-        Me.realDeviceCommandRetrycb.Location = New System.Drawing.Point(293, 106)
-        Me.realDeviceCommandRetrycb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realDeviceCommandRetrycb.Location = New System.Drawing.Point(330, 132)
+        Me.realDeviceCommandRetrycb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realDeviceCommandRetrycb.Name = "realDeviceCommandRetrycb"
-        Me.realDeviceCommandRetrycb.Size = New System.Drawing.Size(18, 17)
+        Me.realDeviceCommandRetrycb.Size = New System.Drawing.Size(22, 21)
         Me.realDeviceCommandRetrycb.TabIndex = 3
         Me.realDeviceCommandRetrycb.UseVisualStyleBackColor = True
         '
         'Label84
         '
         Me.Label84.AutoSize = True
-        Me.Label84.Location = New System.Drawing.Point(59, 106)
+        Me.Label84.Location = New System.Drawing.Point(66, 132)
         Me.Label84.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label84.Name = "Label84"
-        Me.Label84.Size = New System.Drawing.Size(161, 17)
+        Me.Label84.Size = New System.Drawing.Size(182, 20)
         Me.Label84.TabIndex = 2
         Me.Label84.Text = "Command Retry Enable:"
         '
         'Label83
         '
         Me.Label83.AutoSize = True
-        Me.Label83.Location = New System.Drawing.Point(59, 60)
+        Me.Label83.Location = New System.Drawing.Point(66, 75)
         Me.Label83.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label83.Name = "Label83"
-        Me.Label83.Size = New System.Drawing.Size(196, 17)
+        Me.Label83.Size = New System.Drawing.Size(221, 20)
         Me.Label83.TabIndex = 1
         Me.Label83.Text = "Ignore Maximum Payload Size"
         '
         'realDeviceIgnoreMaxPayloadCheckBox
         '
         Me.realDeviceIgnoreMaxPayloadCheckBox.AutoSize = True
-        Me.realDeviceIgnoreMaxPayloadCheckBox.Location = New System.Drawing.Point(293, 59)
-        Me.realDeviceIgnoreMaxPayloadCheckBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realDeviceIgnoreMaxPayloadCheckBox.Location = New System.Drawing.Point(330, 74)
+        Me.realDeviceIgnoreMaxPayloadCheckBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realDeviceIgnoreMaxPayloadCheckBox.Name = "realDeviceIgnoreMaxPayloadCheckBox"
-        Me.realDeviceIgnoreMaxPayloadCheckBox.Size = New System.Drawing.Size(18, 17)
+        Me.realDeviceIgnoreMaxPayloadCheckBox.Size = New System.Drawing.Size(22, 21)
         Me.realDeviceIgnoreMaxPayloadCheckBox.TabIndex = 0
         Me.realDeviceIgnoreMaxPayloadCheckBox.UseVisualStyleBackColor = True
         '
         'realUCMFunctionsTab
         '
         Me.realUCMFunctionsTab.Controls.Add(Me.realUCMFunctionsGroup)
-        Me.realUCMFunctionsTab.Location = New System.Drawing.Point(4, 25)
-        Me.realUCMFunctionsTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realUCMFunctionsTab.Location = New System.Drawing.Point(4, 29)
+        Me.realUCMFunctionsTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realUCMFunctionsTab.Name = "realUCMFunctionsTab"
-        Me.realUCMFunctionsTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.realUCMFunctionsTab.Size = New System.Drawing.Size(833, 389)
+        Me.realUCMFunctionsTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.realUCMFunctionsTab.Size = New System.Drawing.Size(938, 489)
         Me.realUCMFunctionsTab.TabIndex = 1
         Me.realUCMFunctionsTab.Text = "UCM Functions"
         Me.realUCMFunctionsTab.UseVisualStyleBackColor = True
@@ -5845,42 +5899,42 @@ Partial Class FrmMain
         Me.realUCMFunctionsGroup.Controls.Add(Me.Label76)
         Me.realUCMFunctionsGroup.Controls.Add(Me.Label75)
         Me.realUCMFunctionsGroup.Controls.Add(Me.realUCMCommStatusBox)
-        Me.realUCMFunctionsGroup.Location = New System.Drawing.Point(8, 7)
-        Me.realUCMFunctionsGroup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realUCMFunctionsGroup.Location = New System.Drawing.Point(9, 9)
+        Me.realUCMFunctionsGroup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realUCMFunctionsGroup.Name = "realUCMFunctionsGroup"
-        Me.realUCMFunctionsGroup.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.realUCMFunctionsGroup.Size = New System.Drawing.Size(814, 374)
+        Me.realUCMFunctionsGroup.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.realUCMFunctionsGroup.Size = New System.Drawing.Size(916, 468)
         Me.realUCMFunctionsGroup.TabIndex = 0
         Me.realUCMFunctionsGroup.TabStop = False
         '
         'realUCMTrasmissionIntervalBox
         '
-        Me.realUCMTrasmissionIntervalBox.Location = New System.Drawing.Point(258, 112)
-        Me.realUCMTrasmissionIntervalBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realUCMTrasmissionIntervalBox.Location = New System.Drawing.Point(290, 140)
+        Me.realUCMTrasmissionIntervalBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realUCMTrasmissionIntervalBox.Maximum = New Decimal(New Integer() {600, 0, 0, 0})
         Me.realUCMTrasmissionIntervalBox.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.realUCMTrasmissionIntervalBox.Name = "realUCMTrasmissionIntervalBox"
-        Me.realUCMTrasmissionIntervalBox.Size = New System.Drawing.Size(240, 22)
+        Me.realUCMTrasmissionIntervalBox.Size = New System.Drawing.Size(270, 26)
         Me.realUCMTrasmissionIntervalBox.TabIndex = 3
         Me.realUCMTrasmissionIntervalBox.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'Label76
         '
         Me.Label76.AutoSize = True
-        Me.Label76.Location = New System.Drawing.Point(62, 114)
+        Me.Label76.Location = New System.Drawing.Point(70, 142)
         Me.Label76.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label76.Name = "Label76"
-        Me.Label76.Size = New System.Drawing.Size(182, 17)
+        Me.Label76.Size = New System.Drawing.Size(201, 20)
         Me.Label76.TabIndex = 2
         Me.Label76.Text = "Transmission Interval (sec):"
         '
         'Label75
         '
         Me.Label75.AutoSize = True
-        Me.Label75.Location = New System.Drawing.Point(62, 59)
+        Me.Label75.Location = New System.Drawing.Point(70, 74)
         Me.Label75.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label75.Name = "Label75"
-        Me.Label75.Size = New System.Drawing.Size(164, 17)
+        Me.Label75.Size = New System.Drawing.Size(188, 20)
         Me.Label75.TabIndex = 1
         Me.Label75.Text = "Comm Status to be Sent:"
         '
@@ -5889,20 +5943,20 @@ Partial Class FrmMain
         Me.realUCMCommStatusBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.realUCMCommStatusBox.FormattingEnabled = True
         Me.realUCMCommStatusBox.Items.AddRange(New Object() {"Manual", "No / Lost Connection", "Found / Good Connection", "Poor / Unreliable Connection"})
-        Me.realUCMCommStatusBox.Location = New System.Drawing.Point(258, 55)
-        Me.realUCMCommStatusBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realUCMCommStatusBox.Location = New System.Drawing.Point(290, 69)
+        Me.realUCMCommStatusBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realUCMCommStatusBox.Name = "realUCMCommStatusBox"
-        Me.realUCMCommStatusBox.Size = New System.Drawing.Size(239, 24)
+        Me.realUCMCommStatusBox.Size = New System.Drawing.Size(268, 28)
         Me.realUCMCommStatusBox.TabIndex = 0
         '
         'realSGDFunctionsTab
         '
         Me.realSGDFunctionsTab.Controls.Add(Me.realSGDFunctionsGroup)
-        Me.realSGDFunctionsTab.Location = New System.Drawing.Point(4, 25)
-        Me.realSGDFunctionsTab.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDFunctionsTab.Location = New System.Drawing.Point(4, 29)
+        Me.realSGDFunctionsTab.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDFunctionsTab.Name = "realSGDFunctionsTab"
-        Me.realSGDFunctionsTab.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.realSGDFunctionsTab.Size = New System.Drawing.Size(833, 389)
+        Me.realSGDFunctionsTab.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.realSGDFunctionsTab.Size = New System.Drawing.Size(938, 489)
         Me.realSGDFunctionsTab.TabIndex = 2
         Me.realSGDFunctionsTab.Text = "SGD Functions"
         Me.realSGDFunctionsTab.UseVisualStyleBackColor = True
@@ -5930,52 +5984,52 @@ Partial Class FrmMain
         Me.realSGDFunctionsGroup.Controls.Add(Me.realSGDCritPeakResponse)
         Me.realSGDFunctionsGroup.Controls.Add(Me.realSGDShedResponse)
         Me.realSGDFunctionsGroup.Controls.Add(Me.internalClockSupportedcb)
-        Me.realSGDFunctionsGroup.Location = New System.Drawing.Point(8, 7)
-        Me.realSGDFunctionsGroup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDFunctionsGroup.Location = New System.Drawing.Point(9, 9)
+        Me.realSGDFunctionsGroup.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDFunctionsGroup.Name = "realSGDFunctionsGroup"
-        Me.realSGDFunctionsGroup.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.realSGDFunctionsGroup.Size = New System.Drawing.Size(814, 370)
+        Me.realSGDFunctionsGroup.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.realSGDFunctionsGroup.Size = New System.Drawing.Size(916, 462)
         Me.realSGDFunctionsGroup.TabIndex = 3
         Me.realSGDFunctionsGroup.TabStop = False
         '
         'realSGDNoCommTimeoutEnabledbtn
         '
-        Me.realSGDNoCommTimeoutEnabledbtn.Location = New System.Drawing.Point(432, 325)
-        Me.realSGDNoCommTimeoutEnabledbtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDNoCommTimeoutEnabledbtn.Location = New System.Drawing.Point(486, 406)
+        Me.realSGDNoCommTimeoutEnabledbtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDNoCommTimeoutEnabledbtn.Name = "realSGDNoCommTimeoutEnabledbtn"
-        Me.realSGDNoCommTimeoutEnabledbtn.Size = New System.Drawing.Size(100, 25)
+        Me.realSGDNoCommTimeoutEnabledbtn.Size = New System.Drawing.Size(112, 31)
         Me.realSGDNoCommTimeoutEnabledbtn.TabIndex = 19
         Me.realSGDNoCommTimeoutEnabledbtn.Text = "Enable"
         Me.realSGDNoCommTimeoutEnabledbtn.UseVisualStyleBackColor = True
         '
         'realSGDNoCommTimeoutValBox
         '
-        Me.realSGDNoCommTimeoutValBox.Location = New System.Drawing.Point(275, 325)
-        Me.realSGDNoCommTimeoutValBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDNoCommTimeoutValBox.Location = New System.Drawing.Point(309, 406)
+        Me.realSGDNoCommTimeoutValBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDNoCommTimeoutValBox.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.realSGDNoCommTimeoutValBox.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.realSGDNoCommTimeoutValBox.Name = "realSGDNoCommTimeoutValBox"
-        Me.realSGDNoCommTimeoutValBox.Size = New System.Drawing.Size(130, 22)
+        Me.realSGDNoCommTimeoutValBox.Size = New System.Drawing.Size(146, 26)
         Me.realSGDNoCommTimeoutValBox.TabIndex = 17
         Me.realSGDNoCommTimeoutValBox.Value = New Decimal(New Integer() {5, 0, 0, 0})
         '
         'Label85
         '
         Me.Label85.AutoSize = True
-        Me.Label85.Location = New System.Drawing.Point(61, 327)
+        Me.Label85.Location = New System.Drawing.Point(69, 409)
         Me.Label85.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label85.Name = "Label85"
-        Me.Label85.Size = New System.Drawing.Size(186, 17)
+        Me.Label85.Size = New System.Drawing.Size(210, 20)
         Me.Label85.TabIndex = 16
         Me.Label85.Text = "Comm Status Timeout (sec):"
         '
         'Label82
         '
         Me.Label82.AutoSize = True
-        Me.Label82.Location = New System.Drawing.Point(61, 295)
+        Me.Label82.Location = New System.Drawing.Point(69, 369)
         Me.Label82.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label82.Name = "Label82"
-        Me.Label82.Size = New System.Drawing.Size(154, 17)
+        Me.Label82.Size = New System.Drawing.Size(171, 20)
         Me.Label82.TabIndex = 15
         Me.Label82.Text = "Neutral Grid Guidance:"
         '
@@ -5984,19 +6038,19 @@ Partial Class FrmMain
         Me.realSGDNeutralResponse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.realSGDNeutralResponse.FormattingEnabled = True
         Me.realSGDNeutralResponse.Items.AddRange(New Object() {"Manual", "Pre-guidance"})
-        Me.realSGDNeutralResponse.Location = New System.Drawing.Point(275, 292)
-        Me.realSGDNeutralResponse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDNeutralResponse.Location = New System.Drawing.Point(309, 365)
+        Me.realSGDNeutralResponse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDNeutralResponse.Name = "realSGDNeutralResponse"
-        Me.realSGDNeutralResponse.Size = New System.Drawing.Size(468, 24)
+        Me.realSGDNeutralResponse.Size = New System.Drawing.Size(526, 28)
         Me.realSGDNeutralResponse.TabIndex = 14
         '
         'Label81
         '
         Me.Label81.AutoSize = True
-        Me.Label81.Location = New System.Drawing.Point(61, 262)
+        Me.Label81.Location = New System.Drawing.Point(69, 328)
         Me.Label81.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label81.Name = "Label81"
-        Me.Label81.Size = New System.Drawing.Size(168, 17)
+        Me.Label81.Size = New System.Drawing.Size(187, 20)
         Me.Label81.TabIndex = 13
         Me.Label81.Text = "Bad Time Grid Guidance:"
         '
@@ -6005,19 +6059,19 @@ Partial Class FrmMain
         Me.realSGDBadTimeResponse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.realSGDBadTimeResponse.FormattingEnabled = True
         Me.realSGDBadTimeResponse.Items.AddRange(New Object() {"Manual", "Not supported", "Running Curtailed Grid/ Running Normal if override is set", "Idle Grid/ Idle Normal if override is set", "SGD Error Condition"})
-        Me.realSGDBadTimeResponse.Location = New System.Drawing.Point(275, 258)
-        Me.realSGDBadTimeResponse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDBadTimeResponse.Location = New System.Drawing.Point(309, 322)
+        Me.realSGDBadTimeResponse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDBadTimeResponse.Name = "realSGDBadTimeResponse"
-        Me.realSGDBadTimeResponse.Size = New System.Drawing.Size(468, 24)
+        Me.realSGDBadTimeResponse.Size = New System.Drawing.Size(526, 28)
         Me.realSGDBadTimeResponse.TabIndex = 12
         '
         'Label80
         '
         Me.Label80.AutoSize = True
-        Me.Label80.Location = New System.Drawing.Point(61, 229)
+        Me.Label80.Location = New System.Drawing.Point(69, 286)
         Me.Label80.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label80.Name = "Label80"
-        Me.Label80.Size = New System.Drawing.Size(178, 17)
+        Me.Label80.Size = New System.Drawing.Size(198, 20)
         Me.Label80.TabIndex = 11
         Me.Label80.Text = "Good Time Grid Guidance:"
         '
@@ -6026,19 +6080,19 @@ Partial Class FrmMain
         Me.realSGDGoodTimeResponse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.realSGDGoodTimeResponse.FormattingEnabled = True
         Me.realSGDGoodTimeResponse.Items.AddRange(New Object() {"Manual", "Not supported", "Running Normal", "Running Idle", "SGD Error Condition"})
-        Me.realSGDGoodTimeResponse.Location = New System.Drawing.Point(275, 226)
-        Me.realSGDGoodTimeResponse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDGoodTimeResponse.Location = New System.Drawing.Point(309, 282)
+        Me.realSGDGoodTimeResponse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDGoodTimeResponse.Name = "realSGDGoodTimeResponse"
-        Me.realSGDGoodTimeResponse.Size = New System.Drawing.Size(468, 24)
+        Me.realSGDGoodTimeResponse.Size = New System.Drawing.Size(526, 28)
         Me.realSGDGoodTimeResponse.TabIndex = 10
         '
         'Label79
         '
         Me.Label79.AutoSize = True
-        Me.Label79.Location = New System.Drawing.Point(61, 196)
+        Me.Label79.Location = New System.Drawing.Point(69, 245)
         Me.Label79.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label79.Name = "Label79"
-        Me.Label79.Size = New System.Drawing.Size(182, 17)
+        Me.Label79.Size = New System.Drawing.Size(204, 20)
         Me.Label79.TabIndex = 9
         Me.Label79.Text = "Grid Emergency Response:"
         '
@@ -6047,29 +6101,29 @@ Partial Class FrmMain
         Me.realSGDEmergencyResponse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.realSGDEmergencyResponse.FormattingEnabled = True
         Me.realSGDEmergencyResponse.Items.AddRange(New Object() {"Manual", "Not Supported", "Running Curtailed Grid/ Running Normal if override is set", "Idle Grid/ Idle Normal if override is set", "SGD Error Condition"})
-        Me.realSGDEmergencyResponse.Location = New System.Drawing.Point(275, 192)
-        Me.realSGDEmergencyResponse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDEmergencyResponse.Location = New System.Drawing.Point(309, 240)
+        Me.realSGDEmergencyResponse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDEmergencyResponse.Name = "realSGDEmergencyResponse"
-        Me.realSGDEmergencyResponse.Size = New System.Drawing.Size(468, 24)
+        Me.realSGDEmergencyResponse.Size = New System.Drawing.Size(526, 28)
         Me.realSGDEmergencyResponse.TabIndex = 8
         '
         'Label77
         '
         Me.Label77.AutoSize = True
-        Me.Label77.Location = New System.Drawing.Point(61, 162)
+        Me.Label77.Location = New System.Drawing.Point(69, 202)
         Me.Label77.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label77.Name = "Label77"
-        Me.Label77.Size = New System.Drawing.Size(134, 17)
+        Me.Label77.Size = New System.Drawing.Size(151, 20)
         Me.Label77.TabIndex = 7
         Me.Label77.Text = "Load Up Response:"
         '
         'Label78
         '
         Me.Label78.AutoSize = True
-        Me.Label78.Location = New System.Drawing.Point(61, 96)
+        Me.Label78.Location = New System.Drawing.Point(69, 120)
         Me.Label78.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label78.Name = "Label78"
-        Me.Label78.Size = New System.Drawing.Size(209, 17)
+        Me.Label78.Size = New System.Drawing.Size(238, 20)
         Me.Label78.TabIndex = 6
         Me.Label78.Text = "End Shed Command Response:"
         '
@@ -6078,10 +6132,10 @@ Partial Class FrmMain
         Me.realSGDLoadUpResponse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.realSGDLoadUpResponse.FormattingEnabled = True
         Me.realSGDLoadUpResponse.Items.AddRange(New Object() {"Manual", "Not Supported", "Running Normal", "Idle Normal", "SGD Error Condition"})
-        Me.realSGDLoadUpResponse.Location = New System.Drawing.Point(275, 158)
-        Me.realSGDLoadUpResponse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDLoadUpResponse.Location = New System.Drawing.Point(309, 198)
+        Me.realSGDLoadUpResponse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDLoadUpResponse.Name = "realSGDLoadUpResponse"
-        Me.realSGDLoadUpResponse.Size = New System.Drawing.Size(468, 24)
+        Me.realSGDLoadUpResponse.Size = New System.Drawing.Size(526, 28)
         Me.realSGDLoadUpResponse.TabIndex = 4
         '
         'realSGDEndShedResponse
@@ -6089,39 +6143,39 @@ Partial Class FrmMain
         Me.realSGDEndShedResponse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.realSGDEndShedResponse.FormattingEnabled = True
         Me.realSGDEndShedResponse.Items.AddRange(New Object() {"Manual", "Running Normal", "Idle Normal", "Pre-Shed state (either Running Normal or Idle Normal)", "SGD Error Condition"})
-        Me.realSGDEndShedResponse.Location = New System.Drawing.Point(275, 92)
-        Me.realSGDEndShedResponse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDEndShedResponse.Location = New System.Drawing.Point(309, 115)
+        Me.realSGDEndShedResponse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDEndShedResponse.Name = "realSGDEndShedResponse"
-        Me.realSGDEndShedResponse.Size = New System.Drawing.Size(468, 24)
+        Me.realSGDEndShedResponse.Size = New System.Drawing.Size(526, 28)
         Me.realSGDEndShedResponse.TabIndex = 5
         '
         'Label74
         '
         Me.Label74.AutoSize = True
-        Me.Label74.Location = New System.Drawing.Point(61, 130)
+        Me.Label74.Location = New System.Drawing.Point(69, 162)
         Me.Label74.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label74.Name = "Label74"
-        Me.Label74.Size = New System.Drawing.Size(158, 17)
+        Me.Label74.Size = New System.Drawing.Size(177, 20)
         Me.Label74.TabIndex = 3
         Me.Label74.Text = "Critical Peak Response:"
         '
         'Label73
         '
         Me.Label73.AutoSize = True
-        Me.Label73.Location = New System.Drawing.Point(61, 62)
+        Me.Label73.Location = New System.Drawing.Point(69, 78)
         Me.Label73.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label73.Name = "Label73"
-        Me.Label73.Size = New System.Drawing.Size(180, 17)
+        Me.Label73.Size = New System.Drawing.Size(205, 20)
         Me.Label73.TabIndex = 2
         Me.Label73.Text = "Shed Command Response:"
         '
         'Label72
         '
         Me.Label72.AutoSize = True
-        Me.Label72.Location = New System.Drawing.Point(61, 25)
+        Me.Label72.Location = New System.Drawing.Point(69, 31)
         Me.Label72.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label72.Name = "Label72"
-        Me.Label72.Size = New System.Drawing.Size(131, 17)
+        Me.Label72.Size = New System.Drawing.Size(150, 20)
         Me.Label72.TabIndex = 1
         Me.Label72.Text = "SGD Internal Clock:"
         '
@@ -6130,10 +6184,10 @@ Partial Class FrmMain
         Me.realSGDCritPeakResponse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.realSGDCritPeakResponse.FormattingEnabled = True
         Me.realSGDCritPeakResponse.Items.AddRange(New Object() {"Manual", "Not Supported", "Running Curtailed Grid/ Running Normal (if override is set)", "Idle Grid/ Idle Normal (if override is set)", "SGD Error Condition"})
-        Me.realSGDCritPeakResponse.Location = New System.Drawing.Point(275, 126)
-        Me.realSGDCritPeakResponse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDCritPeakResponse.Location = New System.Drawing.Point(309, 158)
+        Me.realSGDCritPeakResponse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDCritPeakResponse.Name = "realSGDCritPeakResponse"
-        Me.realSGDCritPeakResponse.Size = New System.Drawing.Size(468, 24)
+        Me.realSGDCritPeakResponse.Size = New System.Drawing.Size(526, 28)
         Me.realSGDCritPeakResponse.TabIndex = 0
         '
         'realSGDShedResponse
@@ -6141,20 +6195,20 @@ Partial Class FrmMain
         Me.realSGDShedResponse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.realSGDShedResponse.FormattingEnabled = True
         Me.realSGDShedResponse.Items.AddRange(New Object() {"Manual", "Running Curtailed Grid/ Running Normal (if override is set)", "Idle Grid/ Idle Normal (if override is set)", "SGD Error Condition"})
-        Me.realSGDShedResponse.Location = New System.Drawing.Point(275, 59)
-        Me.realSGDShedResponse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.realSGDShedResponse.Location = New System.Drawing.Point(309, 74)
+        Me.realSGDShedResponse.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.realSGDShedResponse.Name = "realSGDShedResponse"
-        Me.realSGDShedResponse.Size = New System.Drawing.Size(468, 24)
+        Me.realSGDShedResponse.Size = New System.Drawing.Size(526, 28)
         Me.realSGDShedResponse.TabIndex = 0
         '
         'internalClockSupportedcb
         '
         Me.internalClockSupportedcb.AccessibleDescription = "If unchecked, device will not terminate shed commands, et. when time expires"
         Me.internalClockSupportedcb.AutoSize = True
-        Me.internalClockSupportedcb.Location = New System.Drawing.Point(275, 23)
-        Me.internalClockSupportedcb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.internalClockSupportedcb.Location = New System.Drawing.Point(309, 29)
+        Me.internalClockSupportedcb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.internalClockSupportedcb.Name = "internalClockSupportedcb"
-        Me.internalClockSupportedcb.Size = New System.Drawing.Size(96, 21)
+        Me.internalClockSupportedcb.Size = New System.Drawing.Size(110, 24)
         Me.internalClockSupportedcb.TabIndex = 0
         Me.internalClockSupportedcb.Text = "Supported"
         Me.internalClockSupportedcb.UseVisualStyleBackColor = True
@@ -6205,10 +6259,10 @@ Partial Class FrmMain
         Me.DeviceSim.Controls.Add(Me.nudNormalStart)
         Me.DeviceSim.Controls.Add(Me.Label95)
         Me.DeviceSim.Controls.Add(Me.nudRunningPower)
-        Me.DeviceSim.Location = New System.Drawing.Point(4, 25)
-        Me.DeviceSim.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DeviceSim.Location = New System.Drawing.Point(4, 29)
+        Me.DeviceSim.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.DeviceSim.Name = "DeviceSim"
-        Me.DeviceSim.Size = New System.Drawing.Size(833, 389)
+        Me.DeviceSim.Size = New System.Drawing.Size(938, 489)
         Me.DeviceSim.TabIndex = 3
         Me.DeviceSim.Text = "Device Sim"
         Me.DeviceSim.UseVisualStyleBackColor = True
@@ -6216,67 +6270,67 @@ Partial Class FrmMain
         'Label117
         '
         Me.Label117.AutoSize = True
-        Me.Label117.Location = New System.Drawing.Point(292, 148)
+        Me.Label117.Location = New System.Drawing.Point(328, 185)
         Me.Label117.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label117.Name = "Label117"
-        Me.Label117.Size = New System.Drawing.Size(92, 17)
+        Me.Label117.Size = New System.Drawing.Size(104, 20)
         Me.Label117.TabIndex = 87
         Me.Label117.Text = "Run CPP Pwr"
         '
         'nudRunCppPwr
         '
-        Me.nudRunCppPwr.Location = New System.Drawing.Point(407, 146)
-        Me.nudRunCppPwr.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudRunCppPwr.Location = New System.Drawing.Point(458, 182)
+        Me.nudRunCppPwr.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudRunCppPwr.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudRunCppPwr.Name = "nudRunCppPwr"
-        Me.nudRunCppPwr.Size = New System.Drawing.Size(130, 22)
+        Me.nudRunCppPwr.Size = New System.Drawing.Size(146, 26)
         Me.nudRunCppPwr.TabIndex = 86
         '
         'Label116
         '
         Me.Label116.AutoSize = True
-        Me.Label116.Location = New System.Drawing.Point(292, 116)
+        Me.Label116.Location = New System.Drawing.Point(328, 145)
         Me.Label116.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label116.Name = "Label116"
-        Me.Label116.Size = New System.Drawing.Size(98, 17)
+        Me.Label116.Size = New System.Drawing.Size(111, 20)
         Me.Label116.TabIndex = 85
         Me.Label116.Text = "Run Shed Pwr"
         '
         'nudRunShedPwr
         '
-        Me.nudRunShedPwr.Location = New System.Drawing.Point(407, 114)
-        Me.nudRunShedPwr.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudRunShedPwr.Location = New System.Drawing.Point(458, 142)
+        Me.nudRunShedPwr.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudRunShedPwr.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudRunShedPwr.Name = "nudRunShedPwr"
-        Me.nudRunShedPwr.Size = New System.Drawing.Size(130, 22)
+        Me.nudRunShedPwr.Size = New System.Drawing.Size(146, 26)
         Me.nudRunShedPwr.TabIndex = 84
         '
         'Label115
         '
         Me.Label115.AutoSize = True
-        Me.Label115.Location = New System.Drawing.Point(232, 84)
+        Me.Label115.Location = New System.Drawing.Point(261, 105)
         Me.Label115.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label115.Name = "Label115"
-        Me.Label115.Size = New System.Drawing.Size(162, 17)
+        Me.Label115.Size = New System.Drawing.Size(181, 20)
         Me.Label115.TabIndex = 83
         Me.Label115.Text = "Run Normal/Loadup Pwr"
         '
         'nudRunNormPwr
         '
-        Me.nudRunNormPwr.Location = New System.Drawing.Point(407, 82)
-        Me.nudRunNormPwr.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudRunNormPwr.Location = New System.Drawing.Point(458, 102)
+        Me.nudRunNormPwr.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudRunNormPwr.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudRunNormPwr.Name = "nudRunNormPwr"
-        Me.nudRunNormPwr.Size = New System.Drawing.Size(130, 22)
+        Me.nudRunNormPwr.Size = New System.Drawing.Size(146, 26)
         Me.nudRunNormPwr.TabIndex = 82
         '
         'cbLoopFile
         '
         Me.cbLoopFile.AutoSize = True
-        Me.cbLoopFile.Location = New System.Drawing.Point(16, 126)
-        Me.cbLoopFile.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbLoopFile.Location = New System.Drawing.Point(18, 158)
+        Me.cbLoopFile.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbLoopFile.Name = "cbLoopFile"
-        Me.cbLoopFile.Size = New System.Drawing.Size(88, 21)
+        Me.cbLoopFile.Size = New System.Drawing.Size(100, 24)
         Me.cbLoopFile.TabIndex = 81
         Me.cbLoopFile.Text = "Loop File"
         Me.cbLoopFile.UseVisualStyleBackColor = True
@@ -6284,10 +6338,10 @@ Partial Class FrmMain
         'cbPVInv
         '
         Me.cbPVInv.AutoSize = True
-        Me.cbPVInv.Location = New System.Drawing.Point(16, 100)
-        Me.cbPVInv.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbPVInv.Location = New System.Drawing.Point(18, 125)
+        Me.cbPVInv.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbPVInv.Name = "cbPVInv"
-        Me.cbPVInv.Size = New System.Drawing.Size(100, 21)
+        Me.cbPVInv.Size = New System.Drawing.Size(114, 24)
         Me.cbPVInv.TabIndex = 80
         Me.cbPVInv.Text = "PV Inverter"
         Me.cbPVInv.UseVisualStyleBackColor = True
@@ -6295,86 +6349,86 @@ Partial Class FrmMain
         'Label113
         '
         Me.Label113.AutoSize = True
-        Me.Label113.Location = New System.Drawing.Point(219, 256)
+        Me.Label113.Location = New System.Drawing.Point(246, 320)
         Me.Label113.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label113.Name = "Label113"
-        Me.Label113.Size = New System.Drawing.Size(44, 17)
+        Me.Label113.Size = New System.Drawing.Size(50, 20)
         Me.Label113.TabIndex = 79
         Me.Label113.Text = "Value"
         '
         'Label114
         '
         Me.Label114.AutoSize = True
-        Me.Label114.Location = New System.Drawing.Point(219, 226)
+        Me.Label114.Location = New System.Drawing.Point(246, 282)
         Me.Label114.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label114.Name = "Label114"
-        Me.Label114.Size = New System.Drawing.Size(41, 17)
+        Me.Label114.Size = New System.Drawing.Size(48, 20)
         Me.Label114.TabIndex = 78
         Me.Label114.Text = "Index"
         '
         'nudDataFileVal
         '
-        Me.nudDataFileVal.Location = New System.Drawing.Point(333, 256)
-        Me.nudDataFileVal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudDataFileVal.Location = New System.Drawing.Point(375, 320)
+        Me.nudDataFileVal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudDataFileVal.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudDataFileVal.Name = "nudDataFileVal"
-        Me.nudDataFileVal.Size = New System.Drawing.Size(130, 22)
+        Me.nudDataFileVal.Size = New System.Drawing.Size(146, 26)
         Me.nudDataFileVal.TabIndex = 77
         '
         'nudDataFileIndex
         '
-        Me.nudDataFileIndex.Location = New System.Drawing.Point(333, 224)
-        Me.nudDataFileIndex.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudDataFileIndex.Location = New System.Drawing.Point(375, 280)
+        Me.nudDataFileIndex.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudDataFileIndex.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudDataFileIndex.Name = "nudDataFileIndex"
-        Me.nudDataFileIndex.Size = New System.Drawing.Size(130, 22)
+        Me.nudDataFileIndex.Size = New System.Drawing.Size(146, 26)
         Me.nudDataFileIndex.TabIndex = 76
         '
         'Label111
         '
         Me.Label111.AutoSize = True
-        Me.Label111.Location = New System.Drawing.Point(243, 46)
+        Me.Label111.Location = New System.Drawing.Point(273, 58)
         Me.Label111.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label111.Name = "Label111"
-        Me.Label111.Size = New System.Drawing.Size(155, 17)
+        Me.Label111.Size = New System.Drawing.Size(174, 20)
         Me.Label111.TabIndex = 75
         Me.Label111.Text = "Present Capacity w-min"
         '
         'Label112
         '
         Me.Label112.AutoSize = True
-        Me.Label112.Location = New System.Drawing.Point(243, 14)
+        Me.Label112.Location = New System.Drawing.Point(273, 18)
         Me.Label112.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label112.Name = "Label112"
-        Me.Label112.Size = New System.Drawing.Size(138, 17)
+        Me.Label112.Size = New System.Drawing.Size(154, 20)
         Me.Label112.TabIndex = 74
         Me.Label112.Text = "Total Capacity w-min"
         '
         'nudPresentCapacity
         '
-        Me.nudPresentCapacity.Location = New System.Drawing.Point(407, 43)
-        Me.nudPresentCapacity.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudPresentCapacity.Location = New System.Drawing.Point(458, 54)
+        Me.nudPresentCapacity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudPresentCapacity.Maximum = New Decimal(New Integer() {1410065408, 2, 0, 0})
         Me.nudPresentCapacity.Minimum = New Decimal(New Integer() {100000, 0, 0, -2147483648})
         Me.nudPresentCapacity.Name = "nudPresentCapacity"
-        Me.nudPresentCapacity.Size = New System.Drawing.Size(130, 22)
+        Me.nudPresentCapacity.Size = New System.Drawing.Size(146, 26)
         Me.nudPresentCapacity.TabIndex = 73
         '
         'nudTotalCapacity
         '
-        Me.nudTotalCapacity.Location = New System.Drawing.Point(407, 11)
-        Me.nudTotalCapacity.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudTotalCapacity.Location = New System.Drawing.Point(458, 14)
+        Me.nudTotalCapacity.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudTotalCapacity.Maximum = New Decimal(New Integer() {1410065408, 2, 0, 0})
         Me.nudTotalCapacity.Name = "nudTotalCapacity"
-        Me.nudTotalCapacity.Size = New System.Drawing.Size(130, 22)
+        Me.nudTotalCapacity.Size = New System.Drawing.Size(146, 26)
         Me.nudTotalCapacity.TabIndex = 72
         '
         'bRealDeviceRun
         '
-        Me.bRealDeviceRun.Location = New System.Drawing.Point(16, 263)
-        Me.bRealDeviceRun.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.bRealDeviceRun.Location = New System.Drawing.Point(18, 329)
+        Me.bRealDeviceRun.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.bRealDeviceRun.Name = "bRealDeviceRun"
-        Me.bRealDeviceRun.Size = New System.Drawing.Size(88, 28)
+        Me.bRealDeviceRun.Size = New System.Drawing.Size(99, 35)
         Me.bRealDeviceRun.TabIndex = 71
         Me.bRealDeviceRun.Text = "Run"
         Me.bRealDeviceRun.UseVisualStyleBackColor = True
@@ -6382,95 +6436,95 @@ Partial Class FrmMain
         'Label110
         '
         Me.Label110.AutoSize = True
-        Me.Label110.Location = New System.Drawing.Point(12, 304)
+        Me.Label110.Location = New System.Drawing.Point(14, 380)
         Me.Label110.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label110.Name = "Label110"
-        Me.Label110.Size = New System.Drawing.Size(50, 17)
+        Me.Label110.Size = New System.Drawing.Size(57, 20)
         Me.Label110.TabIndex = 70
         Me.Label110.Text = "Minute"
         '
         'nudRealDevMin
         '
-        Me.nudRealDevMin.Location = New System.Drawing.Point(16, 327)
-        Me.nudRealDevMin.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudRealDevMin.Location = New System.Drawing.Point(18, 409)
+        Me.nudRealDevMin.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudRealDevMin.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudRealDevMin.Name = "nudRealDevMin"
-        Me.nudRealDevMin.Size = New System.Drawing.Size(130, 22)
+        Me.nudRealDevMin.Size = New System.Drawing.Size(146, 26)
         Me.nudRealDevMin.TabIndex = 69
         '
         'Label109
         '
         Me.Label109.AutoSize = True
-        Me.Label109.Location = New System.Drawing.Point(679, 42)
+        Me.Label109.Location = New System.Drawing.Point(764, 52)
         Me.Label109.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label109.Name = "Label109"
-        Me.Label109.Size = New System.Drawing.Size(109, 17)
+        Me.Label109.Size = New System.Drawing.Size(124, 20)
         Me.Label109.TabIndex = 68
         Me.Label109.Text = "HW, HVAC Only"
         '
         'Label108
         '
         Me.Label108.AutoSize = True
-        Me.Label108.Location = New System.Drawing.Point(679, 263)
+        Me.Label108.Location = New System.Drawing.Point(764, 329)
         Me.Label108.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label108.Name = "Label108"
-        Me.Label108.Size = New System.Drawing.Size(109, 17)
+        Me.Label108.Size = New System.Drawing.Size(120, 20)
         Me.Label108.TabIndex = 67
         Me.Label108.Text = "Pool Pump Only"
         '
         'Label106
         '
         Me.Label106.AutoSize = True
-        Me.Label106.Location = New System.Drawing.Point(568, 315)
+        Me.Label106.Location = New System.Drawing.Point(639, 394)
         Me.Label106.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label106.Name = "Label106"
-        Me.Label106.Size = New System.Drawing.Size(102, 17)
+        Me.Label106.Size = New System.Drawing.Size(114, 20)
         Me.Label106.TabIndex = 66
         Me.Label106.Text = "Start delay min"
         '
         'Label107
         '
         Me.Label107.AutoSize = True
-        Me.Label107.Location = New System.Drawing.Point(568, 286)
+        Me.Label107.Location = New System.Drawing.Point(639, 358)
         Me.Label107.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label107.Name = "Label107"
-        Me.Label107.Size = New System.Drawing.Size(91, 17)
+        Me.Label107.Size = New System.Drawing.Size(100, 20)
         Me.Label107.TabIndex = 65
         Me.Label107.Text = "Total run min"
         '
         'nudStartDelay
         '
-        Me.nudStartDelay.Location = New System.Drawing.Point(683, 315)
-        Me.nudStartDelay.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudStartDelay.Location = New System.Drawing.Point(768, 394)
+        Me.nudStartDelay.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudStartDelay.Maximum = New Decimal(New Integer() {1440, 0, 0, 0})
         Me.nudStartDelay.Name = "nudStartDelay"
-        Me.nudStartDelay.Size = New System.Drawing.Size(130, 22)
+        Me.nudStartDelay.Size = New System.Drawing.Size(146, 26)
         Me.nudStartDelay.TabIndex = 64
         '
         'nudPPRunMin
         '
-        Me.nudPPRunMin.Location = New System.Drawing.Point(683, 283)
-        Me.nudPPRunMin.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudPPRunMin.Location = New System.Drawing.Point(768, 354)
+        Me.nudPPRunMin.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudPPRunMin.Maximum = New Decimal(New Integer() {1440, 0, 0, 0})
         Me.nudPPRunMin.Name = "nudPPRunMin"
-        Me.nudPPRunMin.Size = New System.Drawing.Size(130, 22)
+        Me.nudPPRunMin.Size = New System.Drawing.Size(146, 26)
         Me.nudPPRunMin.TabIndex = 63
         '
         'tbRealDevice
         '
         Me.tbRealDevice.Enabled = False
-        Me.tbRealDevice.Location = New System.Drawing.Point(16, 192)
-        Me.tbRealDevice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbRealDevice.Location = New System.Drawing.Point(18, 240)
+        Me.tbRealDevice.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbRealDevice.Name = "tbRealDevice"
-        Me.tbRealDevice.Size = New System.Drawing.Size(445, 22)
+        Me.tbRealDevice.Size = New System.Drawing.Size(500, 26)
         Me.tbRealDevice.TabIndex = 62
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(16, 160)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Location = New System.Drawing.Point(18, 200)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(123, 28)
+        Me.Button2.Size = New System.Drawing.Size(138, 35)
         Me.Button2.TabIndex = 61
         Me.Button2.Text = "Open Data File"
         Me.Button2.UseVisualStyleBackColor = True
@@ -6478,10 +6532,10 @@ Partial Class FrmMain
         'cbHotWater
         '
         Me.cbHotWater.AutoSize = True
-        Me.cbHotWater.Location = New System.Drawing.Point(16, 71)
-        Me.cbHotWater.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbHotWater.Location = New System.Drawing.Point(18, 89)
+        Me.cbHotWater.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbHotWater.Name = "cbHotWater"
-        Me.cbHotWater.Size = New System.Drawing.Size(189, 21)
+        Me.cbHotWater.Size = New System.Drawing.Size(217, 24)
         Me.cbHotWater.TabIndex = 60
         Me.cbHotWater.Text = "Hot Water Heater / EVSE"
         Me.cbHotWater.UseVisualStyleBackColor = True
@@ -6491,10 +6545,10 @@ Partial Class FrmMain
         Me.cbPoolPump.AutoSize = True
         Me.cbPoolPump.Checked = True
         Me.cbPoolPump.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbPoolPump.Location = New System.Drawing.Point(16, 43)
-        Me.cbPoolPump.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbPoolPump.Location = New System.Drawing.Point(18, 54)
+        Me.cbPoolPump.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbPoolPump.Name = "cbPoolPump"
-        Me.cbPoolPump.Size = New System.Drawing.Size(98, 21)
+        Me.cbPoolPump.Size = New System.Drawing.Size(111, 24)
         Me.cbPoolPump.TabIndex = 59
         Me.cbPoolPump.Text = "Pool Pump"
         Me.cbPoolPump.UseVisualStyleBackColor = True
@@ -6502,10 +6556,10 @@ Partial Class FrmMain
         'cbHVAC
         '
         Me.cbHVAC.AutoSize = True
-        Me.cbHVAC.Location = New System.Drawing.Point(16, 14)
-        Me.cbHVAC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbHVAC.Location = New System.Drawing.Point(18, 18)
+        Me.cbHVAC.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbHVAC.Name = "cbHVAC"
-        Me.cbHVAC.Size = New System.Drawing.Size(67, 21)
+        Me.cbHVAC.Size = New System.Drawing.Size(80, 24)
         Me.cbHVAC.TabIndex = 58
         Me.cbHVAC.Text = "HVAC"
         Me.cbHVAC.UseVisualStyleBackColor = True
@@ -6513,134 +6567,134 @@ Partial Class FrmMain
         'Label105
         '
         Me.Label105.AutoSize = True
-        Me.Label105.Location = New System.Drawing.Point(568, 222)
+        Me.Label105.Location = New System.Drawing.Point(639, 278)
         Me.Label105.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label105.Name = "Label105"
-        Me.Label105.Size = New System.Drawing.Size(66, 17)
+        Me.Label105.Size = New System.Drawing.Size(75, 20)
         Me.Label105.TabIndex = 57
         Me.Label105.Text = "CPP stop"
         '
         'Label100
         '
         Me.Label100.AutoSize = True
-        Me.Label100.Location = New System.Drawing.Point(568, 192)
+        Me.Label100.Location = New System.Drawing.Point(639, 240)
         Me.Label100.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label100.Name = "Label100"
-        Me.Label100.Size = New System.Drawing.Size(69, 17)
+        Me.Label100.Size = New System.Drawing.Size(79, 20)
         Me.Label100.TabIndex = 56
         Me.Label100.Text = "CPP Start"
         '
         'Label99
         '
         Me.Label99.AutoSize = True
-        Me.Label99.Location = New System.Drawing.Point(568, 160)
+        Me.Label99.Location = New System.Drawing.Point(639, 200)
         Me.Label99.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label99.Name = "Label99"
-        Me.Label99.Size = New System.Drawing.Size(72, 17)
+        Me.Label99.Size = New System.Drawing.Size(82, 20)
         Me.Label99.TabIndex = 55
         Me.Label99.Text = "Shed stop"
         '
         'Label98
         '
         Me.Label98.AutoSize = True
-        Me.Label98.Location = New System.Drawing.Point(568, 128)
+        Me.Label98.Location = New System.Drawing.Point(639, 160)
         Me.Label98.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label98.Name = "Label98"
-        Me.Label98.Size = New System.Drawing.Size(73, 17)
+        Me.Label98.Size = New System.Drawing.Size(83, 20)
         Me.Label98.TabIndex = 54
         Me.Label98.Text = "Shed start"
         '
         'Label97
         '
         Me.Label97.AutoSize = True
-        Me.Label97.Location = New System.Drawing.Point(568, 94)
+        Me.Label97.Location = New System.Drawing.Point(639, 118)
         Me.Label97.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label97.Name = "Label97"
-        Me.Label97.Size = New System.Drawing.Size(84, 17)
+        Me.Label97.Size = New System.Drawing.Size(94, 20)
         Me.Label97.TabIndex = 53
         Me.Label97.Text = "Normal stop"
         '
         'Label96
         '
         Me.Label96.AutoSize = True
-        Me.Label96.Location = New System.Drawing.Point(568, 64)
+        Me.Label96.Location = New System.Drawing.Point(639, 80)
         Me.Label96.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label96.Name = "Label96"
-        Me.Label96.Size = New System.Drawing.Size(85, 17)
+        Me.Label96.Size = New System.Drawing.Size(95, 20)
         Me.Label96.TabIndex = 52
         Me.Label96.Text = "Normal start"
         '
         'nudCPPStop
         '
-        Me.nudCPPStop.Location = New System.Drawing.Point(683, 222)
-        Me.nudCPPStop.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCPPStop.Location = New System.Drawing.Point(768, 278)
+        Me.nudCPPStop.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCPPStop.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudCPPStop.Name = "nudCPPStop"
-        Me.nudCPPStop.Size = New System.Drawing.Size(130, 22)
+        Me.nudCPPStop.Size = New System.Drawing.Size(146, 26)
         Me.nudCPPStop.TabIndex = 51
         '
         'nudCPPStart
         '
-        Me.nudCPPStart.Location = New System.Drawing.Point(683, 190)
-        Me.nudCPPStart.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudCPPStart.Location = New System.Drawing.Point(768, 238)
+        Me.nudCPPStart.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudCPPStart.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudCPPStart.Name = "nudCPPStart"
-        Me.nudCPPStart.Size = New System.Drawing.Size(130, 22)
+        Me.nudCPPStart.Size = New System.Drawing.Size(146, 26)
         Me.nudCPPStart.TabIndex = 50
         '
         'nudShedStop
         '
-        Me.nudShedStop.Location = New System.Drawing.Point(683, 158)
-        Me.nudShedStop.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudShedStop.Location = New System.Drawing.Point(768, 198)
+        Me.nudShedStop.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudShedStop.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudShedStop.Name = "nudShedStop"
-        Me.nudShedStop.Size = New System.Drawing.Size(130, 22)
+        Me.nudShedStop.Size = New System.Drawing.Size(146, 26)
         Me.nudShedStop.TabIndex = 49
         '
         'nudShedStart
         '
-        Me.nudShedStart.Location = New System.Drawing.Point(683, 126)
-        Me.nudShedStart.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudShedStart.Location = New System.Drawing.Point(768, 158)
+        Me.nudShedStart.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudShedStart.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudShedStart.Name = "nudShedStart"
-        Me.nudShedStart.Size = New System.Drawing.Size(130, 22)
+        Me.nudShedStart.Size = New System.Drawing.Size(146, 26)
         Me.nudShedStart.TabIndex = 48
         '
         'nudNormalStop
         '
-        Me.nudNormalStop.Location = New System.Drawing.Point(683, 94)
-        Me.nudNormalStop.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudNormalStop.Location = New System.Drawing.Point(768, 118)
+        Me.nudNormalStop.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudNormalStop.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudNormalStop.Name = "nudNormalStop"
-        Me.nudNormalStop.Size = New System.Drawing.Size(130, 22)
+        Me.nudNormalStop.Size = New System.Drawing.Size(146, 26)
         Me.nudNormalStop.TabIndex = 47
         '
         'nudNormalStart
         '
-        Me.nudNormalStart.Location = New System.Drawing.Point(683, 62)
-        Me.nudNormalStart.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudNormalStart.Location = New System.Drawing.Point(768, 78)
+        Me.nudNormalStart.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudNormalStart.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudNormalStart.Name = "nudNormalStart"
-        Me.nudNormalStart.Size = New System.Drawing.Size(130, 22)
+        Me.nudNormalStart.Size = New System.Drawing.Size(146, 26)
         Me.nudNormalStart.TabIndex = 46
         '
         'Label95
         '
         Me.Label95.AutoSize = True
-        Me.Label95.Location = New System.Drawing.Point(568, 14)
+        Me.Label95.Location = New System.Drawing.Point(639, 18)
         Me.Label95.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label95.Name = "Label95"
-        Me.Label95.Size = New System.Drawing.Size(104, 17)
+        Me.Label95.Size = New System.Drawing.Size(117, 20)
         Me.Label95.TabIndex = 45
         Me.Label95.Text = "Running Power"
         '
         'nudRunningPower
         '
-        Me.nudRunningPower.Location = New System.Drawing.Point(683, 11)
-        Me.nudRunningPower.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.nudRunningPower.Location = New System.Drawing.Point(768, 14)
+        Me.nudRunningPower.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.nudRunningPower.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.nudRunningPower.Name = "nudRunningPower"
-        Me.nudRunningPower.Size = New System.Drawing.Size(130, 22)
+        Me.nudRunningPower.Size = New System.Drawing.Size(146, 26)
         Me.nudRunningPower.TabIndex = 44
         '
         'tmrProcessComm
@@ -6649,22 +6703,23 @@ Partial Class FrmMain
         '
         'pbCommRefresh
         '
-        Me.pbCommRefresh.Location = New System.Drawing.Point(124, 116)
-        Me.pbCommRefresh.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.pbCommRefresh.Location = New System.Drawing.Point(140, 145)
+        Me.pbCommRefresh.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pbCommRefresh.Name = "pbCommRefresh"
-        Me.pbCommRefresh.Size = New System.Drawing.Size(100, 28)
+        Me.pbCommRefresh.Size = New System.Drawing.Size(112, 35)
         Me.pbCommRefresh.TabIndex = 41
         Me.pbCommRefresh.Text = "Refresh"
         Me.pbCommRefresh.UseVisualStyleBackColor = True
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1505, 28)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(9, 2, 0, 2)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1719, 33)
         Me.MenuStrip1.TabIndex = 42
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -6672,19 +6727,19 @@ Partial Class FrmMain
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewHelpContentToolStripMenuItem, Me.AboutCTA2045SimulatorToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(53, 24)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(65, 29)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'ViewHelpContentToolStripMenuItem
         '
         Me.ViewHelpContentToolStripMenuItem.Name = "ViewHelpContentToolStripMenuItem"
-        Me.ViewHelpContentToolStripMenuItem.Size = New System.Drawing.Size(261, 26)
+        Me.ViewHelpContentToolStripMenuItem.Size = New System.Drawing.Size(328, 34)
         Me.ViewHelpContentToolStripMenuItem.Text = "View Help Content"
         '
         'AboutCTA2045SimulatorToolStripMenuItem
         '
         Me.AboutCTA2045SimulatorToolStripMenuItem.Name = "AboutCTA2045SimulatorToolStripMenuItem"
-        Me.AboutCTA2045SimulatorToolStripMenuItem.Size = New System.Drawing.Size(261, 26)
+        Me.AboutCTA2045SimulatorToolStripMenuItem.Size = New System.Drawing.Size(328, 34)
         Me.AboutCTA2045SimulatorToolStripMenuItem.Text = "About CTA-2045 Simulator"
         '
         'fbdScriptFileSelect
@@ -6694,16 +6749,17 @@ Partial Class FrmMain
         'cbResponseSim
         '
         Me.cbResponseSim.AutoSize = True
-        Me.cbResponseSim.Location = New System.Drawing.Point(313, 121)
-        Me.cbResponseSim.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cbResponseSim.Location = New System.Drawing.Point(352, 151)
+        Me.cbResponseSim.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbResponseSim.Name = "cbResponseSim"
-        Me.cbResponseSim.Size = New System.Drawing.Size(214, 21)
+        Me.cbResponseSim.Size = New System.Drawing.Size(242, 24)
         Me.cbResponseSim.TabIndex = 43
         Me.cbResponseSim.Text = "Real Device Simulation Mode"
         Me.cbResponseSim.UseVisualStyleBackColor = True
         '
         'autoCommStatusTimer
         '
+        Me.autoCommStatusTimer.Interval = 10000
         '
         'autoCommodityReadTimer
         '
@@ -6729,18 +6785,18 @@ Partial Class FrmMain
         '
         'LogCommentsTB
         '
-        Me.LogCommentsTB.Location = New System.Drawing.Point(114, 724)
-        Me.LogCommentsTB.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LogCommentsTB.Location = New System.Drawing.Point(128, 905)
+        Me.LogCommentsTB.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.LogCommentsTB.Name = "LogCommentsTB"
-        Me.LogCommentsTB.Size = New System.Drawing.Size(471, 22)
+        Me.LogCommentsTB.Size = New System.Drawing.Size(529, 26)
         Me.LogCommentsTB.TabIndex = 44
         '
         'LogCommentBtn
         '
-        Me.LogCommentBtn.Location = New System.Drawing.Point(600, 722)
-        Me.LogCommentBtn.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LogCommentBtn.Location = New System.Drawing.Point(675, 902)
+        Me.LogCommentBtn.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.LogCommentBtn.Name = "LogCommentBtn"
-        Me.LogCommentBtn.Size = New System.Drawing.Size(124, 30)
+        Me.LogCommentBtn.Size = New System.Drawing.Size(140, 38)
         Me.LogCommentBtn.TabIndex = 45
         Me.LogCommentBtn.Text = "Log Comment"
         Me.LogCommentBtn.UseVisualStyleBackColor = True
@@ -6748,10 +6804,10 @@ Partial Class FrmMain
         'LogCommentslbl
         '
         Me.LogCommentslbl.AutoSize = True
-        Me.LogCommentslbl.Location = New System.Drawing.Point(16, 726)
+        Me.LogCommentslbl.Location = New System.Drawing.Point(18, 908)
         Me.LogCommentslbl.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LogCommentslbl.Name = "LogCommentslbl"
-        Me.LogCommentslbl.Size = New System.Drawing.Size(82, 17)
+        Me.LogCommentslbl.Size = New System.Drawing.Size(94, 20)
         Me.LogCommentslbl.TabIndex = 46
         Me.LogCommentslbl.Text = "Comments: "
         '
@@ -6765,10 +6821,10 @@ Partial Class FrmMain
         '
         'CloseBTN
         '
-        Me.CloseBTN.Location = New System.Drawing.Point(1405, 724)
+        Me.CloseBTN.Location = New System.Drawing.Point(1581, 905)
         Me.CloseBTN.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.CloseBTN.Name = "CloseBTN"
-        Me.CloseBTN.Size = New System.Drawing.Size(96, 28)
+        Me.CloseBTN.Size = New System.Drawing.Size(108, 35)
         Me.CloseBTN.TabIndex = 47
         Me.CloseBTN.Text = "Close"
         Me.CloseBTN.UseVisualStyleBackColor = True
@@ -6776,21 +6832,21 @@ Partial Class FrmMain
         'EpriLogoBig
         '
         Me.EpriLogoBig.Image = CType(resources.GetObject("EpriLogoBig.Image"), System.Drawing.Image)
-        Me.EpriLogoBig.Location = New System.Drawing.Point(887, 59)
+        Me.EpriLogoBig.Location = New System.Drawing.Point(998, 74)
         Me.EpriLogoBig.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.EpriLogoBig.Name = "EpriLogoBig"
-        Me.EpriLogoBig.Size = New System.Drawing.Size(400, 60)
+        Me.EpriLogoBig.Size = New System.Drawing.Size(450, 75)
         Me.EpriLogoBig.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.EpriLogoBig.TabIndex = 48
         Me.EpriLogoBig.TabStop = False
         '
         'FrmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(1369, 676)
+        Me.ClientSize = New System.Drawing.Size(1719, 992)
         Me.Controls.Add(Me.EpriLogoBig)
         Me.Controls.Add(Me.CloseBTN)
         Me.Controls.Add(Me.LogCommentslbl)
@@ -6812,7 +6868,7 @@ Partial Class FrmMain
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MaximizeBox = False
         Me.Name = "FrmMain"
         Me.Text = "CTA-2045 Simulator"
@@ -6827,7 +6883,6 @@ Partial Class FrmMain
         Me.logFile.PerformLayout()
         Me.sgdTabControl.ResumeLayout(False)
         Me.sgdOpStateTab.ResumeLayout(False)
-        Me.GetUtc.ResumeLayout(False)
         Me.simulatorDeviceTypeTabControl.ResumeLayout(False)
         Me.deviceInfoTab.ResumeLayout(False)
         Me.deviceInfoTabControl.ResumeLayout(False)
@@ -6962,15 +7017,21 @@ Partial Class FrmMain
         Me.currentStategb.PerformLayout()
         Me.gbQuery.ResumeLayout(False)
         Me.ucmComStatusTab.ResumeLayout(False)
+        Me.ucmComStatusTab.PerformLayout()
+        CType(Me.CommStatusIntervalVal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbCommStatus.ResumeLayout(False)
         Me.ucmTimeSyncTab.ResumeLayout(False)
         Me.gbTimeSync.ResumeLayout(False)
         Me.ucmIntermediateTab.ResumeLayout(False)
         Me.intermediateTabControl.ResumeLayout(False)
-        Me.ucmSetUTC.ResumeLayout(False)
-        Me.ucmSetUTC.PerformLayout()
+        Me.ucmSetGetUTC.ResumeLayout(False)
+        Me.ucmSetGetUTC.PerformLayout()
         CType(Me.nudUTCOffset, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudDSTOffset, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ReceivedUtcTimegb.ResumeLayout(False)
+        Me.ReceivedUtcTimegb.PerformLayout()
+        Me.ReceivedUtcTimetb.ResumeLayout(False)
+        Me.ReceivedUtcTimetb.PerformLayout()
         Me.ucmAutoCycling.ResumeLayout(False)
         Me.ucmAutoCycling.PerformLayout()
         CType(Me.nudDutyCyclePeriod, System.ComponentModel.ISupportInitialize).EndInit()
@@ -7167,34 +7228,8 @@ Partial Class FrmMain
     Friend WithEvents btnTimeSyncOff As System.Windows.Forms.Button
     Friend WithEvents btnTimeSyncOn As System.Windows.Forms.Button
     Friend WithEvents ucmIntermediateTab As System.Windows.Forms.TabPage
-    Friend WithEvents intermediateTabControl As System.Windows.Forms.TabControl
-    Friend WithEvents ucmSetUTC As System.Windows.Forms.TabPage
-    Friend WithEvents ucmAutoCycling As System.Windows.Forms.TabPage
-    Friend WithEvents Label41 As System.Windows.Forms.Label
-    Friend WithEvents Label42 As System.Windows.Forms.Label
-    Friend WithEvents btnSetUTC As System.Windows.Forms.Button
-    Friend WithEvents Label28 As System.Windows.Forms.Label
-    Friend WithEvents dtpStartTime As System.Windows.Forms.DateTimePicker
-    Friend WithEvents nudDuration As System.Windows.Forms.NumericUpDown
-    Friend WithEvents nudDutyCycle As System.Windows.Forms.NumericUpDown
-    Friend WithEvents nudEventID As System.Windows.Forms.NumericUpDown
-    Friend WithEvents btnStopCycling As System.Windows.Forms.Button
-    Friend WithEvents btnStartCycling As System.Windows.Forms.Button
-    Friend WithEvents Label29 As System.Windows.Forms.Label
-    Friend WithEvents Label43 As System.Windows.Forms.Label
-    Friend WithEvents Label44 As System.Windows.Forms.Label
-    Friend WithEvents Label45 As System.Windows.Forms.Label
-    Friend WithEvents Label46 As System.Windows.Forms.Label
-    Friend WithEvents Label47 As System.Windows.Forms.Label
-    Friend WithEvents Label48 As System.Windows.Forms.Label
-    Friend WithEvents nudStopEndRand As System.Windows.Forms.NumericUpDown
-    Friend WithEvents nudStopEventID As System.Windows.Forms.NumericUpDown
-    Friend WithEvents nudEndRandomization As System.Windows.Forms.NumericUpDown
-    Friend WithEvents nudStartRandomization As System.Windows.Forms.NumericUpDown
     Friend WithEvents nudFirmwareMajor As System.Windows.Forms.NumericUpDown
     Friend WithEvents nudFirmwareMinor As System.Windows.Forms.NumericUpDown
-    Friend WithEvents nudUTCOffset As System.Windows.Forms.NumericUpDown
-    Friend WithEvents nudDSTOffset As System.Windows.Forms.NumericUpDown
     Friend WithEvents pbLoadUp As System.Windows.Forms.Button
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents commodity As System.Windows.Forms.TabPage
@@ -7529,10 +7564,6 @@ Partial Class FrmMain
     Friend WithEvents nudCurrentPrice As NumericUpDown
     Friend WithEvents Label126 As Label
     Friend WithEvents nudNextPrice As NumericUpDown
-    Friend WithEvents nudDutyCyclePeriod As NumericUpDown
-    Friend WithEvents Label128 As Label
-    Friend WithEvents nudCriticality As NumericUpDown
-    Friend WithEvents Label127 As Label
     Friend WithEvents dtpExpTime As DateTimePicker
     Friend WithEvents gbActivation As GroupBox
     Friend WithEvents Label132 As Label
@@ -7577,4 +7608,38 @@ Partial Class FrmMain
     Friend WithEvents ViewHelpContentToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutCTA2045SimulatorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EpriLogoBig As PictureBox
+    Friend WithEvents CommStatusIntervalVal As NumericUpDown
+    Friend WithEvents CommStatusCheck As CheckBox
+    Friend WithEvents intermediateTabControl As TabControl
+    Friend WithEvents ucmSetGetUTC As TabPage
+    Friend WithEvents nudUTCOffset As NumericUpDown
+    Friend WithEvents nudDSTOffset As NumericUpDown
+    Friend WithEvents Label41 As Label
+    Friend WithEvents Label42 As Label
+    Friend WithEvents btnSetUTC As Button
+    Friend WithEvents ucmAutoCycling As TabPage
+    Friend WithEvents nudDutyCyclePeriod As NumericUpDown
+    Friend WithEvents Label128 As Label
+    Friend WithEvents nudCriticality As NumericUpDown
+    Friend WithEvents Label127 As Label
+    Friend WithEvents nudStopEndRand As NumericUpDown
+    Friend WithEvents nudStopEventID As NumericUpDown
+    Friend WithEvents nudEndRandomization As NumericUpDown
+    Friend WithEvents nudStartRandomization As NumericUpDown
+    Friend WithEvents Label28 As Label
+    Friend WithEvents dtpStartTime As DateTimePicker
+    Friend WithEvents nudDuration As NumericUpDown
+    Friend WithEvents nudDutyCycle As NumericUpDown
+    Friend WithEvents nudEventID As NumericUpDown
+    Friend WithEvents btnStopCycling As Button
+    Friend WithEvents btnStartCycling As Button
+    Friend WithEvents Label29 As Label
+    Friend WithEvents Label43 As Label
+    Friend WithEvents Label44 As Label
+    Friend WithEvents Label45 As Label
+    Friend WithEvents Label46 As Label
+    Friend WithEvents Label47 As Label
+    Friend WithEvents Label48 As Label
+    Friend WithEvents ReceivedUtcTimegb As GroupBox
+    Friend WithEvents ReceivedUtcTimetb As TextBox
 End Class
