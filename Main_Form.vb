@@ -291,7 +291,15 @@ Public Class FrmMain
             realSGDShedResponse.SelectedIndex = 0
             internalClockSupportedcb.Checked = True
             realUCMTrasmissionIntervalBox.Value = 300
-            realUCMCommStatusBox.SelectedIndex = 0
+
+            If cmbCommStatus.SelectedItem = "Found / Good Connection" Then     'Send Comm Good Message
+                realUCMCommStatusBox.SelectedIndex = 2             'Set Index to appropriate value
+            ElseIf (cmbCommStatus.SelectedItem = "No / Lost Connection") Then 'Send Comm Bad Message
+                realUCMCommStatusBox.SelectedIndex = 1
+            ElseIf (cmbCommStatus.SelectedItem = "Poor / Unreliable Connection") Then 'Send Comm Poor Message
+                realUCMCommStatusBox.SelectedIndex = 3
+            End If
+
             realDeviceIgnoreMaxPayloadCheckBox.Checked = True
             realUCMFunctionsGroup.Visible = False
             realSGDFunctionsGroup.Visible = False
@@ -310,6 +318,7 @@ Public Class FrmMain
             realSGDNoCommTimeoutValBox.Value = 300
             preGuidanceOpState = 0
             autoCommStatusTimer.Interval = 10000         'set interval to 10 second
+            autoGetTempTimer.Interval = 10000         'set interval to 10 second
             commStatusTimoutTmr.Interval = 1000
             preShedOpState = 0
             commStatusTimeoutTime = realSGDNoCommTimeoutValBox.Value
@@ -8879,6 +8888,40 @@ Public Class FrmMain
             realUCMCommStatusBox.SelectedIndex = 1
         ElseIf (cmbCommStatus.SelectedItem = "Poor / Unreliable Connection") Then 'Send Comm Poor Message
             realUCMCommStatusBox.SelectedIndex = 3
+        End If
+    End Sub
+
+    Private Sub getTempIntervalVal_ValueChanged(sender As Object, e As EventArgs) Handles getTempIntervalVal.ValueChanged
+        autoGetTempTimer.Interval = getTempIntervalVal.Value * 1000
+    End Sub
+
+    Private Sub autoGetTempTimer_Tick(sender As Object, e As EventArgs) Handles autoGetTempTimer.Tick
+        Try
+            Dim xmitBuffer(8) As Byte
+            receiveIndex = 0
+            xmitBuffer(0) = 8
+            xmitBuffer(1) = 2
+            xmitBuffer(2) = 0
+            xmitBuffer(3) = 2
+            xmitBuffer(4) = 3
+            xmitBuffer(5) = 4
+            pendingLinkAck = True
+            pendingAck = 0
+            SendComData(xmitBuffer, 6, "Sent Get Present Temperature Request", pendingLinkAck)
+            expectingResponse = True
+        Catch ex As Exception
+            MessageBox.Show("Error occured in Sub autoGetTempTimer_Tick" & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub getTempIntervalBox_CheckedChanged(sender As Object, e As EventArgs) Handles getTempIntervalBox.CheckedChanged
+        'activates/deactivates timed query for op state
+        autoGetTempTimer.Interval = getTempIntervalVal.Value * 1000
+
+        If getTempIntervalBox.Checked = True Then
+            autoGetTempTimer.Enabled = True
+        Else
+            autoGetTempTimer.Enabled = False
         End If
     End Sub
 End Class
