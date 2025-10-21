@@ -24,6 +24,7 @@ Partial Class FrmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmMain))
+        Dim TextBox1 As System.Windows.Forms.TextBox
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.CmbPort = New System.Windows.Forms.ComboBox()
@@ -67,6 +68,7 @@ Partial Class FrmMain
         Me.sgdOpStateTab = New System.Windows.Forms.TabPage()
         Me.GetUtc = New System.Windows.Forms.TabPage()
         Me.btnGetUTC = New System.Windows.Forms.Button()
+        Me.ReceivedUtcTimegb = New System.Windows.Forms.GroupBox()
         Me.simulatorDeviceTypeTabControl = New System.Windows.Forms.TabControl()
         Me.deviceInfoTab = New System.Windows.Forms.TabPage()
         Me.deviceInfoTabControl = New System.Windows.Forms.TabControl()
@@ -183,6 +185,8 @@ Partial Class FrmMain
         Me.rbMaxPayload8 = New System.Windows.Forms.RadioButton()
         Me.tempF = New System.Windows.Forms.TabPage()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.getTempIntervalVal = New System.Windows.Forms.NumericUpDown()
+        Me.getTempIntervalBox = New System.Windows.Forms.CheckBox()
         Me.Label104 = New System.Windows.Forms.Label()
         Me.Label103 = New System.Windows.Forms.Label()
         Me.Label102 = New System.Windows.Forms.Label()
@@ -437,8 +441,6 @@ Partial Class FrmMain
         Me.Label41 = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.btnSetUTC = New System.Windows.Forms.Button()
-        Me.ReceivedUtcTimegb = New System.Windows.Forms.GroupBox()
-        Me.ReceivedUtcTimetb = New System.Windows.Forms.TextBox()
         Me.ucmAutoCycling = New System.Windows.Forms.TabPage()
         Me.nudDutyCyclePeriod = New System.Windows.Forms.NumericUpDown()
         Me.Label128 = New System.Windows.Forms.Label()
@@ -566,6 +568,7 @@ Partial Class FrmMain
         Me.fbdScriptFileSelect = New System.Windows.Forms.OpenFileDialog()
         Me.cbResponseSim = New System.Windows.Forms.CheckBox()
         Me.autoCommStatusTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.autoGetTempTimer = New System.Windows.Forms.Timer(Me.components)
         Me.autoCommodityReadTimer = New System.Windows.Forms.Timer(Me.components)
         Me.autoOpStateTimer = New System.Windows.Forms.Timer(Me.components)
         Me.commStatusTimoutTmr = New System.Windows.Forms.Timer(Me.components)
@@ -579,184 +582,190 @@ Partial Class FrmMain
         Me.Timer1Min = New System.Windows.Forms.Timer(Me.components)
         Me.CloseBTN = New System.Windows.Forms.Button()
         Me.EpriLogoBig = New System.Windows.Forms.PictureBox()
-        Me.SerialDataGpBox.SuspendLayout()
-        Me.grpChangeBaud.SuspendLayout()
-        Me.gbErrors.SuspendLayout()
-        CType(Me.nudAppNakRtn, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudNakRtn, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpOpState.SuspendLayout()
-        Me.logFile.SuspendLayout()
-        Me.sgdTabControl.SuspendLayout()
-        Me.sgdOpStateTab.SuspendLayout()
-        Me.simulatorDeviceTypeTabControl.SuspendLayout()
-        Me.deviceInfoTab.SuspendLayout()
-        Me.deviceInfoTabControl.SuspendLayout()
-        Me.generalInfoTab.SuspendLayout()
-        CType(Me.nudCapBitMap3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCapBitMap2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCapBitMap1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCapBitMap0, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudDevRevLSB, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudDevRevMSB, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudVendorIDLSB, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudVendorIDMSB, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudFirmwareMinor, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudFirmwareMajor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.getDeviceInfo.SuspendLayout()
-        Me.msgTypeSupportedTab.SuspendLayout()
-        Me.gbPowerLimit.SuspendLayout()
-        CType(Me.nudPowerLimit, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.msgSupportQuery.SuspendLayout()
-        CType(Me.nudSupMsgQueryLSB, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudSupMsgQueryMSB, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.msgSupportedBox.SuspendLayout()
-        CType(Me.nudMsgSuppLSB, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudMsgSuppMSB, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.setMaxPayloadTab.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
-        Me.tempF.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        CType(Me.nudPresentTemp, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox7.SuspendLayout()
-        CType(Me.nudSetpointDeviceType, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox6.SuspendLayout()
-        CType(Me.nudTempOffset, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox5.SuspendLayout()
-        CType(Me.nudSetPoint1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudSetPoint2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.commodity.SuspendLayout()
-        Me.cdCommodityGb.SuspendLayout()
-        CType(Me.nudCommodityNum, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CommodityIntervalVal, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tdCommodityCodes.SuspendLayout()
-        CType(Me.nudCommodityFreq, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCommodityRate, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCommodityAmount, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.getSet.SuspendLayout()
-        Me.gbTierGetSet.SuspendLayout()
-        Me.gbPendingEvent.SuspendLayout()
-        Me.gbPrefLevel.SuspendLayout()
-        CType(Me.nudPrefLevel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudPrefType, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbActivation.SuspendLayout()
-        CType(Me.nudActIndex, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudActStatus, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbEnergyPrice.SuspendLayout()
-        CType(Me.nudNextPrice, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudDigitsAfterDecimal, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCurrencyCode, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCurrentPrice, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.commonCommandsTab.SuspendLayout()
-        Me.commonCommandsTabControl.SuspendLayout()
-        Me.changeBaudTab.SuspendLayout()
-        Me.grpSGDConfig.SuspendLayout()
-        Me.simulateErrorsTab.SuspendLayout()
-        Me.opcodeErrorsGroup.SuspendLayout()
-        CType(Me.customLength2ValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.customLength1ValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.customMsgType2ValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.customMsgType1ValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.badOpcode2valbox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.badOpcode1valbox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TimingTab.SuspendLayout()
-        CType(Me.tMLValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tIMValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tRAValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tARValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tMAValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PassThrough.SuspendLayout()
-        Me.ucmTab.SuspendLayout()
-        Me.ucmTabControl.SuspendLayout()
-        Me.ucmManageDeviceTab.SuspendLayout()
-        Me.BasicCmdsTab.SuspendLayout()
-        Me.shedLoadTab.SuspendLayout()
-        CType(Me.trkShedDur, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gridGuidenceTab.SuspendLayout()
-        Me.pendingEventGb.SuspendLayout()
-        CType(Me.trkPendEventDuration, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpGridGuide.SuspendLayout()
-        Me.relativePriceTab.SuspendLayout()
-        Me.presentPriceGroup.SuspendLayout()
-        CType(Me.presentPriceTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.nextPeriodPriceGroup.SuspendLayout()
-        CType(Me.nextPeriodTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.requestPowerLevelTab.SuspendLayout()
-        Me.gbReqPowerLevel.SuspendLayout()
-        CType(Me.tbarPower, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.timeRemainingTab.SuspendLayout()
-        Me.timeRemainingGroup.SuspendLayout()
-        CType(Me.timeRemainingTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ucmQueryTab.SuspendLayout()
-        CType(Me.OpStateIntervalVal, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.currentStategb.SuspendLayout()
-        Me.gbQuery.SuspendLayout()
-        Me.ucmComStatusTab.SuspendLayout()
-        CType(Me.CommStatusIntervalVal, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbCommStatus.SuspendLayout()
-        Me.ucmTimeSyncTab.SuspendLayout()
-        Me.gbTimeSync.SuspendLayout()
-        Me.ucmIntermediateTab.SuspendLayout()
-        Me.intermediateTabControl.SuspendLayout()
-        Me.ucmSetGetUTC.SuspendLayout()
-        CType(Me.nudUTCOffset, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudDSTOffset, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ReceivedUtcTimegb.SuspendLayout()
-        Me.ReceivedUtcTimetb.SuspendLayout()
-        Me.ucmAutoCycling.SuspendLayout()
-        CType(Me.nudDutyCyclePeriod, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCriticality, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudStopEndRand, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudStopEventID, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudEndRandomization, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudStartRandomization, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudDuration, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudDutyCycle, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudEventID, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.sgdTab.SuspendLayout()
-        Me.TestScripts.SuspendLayout()
-        Me.realDeviceTab.SuspendLayout()
-        Me.realDeviceTabControl.SuspendLayout()
-        Me.commonRealFunctionsTab.SuspendLayout()
-        Me.realCommonFunctionsGroup.SuspendLayout()
-        Me.realUCMFunctionsTab.SuspendLayout()
-        Me.realUCMFunctionsGroup.SuspendLayout()
-        CType(Me.realUCMTrasmissionIntervalBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.realSGDFunctionsTab.SuspendLayout()
-        Me.realSGDFunctionsGroup.SuspendLayout()
-        CType(Me.realSGDNoCommTimeoutValBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.DeviceSim.SuspendLayout()
-        CType(Me.nudRunCppPwr, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudRunShedPwr, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudRunNormPwr, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudDataFileVal, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudDataFileIndex, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudPresentCapacity, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudTotalCapacity, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudRealDevMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudStartDelay, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudPPRunMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCPPStop, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudCPPStart, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudShedStop, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudShedStart, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudNormalStop, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudNormalStart, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.nudRunningPower, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MenuStrip1.SuspendLayout()
-        CType(Me.CommodityData, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EpriLogoBig, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.ReceivedUtcTimetb = New System.Windows.Forms.TextBox()
+        TextBox1 = New System.Windows.Forms.TextBox()
+        Me.SerialDataGpBox.SuspendLayout
+        Me.grpChangeBaud.SuspendLayout
+        Me.gbErrors.SuspendLayout
+        CType(Me.nudAppNakRtn, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudNakRtn, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.grpOpState.SuspendLayout
+        Me.logFile.SuspendLayout
+        Me.sgdTabControl.SuspendLayout
+        Me.sgdOpStateTab.SuspendLayout
+        Me.GetUtc.SuspendLayout
+        Me.ReceivedUtcTimegb.SuspendLayout
+        Me.simulatorDeviceTypeTabControl.SuspendLayout
+        Me.deviceInfoTab.SuspendLayout
+        Me.deviceInfoTabControl.SuspendLayout
+        Me.generalInfoTab.SuspendLayout
+        CType(Me.nudCapBitMap3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCapBitMap2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCapBitMap1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCapBitMap0, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudDevRevLSB, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudDevRevMSB, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudVendorIDLSB, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudVendorIDMSB, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudFirmwareMinor, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudFirmwareMajor, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.getDeviceInfo.SuspendLayout
+        Me.msgTypeSupportedTab.SuspendLayout
+        Me.gbPowerLimit.SuspendLayout
+        CType(Me.nudPowerLimit, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.msgSupportQuery.SuspendLayout
+        CType(Me.nudSupMsgQueryLSB, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudSupMsgQueryMSB, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.msgSupportedBox.SuspendLayout
+        CType(Me.nudMsgSuppLSB, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudMsgSuppMSB, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.setMaxPayloadTab.SuspendLayout
+        Me.GroupBox3.SuspendLayout
+        Me.GroupBox1.SuspendLayout
+        Me.tempF.SuspendLayout
+        Me.GroupBox4.SuspendLayout
+        CType(Me.getTempIntervalVal, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudPresentTemp, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox7.SuspendLayout
+        CType(Me.nudSetpointDeviceType, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox6.SuspendLayout
+        CType(Me.nudTempOffset, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox5.SuspendLayout
+        CType(Me.nudSetPoint1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudSetPoint2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.commodity.SuspendLayout
+        Me.cdCommodityGb.SuspendLayout
+        CType(Me.nudCommodityNum, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CommodityIntervalVal, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tdCommodityCodes.SuspendLayout
+        CType(Me.nudCommodityFreq, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCommodityRate, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCommodityAmount, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.getSet.SuspendLayout
+        Me.gbTierGetSet.SuspendLayout
+        Me.gbPendingEvent.SuspendLayout
+        Me.gbPrefLevel.SuspendLayout
+        CType(Me.nudPrefLevel, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudPrefType, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.gbActivation.SuspendLayout
+        CType(Me.nudActIndex, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudActStatus, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.gbEnergyPrice.SuspendLayout
+        CType(Me.nudNextPrice, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudDigitsAfterDecimal, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCurrencyCode, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCurrentPrice, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.commonCommandsTab.SuspendLayout
+        Me.commonCommandsTabControl.SuspendLayout
+        Me.changeBaudTab.SuspendLayout
+        Me.grpSGDConfig.SuspendLayout
+        Me.simulateErrorsTab.SuspendLayout
+        Me.opcodeErrorsGroup.SuspendLayout
+        CType(Me.customLength2ValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.customLength1ValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.customMsgType2ValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.customMsgType1ValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.badOpcode2valbox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.badOpcode1valbox, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TimingTab.SuspendLayout
+        CType(Me.tMLValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tIMValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tRAValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tARValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tMAValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.PassThrough.SuspendLayout
+        Me.ucmTab.SuspendLayout
+        Me.ucmTabControl.SuspendLayout
+        Me.ucmManageDeviceTab.SuspendLayout
+        Me.BasicCmdsTab.SuspendLayout
+        Me.shedLoadTab.SuspendLayout
+        CType(Me.trkShedDur, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.gridGuidenceTab.SuspendLayout
+        Me.pendingEventGb.SuspendLayout
+        CType(Me.trkPendEventDuration, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.grpGridGuide.SuspendLayout
+        Me.relativePriceTab.SuspendLayout
+        Me.presentPriceGroup.SuspendLayout
+        CType(Me.presentPriceTrackBar, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.nextPeriodPriceGroup.SuspendLayout
+        CType(Me.nextPeriodTrackBar, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.requestPowerLevelTab.SuspendLayout
+        Me.gbReqPowerLevel.SuspendLayout
+        CType(Me.tbarPower, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.timeRemainingTab.SuspendLayout
+        Me.timeRemainingGroup.SuspendLayout
+        CType(Me.timeRemainingTrackBar, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.ucmQueryTab.SuspendLayout
+        CType(Me.OpStateIntervalVal, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.currentStategb.SuspendLayout
+        Me.gbQuery.SuspendLayout
+        Me.ucmComStatusTab.SuspendLayout
+        CType(Me.CommStatusIntervalVal, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.gbCommStatus.SuspendLayout
+        Me.ucmTimeSyncTab.SuspendLayout
+        Me.gbTimeSync.SuspendLayout
+        Me.ucmIntermediateTab.SuspendLayout
+        Me.intermediateTabControl.SuspendLayout
+        Me.ucmSetGetUTC.SuspendLayout
+        CType(Me.nudUTCOffset, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudDSTOffset, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.ucmAutoCycling.SuspendLayout
+        CType(Me.nudDutyCyclePeriod, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCriticality, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudStopEndRand, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudStopEventID, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudEndRandomization, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudStartRandomization, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudDuration, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudDutyCycle, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudEventID, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.sgdTab.SuspendLayout
+        Me.TestScripts.SuspendLayout
+        Me.realDeviceTab.SuspendLayout
+        Me.realDeviceTabControl.SuspendLayout
+        Me.commonRealFunctionsTab.SuspendLayout
+        Me.realCommonFunctionsGroup.SuspendLayout
+        Me.realUCMFunctionsTab.SuspendLayout
+        Me.realUCMFunctionsGroup.SuspendLayout
+        CType(Me.realUCMTrasmissionIntervalBox, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.realSGDFunctionsTab.SuspendLayout
+        Me.realSGDFunctionsGroup.SuspendLayout
+        CType(Me.realSGDNoCommTimeoutValBox, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.DeviceSim.SuspendLayout
+        CType(Me.nudRunCppPwr, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudRunShedPwr, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudRunNormPwr, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudDataFileVal, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudDataFileIndex, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudPresentCapacity, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudTotalCapacity, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudRealDevMin, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudStartDelay, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudPPRunMin, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCPPStop, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudCPPStart, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudShedStop, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudShedStart, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudNormalStop, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudNormalStart, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.nudRunningPower, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.MenuStrip1.SuspendLayout
+        CType(Me.CommodityData, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EpriLogoBig, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupBox2.SuspendLayout
+        Me.SuspendLayout
         '
         'ReceivedUtcTimetb
         '
-        ReceivedUtcTimetb.BackColor = System.Drawing.Color.White
-        ReceivedUtcTimetb.Location = New System.Drawing.Point(9, 31)
-        ReceivedUtcTimetb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        ReceivedUtcTimetb.Name = "ReceivedUtcTimetb"
-        ReceivedUtcTimetb.ReadOnly = True
-        ReceivedUtcTimetb.Size = New System.Drawing.Size(241, 26)
-        ReceivedUtcTimetb.TabIndex = 0
+        Me.ReceivedUtcTimetb.BackColor = System.Drawing.Color.White
+        Me.ReceivedUtcTimetb.Location = New System.Drawing.Point(8, 36)
+        Me.ReceivedUtcTimetb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ReceivedUtcTimetb.Name = "ReceivedUtcTimetb"
+        Me.ReceivedUtcTimetb.ReadOnly = True
+        Me.ReceivedUtcTimetb.Size = New System.Drawing.Size(241, 26)
+        Me.ReceivedUtcTimetb.TabIndex = 0
         '
         'Label1
         '
@@ -1197,6 +1206,8 @@ Partial Class FrmMain
         '
         'GetUtc
         '
+        Me.GetUtc.Controls.Add(Me.Button1)
+        Me.GetUtc.Controls.Add(Me.GroupBox2)
         Me.GetUtc.Location = New System.Drawing.Point(4, 29)
         Me.GetUtc.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GetUtc.Name = "GetUtc"
@@ -1215,6 +1226,18 @@ Partial Class FrmMain
         Me.btnGetUTC.TabIndex = 0
         Me.btnGetUTC.Text = "Get UTC Time"
         Me.btnGetUTC.UseVisualStyleBackColor = True
+        '
+        'ReceivedUtcTimegb
+        '
+        Me.ReceivedUtcTimegb.Controls.Add(Me.ReceivedUtcTimetb)
+        Me.ReceivedUtcTimegb.Location = New System.Drawing.Point(188, 139)
+        Me.ReceivedUtcTimegb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ReceivedUtcTimegb.Name = "ReceivedUtcTimegb"
+        Me.ReceivedUtcTimegb.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ReceivedUtcTimegb.Size = New System.Drawing.Size(261, 82)
+        Me.ReceivedUtcTimegb.TabIndex = 16
+        Me.ReceivedUtcTimegb.TabStop = False
+        Me.ReceivedUtcTimegb.Text = "UTC Time"
         '
         'simulatorDeviceTypeTabControl
         '
@@ -2522,6 +2545,8 @@ Partial Class FrmMain
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.getTempIntervalVal)
+        Me.GroupBox4.Controls.Add(Me.getTempIntervalBox)
         Me.GroupBox4.Controls.Add(Me.Label104)
         Me.GroupBox4.Controls.Add(Me.Label103)
         Me.GroupBox4.Controls.Add(Me.Label102)
@@ -2534,10 +2559,33 @@ Partial Class FrmMain
         Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.GroupBox4.Size = New System.Drawing.Size(309, 228)
+        Me.GroupBox4.Size = New System.Drawing.Size(309, 305)
         Me.GroupBox4.TabIndex = 45
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Get Present Temp"
+        '
+        'getTempIntervalVal
+        '
+        Me.getTempIntervalVal.Increment = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.getTempIntervalVal.Location = New System.Drawing.Point(10, 261)
+        Me.getTempIntervalVal.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.getTempIntervalVal.Maximum = New Decimal(New Integer() {7200, 0, 0, 0})
+        Me.getTempIntervalVal.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.getTempIntervalVal.Name = "getTempIntervalVal"
+        Me.getTempIntervalVal.Size = New System.Drawing.Size(153, 26)
+        Me.getTempIntervalVal.TabIndex = 48
+        Me.getTempIntervalVal.Value = New Decimal(New Integer() {5, 0, 0, 0})
+        '
+        'getTempIntervalBox
+        '
+        Me.getTempIntervalBox.AutoSize = True
+        Me.getTempIntervalBox.Location = New System.Drawing.Point(8, 227)
+        Me.getTempIntervalBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.getTempIntervalBox.Name = "getTempIntervalBox"
+        Me.getTempIntervalBox.Size = New System.Drawing.Size(226, 24)
+        Me.getTempIntervalBox.TabIndex = 47
+        Me.getTempIntervalBox.Text = "Enable Interval Query (sec)"
+        Me.getTempIntervalBox.UseVisualStyleBackColor = True
         '
         'Label104
         '
@@ -5343,7 +5391,6 @@ Partial Class FrmMain
         Me.ucmSetGetUTC.Controls.Add(Me.btnSetUTC)
         Me.ucmSetGetUTC.Controls.Add(Me.btnGetUTC)
         Me.ucmSetGetUTC.Controls.Add(Me.ReceivedUtcTimegb)
-        Me.ucmSetGetUTC.Controls.Add(Me.ReceivedUtcTimetb)
         Me.ucmSetGetUTC.Location = New System.Drawing.Point(4, 29)
         Me.ucmSetGetUTC.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ucmSetGetUTC.Name = "ucmSetGetUTC"
@@ -5401,18 +5448,6 @@ Partial Class FrmMain
         Me.btnSetUTC.TabIndex = 5
         Me.btnSetUTC.Text = "Set UTC Time"
         Me.btnSetUTC.UseVisualStyleBackColor = True
-        '
-        'ReceivedUtcTimegb
-        '
-        Me.ReceivedUtcTimegb.Controls.Add(Me.ReceivedUtcTimetb)
-        Me.ReceivedUtcTimegb.Location = New System.Drawing.Point(188, 139)
-        Me.ReceivedUtcTimegb.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ReceivedUtcTimegb.Name = "ReceivedUtcTimegb"
-        Me.ReceivedUtcTimegb.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ReceivedUtcTimegb.Size = New System.Drawing.Size(261, 82)
-        Me.ReceivedUtcTimegb.TabIndex = 16
-        Me.ReceivedUtcTimegb.TabStop = False
-        Me.ReceivedUtcTimegb.Text = "UTC Time"
         '
         'ucmAutoCycling
         '
@@ -6761,6 +6796,10 @@ Partial Class FrmMain
         '
         Me.autoCommStatusTimer.Interval = 10000
         '
+        'autoGetTempTimer
+        '
+        Me.autoGetTempTimer.Interval = 10000
+        '
         'autoCommodityReadTimer
         '
         '
@@ -6840,6 +6879,38 @@ Partial Class FrmMain
         Me.EpriLogoBig.TabIndex = 48
         Me.EpriLogoBig.TabStop = False
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(8, 29)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(129, 45)
+        Me.Button1.TabIndex = 17
+        Me.Button1.Text = "Get UTC Time"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        TextBox1.BackColor = System.Drawing.Color.White
+        TextBox1.Location = New System.Drawing.Point(8, 36)
+        TextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        TextBox1.Name = "TextBox1"
+        TextBox1.ReadOnly = True
+        TextBox1.Size = New System.Drawing.Size(241, 26)
+        TextBox1.TabIndex = 0
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(TextBox1)
+        Me.GroupBox2.Location = New System.Drawing.Point(181, 12)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox2.Size = New System.Drawing.Size(261, 82)
+        Me.GroupBox2.TabIndex = 18
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "UTC Time"
+        '
         'FrmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -6875,217 +6946,220 @@ Partial Class FrmMain
         Me.SerialDataGpBox.ResumeLayout(False)
         Me.grpChangeBaud.ResumeLayout(False)
         Me.gbErrors.ResumeLayout(False)
-        Me.gbErrors.PerformLayout()
-        CType(Me.nudAppNakRtn, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudNakRtn, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbErrors.PerformLayout
+        CType(Me.nudAppNakRtn, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudNakRtn, System.ComponentModel.ISupportInitialize).EndInit
         Me.grpOpState.ResumeLayout(False)
         Me.logFile.ResumeLayout(False)
-        Me.logFile.PerformLayout()
+        Me.logFile.PerformLayout
         Me.sgdTabControl.ResumeLayout(False)
         Me.sgdOpStateTab.ResumeLayout(False)
+        Me.GetUtc.ResumeLayout(False)
+        Me.ReceivedUtcTimegb.ResumeLayout(False)
+        Me.ReceivedUtcTimegb.PerformLayout
         Me.simulatorDeviceTypeTabControl.ResumeLayout(False)
         Me.deviceInfoTab.ResumeLayout(False)
         Me.deviceInfoTabControl.ResumeLayout(False)
         Me.generalInfoTab.ResumeLayout(False)
-        Me.generalInfoTab.PerformLayout()
-        CType(Me.nudCapBitMap3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCapBitMap2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCapBitMap1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCapBitMap0, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudDevRevLSB, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudDevRevMSB, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudVendorIDLSB, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudVendorIDMSB, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudFirmwareMinor, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudFirmwareMajor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.generalInfoTab.PerformLayout
+        CType(Me.nudCapBitMap3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCapBitMap2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCapBitMap1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCapBitMap0, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudDevRevLSB, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudDevRevMSB, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudVendorIDLSB, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudVendorIDMSB, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudFirmwareMinor, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudFirmwareMajor, System.ComponentModel.ISupportInitialize).EndInit
         Me.getDeviceInfo.ResumeLayout(False)
-        Me.getDeviceInfo.PerformLayout()
+        Me.getDeviceInfo.PerformLayout
         Me.msgTypeSupportedTab.ResumeLayout(False)
         Me.gbPowerLimit.ResumeLayout(False)
-        Me.gbPowerLimit.PerformLayout()
-        CType(Me.nudPowerLimit, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbPowerLimit.PerformLayout
+        CType(Me.nudPowerLimit, System.ComponentModel.ISupportInitialize).EndInit
         Me.msgSupportQuery.ResumeLayout(False)
-        Me.msgSupportQuery.PerformLayout()
-        CType(Me.nudSupMsgQueryLSB, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudSupMsgQueryMSB, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.msgSupportQuery.PerformLayout
+        CType(Me.nudSupMsgQueryLSB, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudSupMsgQueryMSB, System.ComponentModel.ISupportInitialize).EndInit
         Me.msgSupportedBox.ResumeLayout(False)
-        Me.msgSupportedBox.PerformLayout()
-        CType(Me.nudMsgSuppLSB, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudMsgSuppMSB, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.msgSupportedBox.PerformLayout
+        CType(Me.nudMsgSuppLSB, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudMsgSuppMSB, System.ComponentModel.ISupportInitialize).EndInit
         Me.setMaxPayloadTab.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
+        Me.GroupBox3.PerformLayout
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.GroupBox1.PerformLayout
         Me.tempF.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        CType(Me.nudPresentTemp, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox4.PerformLayout
+        CType(Me.getTempIntervalVal, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudPresentTemp, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupBox7.ResumeLayout(False)
-        Me.GroupBox7.PerformLayout()
-        CType(Me.nudSetpointDeviceType, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.PerformLayout
+        CType(Me.nudSetpointDeviceType, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
-        CType(Me.nudTempOffset, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.PerformLayout
+        CType(Me.nudTempOffset, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
-        CType(Me.nudSetPoint1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudSetPoint2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox5.PerformLayout
+        CType(Me.nudSetPoint1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudSetPoint2, System.ComponentModel.ISupportInitialize).EndInit
         Me.commodity.ResumeLayout(False)
         Me.cdCommodityGb.ResumeLayout(False)
-        Me.cdCommodityGb.PerformLayout()
-        CType(Me.nudCommodityNum, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CommodityIntervalVal, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cdCommodityGb.PerformLayout
+        CType(Me.nudCommodityNum, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CommodityIntervalVal, System.ComponentModel.ISupportInitialize).EndInit
         Me.tdCommodityCodes.ResumeLayout(False)
-        Me.tdCommodityCodes.PerformLayout()
-        CType(Me.nudCommodityFreq, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCommodityRate, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCommodityAmount, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tdCommodityCodes.PerformLayout
+        CType(Me.nudCommodityFreq, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCommodityRate, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCommodityAmount, System.ComponentModel.ISupportInitialize).EndInit
         Me.getSet.ResumeLayout(False)
         Me.gbTierGetSet.ResumeLayout(False)
         Me.gbPendingEvent.ResumeLayout(False)
-        Me.gbPendingEvent.PerformLayout()
+        Me.gbPendingEvent.PerformLayout
         Me.gbPrefLevel.ResumeLayout(False)
-        Me.gbPrefLevel.PerformLayout()
-        CType(Me.nudPrefLevel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudPrefType, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbPrefLevel.PerformLayout
+        CType(Me.nudPrefLevel, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudPrefType, System.ComponentModel.ISupportInitialize).EndInit
         Me.gbActivation.ResumeLayout(False)
-        Me.gbActivation.PerformLayout()
-        CType(Me.nudActIndex, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudActStatus, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbActivation.PerformLayout
+        CType(Me.nudActIndex, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudActStatus, System.ComponentModel.ISupportInitialize).EndInit
         Me.gbEnergyPrice.ResumeLayout(False)
-        Me.gbEnergyPrice.PerformLayout()
-        CType(Me.nudNextPrice, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudDigitsAfterDecimal, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCurrencyCode, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCurrentPrice, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbEnergyPrice.PerformLayout
+        CType(Me.nudNextPrice, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudDigitsAfterDecimal, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCurrencyCode, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCurrentPrice, System.ComponentModel.ISupportInitialize).EndInit
         Me.commonCommandsTab.ResumeLayout(False)
         Me.commonCommandsTabControl.ResumeLayout(False)
         Me.changeBaudTab.ResumeLayout(False)
-        Me.changeBaudTab.PerformLayout()
+        Me.changeBaudTab.PerformLayout
         Me.grpSGDConfig.ResumeLayout(False)
-        Me.grpSGDConfig.PerformLayout()
+        Me.grpSGDConfig.PerformLayout
         Me.simulateErrorsTab.ResumeLayout(False)
         Me.opcodeErrorsGroup.ResumeLayout(False)
-        Me.opcodeErrorsGroup.PerformLayout()
-        CType(Me.customLength2ValBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.customLength1ValBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.customMsgType2ValBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.customMsgType1ValBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.badOpcode2valbox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.badOpcode1valbox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.opcodeErrorsGroup.PerformLayout
+        CType(Me.customLength2ValBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.customLength1ValBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.customMsgType2ValBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.customMsgType1ValBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.badOpcode2valbox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.badOpcode1valbox, System.ComponentModel.ISupportInitialize).EndInit
         Me.TimingTab.ResumeLayout(False)
-        Me.TimingTab.PerformLayout()
-        CType(Me.tMLValBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tIMValBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tRAValBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tARValBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tMAValBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TimingTab.PerformLayout
+        CType(Me.tMLValBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tIMValBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tRAValBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tARValBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tMAValBox, System.ComponentModel.ISupportInitialize).EndInit
         Me.PassThrough.ResumeLayout(False)
-        Me.PassThrough.PerformLayout()
+        Me.PassThrough.PerformLayout
         Me.ucmTab.ResumeLayout(False)
         Me.ucmTabControl.ResumeLayout(False)
         Me.ucmManageDeviceTab.ResumeLayout(False)
         Me.BasicCmdsTab.ResumeLayout(False)
         Me.shedLoadTab.ResumeLayout(False)
-        Me.shedLoadTab.PerformLayout()
-        CType(Me.trkShedDur, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.shedLoadTab.PerformLayout
+        CType(Me.trkShedDur, System.ComponentModel.ISupportInitialize).EndInit
         Me.gridGuidenceTab.ResumeLayout(False)
         Me.pendingEventGb.ResumeLayout(False)
-        Me.pendingEventGb.PerformLayout()
-        CType(Me.trkPendEventDuration, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pendingEventGb.PerformLayout
+        CType(Me.trkPendEventDuration, System.ComponentModel.ISupportInitialize).EndInit
         Me.grpGridGuide.ResumeLayout(False)
         Me.relativePriceTab.ResumeLayout(False)
         Me.presentPriceGroup.ResumeLayout(False)
-        Me.presentPriceGroup.PerformLayout()
-        CType(Me.presentPriceTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.presentPriceGroup.PerformLayout
+        CType(Me.presentPriceTrackBar, System.ComponentModel.ISupportInitialize).EndInit
         Me.nextPeriodPriceGroup.ResumeLayout(False)
-        Me.nextPeriodPriceGroup.PerformLayout()
-        CType(Me.nextPeriodTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.nextPeriodPriceGroup.PerformLayout
+        CType(Me.nextPeriodTrackBar, System.ComponentModel.ISupportInitialize).EndInit
         Me.requestPowerLevelTab.ResumeLayout(False)
         Me.gbReqPowerLevel.ResumeLayout(False)
-        Me.gbReqPowerLevel.PerformLayout()
-        CType(Me.tbarPower, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbReqPowerLevel.PerformLayout
+        CType(Me.tbarPower, System.ComponentModel.ISupportInitialize).EndInit
         Me.timeRemainingTab.ResumeLayout(False)
         Me.timeRemainingGroup.ResumeLayout(False)
-        Me.timeRemainingGroup.PerformLayout()
-        CType(Me.timeRemainingTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.timeRemainingGroup.PerformLayout
+        CType(Me.timeRemainingTrackBar, System.ComponentModel.ISupportInitialize).EndInit
         Me.ucmQueryTab.ResumeLayout(False)
-        Me.ucmQueryTab.PerformLayout()
-        CType(Me.OpStateIntervalVal, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ucmQueryTab.PerformLayout
+        CType(Me.OpStateIntervalVal, System.ComponentModel.ISupportInitialize).EndInit
         Me.currentStategb.ResumeLayout(False)
-        Me.currentStategb.PerformLayout()
+        Me.currentStategb.PerformLayout
         Me.gbQuery.ResumeLayout(False)
         Me.ucmComStatusTab.ResumeLayout(False)
-        Me.ucmComStatusTab.PerformLayout()
-        CType(Me.CommStatusIntervalVal, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ucmComStatusTab.PerformLayout
+        CType(Me.CommStatusIntervalVal, System.ComponentModel.ISupportInitialize).EndInit
         Me.gbCommStatus.ResumeLayout(False)
         Me.ucmTimeSyncTab.ResumeLayout(False)
         Me.gbTimeSync.ResumeLayout(False)
         Me.ucmIntermediateTab.ResumeLayout(False)
         Me.intermediateTabControl.ResumeLayout(False)
         Me.ucmSetGetUTC.ResumeLayout(False)
-        Me.ucmSetGetUTC.PerformLayout()
-        CType(Me.nudUTCOffset, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudDSTOffset, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ReceivedUtcTimegb.ResumeLayout(False)
-        Me.ReceivedUtcTimegb.PerformLayout()
-        Me.ReceivedUtcTimetb.ResumeLayout(False)
-        Me.ReceivedUtcTimetb.PerformLayout()
+        Me.ucmSetGetUTC.PerformLayout
+        CType(Me.nudUTCOffset, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudDSTOffset, System.ComponentModel.ISupportInitialize).EndInit
         Me.ucmAutoCycling.ResumeLayout(False)
-        Me.ucmAutoCycling.PerformLayout()
-        CType(Me.nudDutyCyclePeriod, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCriticality, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudStopEndRand, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudStopEventID, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudEndRandomization, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudStartRandomization, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudDuration, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudDutyCycle, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudEventID, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ucmAutoCycling.PerformLayout
+        CType(Me.nudDutyCyclePeriod, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCriticality, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudStopEndRand, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudStopEventID, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudEndRandomization, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudStartRandomization, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudDuration, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudDutyCycle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudEventID, System.ComponentModel.ISupportInitialize).EndInit
         Me.sgdTab.ResumeLayout(False)
         Me.TestScripts.ResumeLayout(False)
-        Me.TestScripts.PerformLayout()
+        Me.TestScripts.PerformLayout
         Me.realDeviceTab.ResumeLayout(False)
         Me.realDeviceTabControl.ResumeLayout(False)
         Me.commonRealFunctionsTab.ResumeLayout(False)
         Me.realCommonFunctionsGroup.ResumeLayout(False)
-        Me.realCommonFunctionsGroup.PerformLayout()
+        Me.realCommonFunctionsGroup.PerformLayout
         Me.realUCMFunctionsTab.ResumeLayout(False)
         Me.realUCMFunctionsGroup.ResumeLayout(False)
-        Me.realUCMFunctionsGroup.PerformLayout()
-        CType(Me.realUCMTrasmissionIntervalBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.realUCMFunctionsGroup.PerformLayout
+        CType(Me.realUCMTrasmissionIntervalBox, System.ComponentModel.ISupportInitialize).EndInit
         Me.realSGDFunctionsTab.ResumeLayout(False)
         Me.realSGDFunctionsGroup.ResumeLayout(False)
-        Me.realSGDFunctionsGroup.PerformLayout()
-        CType(Me.realSGDNoCommTimeoutValBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.realSGDFunctionsGroup.PerformLayout
+        CType(Me.realSGDNoCommTimeoutValBox, System.ComponentModel.ISupportInitialize).EndInit
         Me.DeviceSim.ResumeLayout(False)
-        Me.DeviceSim.PerformLayout()
-        CType(Me.nudRunCppPwr, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudRunShedPwr, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudRunNormPwr, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudDataFileVal, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudDataFileIndex, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudPresentCapacity, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudTotalCapacity, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudRealDevMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudStartDelay, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudPPRunMin, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCPPStop, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudCPPStart, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudShedStop, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudShedStart, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudNormalStop, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudNormalStart, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.nudRunningPower, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.DeviceSim.PerformLayout
+        CType(Me.nudRunCppPwr, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudRunShedPwr, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudRunNormPwr, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudDataFileVal, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudDataFileIndex, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudPresentCapacity, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudTotalCapacity, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudRealDevMin, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudStartDelay, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudPPRunMin, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCPPStop, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudCPPStart, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudShedStop, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudShedStart, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudNormalStop, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudNormalStart, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.nudRunningPower, System.ComponentModel.ISupportInitialize).EndInit
         Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
-        CType(Me.CommodityData, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EpriLogoBig, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.PerformLayout
+        CType(Me.CommodityData, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EpriLogoBig, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout
         Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.PerformLayout
 
     End Sub
+    Friend WithEvents ReceivedUtcTimetb As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents CmbPort As System.Windows.Forms.ComboBox
@@ -7340,6 +7414,7 @@ Partial Class FrmMain
     Friend WithEvents Label85 As System.Windows.Forms.Label
     Friend WithEvents OpStateBox As System.Windows.Forms.ComboBox
     Friend WithEvents autoCommStatusTimer As System.Windows.Forms.Timer
+    Friend WithEvents autoGetTempTimer As System.Windows.Forms.Timer
     Friend WithEvents commStatusTimoutTmr As System.Windows.Forms.Timer
     Friend WithEvents shedEventTimer As System.Windows.Forms.Timer
     Friend WithEvents loadUpEventTimer As System.Windows.Forms.Timer
@@ -7641,5 +7716,8 @@ Partial Class FrmMain
     Friend WithEvents Label47 As Label
     Friend WithEvents Label48 As Label
     Friend WithEvents ReceivedUtcTimegb As GroupBox
-    Friend WithEvents ReceivedUtcTimetb As TextBox
+    Friend WithEvents getTempIntervalVal As NumericUpDown
+    Friend WithEvents getTempIntervalBox As CheckBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents GroupBox2 As GroupBox
 End Class
